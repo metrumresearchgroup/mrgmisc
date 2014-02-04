@@ -1,6 +1,7 @@
 #'calculate basic NCA parameters t1/2 Cl, Cmax etc
 #' @param pk dataframe
 #' @param partialtime partial AUC time value
+#' @export
 NCA <-function(pk, partialtime = 28){
   #TODO:needs to be updated to pass in user-defined time, conc, and dose column names
   # 

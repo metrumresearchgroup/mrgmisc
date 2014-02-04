@@ -4,6 +4,7 @@
 #' @param wd relative directly location where PSN run results are output
 #' @param folder_str folder name besides run number
 #' @param full_directory can be specified if folder where gradient file stored non-traditional
+#' @export 
 check_gradients <- function(runnum, wd = NULL, folder_str = '.mod.dir.1', full_directory = NULL) {
   if(is.null(wd)) wd <- getwd()
 

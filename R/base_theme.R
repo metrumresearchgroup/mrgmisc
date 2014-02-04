@@ -1,6 +1,7 @@
 
 
 #' A theme with better default values for pharmacometric plots, especially conc-time
+#' @export 
 base_theme <- function() { theme(legend.text = element_text(size = 18),
                                  legend.title = element_text(size = 20),
                                  axis.title.x = element_text(size = 22, face = "bold"),

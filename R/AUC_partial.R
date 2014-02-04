@@ -2,6 +2,7 @@
 #' @param time column name for time
 #' @param conc column name for conc
 #' @param partialtime final time for partial AUC
+#' @export
 AUC_partial <-function(time = "TIME", 
                        conc = "DV", 
                        partialtime = 28){
