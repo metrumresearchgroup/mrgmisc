@@ -51,9 +51,11 @@ if(any(grd$boundary)) {cat(paste("Boundaries found for parameters:"),
                            ymin = -Inf,
                            ymax = Inf, 
                            alpha = 0.01)} 
-  out <- out +  geom_point() +
+  out <- out + geom_line() + geom_point(aes(color = factor(iszero))) +
     facet_wrap(~variable, scales = "free") +
-    scale_color_manual(values = c("black", "red")) + ggtitle(paste0("run", runnum))
+    scale_color_manual(name = "Gradient Value", values = c("black", "red"), 
+                       labels = c("non-zero", "zero")) + 
+    ggtitle(paste0("run", runnum)) + guides(fill = FALSE)
   print(out)
   }
 }
