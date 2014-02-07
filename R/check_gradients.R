@@ -4,17 +4,44 @@
 #' @param wd relative directly location where PSN run results are output
 #' @param folder_str folder name besides run number
 #' @param full_directory can be specified if folder where gradient file stored non-traditional
+#' @param print print visual plot of gradients
+#' @examples
+#' ## NOT RUN
+#' check_gradients(001)
+#' check_gradients(001, wd = "~/ProjX/NONMEM")
+#' check_gradients(001, folder_str = "modelfit_dir1")
+#' check_gradients(001, full_directory = "~/user/ProjX/NONMEM/run001.mod.dir.1/NM_run2/psn.grd")
 #' @export 
-check_gradients <- function(runnum, wd = NULL, folder_str = '.mod.dir.1', full_directory = NULL) {
-  if(is.null(wd)) wd <- getwd()
+check_gradients <- function(runnum, 
+                            wd = NULL, 
+                            folder_str = '.mod.dir.1', 
+                            full_directory = NULL, 
+                            print = TRUE) {
+  
+if(is.null(wd)) wd <- getwd()
 
-raw_grd <- read.table(paste0(wd,'/run', runnum, folder_str, '/NM_run1/psn.grd'), skip = 1, header = T)
+ifelse(!is.null(full_directory),
+     # read custom full directory
+     raw_grd <- read.table(full_directory, skip = 1, header = T),
+     # use default directory
+     raw_grd <- read.table(paste0(wd,'/run', runnum, folder_str, '/NM_run1/psn.grd'), 
+                           skip = 1, 
+                           header = T)  
+)
 
 grd <- melt(raw_grd, id.vars='ITERATION')
 
 grd <- within(grd, iszero <- ifelse(value == 0, 1, 0))
 bdry_df <- ddply(grd, .(variable), summarize, boundary = any(iszero))
 grd <- merge(grd, bdry_df, all.x = TRUE)
+
+# for some reason this statement as an ifelse throws an error "replacement has length zero"
+if(any(grd$boundary)) {cat(paste("Boundaries found for parameters:"), 
+                           bdry_df$variable[bdry_df$boundary == TRUE])
+} else cat(paste("No boundaries found"))
+
+
+  if(print == TRUE) {
   out <- ggplot(data = grd, aes(x= ITERATION, y = value, group = variable)) 
   if (any(grd$boundary == TRUE)) { 
     out <- out + geom_rect(data = subset(grd, boundary == TRUE),
@@ -28,4 +55,5 @@ grd <- merge(grd, bdry_df, all.x = TRUE)
     facet_wrap(~variable, scales = "free") +
     scale_color_manual(values = c("black", "red")) + ggtitle(paste0("run", runnum))
   print(out)
+  }
 }
