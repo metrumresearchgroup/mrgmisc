@@ -27,7 +27,7 @@ AUC_partial <-function(time = "TIME",
   
   #calculate the starting part of AUC
   auc.start <-0
-  if(time[1]!=0) auc.start <-time[1]*conc[1]/2
+  #if(time[1]!=0) auc.start <-time[1]*conc[1]/2 # need to check validity of this start calculation
 
   AUC.partial <- sum(aucp) + auc.start
 

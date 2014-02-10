@@ -26,7 +26,7 @@ AUC_inf <-function(time = "TIME",
   
   #calculate the starting part of AUC
   auc.start <-0
-  if(time[1]!=0) auc.start <-time[1]*conc[1]/2
+  #if(time[1]!=0) auc.start <-time[1]*conc[1]/2
   
   #calculate the ending part of AUC
   #assuming to compare the last 3, 4 and 5 time points for regression.
