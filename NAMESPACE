@@ -1,3 +1,4 @@
+export(AUC_inf)
 export(AUC_partial)
 export(NCA)
 export(base_theme)
