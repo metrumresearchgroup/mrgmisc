@@ -21,6 +21,16 @@ check_gradients(runnum, wd = NULL, folder_str = ".mod.dir.1",
 \description{
 get gradients for nonmem run running via PSN
 }
+\details{
+by default, the working directory should be set to the
+location of .mod file associated with the run
+
+the default folder structure anticipates runs were run via
+psn with nomenclature such as run001.mod -mod
+
+has not been checked for side effects if have multiple runs
+with the same file name due to restarts or other changes
+}
 \examples{
 \dontrun{
 check_gradients(001)
