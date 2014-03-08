@@ -2,7 +2,6 @@
 #' @name pirana_comments
 #' @param filename name of .mod file 
 #' @export
-
 pirana_comments <- function(filename) {
   listfile <- scan(filename, sep = "\n", what = character(), 
                    quiet = TRUE)

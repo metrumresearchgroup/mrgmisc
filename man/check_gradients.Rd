@@ -22,10 +22,11 @@ check_gradients(runnum, wd = NULL, folder_str = ".mod.dir.1",
 get gradients for nonmem run running via PSN
 }
 \examples{
-## NOT RUN
+\dontrun{
 check_gradients(001)
 check_gradients(001, wd = "~/ProjX/NONMEM")
 check_gradients(001, folder_str = "modelfit_dir1")
 check_gradients(001, full_directory = "~/user/ProjX/NONMEM/run001.mod.dir.1/NM_run2/psn.grd")
+}
 }
 
