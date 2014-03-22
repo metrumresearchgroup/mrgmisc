@@ -1,0 +1,10 @@
+\name{base_theme_obs}
+\alias{base_theme_obs}
+\title{A theme with better default values for pharmacometric plots, especially conc-time}
+\usage{
+base_theme_obs()
+}
+\description{
+made for viewing in the plot window and copying out
+}
+
