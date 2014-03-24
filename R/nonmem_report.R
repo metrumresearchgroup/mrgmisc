@@ -1,5 +1,5 @@
-#' create basic folder structure for a phoenix report
-#' @name phx_report
+#' create basic folder structure for a nonmem report
+#' @name nonmem_report
 #' @param project name of top level project folder
 #' @param secondary_folders list of subfolders
 #' @details
@@ -11,16 +11,16 @@
 #' does not do any checking (will just error out)
 #' @examples
 #' \dontrun{
-#' phx_report("Assignment-1")
-#' phx_report("Assignment-1", list("Rscripts", "simulation-results", "data"))
+#' nonmem_report("Drug-x")
+#' nonmem_report("Drug-x", list("Rscripts", "nonmem","CTS", "data"))
 #' }
 #' @export 
-phx_report <- function(project, 
-                       secondary_folders = list("Rscripts", 
-                                                "phoenix-output", 
-                                                "for-phoenix", 
-                                                "lab-notebook", 
-                                                "data")) 
+nonmem_report <- function(project, 
+         secondary_folders = list("Rscripts", 
+                                  "nonmem", 
+                                  "nonmem_testing", 
+                                  "lab-notebook", 
+                                  "data")) 
 {
   dir.create(project)
   lapply(secondary_folders, function(x) {dir.create(paste0(project ,'\\', x))

@@ -1,9 +1,9 @@
-\name{phx_report}
-\alias{phx_report}
-\title{create basic folder structure for a phoenix report}
+\name{nonmem_report}
+\alias{nonmem_report}
+\title{create basic folder structure for a nonmem report}
 \usage{
-phx_report(project, secondary_folders = list("Rscripts", "phoenix-output",
-  "for-phoenix", "lab-notebook", "data"))
+nonmem_report(project, secondary_folders = list("Rscripts", "nonmem",
+  "nonmem_testing", "lab-notebook", "data"))
 }
 \arguments{
   \item{project}{name of top level project folder}
@@ -11,7 +11,7 @@ phx_report(project, secondary_folders = list("Rscripts", "phoenix-output",
   \item{secondary_folders}{list of subfolders}
 }
 \description{
-create basic folder structure for a phoenix report
+create basic folder structure for a nonmem report
 }
 \details{
 A placeholder.txt file is created in each subfolder to
@@ -25,8 +25,8 @@ out)
 }
 \examples{
 \dontrun{
-phx_report("Assignment-1")
-phx_report("Assignment-1", list("Rscripts", "simulation-results", "data"))
+nonmem_report("Drug-x")
+nonmem_report("Drug-x", list("Rscripts", "nonmem","CTS", "data"))
 }
 }
 
