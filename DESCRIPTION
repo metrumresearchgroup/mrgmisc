@@ -12,7 +12,8 @@ Depends:
 Imports:
     ggplot2,
     plyr,
-    reshape2
+    reshape2,
+    dplyr
 Suggests:
     knitr
 License: MIT

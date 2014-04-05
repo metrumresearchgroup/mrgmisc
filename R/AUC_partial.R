@@ -2,23 +2,23 @@
 #' @param time column name for time
 #' @param conc column name for conc
 #' @param partialtime final time for partial AUC
+#' @param begin_time starting time for partial AUC
 #' @export
 AUC_partial <-function(time = "TIME", 
                        conc = "DV", 
-                       partialtime = 28){
-  
+                       partialtime = 28,
+                       begin_time = 0){
   
   time<- time
   conc <- conc
-
+  time <- time[time >= begin_time]
+  partial.time <- length(time[time <= partialtime])
   
   time.points <- length(time)
   #check to make sure partial time legit option
   ###need to add warning
   
-  partial.time <- length(time[time <= partialtime])
   aucp <- vector("numeric", partial.time-1)
-  auci <-vector("numeric", time.points-1)
   
 
   for(i in 1:(partial.time-1)){
@@ -31,7 +31,7 @@ AUC_partial <-function(time = "TIME",
 
   AUC.partial <- sum(aucp) + auc.start
 
-  return(setNames(AUC.partial, paste0("AUC.partial", time[1], "-", partialtime)))
+  return(setNames(AUC.partial, paste0("AUC.partial", begin_time, "-", partialtime)))
 
   
 }
