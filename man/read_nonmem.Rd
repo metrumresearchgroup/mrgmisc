@@ -11,11 +11,14 @@ read_nonmem(file, sedCmd = NULL, ...)
 
   \item{...}{dots argument to pass to fread}
 }
+\value{
+data.table object
+}
 \description{
 Faster way of reading in nonmem data
 }
 \details{
 uses sed to covert to csv before fread and returns
-data.table object
+data.table object only applicable on unix systems (I think)
 }
 

@@ -4,7 +4,9 @@
 #' @param ... dots argument to pass to fread
 #' @details
 #' uses sed to covert to csv before fread and returns data.table object
+#' only applicable on unix systems (I think)
 #' @name read_nonmem
+#' @return data.table object
 #' @export
 read_nonmem <-function(file, sedCmd=NULL, ...){
   # from SO post 
