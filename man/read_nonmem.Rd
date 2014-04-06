@@ -1,24 +1,28 @@
 \name{read_nonmem}
 \alias{read_nonmem}
-\title{Faster way of reading in nonmem data}
+\title{Better defaults for reading in nonmem data}
 \usage{
-read_nonmem(file, sedCmd = NULL, ...)
+read_nonmem(file, skip = 1, header = TRUE, colClasses = "numeric", ...)
 }
 \arguments{
   \item{file}{file to be read in}
 
-  \item{sedCmd}{sed command}
+  \item{skip}{number of lines to skip (default = 1)}
 
-  \item{...}{dots argument to pass to fread}
+  \item{header}{TRUE/FALSE header}
+
+  \item{colClasses}{numeric default to colClasses argument
+  in read.table}
+
+  \item{...}{dots argument to pass to read.table}
 }
 \value{
-data.table object
+data frame object
 }
 \description{
-Faster way of reading in nonmem data
+Better defaults for reading in nonmem data
 }
 \details{
-uses sed to covert to csv before fread and returns
-data.table object only applicable on unix systems (I think)
+gives colClasses=numeric + default args to read.table
 }
 

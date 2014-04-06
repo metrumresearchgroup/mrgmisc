@@ -1,0 +1,25 @@
+\name{read_nonmem_sed}
+\alias{read_nonmem_sed}
+\title{Faster way of reading in nonmem data using sed to convert table to csv to be read in by fread}
+\usage{
+read_nonmem_sed(file, sedCmd = NULL, ...)
+}
+\arguments{
+  \item{file}{file to be read in}
+
+  \item{sedCmd}{sed command}
+
+  \item{...}{dots argument to pass to fread}
+}
+\value{
+data.table object
+}
+\description{
+Faster way of reading in nonmem data using sed to convert
+table to csv to be read in by fread
+}
+\details{
+uses sed to covert to csv before fread and returns
+data.table object only applicable on unix systems (I think)
+}
+

@@ -13,8 +13,8 @@ Imports:
     ggplot2,
     plyr,
     reshape2,
-    dplyr,
-    data.table
+    dplyr
 Suggests:
-    knitr
+    knitr,
+    data.table
 License: MIT
