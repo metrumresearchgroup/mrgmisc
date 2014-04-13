@@ -2,12 +2,18 @@
 \alias{NCA}
 \title{calculate basic NCA parameters t1/2 Cl, Cmax etc}
 \usage{
-NCA(pk, partialtime = 28)
+NCA(TIME = "TIME", DV = "DV", DOSE = "DOSE", partialtime = 28,
+  last_times = c(3, 4, 5))
 }
 \arguments{
-  \item{pk}{dataframe}
+  \item{TIME}{vector of times}
 
-  \item{partialtime}{partial AUC time value}
+  \item{DV}{vector of observations (concentrations)}
+
+  \item{DOSE}{vector or single value of Dose given}
+
+  \item{last_times}{time points to evaluate for AUCinf
+  extrapolation default 3-5}
 }
 \description{
 calculate basic NCA parameters t1/2 Cl, Cmax etc

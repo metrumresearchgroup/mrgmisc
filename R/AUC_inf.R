@@ -1,11 +1,20 @@
 #' Calculate AUCt-inf
 #' @param time column name for time
 #' @param conc column name for conc
+#' @param last_points vector of amount of points in terminal phase that will be evaluated for extrapolation
+#' @param AUCinf_only default TRUE only return single value for AUCinf
+#' @details
+#' last_points defaults to 3, 4, 5
+#' AUCinf_only for use in dplyr/plyr or other summarizations that can only handle a vector length 1 outputs
+#' when AUCinf_only is false also return %extrapolated, num points used for lambda calc, adjusted Rsquared value 
 #' @export
 AUC_inf <-function(time = "TIME", 
-                   conc = "DV"){
-  
-  
+                   conc = "DV",
+                   last_points = c(3, 4, 5),
+                   AUCinf_only = TRUE){
+  #checks to add
+  #TODO: add check that lambda_z is positive and fail gracefully if not
+  #TODO: clean up return data.frame/vector (its uuuugly now)
   time<- time
   conc <- conc
   
@@ -30,26 +39,53 @@ AUC_inf <-function(time = "TIME",
   
   #calculate the ending part of AUC
   #assuming to compare the last 3, 4 and 5 time points for regression.
-  last <-c(3, 4, 5)
-  start<- time.points - last
+  last <- last_points
+  start<- time.points - last + 1
+  # need extra + 1 in start as time.points-last will give one more time than requested otherwise
+  # ie if want last 3 time points from 16 total time.points - last will say give 13-16
+  # so that would give 13, 14, 15, 16
   auc.end <-vector("numeric", length(last))
   lambda_z <-vector("numeric", length(last))
   adj.r.squared <-vector("numeric", length(last))
-  for(j in 1:3){
+  for(j in 1:length(last)){
     t<-time[start[j]:time.points]
     con <- conc[start[j]:time.points]
-    xt <-lm(con~t)
+    xt <-lm(log(con)~t) # log-linear terminal phase calculation for k
     lambda_z[j]<- as.numeric(xt$coef[2])
     adj.r.squared[j]<-summary(xt)$adj.r.squared
-    auc.end[j]<- con[3]/lambda_z[j]*(-1)
   }
-  #Calculate the final parameters.
-  best.fit.pointer <-which(adj.r.squared==max(adj.r.squared))
-  AUC.inf <-sum(auci)+ auc.start + auc.end[best.fit.pointer]
-  AUC.last <-sum(auci)+ auc.start
+  ### Calculate the final parameters ------------------------------
+  #if multiple lm give same best fit will choose the one with the least number of points
+  if(length(which(adj.r.squared == max(adj.r.squared))) > 1) {
+    best.fit.pointer <- min(which(adj.r.squared == max(adj.r.squared))) 
+  } else {
+    best.fit.pointer <-   which(adj.r.squared == max(adj.r.squared))
+  }
+  lambda_z.final <- lambda_z[best.fit.pointer] * (-1)
+  AUC.last <- sum(auci) + auc.start 
   
+  AUC.inf <- AUC.last + conc[length(conc)]/lambda_z.final
+
+  if(AUCinf_only) return(setNames(AUC.inf, paste0("AUC0_inf")))
+
+  Extra_percent <- (AUC.inf - AUC.last)/AUC.last * 100
+  Num_points_lambda_z <- last[best.fit.pointer]
   
-  return(setNames(AUC.inf, paste0("AUC0_inf")))
+  return.list <- c(AUC.last, 
+                   AUC.inf, 
+                   Extra_percent, 
+                   adj.r.squared[best.fit.pointer], 
+                   lambda_z.final, 
+                   Num_points_lambda_z)
+  return.list <- matrix(return.list, nrow = 1)
+  return.list <- data.frame(X1 = return.list)
+  names(return.list) <- c("AUClast", 
+                          "AUCinf", 
+                          "Extra_percent", 
+                          "Adj.R.Sq", 
+                          "Lambda_z", 
+                          "Num_points_lambda_z")
+  return(return.list)
   
   
 }
