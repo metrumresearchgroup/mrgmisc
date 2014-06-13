@@ -16,9 +16,8 @@
 #' }
 #' @export 
 nonmem_report <- function(project, 
-         secondary_folders = list("Rscripts", 
-                                  "nonmem", 
-                                  "nonmem_testing", 
+         secondary_folders = list("scripts", 
+                                  "modeling", 
                                   "lab-notebook", 
                                   "data")) 
 {
