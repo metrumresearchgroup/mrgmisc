@@ -5,7 +5,7 @@
 #' @export
 #' @examples
 #' \dontrun{
-#' read_xpdb("001") # would save a file 
+#' read_xpdb("001") # would save a file xpdb001.rds
 #' }
 #' @return NULL
 read_xpdb <- function(runno,

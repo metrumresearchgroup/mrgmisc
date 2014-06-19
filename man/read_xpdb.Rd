@@ -18,7 +18,7 @@ read xpose tables to xpose database and save and compress as RDS
 }
 \examples{
 \dontrun{
-read_xpdb("001") # would save a file
+read_xpdb("001") # would save a file xpdb001.rds
 }
 }
 
