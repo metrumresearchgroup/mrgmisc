@@ -41,15 +41,16 @@ grd <- reshape2::melt(raw_grd, id.vars='ITERATION')
 
 grd <- within(grd, iszero <- ifelse(value == 0, 1, 0))
 bdry_df <- dplyr::group_by(grd, variable) %>% dplyr::summarize(boundary = any(iszero))
-grd <- dplyr::left_join(grd, bdry_df)
+grd <- suppressMessages(dplyr::left_join(grd, bdry_df))
 
 # for some reason this statement as an ifelse throws an error "replacement has length zero"
-if(any(grd$boundary)) {cat(paste("Boundaries found for parameters:"), 
+if(any(grd$boundary)) {message(paste("Boundaries found for parameters:"), 
                            bdry_df$variable[bdry_df$boundary == TRUE])
-} else cat(paste("No boundaries found"))
+} else message(paste("No boundaries found"))
 
 
   if(print == TRUE) {
+    require(ggplot2)
   out <- ggplot(data = grd, aes(x= ITERATION, y = value, group = variable)) 
   if (any(grd$boundary == TRUE)) { 
     out <- out + geom_rect(data = subset(grd, boundary == TRUE),
