@@ -19,12 +19,14 @@
 #' 
 #' has not been checked for side effects if have multiple runs with the same file name
 #' due to restarts or other changes
+#' 
+#' default to not print visual of gradients
 #' @export 
 check_gradients <- function(runnum, 
                             wd = NULL, 
                             folder_str = '.mod.dir.1', 
                             full_directory = NULL, 
-                            print = TRUE) {
+                            print = FALSE) {
   
 if(is.null(wd)) wd <- getwd()
 

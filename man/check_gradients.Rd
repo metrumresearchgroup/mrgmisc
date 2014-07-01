@@ -4,7 +4,7 @@
 \title{get gradients for nonmem run running via PSN}
 \usage{
 check_gradients(runnum, wd = NULL, folder_str = ".mod.dir.1",
-  full_directory = NULL, print = TRUE)
+  full_directory = NULL, print = FALSE)
 }
 \arguments{
 \item{runnum}{Xpose-style run number}
@@ -27,6 +27,8 @@ the default folder structure anticipates runs were run via psn with nomenclature
 
 has not been checked for side effects if have multiple runs with the same file name
 due to restarts or other changes
+
+default to not print visual of gradients
 }
 \examples{
 \dontrun{
