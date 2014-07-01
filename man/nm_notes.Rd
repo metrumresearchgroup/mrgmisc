@@ -4,28 +4,17 @@
 \title{show notes output from .mod file}
 \usage{
 nm_notes(filename)
-
-nm_notes(filename)
 }
 \arguments{
-\item{filename}{name of .mod file}
-
 \item{filename}{name of .mod file}
 }
 \value{
 string
-
-string
 }
 \description{
 show notes output from .mod file
-
-show notes output from .mod file
 }
 \details{
-returns all lines between ;NOTES and ;ENDNOTES in .mod file
-if filename not in current wd, need to give path as well
-
 returns all lines between ;NOTES and ;ENDNOTES in .mod file
 if filename not in current wd, need to give path as well
 }
@@ -33,13 +22,8 @@ if filename not in current wd, need to give path as well
 \dontrun{
 nm_notes("run102.mod")
 }
-\dontrun{
-nm_notes("run102.mod")
-}
 }
 \seealso{
-nm_description
-
 nm_description
 }
 

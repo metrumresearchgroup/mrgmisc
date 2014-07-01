@@ -1,5 +1,5 @@
 #' show description output from .mod file
-#' @name pirana_description
+#' @name nm_description
 #' @param filename name of .mod file 
 #' @details
 #' return line containing description file
