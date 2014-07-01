@@ -37,11 +37,11 @@ ifelse(!is.null(full_directory),
                            header = T)  
 )
 
-grd <- melt(raw_grd, id.vars='ITERATION')
+grd <- reshape2::melt(raw_grd, id.vars='ITERATION')
 
 grd <- within(grd, iszero <- ifelse(value == 0, 1, 0))
-bdry_df <- ddply(grd, .(variable), summarize, boundary = any(iszero))
-grd <- merge(grd, bdry_df, all.x = TRUE)
+bdry_df <- dplyr::group_by(grd, variable) %>% dplyr::summarize(boundary = any(iszero))
+grd <- dplyr::left_join(grd, bdry_df)
 
 # for some reason this statement as an ifelse throws an error "replacement has length zero"
 if(any(grd$boundary)) {cat(paste("Boundaries found for parameters:"), 
