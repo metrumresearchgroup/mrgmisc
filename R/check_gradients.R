@@ -42,7 +42,8 @@ ifelse(!is.null(full_directory),
 grd <- reshape2::melt(raw_grd, id.vars='ITERATION')
 
 grd <- within(grd, iszero <- ifelse(value == 0, 1, 0))
-bdry_df <- dplyr::group_by(grd, variable) %>% dplyr::summarize(boundary = any(iszero))
+bdry_df <- suppressWarnings(dplyr::group_by(grd, variable) 
+                            %>% dplyr::summarize(boundary = any(iszero)))
 grd <- suppressMessages(dplyr::left_join(grd, bdry_df))
 
 # for some reason this statement as an ifelse throws an error "replacement has length zero"
