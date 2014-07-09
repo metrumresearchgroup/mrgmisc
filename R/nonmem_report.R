@@ -15,13 +15,18 @@
 #' nonmem_report("Drug-x", list("Rscripts", "nonmem","CTS", "data"))
 #' }
 #' @export 
-nonmem_report <- function(project, 
+nonmem_report <- function(project = NULL
          secondary_folders = list("scripts", 
                                   "modeling", 
                                   "lab-notebook", 
                                   "data")) 
 {
+if (!is.null(project)) {
   dir.create(project)
   lapply(secondary_folders, function(x) {dir.create(paste0(project ,'/', x))
                                          file.create(paste0(project ,'/', x,"/", "placeholder.txt"))})
+         } else {
+         lapply(secondary_folders, function(x) {dir.create(paste0(x))
+                                         file.create(paste0(x,"/", "placeholder.txt"))})    
+         }
 }
