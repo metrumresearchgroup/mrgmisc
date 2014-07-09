@@ -22,6 +22,6 @@ nonmem_report <- function(project,
                                   "data")) 
 {
   dir.create(project)
-  lapply(secondary_folders, function(x) {dir.create(paste0(project ,'\\', x))
+  lapply(secondary_folders, function(x) {dir.create(paste0(project ,'/', x))
                                          file.create(paste0(project ,'/', x,"/", "placeholder.txt"))})
 }
