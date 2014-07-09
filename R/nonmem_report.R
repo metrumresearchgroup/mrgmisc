@@ -15,7 +15,7 @@
 #' nonmem_report("Drug-x", list("Rscripts", "nonmem","CTS", "data"))
 #' }
 #' @export 
-nonmem_report <- function(project = NULL
+nonmem_report <- function(project = NULL,
          secondary_folders = list("scripts", 
                                   "modeling", 
                                   "lab-notebook", 
