@@ -5,11 +5,15 @@
 #' @rdname cols_to_factor
 cols_to_factor <- function(df, col_names) {
   if(length(col_names %in% names(df)) != length(col_names)) {
-    warning("Not all columns in col_names found, will convert all available")
+    warning("Not all columns in col_names found, will convert all available\n")
   }
-  message("converting columns (", col_names[col_names %in% names(df)],") to factors")
+  message("converting columns (", paste(col_names[col_names %in% names(df)]),") to factors\n")
  for(i in seq_along(col_names)) {
-   df[[col_names[i]]] <- factor(df[[col_names[i]]])
+   if (col_names[[i]] %in% names(df)){
+     df[[col_names[i]]] <- factor(df[[col_names[i]]])
+   } else {
+     warning("Could not find column: ", col_names[[i]], " in the dataset\n")
+   }
    }
 return(df)
 }
