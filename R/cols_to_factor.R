@@ -4,10 +4,11 @@
 #' @export
 #' @rdname cols_to_factor
 cols_to_factor <- function(df, col_names) {
+  # TODO: update to properly handle checks (not just length but spelling check) 
   if(length(col_names %in% names(df)) != length(col_names)) {
     warning("Not all columns in col_names found, will convert all available\n")
   }
-  message("converting columns (", paste(col_names[col_names %in% names(df)]),") to factors\n")
+  message("converting columns (", paste(col_names[col_names %in% names(df)], sep = ", "),") to factors\n")
  for(i in seq_along(col_names)) {
    if (col_names[[i]] %in% names(df)){
      df[[col_names[i]]] <- factor(df[[col_names[i]]])
