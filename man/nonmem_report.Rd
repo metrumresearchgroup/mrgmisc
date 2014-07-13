@@ -3,8 +3,8 @@
 \alias{nonmem_report}
 \title{create basic folder structure for a nonmem report}
 \usage{
-nonmem_report(project, secondary_folders = list("scripts", "modeling",
-  "lab-notebook", "data"))
+nonmem_report(project = NULL, secondary_folders = list("scripts",
+  "modeling", "lab-notebook", "data"))
 }
 \arguments{
 \item{project}{name of top level project folder}
