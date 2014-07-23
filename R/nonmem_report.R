@@ -19,7 +19,8 @@ nonmem_report <- function(project = NULL,
          secondary_folders = list("scripts", 
                                   "modeling", 
                                   "lab-notebook", 
-                                  "data")) 
+                                  "data",
+                                  "reports")) 
 {
 if (!is.null(project)) {
   dir.create(project)
