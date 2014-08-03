@@ -4,7 +4,7 @@
 \title{create basic folder structure for a nonmem report}
 \usage{
 nonmem_report(project = NULL, secondary_folders = list("scripts",
-  "modeling", "lab-notebook", "data"))
+  "modeling", "lab-notebook", "data", "reports"))
 }
 \arguments{
 \item{project}{name of top level project folder}
