@@ -49,11 +49,6 @@ calculate_wam <- function(k, p, n, theta, cov)
   results  
 }  
 
-ncovtheta<- 13 # k=no. of covariate thetas
-cov_theta_nums <- c(12, 13, 16:26)
-npar=   31  # p=no. of parameters in theta, omega and sigma in full model
-nobs= 12029    # n=no. of observations in data set
-run_num<- 100		# your run number
 #' wam function
 #' @param ncovtheta number of covariate thetas
 #' @param cov_theta_nums <- vector of theta numbers for covariate thetas
