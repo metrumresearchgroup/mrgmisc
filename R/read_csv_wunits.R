@@ -12,6 +12,7 @@
 #' read_csv_wunits("example.csv")
 #' read_csv_wunits("example.csv", skip_top = 1) # will ignore 1st line, good for comment lines
 #' }
+#' @export
 read_csv_wunits <- function(data, 
                             skip_top = 0, 
                             stringsAsFactors = FALSE, 
