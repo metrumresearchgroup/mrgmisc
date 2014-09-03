@@ -18,7 +18,12 @@
 execute_curve_stripping <- function(df, TIME_name = "TIME", DV_name = "CONC", DOSE_name = "DOSE", number_terminal_points, ...) {
   df <- df
   names(df)[which(names(df) == DV_name)] <- "CONC"
-  names(df)[which(names(df) == TIME_name)] <- "TIME"
+  if("TIME" %in% names(df) & TIME_name != "TIME") {
+    names(df)[which(names(df) == "TIME")] <- NA
+    names(df)[which(names(df) == TIME_name)] <- "TIME"
+  } else {
+    names(df)[which(names(df) == TIME_name)] <- "TIME"
+  }
   names(df)[which(names(df) == DOSE_name)] <- "DOSE" 
   mean_IV <- df %>% dplyr::group_by(TIME, DOSE) %>% dplyr::summarize(geomean = exp(mean(log(CONC))))
   result <- mean_IV %>% dplyr::group_by(DOSE) %>% dplyr::do(strip_curves(TIME = .$TIME, .$geomean,DOSE = .$DOSE, number_terminal_points,...))
