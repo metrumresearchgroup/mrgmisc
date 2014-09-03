@@ -52,7 +52,7 @@ strip_curves <- function(TIME, DV, DOSE, number_terminal_points, oral= FALSE) {
   Q <- k12*Vc
   CL <- kel*Vc
   
-  initial_estimates <- data.frame("Vc" = Vc, "Vp" = Vp, "Q" = Q, "CL" = CL)
+  initial_estimates <- data.frame("Vc" = mean(Vc), "Vp" = mean(Vp), "Q" = mean(Q), "CL" = mean(CL))
   row.names(initial_estimates) <- NULL
   return(round(initial_estimates, 2))
 }
