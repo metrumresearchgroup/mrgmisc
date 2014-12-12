@@ -6,13 +6,12 @@
 #' @param ... dots
 #' @export
 resample_df <- function(df, key_cols, strat_cols = NULL, key_col_name = "KEY") {
-  names <- names(df)
+  names <- c(key_col_name,names(df))
   key <- get_key(df, key_cols)
+  
+  
   sample <- sample_n(key, size = nrow(key), replace=T)
-  if(!(is.null(key_col_name))) {
-    names <- c(key_col_name, names)
-    sample[[key_col_name]] <- 1:nrow(sample)
-  }
+  sample[[key_col_name]] <- 1:nrow(sample)
   resampled_df <- left_join(sample, df, by = key_cols)
   
   #reorder columns to match original df
@@ -31,9 +30,18 @@ get_key <- function(df, key_cols) {
   return(dplyr::tbl_df(unique_df))
 }
 
-stratify_df <- function(df, strat_cols = NULL) {
-  
+stratify_df <- function(df, strat_cols) {
+  df %>% group_by_(.dots=strat_cols) %>% 
+    sample_frac(1, replace=T)
 }
 
 
-
+# tests
+# 
+# library(PKPDdatasets)
+# dat <- sd_oral_richpk
+# sid_dat <- filter(dat, !duplicated(ID))
+# sid_dat %>% group_by(Gender) %>% summarize(n = n())
+# stratify_df(sid_dat, strat_cols="Gender")%>% summarize(n = n())
+# sid_dat %>% group_by(Gender, Race) %>% summarize(n = n())
+# stratify_df(sid_dat, strat_cols=c("Gender", "Race"))%>% summarize(n = n())
