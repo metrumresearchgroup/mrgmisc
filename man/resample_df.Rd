@@ -3,7 +3,8 @@
 \alias{resample_df}
 \title{resampling}
 \usage{
-resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY")
+resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY",
+  n = NULL)
 }
 \arguments{
 \item{df}{}
@@ -12,9 +13,9 @@ resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY")
 
 \item{strat_cols}{}
 
-\item{key_name}{name of key column}
+\item{key_col_name}{name of key column}
 
-\item{...}{dots}
+\item{n}{number of unique sampled keys, defaults to match dataset}
 }
 \description{
 resampling

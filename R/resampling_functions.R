@@ -14,31 +14,50 @@ get_key <- function(df,
 #' stratify based on some columns
 #' @param df dataframe
 #' @param strat_cols columns to stratify on
+#' @param n number of samples
 #' @export
 stratify_df <- function(df, 
-                        strat_cols) {
-  df %>% dplyr::group_by_(.dots=strat_cols) %>% 
-    dplyr::sample_frac(1, replace=T)
+                        strat_cols,
+                        n) {
+  frac <- n/nrow(df)
+  sample <- df %>% dplyr::group_by_(.dots=strat_cols) %>% 
+    dplyr::sample_frac(frac, replace=T)
+  nsample <- nrow(sample) 
+  nleft <- n- nsample
+  if(nleft != 0) {
+    ifelse(nleft > 0, {
+      extras <- dplyr::sample_n(df, size = nleft)
+      sample <- rbind(sample, extras)
+    }, {
+      removals <- sample.int(nsample, abs(nleft))
+           sample <- sample[-removals,]
+    }
+    )
+
+  }
+  return(sample)
 }
 
 #' resampling
 #' @param df
 #' @param key_cols
 #' @param strat_cols
-#' @param key_name name of key column
-#' @param ... dots
+#' @param key_col_name name of key column
+#' @param n number of unique sampled keys, defaults to match dataset
 #' @export
 resample_df <- function(df, 
                         key_cols, 
                         strat_cols = NULL, 
-                        key_col_name = "KEY") {
+                        key_col_name = "KEY",
+                        n = NULL) {
   names <- c(key_col_name,names(df))
   key <- get_key(df, key_cols)
+  if(is.null(n)) n <- nrow(key)
   
   if(is.null(strat_cols)) {
 
-    sample <- dplyr::sample_n(key, size = nrow(key), replace=T)
-    sample[[key_col_name]] <- 1:nrow(sample)
+    sample <- dplyr::sample_n(key, size = n, replace=T)
+    sample[[key_col_name]] <- 1:n
   } else {
     strat_key <- get_key(df, c(key_cols, strat_cols))
     
@@ -53,7 +72,7 @@ resample_df <- function(df,
       warning("Non-unique keys introduced from stratification,
 check that all keys only have one stratification variable associated
                                              ")}
-    sample <- stratify_df(strat_key, strat_cols)
+    sample <- stratify_df(strat_key, strat_cols, n)
     #drop strat cols so won't possibly mangle later left join
     sample <- ungroup(sample)
     sample <- sample[, key_cols, drop=F] 
@@ -76,7 +95,7 @@ check that all keys only have one stratification variable associated
 # stratify_df(sid_dat, strat_cols="Gender")%>% summarize(n = n())
 # sid_dat %>% group_by(Gender, Race) %>% summarize(n = n())
 # stratify_df(sid_dat, strat_cols=c("Gender", "Race"))%>% summarize(n = n())
-
+# 
 # rep_dat <- rbind_all(lapply(1:5, function(x) dat %>%
 #                               filter(ID < 5) %>% 
 #                               mutate(REP = x)))
@@ -85,5 +104,14 @@ check that all keys only have one stratification variable associated
 # stratify_df(rep_dat, strat_cols="Gender")%>% summarize(n = n())
 # rep_dat %>% group_by(Gender, Race) %>% summarize(n = n())
 # stratify_df(rep_dat, strat_cols=c("Gender", "Race"))%>% summarize(n = n())
-#resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race"))
-#resample_df(rep_dat, key_cols=c("ID", "REP"))
+# resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race"))
+# resample_df(rep_dat, key_cols=c("ID", "REP"))
+# 
+# resample_df(rep_dat, 
+#             key_cols=c("ID", "REP"), 
+#             strat_cols=c("Gender", "Race"),
+#             n =50) %>% group_by(Gender, Race) %>% filter(!duplicated(KEY)) %>%
+#   summarize(n = n())
+# 
+# rep_dat %>% mutate(totn = n()) %>% 
+#   group_by(Gender, Race) %>% summarize(n =n()/mean(totn))

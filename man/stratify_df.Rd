@@ -3,12 +3,14 @@
 \alias{stratify_df}
 \title{stratify based on some columns}
 \usage{
-stratify_df(df, strat_cols)
+stratify_df(df, strat_cols, n)
 }
 \arguments{
 \item{df}{dataframe}
 
 \item{strat_cols}{columns to stratify on}
+
+\item{n}{number of samples}
 }
 \description{
 stratify based on some columns
