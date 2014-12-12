@@ -3,6 +3,7 @@
 export(AUC_inf)
 export(AUC_partial)
 export(NCA)
+export(as_numeric)
 export(base_theme)
 export(base_theme_obs)
 export(char_to_numeric)

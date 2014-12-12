@@ -3,6 +3,10 @@
 #' @param col_names vector of column names or indices to convert to factor
 #' @export
 #' @rdname cols_to_factor
+#' @examples 
+#' \dontrun{
+#' cols_to_factor(df, c("DOSE", "TRT")) # will convert dose and TRT columns to factor
+#'}
 cols_to_factor <- function(df, col_names) {
   # TODO: update to properly handle checks (not just length but spelling check) 
   if(length(col_names %in% names(df)) != length(col_names)) {
