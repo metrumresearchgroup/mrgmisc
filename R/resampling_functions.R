@@ -5,7 +5,10 @@
 #' @param key_name name of key column
 #' @param ... dots
 #' @export
-resample_df <- function(df, key_cols, strat_cols = NULL, key_col_name = "KEY") {
+resample_df <- function(df, 
+                        key_cols, 
+                        strat_cols = NULL, 
+                        key_col_name = "KEY") {
   names <- c(key_col_name,names(df))
   key <- get_key(df, key_cols)
   
@@ -22,7 +25,8 @@ resample_df <- function(df, key_cols, strat_cols = NULL, key_col_name = "KEY") {
 #' @param df data frame
 #' @param key_cols vector of column names
 #' @export
-get_key <- function(df, key_cols) {
+get_key <- function(df, 
+                    key_cols) {
   # add check to see if all key_cols available
   unique_df <- df[, key_cols, drop=F] %>%
     data.table::as.data.table() %>%
@@ -30,7 +34,12 @@ get_key <- function(df, key_cols) {
   return(dplyr::tbl_df(unique_df))
 }
 
-stratify_df <- function(df, strat_cols) {
+#' stratify based on some columns
+#' @param df dataframe
+#' @param strat_cols columns to stratify on
+#' @export
+stratify_df <- function(df, 
+                        strat_cols) {
   df %>% group_by_(.dots=strat_cols) %>% 
     sample_frac(1, replace=T)
 }
