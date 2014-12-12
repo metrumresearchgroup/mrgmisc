@@ -33,15 +33,27 @@ resample_df <- function(df,
                         strat_cols = NULL, 
                         key_col_name = "KEY") {
   names <- c(key_col_name,names(df))
-  
+  key <- get_key(df, key_cols)
   
   if(is.null(strat_cols)) {
-    key <- get_key(df, key_cols)
+
     sample <- dplyr::sample_n(key, size = nrow(key), replace=T)
     sample[[key_col_name]] <- 1:nrow(sample)
   } else {
-    key <- get_key(df, c(key_cols, strat_cols))
-    sample <- stratify_df(key, strat_cols)
+    strat_key <- get_key(df, c(key_cols, strat_cols))
+    
+    # because getting unique key based on stratification columns as well 
+    # (to easily carry columns) if there are multiple stratification values
+    # per unique key may introduce a bug
+    # eg if stratifying by disease status if an individual has at some time
+    # both positive and negative statuses, both will be picked up as two separate
+    # instances so will duplicate that individual. For now issue warning but let
+    # it proceed
+    if(nrow(strat_key) != nrow(key)) {
+      warning("Non-unique keys introduced from stratification,
+check that all keys only have one stratification variable associated
+                                             ")}
+    sample <- stratify_df(strat_key, strat_cols)
     #drop strat cols so won't possibly mangle later left join
     sample <- ungroup(sample)
     sample <- sample[, key_cols, drop=F] 
