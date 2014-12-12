@@ -7,7 +7,7 @@ get_key <- function(df,
   # add check to see if all key_cols available
   unique_df <- df[, key_cols, drop=F] %>%
     data.table::as.data.table() %>%
-    data.table::unique(by=key_cols)
+    unique(by=key_cols)
   return(dplyr::tbl_df(unique_df))
 }
 
@@ -33,17 +33,17 @@ resample_df <- function(df,
                         strat_cols = NULL, 
                         key_col_name = "KEY") {
   names <- c(key_col_name,names(df))
-  key <- get_key(df, key_cols)
+  
   
   if(is.null(strat_cols)) {
+    key <- get_key(df, key_cols)
     sample <- dplyr::sample_n(key, size = nrow(key), replace=T)
     sample[[key_col_name]] <- 1:nrow(sample)
   } else {
-    
-    key_strat <- dplyr::inner_join(key, 
-                                   df[, c(key_cols, strat_cols)])
-    sample <- stratify_df(key_strat, strat_cols)
+    key <- get_key(df, c(key_cols, strat_cols))
+    sample <- stratify_df(key, strat_cols)
     #drop strat cols so won't possibly mangle later left join
+    sample <- ungroup(sample)
     sample <- sample[, key_cols, drop=F] 
     sample[[key_col_name]] <- 1:nrow(sample)
   }
@@ -73,4 +73,5 @@ resample_df <- function(df,
 # stratify_df(rep_dat, strat_cols="Gender")%>% summarize(n = n())
 # rep_dat %>% group_by(Gender, Race) %>% summarize(n = n())
 # stratify_df(rep_dat, strat_cols=c("Gender", "Race"))%>% summarize(n = n())
-
+#resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race"))
+#resample_df(rep_dat, key_cols=c("ID", "REP"))
