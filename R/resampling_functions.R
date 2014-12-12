@@ -13,11 +13,12 @@ resample_df <- function(df,
   key <- get_key(df, key_cols)
   
   
-  sample <- sample_n(key, size = nrow(key), replace=T)
+  sample <- dplyr::sample_n(key, size = nrow(key), replace=T)
   sample[[key_col_name]] <- 1:nrow(sample)
-  resampled_df <- left_join(sample, df, by = key_cols)
+  resampled_df <- dplyr::left_join(sample, df, by = key_cols)
   
-  #reorder columns to match original df
+  
+  #reorder columns to match original df with key column appended
   return(resampled_df[,names, drop=F])
 }
 
@@ -40,8 +41,8 @@ get_key <- function(df,
 #' @export
 stratify_df <- function(df, 
                         strat_cols) {
-  df %>% group_by_(.dots=strat_cols) %>% 
-    sample_frac(1, replace=T)
+  df %>% dplyr::group_by_(.dots=strat_cols) %>% 
+    dplyr::sample_frac(1, replace=T)
 }
 
 
