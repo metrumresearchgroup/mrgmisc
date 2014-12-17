@@ -8,13 +8,14 @@ Authors@R: c(
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
 Description: Collection of functions for making PKPD analysis easier
 Depends:
-    R (>= 2.15)
+    R (>= 3.0.2)
 Imports:
     ggplot2,
     plyr,
     reshape2,
-    dplyr
+    dplyr,
+    lazyeval,
+    data.table
 Suggests:
     knitr,
-    data.table
 License: MIT
