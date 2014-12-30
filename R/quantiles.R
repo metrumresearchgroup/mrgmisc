@@ -47,12 +47,6 @@ s_quantiles <- function(df, col_name, probs, na.rm=T) {
       return(unlist(quantiles))
     }
 }
-
-
-t1 <- lapply(c(0.2, 0.5, 0.75), function(x){
-  s_quantile(sd_oral_richpk %>% group_by(Gender), "Conc", x)
-})
-
 #sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.7))
 #sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.5, 0.7))
 #sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.2, 0.5, 0.7))
