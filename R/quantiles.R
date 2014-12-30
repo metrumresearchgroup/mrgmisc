@@ -35,10 +35,24 @@ s_quantiles <- function(df, col_name, probs, na.rm=T) {
     #check if grouped df and if so adjust behavior to bind together the list
     # of quantiles given back from lapply
     if(any(grepl("grouped", attributes(df)$class))) {
-      suppressMessages(do.call(dplyr::inner_join, quantiles)) }
+      j_quantiles <- quantiles[[1]]
+      for(i in seq_along(quantiles)) {
+        j_quantiles <- suppressMessages(
+          dplyr::inner_join(j_quantiles, quantiles[[i]])
+          )
+      }
+      return(j_quantiles)
+    }
     else {
-      unlist(quantiles)
+      return(unlist(quantiles))
     }
 }
 
 
+t1 <- lapply(c(0.2, 0.5, 0.75), function(x){
+  s_quantile(sd_oral_richpk %>% group_by(Gender), "Conc", x)
+})
+
+#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.7))
+#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.5, 0.7))
+#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.2, 0.5, 0.7))
