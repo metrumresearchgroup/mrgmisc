@@ -1,18 +1,26 @@
 #' Calculate partial AUC
-#' @param time column name for time
-#' @param conc column name for conc
-#' @param partialtime final time for partial AUC
-#' @param begin_time starting time for partial AUC
+#' @param time time column
+#' @param conc concentration column
+#' @param range time range for pauc calculation
+#' @details 
+#' default range is 0 to tmax
+#' is recommended to be used alongside dplyr for ease of calculation
+#' @examples
+#' \dontrun{
+#' df %>% group_by(ID) %<% summarize(pAUC0-10 = AUC_partial(TIME, DV, c(0,10)))
+#' }
 #' @export
-AUC_partial <-function(time = "TIME", 
-                       conc = "DV", 
-                       partialtime = 28,
-                       begin_time = 0){
+AUC_partial <-function(time, 
+                       conc, 
+                       range = c(0, max(time))
+                       ){
+  tfirst <- range[1]
+  tlast <- range[2]
   
   time<- time
-  conc <- conc
-  time <- time[time >= begin_time]
-  partial.time <- length(time[time <= partialtime])
+  conc <- conc[time >= tfirst]
+  time <- time[time >= tfirst]
+  partial.time <- length(time[time <= tlast])
   
   time.points <- length(time)
   #check to make sure partial time legit option
@@ -31,7 +39,7 @@ AUC_partial <-function(time = "TIME",
 
   AUC.partial <- sum(aucp) + auc.start
 
-  return(setNames(AUC.partial, paste0("AUC.partial", begin_time, "-", partialtime)))
+  return(setNames(AUC.partial, paste0("pAUC", tfirst, "-", tlast)))
 
   
 }
