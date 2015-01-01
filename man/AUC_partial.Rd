@@ -4,19 +4,25 @@
 \alias{AUC_partial}
 \title{Calculate partial AUC}
 \usage{
-AUC_partial(time = "TIME", conc = "DV", partialtime = 28,
-  begin_time = 0)
+AUC_partial(time, conc, range = c(0, max(time)))
 }
 \arguments{
-\item{time}{column name for time}
+\item{time}{time column}
 
-\item{conc}{column name for conc}
+\item{conc}{concentration column}
 
-\item{partialtime}{final time for partial AUC}
-
-\item{begin_time}{starting time for partial AUC}
+\item{range}{time range for pauc calculation}
 }
 \description{
 Calculate partial AUC
+}
+\details{
+default range is 0 to tmax
+is recommended to be used alongside dplyr for ease of calculation
+}
+\examples{
+\dontrun{
+df \%>\% group_by(ID) \%<\% summarize(pAUC0-10 = AUC_partial(TIME, DV, c(0,10)))
+}
 }
 

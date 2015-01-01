@@ -4,9 +4,8 @@
 #' @param dv string name for dependent variable column (eg. dv or cobs)
 #' @param range whether to remove na values
 #' @param digits number of digits to pass to round
-#' @details
+#' @details 
 #' for internal use in the s_pauc function
-#' @internal
 s_pauc_i <- function(df, time, dv, range, digits = Inf) {
   dots = list(lazyeval::interp(~ round(AUC_partial(time, 
                                           dv, 
@@ -23,7 +22,6 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
 #' @param time string name for time column for pauc slice
 #' @param dv string name for dependent variable column (eg. dv or cobs)
 #' @param paucs list of ranges for pauc calculation
-#' @details
 #' @examples
 #' \dontrun{
 #' library(PKPDdatasets)

@@ -18,6 +18,10 @@ s_quantiles(df, col_name, probs, na.rm = T)
 \description{
 summarize quantiles
 }
+\details{
+can calculate multiple quantiles by passing in a vector of probabilities.
+Can also pass in a grouped df using dplyr::group_by to get summaries by group
+}
 \examples{
 \dontrun{
 library(PKPDdatasets)
