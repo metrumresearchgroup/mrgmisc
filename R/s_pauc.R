@@ -63,5 +63,3 @@ s_pauc <- function(df, time, dv, paucs, digits = Inf) {
 }
 #sd_oral_richpk %>% group_by(ID) %>% s_pauc("Time", "Conc", list(c(0, 24), c(0, 8), c(8, 24)), digits=2)
 #sd_oral_richpk %>% filter(ID ==1) %>% s_pauc("Time", "Conc", list(c(0,24), c(0,8), c(8,24)), digits=2) %>% do.call("cbind", .)
-#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.5, 0.7))
-#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.2, 0.5, 0.7))
