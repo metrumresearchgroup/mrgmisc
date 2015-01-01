@@ -21,8 +21,7 @@ summarize paucs
 \examples{
 \dontrun{
 library(PKPDdatasets)
-sd_oral_richpk  \%>\% group_by(ID) \%>\% s_pauc
-sd_oral_richpk  \%>\% group_by(Gender) \%>\% s_quantiles("Conc", probs = c(0.1, 0.5))
+sd_oral_richpk  \%>\% group_by(ID) \%>\% s_pauc("Time", "Conc", list(c(0,8), c(8, 24)))
 }
 }
 
