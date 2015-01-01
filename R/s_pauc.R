@@ -13,9 +13,12 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
                                           digits), 
                                time = as.name(time),
                                dv = as.name(dv)))
-  # due to bug in dplyr version as of 1/1/2015 with summarize dropping last
-  # group variable will capture df grouping vars and manually reassign
-  # after summarization
+  # after discussion with hadley, the last group is dropped by design with dplyr
+  # given that it is unique at that point
+  # for now, I do not want to do that as I want to keep track of all grouped
+  # variables to determine how to handle the summaries after (eg will want additional)
+  # summaries on all non-group columns (in this case all pauc cols) so don't want
+  # the group to be dropped
   grps <- NULL
   if(!is.null(groups(df))) grps <- groups(df)
   out <- df %>% dplyr::summarize_(.dots = setNames(dots, 
