@@ -13,8 +13,15 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
                                           digits), 
                                time = as.name(time),
                                dv = as.name(dv)))
-  df %>% dplyr::summarize_(.dots = setNames(dots, 
+  # due to bug in dplyr version as of 1/1/2015 with summarize dropping last
+  # group variable will capture df grouping vars and manually reassign
+  # after summarization
+  grps <- NULL
+  if(!is.null(groups(df))) grps <- groups(df)
+  out <- df %>% dplyr::summarize_(.dots = setNames(dots, 
                                             paste0("pAUC", range[1], "_", range[2])))
+  if(!is.null(grps)) out <- dplyr::group_by_(out, .dots=grps)
+  return(out)
 }
 
 #' summarize paucs
