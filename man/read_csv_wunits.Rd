@@ -4,16 +4,22 @@
 \alias{read_csv_wunits}
 \title{to more easily read data with a 2nd row with units}
 \usage{
-read_csv_wunits(data, skip_top = 0, stringsAsFactors = FALSE, ...)
+read_csv_wunits(data, skip = 0, stringsAsFactors = FALSE, header = TRUE,
+  ..., has_units = TRUE, fread = FALSE)
 }
 \arguments{
 \item{data}{the name of the csv}
 
-\item{skip_top}{rows to skip before header row}
+\item{skip}{rows to skip before header row}
 
 \item{stringsAsFactors}{whether to include string columns as factors}
 
+\item{header}{logical value indicating whether the file contains the names of variables
+as it's first line}
+
 \item{...}{additional arguments to read.csv functions}
+
+\item{has_units}{has a units row (a la phx data)}
 }
 \value{
 data frame of read-in csv
@@ -28,7 +34,7 @@ as often seen with phoenix-style datasets
 \examples{
 \dontrun{
 read_csv_wunits("example.csv")
-read_csv_wunits("example.csv", skip_top = 1) # will ignore 1st line, good for comment lines
+read_csv_wunits("example.csv", skip = 1) # will ignore 1st line, good for comment lines
 }
 }
 
