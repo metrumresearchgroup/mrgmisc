@@ -1,3 +1,9 @@
+#' cleans nsub output
+#' @param path path to file
+#' @param title keyword to determine title rows (eg. TABLE)
+#' @param header keyword to determine header rows (eg DV)
+#' @param overwrite whether to overwrite the original file. If FALSE, will add a '_clean'
+#'    to existing fle name
 #' @export
 clean_nsub <- function(path, title = "TABLE", header = "DV", overwrite=T) {
   path <- normalizePath(path)
