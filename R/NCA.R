@@ -4,10 +4,18 @@
 #' @param DOSE vector or single value of Dose given
 #' @param last_times vector of numbers of time points to evaluate for 
 #'    AUCinf extrapolation default 3-5
+#' @details
+#' Works well in tandem with the dplyr package and `do` verb
+#' @examples
+#' \dontrun{
+#' library(PKPDdatasets)
+#' sd_oral_richpk %>% group_by(ID) %>%
+#' do(data.frame(NCA(.$Time, .$Conc, .$Dose)))
+#' }
 #' @export
-NCA <-function(TIME = "TIME", 
-               DV = "DV", 
-               DOSE = "DOSE", 
+NCA <-function(TIME, 
+               DV, 
+               DOSE, 
                last_times = c(3, 4, 5)) 
 {
   #TODO change defaults for last_times to detect all times after cmax
@@ -16,7 +24,6 @@ NCA <-function(TIME = "TIME",
   conc <- DV
   dose <- DOSE
   time.points <- length(time)
-  aucp <- vector("numeric", partial.time - 1)
   auci <- vector("numeric", time.points - 1)
   for (i in 1:(time.points - 1)) {
     auci[i] <- (conc[i] + conc[i + 1]) * (time[i + 1] - time[i])/2

@@ -4,7 +4,7 @@
 \alias{NCA}
 \title{calculate basic NCA parameters t1/2 Cl, Cmax etc}
 \usage{
-NCA(TIME = "TIME", DV = "DV", DOSE = "DOSE", last_times = c(3, 4, 5))
+NCA(TIME, DV, DOSE, last_times = c(3, 4, 5))
 }
 \arguments{
 \item{TIME}{vector of times}
@@ -18,5 +18,15 @@ AUCinf extrapolation default 3-5}
 }
 \description{
 calculate basic NCA parameters t1/2 Cl, Cmax etc
+}
+\details{
+Works well in tandem with the dplyr package and `do` verb
+}
+\examples{
+\dontrun{
+library(PKPDdatasets)
+sd_oral_richpk \%>\% group_by(ID) \%>\%
+do(data.frame(NCA(.$Time, .$Conc, .$Dose)))
+}
 }
 
