@@ -4,6 +4,7 @@
 #' @param DOSE vector or single value of Dose given
 #' @param last_times vector of numbers of time points to evaluate for 
 #'    AUCinf extrapolation default 3-5
+#' @param digits number of digits to round to. Can use NULL for no rounding
 #' @details
 #' Works well in tandem with the dplyr package and `do` verb
 #' @examples
@@ -16,7 +17,8 @@
 NCA <-function(TIME, 
                DV, 
                DOSE, 
-               last_times = c(3, 4, 5)) 
+               last_times = c(3, 4, 5), 
+               digits = 2) 
 {
   #TODO change defaults for last_times to detect all times after cmax
   #TODO clean up how results are returned
@@ -62,5 +64,5 @@ NCA <-function(TIME,
   
   names(final) <- c("Cmax", "Tmax", "AUClast", "AUCinf", "Extra_percent", 
                           "Adj.R.Sq", "Lambda_z", "half_life", "cl", "Num_points_lambda_z")
-  return(final)
+  return(round(final, digits))
 }

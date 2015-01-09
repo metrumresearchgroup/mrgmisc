@@ -4,7 +4,7 @@
 \alias{NCA}
 \title{calculate basic NCA parameters t1/2 Cl, Cmax etc}
 \usage{
-NCA(TIME, DV, DOSE, last_times = c(3, 4, 5))
+NCA(TIME, DV, DOSE, last_times = c(3, 4, 5), digits = 2)
 }
 \arguments{
 \item{TIME}{vector of times}
@@ -15,6 +15,8 @@ NCA(TIME, DV, DOSE, last_times = c(3, 4, 5))
 
 \item{last_times}{vector of numbers of time points to evaluate for
 AUCinf extrapolation default 3-5}
+
+\item{digits}{number of digits to round to. Can use NULL for no rounding}
 }
 \description{
 calculate basic NCA parameters t1/2 Cl, Cmax etc
