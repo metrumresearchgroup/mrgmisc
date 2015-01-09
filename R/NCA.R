@@ -2,12 +2,12 @@
 #' @param TIME vector of times
 #' @param DV vector of observations (concentrations)
 #' @param DOSE vector or single value of Dose given
-#' @param last_times time points to evaluate for AUCinf extrapolation default 3-5
+#' @param last_times vector of numbers of time points to evaluate for 
+#'    AUCinf extrapolation default 3-5
 #' @export
 NCA <-function(TIME = "TIME", 
                DV = "DV", 
                DOSE = "DOSE", 
-               partialtime = 28, 
                last_times = c(3, 4, 5)) 
 {
   #TODO change defaults for last_times to detect all times after cmax
@@ -16,19 +16,12 @@ NCA <-function(TIME = "TIME",
   conc <- DV
   dose <- DOSE
   time.points <- length(time)
-  partial.time <- length(time[time <= partialtime])
   aucp <- vector("numeric", partial.time - 1)
   auci <- vector("numeric", time.points - 1)
   for (i in 1:(time.points - 1)) {
     auci[i] <- (conc[i] + conc[i + 1]) * (time[i + 1] - time[i])/2
   }
-  for (i in 1:(partial.time - 1)) {
-    aucp[i] <- (conc[i] + conc[i + 1]) * (time[i + 1] - time[i])/2
-  }
   auc.start <- 0
-  #TODO: check this AUC.start portion for correctness
-#   if (time[1] != 0) 
-#     auc.start <- time[1] * conc[1]/2
   last <- last_times
   start <- time.points - last
   auc.end <- vector("numeric", length(last))
@@ -49,7 +42,6 @@ NCA <-function(TIME = "TIME",
   }
   AUC.inf <- sum(auci) + auc.start + auc.end[best.fit.pointer]
   AUC.last <- sum(auci) + auc.start
-  AUC.partial <- sum(aucp) + auc.start
   Extra_percent <- (AUC.inf - AUC.last)/AUC.last * 100
   lambda_z.final <- lambda_z[best.fit.pointer] * (-1)
   Num_points_lambda_z <- last[best.fit.pointer]
@@ -58,12 +50,10 @@ NCA <-function(TIME = "TIME",
   VoD <- lambda_z.final/cl
   Cmax <- max(conc)
   Tmax <- time[which(conc == Cmax)]
-  return.list <- c(Cmax, Tmax, AUC.last, AUC.inf, AUC.partial, 
+  final <- data.frame(Cmax, Tmax, AUC.last, AUC.inf,
                    Extra_percent, adj.r.squared[best.fit.pointer], lambda_z.final, half.life, cl, Num_points_lambda_z)
-  return.list <- matrix(return.list, nrow = 1)
-  return.list <- data.frame(X1 = return.list)
-  names(return.list) <- c("Cmax", "Tmax", "AUClast", "AUCinf", 
-                          paste0("AUC.partial", partialtime), "Extra_percent", 
+  
+  names(final) <- c("Cmax", "Tmax", "AUClast", "AUCinf", "Extra_percent", 
                           "Adj.R.Sq", "Lambda_z", "half_life", "cl", "Num_points_lambda_z")
-  return(return.list)
+  return(final)
 }
