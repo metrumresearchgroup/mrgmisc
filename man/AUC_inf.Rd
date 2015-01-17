@@ -4,8 +4,7 @@
 \alias{AUC_inf}
 \title{Calculate AUCt-inf}
 \usage{
-AUC_inf(time = "TIME", conc = "DV", last_points = c(3, 4, 5),
-  AUCinf_only = TRUE)
+AUC_inf(time, conc, last_points = c(3, 4, 5), AUCinf_only = TRUE)
 }
 \arguments{
 \item{time}{column name for time}

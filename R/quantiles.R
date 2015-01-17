@@ -7,7 +7,7 @@ s_quantile <- function(df, col_name, prob, na.rm=T) {
   dots = list(lazyeval::interp(~ quantile(var, 
                                 prob, 
                                 na.rm=na.rm, 
-                                names = F,), 
+                                names = F), 
                      var = as.name(col_name)))
   df %>% dplyr::summarize_(.dots = setNames(dots, paste0("q",prob*100)))
 }

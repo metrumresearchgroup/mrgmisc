@@ -5,7 +5,7 @@
 #' @rdname cols_to_factor
 #' @examples 
 #' \dontrun{
-#' cols_to_factor(df, c("DOSE", "TRT")) # will convert dose and TRT columns to factor
+#' df <- cols_to_factor(df, c("DOSE", "TRT")) # will convert dose and TRT columns to factor
 #'}
 cols_to_factor <- function(df, col_names) {
   # TODO: update to properly handle checks (not just length but spelling check) 

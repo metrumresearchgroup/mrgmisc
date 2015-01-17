@@ -8,8 +8,8 @@
 #' AUCinf_only for use in dplyr/plyr or other summarizations that can only handle a vector length 1 outputs
 #' when AUCinf_only is false also return %extrapolated, num points used for lambda calc, adjusted Rsquared value 
 #' @export
-AUC_inf <-function(time = "TIME", 
-                   conc = "DV",
+AUC_inf <-function(time, 
+                   conc,
                    last_points = c(3, 4, 5),
                    AUCinf_only = TRUE){
   #checks to add
