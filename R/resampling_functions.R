@@ -1,6 +1,10 @@
 #' find unique values for key
 #' @param df data frame
 #' @param key_cols vector of column names
+#' @details 
+#' used in stratify_df, however also made available to find
+#' non-duplicated values across multiple columns 
+#' when !duplicated(col) is not sufficient
 #' @export
 get_key <- function(df, 
                     key_cols) {
