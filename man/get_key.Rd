@@ -14,4 +14,9 @@ get_key(df, key_cols)
 \description{
 find unique values for key
 }
+\details{
+used in stratify_df, however also made available to find
+non-duplicated values across multiple columns
+when !duplicated(col) is not sufficient
+}
 
