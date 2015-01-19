@@ -8,13 +8,13 @@ resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY",
   n = NULL)
 }
 \arguments{
-\item{df}{}
+\item{df}{data frame}
 
-\item{key_cols}{}
+\item{key_cols}{key columns to resample on}
 
-\item{strat_cols}{}
+\item{strat_cols}{columns to maintain proportion for stratification}
 
-\item{key_col_name}{name of key column}
+\item{key_col_name}{name of outputted key column. Default to "KEY"}
 
 \item{n}{number of unique sampled keys, defaults to match dataset}
 }

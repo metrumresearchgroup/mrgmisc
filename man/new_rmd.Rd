@@ -10,13 +10,13 @@ new_rmd(file, title = NULL, author = NULL, date = format(Sys.time(),
 \arguments{
 \item{file}{file name and (optionally) path to subdirectory}
 
-\item{title.}{Title of rmd document}
+\item{title}{Title of rmd document}
 
-\item{author.}{Author of document}
+\item{author}{Author of document}
 
-\item{date.}{Date}
+\item{date}{Date}
 
-\item{template.}{template file to use for file creation}
+\item{template}{template file to use for file creation}
 }
 \description{
 a better new rmd template

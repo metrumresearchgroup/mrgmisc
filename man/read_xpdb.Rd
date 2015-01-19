@@ -8,7 +8,7 @@ read_xpdb(runno, table.names = c("sdtab", "mutab", "patab", "catab", "cotab",
   "mytab", "extra", "xptab", "cwtab"), ..., RDS_name = paste0("xpdb", runno))
 }
 \arguments{
-\item{runno}{}
+\item{runno}{run number}
 
 \item{...}{arguments to pass to xpose.data}
 

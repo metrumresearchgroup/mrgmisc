@@ -10,7 +10,7 @@ rm_tables(runno, xpose_tables = c("sdtab", "mutab", "patab", "catab", "cotab",
 \arguments{
 \item{runno}{nonmem run number to check for tables}
 
-\item{xpose_tables}{}
+\item{xpose_tables}{Xpose tables that will be searched for}
 
 \item{table_names}{additional table names}
 }

@@ -1,9 +1,9 @@
 #' a better new rmd template
 #' @param file file name and (optionally) path to subdirectory
-#' @param title. Title of rmd document
-#' @param author. Author of document
-#' @param date. Date
-#' @param template. template file to use for file creation
+#' @param title Title of rmd document
+#' @param author Author of document
+#' @param date Date
+#' @param template template file to use for file creation
 #' @examples
 #' \dontrun{
 #' new_rmd("Report.Rmd")

@@ -1,7 +1,7 @@
 #' clean tables associated with nonmem output from directory
 #' 
 #' @param runno nonmem run number to check for tables
-#' @param xpose_tables
+#' @param xpose_tables Xpose tables that will be searched for
 #' @param table_names additional table names
 #' @details
 #' defaults to check and clean for xpose-style tables

@@ -8,18 +8,18 @@ s_cmax(df, DV, na.rm = T, name = "CMAX", carry = FALSE,
   check_duplicates = TRUE)
 }
 \arguments{
-\item{df.}{data frame. Can pass in grouped data frame to calculate by group}
+\item{df}{data frame. Can pass in grouped data frame to calculate by group}
 
-\item{DV.}{dependent variable column to calculate cmax on}
+\item{DV}{dependent variable column to calculate cmax on}
 
-\item{na.rm.}{boolean whether to remove NA values when returning max value
+\item{na.rm}{boolean whether to remove NA values when returning max value
 default = TRUE}
 
-\item{name.}{string name of output column. Default to `CMAX`}
+\item{name}{string name of output column. Default to `CMAX`}
 
-\item{carry.}{boolean whether to carry other columns. Defaults to FALSE}
+\item{carry}{boolean whether to carry other columns. Defaults to FALSE}
 
-\item{check_duplicates.}{boolean whether to check for duplicates in each group
+\item{check_duplicates}{boolean whether to check for duplicates in each group
 after calculation}
 }
 \description{

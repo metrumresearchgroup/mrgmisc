@@ -1,5 +1,5 @@
 #' read xpose tables to xpose database and save and compress as RDS
-#' @param runno
+#' @param runno run number
 #' @param ... arguments to pass to xpose.data
 #' @param rm_tabs logical value to delete output tables after saving to xpdb
 #' @export

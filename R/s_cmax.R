@@ -1,11 +1,11 @@
 #' cmax summary function
-#' @param df. data frame. Can pass in grouped data frame to calculate by group
-#' @param DV. dependent variable column to calculate cmax on 
-#' @param na.rm. boolean whether to remove NA values when returning max value
+#' @param df data frame. Can pass in grouped data frame to calculate by group
+#' @param DV dependent variable column to calculate cmax on 
+#' @param na.rm boolean whether to remove NA values when returning max value
 #'    default = TRUE
-#' @param name. string name of output column. Default to `CMAX`
-#' @param carry. boolean whether to carry other columns. Defaults to FALSE
-#' @param check_duplicates. boolean whether to check for duplicates in each group 
+#' @param name string name of output column. Default to `CMAX`
+#' @param carry boolean whether to carry other columns. Defaults to FALSE
+#' @param check_duplicates boolean whether to check for duplicates in each group 
 #'    after calculation 
 #' @details
 #' one trick for better performance is to turn off check duplicates

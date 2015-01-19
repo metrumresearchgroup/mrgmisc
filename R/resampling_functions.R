@@ -43,10 +43,10 @@ stratify_df <- function(df,
 }
 
 #' resampling
-#' @param df
-#' @param key_cols
-#' @param strat_cols
-#' @param key_col_name name of key column
+#' @param df data frame
+#' @param key_cols key columns to resample on
+#' @param strat_cols columns to maintain proportion for stratification
+#' @param key_col_name name of outputted key column. Default to "KEY"
 #' @param n number of unique sampled keys, defaults to match dataset
 #' @export
 resample_df <- function(df, 
