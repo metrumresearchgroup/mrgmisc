@@ -29,7 +29,7 @@
 #' @export
 s_cmax <- function(df, DV, na.rm=T, name = "CMAX", carry=FALSE, 
                    check_duplicates=TRUE) {
-  if(isTRUE(na.rm) && any(is.na(df[[DV]]))) message("removing NAs")
+  if(isTRUE(na.rm) && any(is.na(df[[DV]]))) message("removing NAs!")
   dots = list(lazyeval::interp(~ max(var, na.rm = na.rm), 
                                var = as.name(DV)))
   s_df <- df %>% 
