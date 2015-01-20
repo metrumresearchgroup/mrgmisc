@@ -1,15 +1,15 @@
-#' a better new rmd template
-#' @param file file name and (optionally) path to subdirectory
-#' @param title Title of rmd document
-#' @param author Author of document
-#' @param date Date
-#' @param template template file to use for file creation
-#' @examples
-#' \dontrun{
-#' new_rmd("Report.Rmd")
-#' new_rmd("templates/Report.Rmd", "Example Report", "Devin")
-#' }
-#' @export
+# a better new rmd template
+# @param file file name and (optionally) path to subdirectory
+# @param title Title of rmd document
+# @param author Author of document
+# @param date Date
+# @param template template file to use for file creation
+# @examples
+# \dontrun{
+# new_rmd("Report.Rmd")
+# new_rmd("templates/Report.Rmd", "Example Report", "Devin")
+# }
+#
 new_rmd <- function(file, 
                     title = NULL, 
                     author = NULL, 
@@ -19,8 +19,7 @@ new_rmd <- function(file,
   if(!has_ext(file, ".Rmd", match_case=F)) file <- paste0(file, ".Rmd")
   # TODO: check if directory for file path actually exists
   
-  template_path <- paste0(find.package("PKPDmisc"), "/templates/")
-  file_path <- paste0(template_path, template)
+  file_path <- system.file("rmarkdown/templates/basic/skeleton.Rmd")
   
   template <- readChar(file_path, nchars=file.info(file_path)$size)
   
