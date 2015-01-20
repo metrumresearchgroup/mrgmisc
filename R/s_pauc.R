@@ -7,12 +7,15 @@
 #' @details 
 #' for internal use in the s_pauc function
 s_pauc_i <- function(df, time, dv, range, digits = Inf) {
+  time <- lazyeval::as.lazy(time)
+  dv <- lazyeval::as.lazy(dv)
+  
   dots = list(lazyeval::interp(~ round(AUC_partial(time, 
                                           dv, 
                                           range=range), 
                                           digits), 
-                               time = as.name(time),
-                               dv = as.name(dv)))
+                               time = time$expr,
+                               dv = dv$expr))
   # after discussion with hadley, the last group is dropped by design with dplyr
   # given that it is unique at that point
   # for now, I do not want to do that as I want to keep track of all grouped
@@ -38,7 +41,7 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
 #' sd_oral_richpk  %>% group_by(ID) %>% s_pauc("Time", "Conc", list(c(0,8), c(8, 24)))
 #'}
 #' @export
-s_pauc <- function(df, time, dv, paucs, digits = Inf) {
+s_pauc_ <- function(df, time, dv, paucs, digits = Inf) {
   paucs <- lapply(paucs, function(x) {
     s_pauc_i(df, time, dv, x, digits)
   }
@@ -61,5 +64,15 @@ s_pauc <- function(df, time, dv, paucs, digits = Inf) {
     return(do.call("cbind",paucs))
   }
 }
-#sd_oral_richpk %>% group_by(ID) %>% s_pauc("Time", "Conc", list(c(0, 24), c(0, 8), c(8, 24)), digits=2)
+
+s_pauc <- function(df, time, dv, paucs, digits = Inf) {
+  time <- lazyeval::lazy(time)
+  dv <- lazyeval::lazy(dv)
+  
+  s_pauc_(df, time, dv, paucs, digits = digits)
+  
+}
+sd_oral_richpk %>% group_by(ID) %>% s_pauc_("Time", "Conc", list(c(0, 24), c(0, 8), c(8, 24)), digits=2)
+sd_oral_richpk %>% group_by(ID) %>% s_pauc(Time, Conc, list(c(0, 24), c(0, 8), c(8, 24)), digits=2)
+
 #sd_oral_richpk %>% filter(ID ==1) %>% s_pauc("Time", "Conc", list(c(0,24), c(0,8), c(8,24)), digits=2) %>% do.call("cbind", .)
