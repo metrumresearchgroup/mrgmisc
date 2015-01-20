@@ -45,5 +45,9 @@ new_rmd <- function(file,
 #' }
 #' @export
 new_report <- function(report) {
+  if(!requireNamespace("rmarkdown", quitely = TRUE)) {
+    stop("Please install the rmarkdown package to use new_report()")
+  }
+  
   rmarkdown::draft(report, "basic", package = "PKPDmisc")
 }
