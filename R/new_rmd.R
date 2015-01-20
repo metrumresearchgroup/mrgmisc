@@ -31,3 +31,19 @@ new_rmd <- function(file,
 }
 
 #new_rmd("tests/test.rmd") #example failing test if tests/ folder doesn't exist
+
+#' a better new rmd template for reports
+#' @param file file name and (optionally) path to subdirectory
+#' @param title Title of rmd document
+#' @param author Author of document
+#' @param date Date
+#' @param template template file to use for file creation
+#' @examples
+#' \dontrun{
+#' new_report("lab-notebook/Report.Rmd")
+#' new_report("Report.Rmd")
+#' }
+#' @export
+new_report <- function(report) {
+  rmarkdown::draft(report, "basic", package = "PKPDmisc")
+}
