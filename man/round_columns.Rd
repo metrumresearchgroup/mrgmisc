@@ -2,8 +2,17 @@
 % Please edit documentation in R/round_columns.R
 \name{round_columns}
 \alias{round_columns}
+\title{round columns}
 \usage{
 round_columns(df, col_list)
+}
+\arguments{
+\item{df}{data frame}
+
+\item{col_list}{list of columns and number of digits to round}
+}
+\description{
+round columns
 }
 \examples{
 \dontrun{

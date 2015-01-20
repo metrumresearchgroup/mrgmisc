@@ -1,3 +1,6 @@
+#' round columns
+#' @param df data frame
+#' @param col_list list of columns and number of digits to round
 #' @examples
 #' \dontrun{
 #' library(PKPDdatasets)
@@ -9,6 +12,7 @@
 #' list("DELSBP", 2))
 #' round_columns(aht_trial2, col_list)
 #' }
+#' @export
 round_columns <- function(df, col_list) {
   df <- df
   for (i in seq_along(rounded)) {
