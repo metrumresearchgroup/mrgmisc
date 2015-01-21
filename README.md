@@ -1,3 +1,6 @@
+[![Coverage Status](https://coveralls.io/repos/dpastoor/PKPDmisc/badge.svg)](https://coveralls.io/r/dpastoor/PKPDmisc)
+
+
 PKPDmisc
 ========
 
