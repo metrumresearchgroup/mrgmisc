@@ -1,18 +1,19 @@
 ---
-title: TITLE
-author: AUTHOR
-date: DATE
+title: "<TITLE>"
+author: "<AUTHOR>"
+date: "<DATE>"
 output: html_document
 ---
 
 ```{r normalize_path, include=F, eval=F}
 # set this so can normalize wd from Rstudio project and when knitting
-setwd(paste0(getwd(), <PATH>))
+# eg if your rmd is in /lab-notebook/<notebook>.Rmd
+# it should look like setwd(paste0(getwd(), "/lab-notebook/<notebook>.Rmd"))
+setwd(paste0(getwd(), "<PATH>"))
 ```
 
 ```{r libraries}
-libraries <- c()
-sapply(libraries, require, character.only=T)
+# required libraries
 ```
 
 
