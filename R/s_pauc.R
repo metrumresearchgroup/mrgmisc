@@ -1,11 +1,11 @@
-#' summarize quantile
-#' @param df data frame
-#' @param time string name for time column for pauc slice
-#' @param dv string name for dependent variable column (eg. dv or cobs)
-#' @param range whether to remove na values
-#' @param digits number of digits to pass to round
-#' @details 
-#' for internal use in the s_pauc function
+# summarize quantile
+# @param df data frame
+# @param time string name for time column for pauc slice
+# @param dv string name for dependent variable column (eg. dv or cobs)
+# @param range whether to remove na values
+# @param digits number of digits to pass to round
+# @details 
+# for internal use in the s_pauc function
 s_pauc_i <- function(df, time, dv, range, digits = Inf) {
   time <- lazyeval::as.lazy(time)
   dv <- lazyeval::as.lazy(dv)
@@ -30,16 +30,7 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
   return(out)
 }
 
-#' summarize paucs
-#' @param df data frame
-#' @param time string name for time column for pauc slice
-#' @param dv string name for dependent variable column (eg. dv or cobs)
-#' @param paucs list of ranges for pauc calculation
-#' @examples
-#' \dontrun{
-#' library(PKPDdatasets)
-#' sd_oral_richpk  %>% group_by(ID) %>% s_pauc("Time", "Conc", list(c(0,8), c(8, 24)))
-#'}
+#' @rdname s_pauc
 #' @export
 s_pauc_ <- function(df, time, dv, paucs, digits = Inf) {
   paucs <- lapply(paucs, function(x) {
@@ -65,6 +56,19 @@ s_pauc_ <- function(df, time, dv, paucs, digits = Inf) {
   }
 }
 
+#' summarize paucs
+#' @param df data frame
+#' @param time string name for time column for pauc slice
+#' @param dv string name for dependent variable column (eg. dv or cobs)
+#' @param paucs list of ranges for pauc calculation
+#' @rdname s_pauc
+#' @examples
+#' \dontrun{
+#' library(PKPDdatasets)
+#' sd_oral_richpk  %>% group_by(ID) %>% s_pauc(Time, Conc, list(c(0,8), c(8, 24)))
+#' sd_oral_richpk  %>% group_by(ID) %>% s_pauc_("Time", "Conc", list(c(0,8), c(8, 24)))
+#'}
+#' @export
 s_pauc <- function(df, time, dv, paucs, digits = Inf) {
   time <- lazyeval::lazy(time)
   dv <- lazyeval::lazy(dv)
