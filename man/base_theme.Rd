@@ -4,9 +4,33 @@
 \alias{base_theme}
 \title{A theme with better default values for pharmacometric plots, especially conc-time}
 \usage{
-base_theme()
+base_theme(legend_text = 14, legend_title = 16, axis_title_x = 14,
+  axis_title_y = axis_title_x, axis_text_x = 12,
+  axis_text_y = axis_text_x, strip_text_x = 16,
+  strip_text_y = strip_text_x)
+}
+\arguments{
+\item{legend_text}{size of legend text}
+
+\item{axis_title_x}{size of X axis title}
+
+\item{axis_title_y}{size of Y axis title}
+
+\item{axis_text_x}{size of X axis text}
+
+\item{axis_text_y}{size of Y axis text}
+
+\item{strip_text_x}{size of strip text for X axis}
+
+\item{strip_text_y}{size of strip text for Y axis}
 }
 \description{
 A theme with better default values for pharmacometric plots, especially conc-time
+}
+\examples{
+\dontrun{
+ggplot() + base_theme_obs()
+}
+made for viewing in the plot window and copying out
 }
 
