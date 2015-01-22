@@ -7,15 +7,16 @@ Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
 Description: Collection of functions for making PKPD analysis easier
-Depends:
+Depends: 
     R (>= 3.0.2)
-Imports:
+Imports: 
     ggplot2,
     reshape2,
     dplyr (>= 0.3.0.9000),
     lazyeval,
     data.table
-Suggests:
+Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 License: MIT
