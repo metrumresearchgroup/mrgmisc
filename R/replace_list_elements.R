@@ -3,7 +3,7 @@
 #' @param replacement replacement list
 #' @details
 #' Finds and replaces list elements by name and throws an error if an 
-#'    element is not available in the original list
+#'    element is not available in the original list.
 #' @examples 
 #' \dontrun{
 #' list <- list(dv = "dv", idv = "idv")
