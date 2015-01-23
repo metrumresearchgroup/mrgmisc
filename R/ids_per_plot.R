@@ -1,0 +1,35 @@
+#' split IDs into groups to use for subsequent plotting
+#' @param id vector of ids (eg id column)
+#' @param id_per_plot number of ids per plot. Default to 9
+#' @details
+#' works very well with hadley wickham's lowliner package to create a column
+#' to split on then subsequently plot
+#' @examples 
+#' \dontrun{
+#' library(PKPDdatasets)
+#' sd_oral_richpk$IDPP <- ids_per_plot(sd_oral_rich$ID)
+#' library(dplyr)
+#' sd_oral_richpk <- sd_oral_richpk %>% mutate(IDPP = ids_per_plot(ID, 16))
+#' library(lowliner)
+#' sid <- sd_oral_richpk %>% group_by(ID) %>% split(.[["IDPP"]])
+#' 
+#' p_split_id <- function(df) {
+#' p <- ggplot(df, aes(x = Time, y = Conc, color = factor(ID))) + 
+#' geom_point() + geom_line() + facet_wrap(~SUBJID, scales="free") + base_theme()
+#' suppressWarnings(print(p))
+#' return(p)
+#'}
+#'
+#'sid %>% map(p_split_id)
+#'}
+#'@export
+ids_per_plot <- function(id, id_per_plot = 9) {
+  if(!is.vector(id))stop('id must be a vector')
+  uid <- unique(id)
+  mod <- length(uid)%/%id_per_plot
+  remainder <- length(uid)%%id_per_plot
+  bin_number <- c(rep(1:mod, each= id_per_plot),
+                  rep(mod + 1, times = remainder ))
+  if(length(bin_number) != length(uid)) stop("something went wrong in bin_number calculation")
+  bin_number[match(id, uid)]
+}
