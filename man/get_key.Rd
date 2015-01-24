@@ -4,12 +4,12 @@
 \alias{get_key}
 \title{find unique values for key}
 \usage{
-get_key(df, key_cols)
+get_key(df, key_cols = names(df))
 }
 \arguments{
 \item{df}{data frame}
 
-\item{key_cols}{vector of column names}
+\item{key_cols}{vector of column names. Defaults to all columns}
 }
 \description{
 find unique values for key

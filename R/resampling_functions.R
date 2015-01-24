@@ -1,13 +1,13 @@
 #' find unique values for key
 #' @param df data frame
-#' @param key_cols vector of column names
+#' @param key_cols vector of column names. Defaults to all columns
 #' @details 
 #' used in stratify_df, however also made available to find
 #' non-duplicated values across multiple columns 
 #' when !duplicated(col) is not sufficient
 #' @export
 get_key <- function(df, 
-                    key_cols) {
+                    key_cols = names(df)) {
   # add check to see if all key_cols available
   unique_df <- df[, key_cols, drop=F] %>%
     data.table::as.data.table() %>%
