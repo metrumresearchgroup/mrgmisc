@@ -13,14 +13,15 @@
 #' library(lowliner)
 #' sid <- sd_oral_richpk %>% group_by(ID) %>% split(.[["IDPP"]])
 #' 
+#' library(ggplot2)
 #' p_split_id <- function(df) {
-#' p <- ggplot(df, aes(x = Time, y = Conc, color = factor(ID))) + 
-#' geom_point() + geom_line() + facet_wrap(~SUBJID, scales="free") + base_theme()
-#' suppressWarnings(print(p))
-#' return(p)
-#'}
-#'
-#'sid %>% map(p_split_id)
+#'   p <- ggplot(df, aes(x = Time, y = Conc)) + 
+#'     geom_point() + geom_line() + facet_wrap(~ID) + base_theme()
+#'   suppressWarnings(print(p))
+#'   return(p)
+#' }
+#' 
+#' sid %>% map(p_split_id)
 #'}
 #'@export
 ids_per_plot <- function(id, id_per_plot = 9) {
