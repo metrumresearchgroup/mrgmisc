@@ -21,7 +21,7 @@ to split on then subsequently plot
 \examples{
 \dontrun{
 library(PKPDdatasets)
-sd_oral_richpk$IDPP <- ids_per_plot(sd_oral_rich$ID)
+sd_oral_richpk$IDPP <- ids_per_plot(sd_oral_richpk$ID)
 library(dplyr)
 sd_oral_richpk <- sd_oral_richpk \%>\% mutate(IDPP = ids_per_plot(ID, 16))
 library(lowliner)
