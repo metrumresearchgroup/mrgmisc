@@ -10,7 +10,7 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
   time <- lazyeval::as.lazy(time)
   dv <- lazyeval::as.lazy(dv)
   
-  dots = list(lazyeval::interp(~ round(AUC_partial(time, 
+  dots = list(lazyeval::interp(~ round(auc_partial(time, 
                                           dv, 
                                           range=range), 
                                           digits), 
