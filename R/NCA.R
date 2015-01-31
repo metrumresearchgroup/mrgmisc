@@ -14,7 +14,7 @@
 #' do(data.frame(NCA(.$Time, .$Conc, .$Dose)))
 #' }
 #' @export
-NCA <-function(TIME, 
+nca <-function(TIME, 
                DV, 
                DOSE, 
                last_times = c(3, 4, 5), 
@@ -59,10 +59,25 @@ NCA <-function(TIME,
   VoD <- lambda_z.final/cl
   Cmax <- max(conc)
   Tmax <- time[which(conc == Cmax)]
-  final <- data.frame(Cmax, Tmax, AUC.last, AUC.inf,
-                   Extra_percent, adj.r.squared[best.fit.pointer], lambda_z.final, half.life, cl, Num_points_lambda_z)
+  final <- data.frame(Cmax, 
+                      Tmax, 
+                      AUC.last, 
+                      AUC.inf,
+                   Extra_percent, 
+                   adj.r.squared[best.fit.pointer], 
+                   lambda_z.final, 
+                   half.life, 
+                   cl, 
+                   Num_points_lambda_z)
   
   names(final) <- c("Cmax", "Tmax", "AUClast", "AUCinf", "Extra_percent", 
                           "Adj.R.Sq", "Lambda_z", "half_life", "cl", "Num_points_lambda_z")
   return(round(final, digits))
+}
+
+#' @rdname nca
+#' @export
+NCA <- function(...) {
+  warning("NCA is depreciated and will be removed in future versions,
+          please use nca (all lowercase)")
 }
