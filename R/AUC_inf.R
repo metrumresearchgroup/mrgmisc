@@ -5,13 +5,11 @@
 #' @param AUCinf_only default TRUE only return single value for AUCinf
 #' @details
 #' last_points defaults to 3, 4, 5
-#' AUCinf_only for use in dplyr/plyr or other summarizations that can only handle a vector length 1 outputs
-#' when AUCinf_only is false also return %extrapolated, num points used for lambda calc, adjusted Rsquared value 
+#' see auc_partial for other details
 #' @export
 AUC_inf <-function(time, 
                    conc,
-                   last_points = c(3, 4, 5),
-                   AUCinf_only = TRUE){
+                   last_points = c(3, 4, 5)){
   #checks to add
   #TODO: add check that lambda_z is positive and fail gracefully if not
   #TODO: clean up return data.frame/vector (its uuuugly now)
@@ -66,26 +64,6 @@ AUC_inf <-function(time,
   
   AUC.inf <- AUC.last + conc[length(conc)]/lambda_z.final
 
-  if(AUCinf_only) return(setNames(AUC.inf, paste0("AUC0_inf")))
+  return(setNames(AUC.inf, paste0("AUC0_inf")))
 
-  Extra_percent <- (AUC.inf - AUC.last)/AUC.last * 100
-  Num_points_lambda_z <- last[best.fit.pointer]
-  
-  return.list <- c(AUC.last, 
-                   AUC.inf, 
-                   Extra_percent, 
-                   adj.r.squared[best.fit.pointer], 
-                   lambda_z.final, 
-                   Num_points_lambda_z)
-  return.list <- matrix(return.list, nrow = 1)
-  return.list <- data.frame(X1 = return.list)
-  names(return.list) <- c("AUClast", 
-                          "AUCinf", 
-                          "Extra_percent", 
-                          "Adj.R.Sq", 
-                          "Lambda_z", 
-                          "Num_points_lambda_z")
-  return(return.list)
-  
-  
 }

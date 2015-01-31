@@ -4,7 +4,7 @@
 \alias{AUC_inf}
 \title{Calculate AUCt-inf}
 \usage{
-AUC_inf(time, conc, last_points = c(3, 4, 5), AUCinf_only = TRUE)
+AUC_inf(time, conc, last_points = c(3, 4, 5))
 }
 \arguments{
 \item{time}{column name for time}
@@ -20,7 +20,6 @@ Calculate AUCt-inf
 }
 \details{
 last_points defaults to 3, 4, 5
-AUCinf_only for use in dplyr/plyr or other summarizations that can only handle a vector length 1 outputs
-when AUCinf_only is false also return %extrapolated, num points used for lambda calc, adjusted Rsquared value
+see auc_partial for other details
 }
 
