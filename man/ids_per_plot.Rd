@@ -21,11 +21,11 @@ to split on then subsequently plot
 \examples{
 \dontrun{
 library(PKPDdatasets)
-sd_oral_richpk$IDPP <- ids_per_plot(sd_oral_rich$ID)
+sd_oral_richpk$IDBIN <- ids_per_plot(sd_oral_rich$ID)
 library(dplyr)
-sd_oral_richpk <- sd_oral_richpk \%>\% mutate(IDPP = ids_per_plot(ID, 16))
+sd_oral_richpk <- sd_oral_richpk \%>\% mutate(IDBIN = ids_per_plot(ID, 16))
 library(lowliner)
-sid <- sd_oral_richpk \%>\% group_by(ID) \%>\% split(.[["IDPP"]])
+sid <- sd_oral_richpk \%>\% group_by(ID) \%>\% split(.[["IDBIN"]])
 
 library(ggplot2)
 p_split_id <- function(df) {
