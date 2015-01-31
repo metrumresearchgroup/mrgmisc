@@ -7,7 +7,7 @@
 #' last_points defaults to 3, 4, 5
 #' see auc_partial for other details
 #' @export
-AUC_inf <-function(time, 
+auc_inf <-function(time, 
                    conc,
                    last_points = c(3, 4, 5)){
   #checks to add
@@ -66,4 +66,12 @@ AUC_inf <-function(time,
 
   return(setNames(AUC.inf, paste0("AUC0_inf")))
 
+}
+
+#' @rdname auc_inf
+#' @export
+AUC_inf <- function(...) {
+  warning("AUC_inf is depreciated and will be removed in future versions,
+          please use auc_inf (all lowercase)")
+  auc_inf(...)
 }
