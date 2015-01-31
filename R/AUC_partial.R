@@ -10,7 +10,7 @@
 #' df %>% group_by(ID) %<% summarize(pAUC0-10 = AUC_partial(TIME, DV, c(0,10)))
 #' }
 #' @export
-AUC_partial <-function(time, 
+auc_partial <-function(time, 
                        conc, 
                        range = c(0, max(time))
                        ){
@@ -42,4 +42,12 @@ AUC_partial <-function(time,
   return(setNames(AUC.partial, paste0("pAUC", tfirst, "-", tlast)))
 
   
+}
+
+#' @rdname auc_partial
+#' @export
+AUC_partial <- function(...) {
+  warning("AUC_partial is depreciated and will be removed in future versions,
+          please use auc_partial (all lowercase)")
+  auc_partial(...)
 }
