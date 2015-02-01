@@ -1,8 +1,10 @@
 #' basic curve stripping to get initial estimates
 #' @param TIME column for time
 #' @param DV column for DV (concentration) values
+#' @param DOSE Dose value or column
 #' @param number_terminal_points number of points in terminal phase
 #' @param oral whether data is oral (instead of IV)
+#' @param round number of decimals to round, default to 2
 #' @export
 #' @details
 #' for oral stripping, if multiple cmax values found per ID, will use the first
@@ -11,7 +13,7 @@
 #' strip_curves(df$TIME, df$DV, DOSE =1000, 5, oral=TRUE)
 #' df %>% group_by(ID) %>% do(data.frame(strip_curves(.$TIME, .$DV, 1000, 5, TRUE)))
 #' }
-strip_curves <- function(TIME, DV, DOSE, number_terminal_points, oral= FALSE) {
+strip_curves <- function(TIME, DV, DOSE, number_terminal_points, oral= FALSE, round = 2) {
   time<- TIME
   conc <- DV
   
@@ -54,5 +56,5 @@ strip_curves <- function(TIME, DV, DOSE, number_terminal_points, oral= FALSE) {
   
   initial_estimates <- data.frame("Vc" = mean(Vc), "Vp" = mean(Vp), "Q" = mean(Q), "CL" = mean(CL))
   row.names(initial_estimates) <- NULL
-  return(round(initial_estimates, 2))
+  return(round(initial_estimates, round))
 }
