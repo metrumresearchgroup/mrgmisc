@@ -29,13 +29,13 @@
 #' @export
 s_cmax <- function(df, DV, na.rm=T, name = "CMAX", carry=FALSE, 
                    check_duplicates=TRUE) {
-  if(isTRUE(na.rm) && any(is.na(df[[DV]]))) message("removing NAs!")
+  if(na.rm && any(is.na(df[[DV]]))) message("removing NAs!")
   dots = list(lazyeval::interp(~ max(var, na.rm = na.rm), 
                                var = as.name(DV)))
   s_df <- df %>% 
     dplyr::summarize_(.dots = setNames(dots, paste0(name)))
   
-  if(isTRUE(carry)) {
+  if(carry) {
   s_df <- suppressMessages(dplyr::inner_join(s_df, df))  %>% 
     filter_(.dots = lazyeval::interp(~CMAX == CONC,
                                      CMAX = as.name(name),
@@ -43,7 +43,7 @@ s_cmax <- function(df, DV, na.rm=T, name = "CMAX", carry=FALSE,
 
   }
   
-  if(isTRUE(check_duplicates)) {
+  if(check_duplicates) {
     check_duplicates <- set_groups(s_df, grps) %>% summarize(n = n())
     if(any(check_duplicates$n > 1)) {
       warning("More than one max value found per group, proceed with caution")
