@@ -15,9 +15,9 @@ wam(ncovtheta, cov_theta_nums, npar, nobs, run_num, dir = NULL)
 
 \item{nobs}{number of observations}
 
-\item{dir}{directory where .cov and .ext files located}
+\item{run_num}{run number}
 
-\item{runnum}{run number}
+\item{dir}{directory where .cov and .ext files located}
 }
 \description{
 wam function

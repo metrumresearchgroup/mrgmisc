@@ -7,9 +7,9 @@
 as_numeric(x, ...)
 }
 \arguments{
-\item{...}{additional argument to as.character}
+\item{x}{vector}
 
-\item{vector}{}
+\item{...}{additional argument to as.character}
 }
 \description{
 convert to numeric passing through character for safety

@@ -30,7 +30,7 @@ A theme with better default values for pharmacometric plots, especially conc-tim
 \examples{
 \dontrun{
 ggplot() + base_theme_obs()
-}
 made for viewing in the plot window and copying out
+}
 }
 
