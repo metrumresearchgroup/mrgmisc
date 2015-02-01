@@ -4,16 +4,21 @@
 \alias{strip_curves}
 \title{basic curve stripping to get initial estimates}
 \usage{
-strip_curves(TIME, DV, DOSE, number_terminal_points, oral = FALSE)
+strip_curves(TIME, DV, DOSE, number_terminal_points, oral = FALSE,
+  round = 2)
 }
 \arguments{
 \item{TIME}{column for time}
 
 \item{DV}{column for DV (concentration) values}
 
+\item{DOSE}{Dose value or column}
+
 \item{number_terminal_points}{number of points in terminal phase}
 
 \item{oral}{whether data is oral (instead of IV)}
+
+\item{round}{number of decimals to round, default to 2}
 }
 \description{
 basic curve stripping to get initial estimates

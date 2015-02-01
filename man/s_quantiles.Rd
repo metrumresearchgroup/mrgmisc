@@ -11,9 +11,9 @@ s_quantiles(df, col_name, probs, na.rm = T)
 
 \item{col_name}{string name for column to calculate quantiles on}
 
-\item{na.rm}{whether to remove na values}
+\item{probs}{probability for quantiles of interest}
 
-\item{prob}{probability for quantiles of interest}
+\item{na.rm}{whether to remove na values}
 }
 \description{
 summarize quantiles

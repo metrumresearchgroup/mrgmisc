@@ -15,7 +15,7 @@ s_quantile <- function(df, col_name, prob, na.rm=T) {
 #' summarize quantiles
 #' @param df data frame
 #' @param col_name string name for column to calculate quantiles on
-#' @param prob probability for quantiles of interest
+#' @param probs probability for quantiles of interest
 #' @param na.rm whether to remove na values
 #' @details
 #' can calculate multiple quantiles by passing in a vector of probabilities.
