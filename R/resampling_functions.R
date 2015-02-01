@@ -11,7 +11,7 @@ get_key <- function(df,
   # add check to see if all key_cols available
   unique_df <- df[, key_cols, drop=F] %>%
     data.table::as.data.table() %>%
-    unique(by=key_cols)
+    data.table::unique(by=key_cols)
   return(dplyr::tbl_df(unique_df))
 }
 
@@ -78,7 +78,7 @@ check that all keys only have one stratification variable associated
                                              ")}
     sample <- stratify_df(strat_key, strat_cols, n)
     #drop strat cols so won't possibly mangle later left join
-    sample <- ungroup(sample)
+    sample <- dplyr::ungroup(sample)
     sample <- sample[, key_cols, drop=F] 
     sample[[key_col_name]] <- 1:nrow(sample)
   }
