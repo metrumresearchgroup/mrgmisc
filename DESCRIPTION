@@ -1,8 +1,8 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make developing R code easier
-Version: 0.2.3
-Date: 2015-1-20
+Version: 0.2.4
+Date: 2015-1-31
 Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
@@ -14,9 +14,11 @@ Imports:
     reshape2,
     dplyr (>= 0.3.0.9000),
     lazyeval,
-    data.table
+    data.table,
+    stringr
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    xpose4
 License: MIT
