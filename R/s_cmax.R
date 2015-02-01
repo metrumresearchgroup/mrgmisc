@@ -44,6 +44,7 @@ s_cmax <- function(df, DV, na.rm=T, name = "CMAX", carry=FALSE,
   }
   
   if(check_duplicates) {
+    grps <- ifelse(!is.null(dplyr::groups(df)), dplyr::groups(df), NULL)
     check_duplicates <- set_groups(s_df, grps) %>% dplyr::summarize(n = n())
     if(any(check_duplicates$n > 1)) {
       warning("More than one max value found per group, proceed with caution")

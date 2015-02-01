@@ -22,8 +22,7 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
   # variables to determine how to handle the summaries after (eg will want additional)
   # summaries on all non-group columns (in this case all pauc cols) so don't want
   # the group to be dropped
-  grps <- NULL
-  if(!is.null(dplyr::groups(df))) grps <- dplyr::groups(df)
+  grps <- ifelse(!is.null(dplyr::groups(df)), dplyr::groups(df), NULL)
   out <- df %>% dplyr::summarize_(.dots = setNames(dots, 
                                             paste0("pAUC", range[1], "_", range[2])))
   if(!is.null(grps)) out <- dplyr::group_by_(out, .dots=grps)
