@@ -7,7 +7,7 @@
 capture_groups(df)
 }
 \arguments{
-\item{data}{frame to determine groups}
+\item{df}{frame to determine groups}
 }
 \description{
 wrapper to capture groups from a grouped data frame

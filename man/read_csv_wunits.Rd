@@ -20,6 +20,8 @@ as it's first line}
 \item{...}{additional arguments to read.csv functions}
 
 \item{has_units}{has a units row (a la phx data)}
+
+\item{fread}{Whether to use fastread capabilities}
 }
 \value{
 data frame of read-in csv

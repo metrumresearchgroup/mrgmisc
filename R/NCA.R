@@ -76,6 +76,7 @@ nca <-function(TIME,
 }
 
 #' @rdname nca
+#' @param ... arguments to pass to nca
 #' @export
 NCA <- function(...) {
   warning("NCA is depreciated and will be removed in future versions,

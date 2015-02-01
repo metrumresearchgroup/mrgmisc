@@ -6,6 +6,7 @@
 #'  as it's first line
 #' @param ... additional arguments to read.csv functions
 #' @param has_units has a units row (a la phx data)
+#' @param fread Whether to use fastread capabilities
 #' @details
 #' helpful function to handle situations where the second row is a units row
 #' as often seen with phoenix-style datasets

@@ -7,11 +7,11 @@
 has_ext(name, ext, match_case = TRUE)
 }
 \arguments{
-\item{name.}{string name to check for extension}
+\item{name}{string name to check for extension}
 
-\item{ext.}{string of extension to check}
+\item{ext}{string of extension to check}
 
-\item{match_case.}{logical whether to match the case when checking extension.
+\item{match_case}{logical whether to match the case when checking extension.
 defaults to TRUE}
 }
 \description{

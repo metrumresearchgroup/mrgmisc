@@ -1,7 +1,7 @@
 #' check for if the passed name has a file extension
-#' @param name. string name to check for extension
-#' @param ext. string of extension to check
-#' @param match_case. logical whether to match the case when checking extension.
+#' @param name string name to check for extension
+#' @param ext string of extension to check
+#' @param match_case logical whether to match the case when checking extension.
 #'    defaults to TRUE
 #' @details
 #' This is not a particularly robust checker, but serves its purpose

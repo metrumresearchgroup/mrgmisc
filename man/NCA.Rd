@@ -20,6 +20,8 @@ NCA(...)
 AUCinf extrapolation default 3-5}
 
 \item{digits}{number of digits to round to. Can use NULL for no rounding}
+
+\item{...}{arguments to pass to nca}
 }
 \description{
 calculate basic NCA parameters t1/2 Cl, Cmax etc

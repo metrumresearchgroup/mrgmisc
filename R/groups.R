@@ -1,5 +1,5 @@
 #' wrapper to capture groups from a grouped data frame
-#' @param data frame to determine groups
+#' @param df frame to determine groups
 #' @examples
 #' \dontrun{
 #' gTheoph <- dplyr::group_by(Theoph, Subject)
