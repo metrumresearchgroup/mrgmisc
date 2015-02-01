@@ -15,6 +15,8 @@ AUC_partial(...)
 \item{conc}{concentration column}
 
 \item{range}{time range for pauc calculation}
+
+\item{...}{args to pass to auc_partial}
 }
 \description{
 Calculate partial AUC

@@ -16,7 +16,7 @@ AUC_inf(...)
 
 \item{last_points}{vector of amount of points in terminal phase that will be evaluated for extrapolation}
 
-\item{AUCinf_only}{default TRUE only return single value for AUCinf}
+\item{...}{args to pass to auc_inf}
 }
 \description{
 Calculate AUCt-inf

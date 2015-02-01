@@ -21,7 +21,8 @@ useful for nonmem ready datasets with `.` for missing values
 \examples{
 \dontrun{
 nm_dat <- char_to_numeric(nm_dat)
-nm_dat <- char_to_numeric(nm_dat, exclude_cols = NULL) # if 'C' col is 0/1 rather than typical 'C' or '.'
+   # if 'C' col is 0/1 rather than typical 'C' or '.'
+nm_dat <- char_to_numeric(nm_dat, exclude_cols = NULL)
 }
 }
 

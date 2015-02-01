@@ -2,7 +2,6 @@
 #' @param time column name for time
 #' @param conc column name for conc
 #' @param last_points vector of amount of points in terminal phase that will be evaluated for extrapolation
-#' @param AUCinf_only default TRUE only return single value for AUCinf
 #' @details
 #' last_points defaults to 3, 4, 5
 #' see auc_partial for other details
@@ -69,6 +68,7 @@ auc_inf <-function(time,
 }
 
 #' @rdname auc_inf
+#' @param ... args to pass to auc_inf
 #' @export
 AUC_inf <- function(...) {
   warning("AUC_inf is depreciated and will be removed in future versions,

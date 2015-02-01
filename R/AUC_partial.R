@@ -45,6 +45,7 @@ auc_partial <-function(time,
 }
 
 #' @rdname auc_partial
+#' @param ... args to pass to auc_partial
 #' @export
 AUC_partial <- function(...) {
   warning("AUC_partial is depreciated and will be removed in future versions,

@@ -1,5 +1,6 @@
 #' A theme with better default values for pharmacometric plots, especially conc-time
 #' @param legend_text size of legend text
+#' @param legend_title legend title
 #' @param axis_title_x size of X axis title
 #' @param axis_title_y size of Y axis title
 #' @param axis_text_x size of X axis text

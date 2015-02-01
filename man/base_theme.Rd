@@ -12,6 +12,8 @@ base_theme(legend_text = 14, legend_title = 16, axis_title_x = 14,
 \arguments{
 \item{legend_text}{size of legend text}
 
+\item{legend_title}{legend title}
+
 \item{axis_title_x}{size of X axis title}
 
 \item{axis_title_y}{size of Y axis title}
