@@ -32,7 +32,7 @@ read_table <- function(data,
                             ...) {
   if(!fread && sep == "auto") sep <- ","
 
-  if (isTRUE(has_units)) {
+  if (has_units) {
     dat_info <- read.table(data, 
                            header=F,
                            nrows = as.numeric(header + 1), 
@@ -42,7 +42,7 @@ read_table <- function(data,
                            ...)
   }
 
-  if(isTRUE(fread)) {
+  if(fread) {
     if(has_units) {
       dat <- data.table::fread(
         input = data,
@@ -69,7 +69,7 @@ read_table <- function(data,
     }
 
   } else {
-    if(isTRUE(has_units)) {
+    if(has_units) {
       dat <- read.table(data, 
                         header=F, 
                         skip = skip + as.numeric(header+1), 
