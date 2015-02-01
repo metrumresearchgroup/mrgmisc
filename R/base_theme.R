@@ -9,8 +9,8 @@
 #' @examples 
 #' \dontrun{
 #' ggplot() + base_theme_obs()
-#' }
 #' made for viewing in the plot window and copying out
+#' }
 #' @export 
 base_theme <- function(legend_text= 14,
                            legend_title = 16,
