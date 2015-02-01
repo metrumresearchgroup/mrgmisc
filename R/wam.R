@@ -54,7 +54,7 @@ calculate_wam <- function(k, p, n, theta, cov)
 #' @param cov_theta_nums <- vector of theta numbers for covariate thetas
 #' @param npar number of parameters in model (theta, omega, sigma)
 #' @param nobs number of observations
-#' @param runnum run number
+#' @param run_num run number
 #' @param dir directory where .cov and .ext files located
 #' @details
 #' for runnum it is recommended to pass as a string or leading 0's will be stripped
