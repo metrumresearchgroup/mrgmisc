@@ -5,14 +5,19 @@
 \title{read xpose tables to xpose database and save and compress as RDS}
 \usage{
 read_xpdb(runno, table.names = c("sdtab", "mutab", "patab", "catab", "cotab",
-  "mytab", "extra", "xptab", "cwtab"), ..., RDS_name = paste0("xpdb", runno))
+  "mytab", "extra", "xptab", "cwtab"), RDS_name = paste0("xpdb", runno),
+  rm_tabs = FALSE, ...)
 }
 \arguments{
 \item{runno}{run number}
 
-\item{...}{arguments to pass to xpose.data}
+\item{table.names}{table names for xpose.data to search for}
+
+\item{RDS_name}{name of RDS save file}
 
 \item{rm_tabs}{logical value to delete output tables after saving to xpdb}
+
+\item{...}{arguments to pass to xpose.data}
 }
 \description{
 read xpose tables to xpose database and save and compress as RDS
