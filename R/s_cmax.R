@@ -37,14 +37,14 @@ s_cmax <- function(df, DV, na.rm=T, name = "CMAX", carry=FALSE,
   
   if(carry) {
   s_df <- suppressMessages(dplyr::inner_join(s_df, df))  %>% 
-    filter_(.dots = lazyeval::interp(~CMAX == CONC,
+    dplyr::filter_(.dots = lazyeval::interp(~CMAX == CONC,
                                      CMAX = as.name(name),
                                      CONC = as.name(DV)))
 
   }
   
   if(check_duplicates) {
-    check_duplicates <- set_groups(s_df, grps) %>% summarize(n = n())
+    check_duplicates <- set_groups(s_df, grps) %>% dplyr::summarize(n = n())
     if(any(check_duplicates$n > 1)) {
       warning("More than one max value found per group, proceed with caution")
     }

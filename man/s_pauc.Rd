@@ -17,6 +17,8 @@ s_pauc(df, time, dv, paucs, digits = Inf)
 \item{dv}{string name for dependent variable column (eg. dv or cobs)}
 
 \item{paucs}{list of ranges for pauc calculation}
+
+\item{digits}{number of decimals to round result before returning}
 }
 \description{
 summarize paucs

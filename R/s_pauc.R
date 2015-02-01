@@ -61,6 +61,7 @@ s_pauc_ <- function(df, time, dv, paucs, digits = Inf) {
 #' @param time string name for time column for pauc slice
 #' @param dv string name for dependent variable column (eg. dv or cobs)
 #' @param paucs list of ranges for pauc calculation
+#' @param digits number of decimals to round result before returning
 #' @rdname s_pauc
 #' @examples
 #' \dontrun{

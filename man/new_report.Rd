@@ -7,15 +7,7 @@
 new_report(report)
 }
 \arguments{
-\item{file}{file name and (optionally) path to subdirectory}
-
-\item{title}{Title of rmd document}
-
-\item{author}{Author of document}
-
-\item{date}{Date}
-
-\item{template}{template file to use for file creation}
+\item{report}{file name and (optionally) path to subdirectory}
 }
 \description{
 a better new rmd template for reports
