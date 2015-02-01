@@ -11,7 +11,7 @@ get_key <- function(df,
   # add check to see if all key_cols available
   unique_df <- df[, key_cols, drop=F] %>%
     data.table::as.data.table() %>%
-    data.table::unique(by=key_cols)
+    unique(by=key_cols)
   return(dplyr::tbl_df(unique_df))
 }
 
