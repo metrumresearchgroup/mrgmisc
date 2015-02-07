@@ -33,7 +33,7 @@ read_table <- function(data,
   if(!fread && sep == "auto") stop("sep == 'auto' can only be used with fread")
 
   if(has_units) {
-    if (sep != "auto") {
+    if (!fread) {
       dat_info <- read.table(data, 
                              header=F,
                              nrows = as.numeric(header + 1), 
