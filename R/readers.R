@@ -32,7 +32,8 @@ read_table <- function(data,
                             ...) {
   if(!fread && sep == "auto") stop("sep == 'auto' can only be used with fread")
 
-  if (sep != "auto") {
+  if(has_units) {
+    if (sep != "auto") {
       dat_info <- read.table(data, 
                              header=F,
                              nrows = as.numeric(header + 1), 
@@ -40,17 +41,19 @@ read_table <- function(data,
                              stringsAsFactors = stringsAsFactors,
                              sep = sep,
                              ...)
-    
-
-  } else {
-    dat_info <- data.table::fread(data, 
-                           header=F,
-                           nrows = as.numeric(header + 1), 
-                           skip = skip, 
-                           stringsAsFactors = stringsAsFactors,
-                           sep = sep,
-                           ...)
+      
+      
+    } else {
+      dat_info <- data.table::fread(data, 
+                                    header=F,
+                                    nrows = as.numeric(header + 1), 
+                                    skip = skip, 
+                                    stringsAsFactors = stringsAsFactors,
+                                    sep = sep,
+                                    ...)
+    }
   }
+  
 
   if(fread) {
     if(has_units) {
