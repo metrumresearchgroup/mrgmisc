@@ -30,10 +30,20 @@ read_table <- function(data,
                             fread = TRUE,
                             data.table = FALSE,
                             ...) {
-  if(!fread && sep == "auto") sep <- ","
+  if(!fread && sep == "auto") stop("sep == 'auto' can only be used with fread")
 
-  if (has_units) {
-    dat_info <- read.table(data, 
+  if (sep != "auto") {
+      dat_info <- read.table(data, 
+                             header=F,
+                             nrows = as.numeric(header + 1), 
+                             skip = skip, 
+                             stringsAsFactors = stringsAsFactors,
+                             sep = sep,
+                             ...)
+    
+
+  } else {
+    dat_info <- data.table::fread(data, 
                            header=F,
                            nrows = as.numeric(header + 1), 
                            skip = skip, 
