@@ -15,7 +15,7 @@ ids_per_plot(id, id_per_plot = 9)
 split IDs into groups to use for subsequent plotting
 }
 \details{
-works very well with hadley wickham's lowliner package to create a column
+works very well with hadley wickham's purrr package to create a column
 to split on then subsequently plot
 }
 \examples{
@@ -24,7 +24,7 @@ library(PKPDdatasets)
 sd_oral_richpk$IDBIN <- ids_per_plot(sd_oral_rich$ID)
 library(dplyr)
 sd_oral_richpk <- sd_oral_richpk \%>\% mutate(IDBIN = ids_per_plot(ID, 16))
-library(lowliner)
+library(purrr)
 sid <- sd_oral_richpk \%>\% group_by(ID) \%>\% split(.[["IDBIN"]])
 
 library(ggplot2)
