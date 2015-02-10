@@ -15,7 +15,8 @@ Imports:
     dplyr (>= 0.3.0.9000),
     lazyeval,
     data.table,
-    stringr
+    stringr,
+    magrittr
 Suggests: 
     knitr,
     rmarkdown,

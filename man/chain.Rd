@@ -13,7 +13,7 @@ lhs \%>\% rhs
 }
 \description{
 \code{\%>\%} - The \pkg{magrittr} "then" chain operator imported by
-\pkg{dplyr}.  Imported for convenience.  See
+\pkg{magrittr}.  Imported for convenience.  See
 \url{http://www.rdocumentation.org/packages/magrittr/functions/magrittr}
 for details.
 }
