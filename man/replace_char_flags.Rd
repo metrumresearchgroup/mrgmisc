@@ -4,7 +4,8 @@
 \alias{replace_char_flags}
 \title{replace symbols or other character flags}
 \usage{
-replace_char_flags(x, flag = c(`*` = 1, `-` = 2), nonflag = NULL)
+replace_char_flags(x, flag = c(`*` = 1, `-` = 2), nonflag = NULL,
+  as_numeric = TRUE)
 }
 \arguments{
 \item{x}{vector to replace}

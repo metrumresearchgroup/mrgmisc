@@ -5,10 +5,12 @@
 #' @export
 replace_char_flags <- function(x, 
                          flag= c("*" = 1, "-" = 2),
-                         nonflag = NULL) {
+                         nonflag = NULL,
+                         as_numeric=TRUE) {
   if(!is.null(nonflag)) {x[!(x %in% names(flag))] <- nonflag}
   tempx <- x[x %in% names(flag)]
   matches <- match(tempx, names(flag))
   x[x %in% names(flag)] <- unlist(lapply(matches, function(x) flag[x]))
+  if(as_numeric) x <- as_numeric(x)
   x
 }
