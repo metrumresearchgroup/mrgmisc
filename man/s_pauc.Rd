@@ -7,7 +7,7 @@
 \usage{
 s_pauc_(df, time, dv, paucs, digits = Inf)
 
-s_pauc(df, time, dv, paucs, digits = Inf)
+s_pauc(df, .time, dv, paucs, digits = Inf)
 }
 \arguments{
 \item{df}{data frame}
