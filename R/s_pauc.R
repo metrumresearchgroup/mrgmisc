@@ -1,19 +1,19 @@
 # summarize quantile
 # @param df data frame
-# @param time string name for time column for pauc slice
+# @param .time string name for time column for pauc slice
 # @param dv string name for dependent variable column (eg. dv or cobs)
 # @param range whether to remove na values
 # @param digits number of digits to pass to round
 # @details 
 # for internal use in the s_pauc function
-s_pauc_i <- function(df, time, dv, range, digits = Inf) {
-  time <- lazyeval::as.lazy(time)
+s_pauc_i <- function(df, .time, dv, range, digits = Inf) {
+  .time <- lazyeval::as.lazy(.time)
   dv <- lazyeval::as.lazy(dv)
-  dots = list(lazyeval::interp(~ round(auc_partial(time, 
+  dots = list(lazyeval::interp(~ round(auc_partial(.time, 
                                           dv, 
                                           range=range), 
                                           digits), 
-                               time = time$expr,
+                               .time = .time$expr,
                                dv = dv$expr))
   # after discussion with hadley, the last group is dropped by design with dplyr
   # given that it is unique at that point
@@ -32,7 +32,7 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
 #' @export
 s_pauc_ <- function(df, .time, dv, paucs, digits = Inf) {
   paucs <- lapply(paucs, function(x) {
-    s_pauc_i(df, time, dv, x, digits)
+    s_pauc_i(df, .time, dv, x, digits)
   }
   )
   #check if grouped df and if so adjust behavior to bind together the list

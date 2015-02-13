@@ -1,22 +1,22 @@
 #' Calculate AUCt-inf
-#' @param time column name for time
+#' @param .time column name for time
 #' @param conc column name for conc
 #' @param last_points vector of amount of points in terminal phase that will be evaluated for extrapolation
 #' @details
 #' last_points defaults to 3, 4, 5
 #' see auc_partial for other details
 #' @export
-auc_inf <-function(time, 
+auc_inf <-function(.time, 
                    conc,
                    last_points = c(3, 4, 5)){
   #checks to add
   #TODO: add check that lambda_z is positive and fail gracefully if not
   #TODO: clean up return data.frame/vector (its uuuugly now)
-  time<- time
+  .time<- .time
   conc <- conc
   
-  time.points <- length(time)
-  #check to make sure partial time legit option
+  .time.points <- length(.time)
+  #check to make sure partial .time legit option
   ###need to add warning
   
   
@@ -26,16 +26,16 @@ auc_inf <-function(time,
   #  AUCinf is calculated based on 3 parts: the beginning, the middle, and the extrapolated
   #  calculate the middle part of AUC
   for(i in 1:(time.points-1)){
-    auci[i]<-(conc[i]+conc[i+1])*(time[i+1]-time[i])/2
+    auci[i]<-(conc[i]+conc[i+1])*(.time[i+1]-.time[i])/2
   }
   
   
   #calculate the starting part of AUC
   auc.start <-0
-  #if(time[1]!=0) auc.start <-time[1]*conc[1]/2
+  #if(.time[1]!=0) auc.start <-.time[1]*conc[1]/2
   
   #calculate the ending part of AUC
-  #assuming to compare the last 3, 4 and 5 time points for regression.
+  #assuming to compare the last 3, 4 and 5 .time points for regression.
   last <- last_points
   start<- time.points - last + 1
   # need extra + 1 in start as time.points-last will give one more time than requested otherwise
@@ -45,7 +45,7 @@ auc_inf <-function(time,
   lambda_z <-vector("numeric", length(last))
   adj.r.squared <-vector("numeric", length(last))
   for(j in 1:length(last)){
-    t<-time[start[j]:time.points]
+    t<-.time[start[j]:time.points]
     con <- conc[start[j]:time.points]
     xt <-lm(log(con)~t) # log-linear terminal phase calculation for k
     lambda_z[j]<- as.numeric(xt$coef[2])

@@ -5,16 +5,16 @@
 \alias{nca}
 \title{calculate basic NCA parameters t1/2 Cl, Cmax etc}
 \usage{
-nca(TIME, DV, DOSE, last_times = c(3, 4, 5), digits = 2)
+nca(.time, dv, dose, last_times = c(3, 4, 5), digits = 2)
 
 NCA(...)
 }
 \arguments{
-\item{TIME}{vector of times}
+\item{.time}{vector of times}
 
-\item{DV}{vector of observations (concentrations)}
+\item{dv}{vector of observations (concentrations)}
 
-\item{DOSE}{vector or single value of Dose given}
+\item{dose}{vector or single value of Dose given}
 
 \item{last_times}{vector of numbers of time points to evaluate for
 AUCinf extrapolation default 3-5}

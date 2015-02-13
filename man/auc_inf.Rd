@@ -5,12 +5,12 @@
 \alias{auc_inf}
 \title{Calculate AUCt-inf}
 \usage{
-auc_inf(time, conc, last_points = c(3, 4, 5))
+auc_inf(.time, conc, last_points = c(3, 4, 5))
 
 AUC_inf(...)
 }
 \arguments{
-\item{time}{column name for time}
+\item{.time}{column name for time}
 
 \item{conc}{column name for conc}
 

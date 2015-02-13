@@ -1,7 +1,7 @@
 #'calculate basic NCA parameters t1/2 Cl, Cmax etc
-#' @param TIME vector of times
-#' @param DV vector of observations (concentrations)
-#' @param DOSE vector or single value of Dose given
+#' @param .time vector of times
+#' @param dv vector of observations (concentrations)
+#' @param dose vector or single value of Dose given
 #' @param last_times vector of numbers of time points to evaluate for 
 #'    AUCinf extrapolation default 3-5
 #' @param digits number of digits to round to. Can use NULL for no rounding
@@ -14,17 +14,17 @@
 #' do(data.frame(NCA(.$Time, .$Conc, .$Dose)))
 #' }
 #' @export
-nca <-function(TIME, 
-               DV, 
-               DOSE, 
+nca <-function(.time, 
+               dv, 
+               dose, 
                last_times = c(3, 4, 5), 
                digits = 2) 
 {
   #TODO change defaults for last_times to detect all times after cmax
   #TODO clean up how results are returned
-  time <- TIME
-  conc <- DV
-  dose <- DOSE
+  time <- .time
+  conc <- dv
+  dose <- dose
   time.points <- length(time)
   auci <- vector("numeric", time.points - 1)
   for (i in 1:(time.points - 1)) {

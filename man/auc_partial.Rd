@@ -5,12 +5,12 @@
 \alias{auc_partial}
 \title{Calculate partial AUC}
 \usage{
-auc_partial(time, conc, range = c(0, max(time)))
+auc_partial(.time, conc, range = c(0, max(.time)))
 
 AUC_partial(...)
 }
 \arguments{
-\item{time}{time column}
+\item{.time}{time column}
 
 \item{conc}{concentration column}
 
