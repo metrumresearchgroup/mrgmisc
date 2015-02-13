@@ -30,7 +30,7 @@ s_pauc_i <- function(df, time, dv, range, digits = Inf) {
 
 #' @rdname s_pauc
 #' @export
-s_pauc_ <- function(df, time, dv, paucs, digits = Inf) {
+s_pauc_ <- function(df, .time, dv, paucs, digits = Inf) {
   paucs <- lapply(paucs, function(x) {
     s_pauc_i(df, time, dv, x, digits)
   }
@@ -56,7 +56,7 @@ s_pauc_ <- function(df, time, dv, paucs, digits = Inf) {
 
 #' summarize paucs
 #' @param df data frame
-#' @param time string name for time column for pauc slice
+#' @param .time string name for time column for pauc slice
 #' @param dv string name for dependent variable column (eg. dv or cobs)
 #' @param paucs list of ranges for pauc calculation
 #' @param digits number of decimals to round result before returning
