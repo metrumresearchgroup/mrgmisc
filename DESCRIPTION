@@ -1,7 +1,7 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make developing R code easier
-Version: 0.2.5.9000
+Version: 0.2.5.9001
 Date: 2015-1-31
 Authors@R: c(
     person("Devin", "Pastoor",
