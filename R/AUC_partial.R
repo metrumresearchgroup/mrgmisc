@@ -20,6 +20,10 @@ auc_partial <-function(.time,
   .time<- .time
   conc <- conc[.time >= tfirst]
   .time <- .time[.time >= tfirst]
+  if(length(.time) == 0) {
+    warning("no observations in requested time range")
+    return(setNames(0, paste0("pAUC", tfirst, "-", tlast)))
+  }
   partial.time <- length(.time[.time <= tlast])
   
   time.points <- length(.time)
