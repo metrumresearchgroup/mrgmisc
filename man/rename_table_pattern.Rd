@@ -23,11 +23,11 @@ simple replacement
 \examples{
 \dontrun{
 # rename all spaces to underscore
-df <- rename_table_spaces(read_table("data/data.csv"))
+df <- rename_table_pattern(read_table("data/data.csv"))
 # rename "-" to "_"
-df <- rename_table_spaces(read_table("data/data.csv"), "-", "_")
+df <- rename_table_pattern(read_table("data/data.csv"), "-", "_")
 #rename an existing df
-df <-rename_table_spaces(df, "-", "_")
+df <-rename_table_pattern(df, "-", "_")
 }
 }
 
