@@ -24,6 +24,10 @@ Calculate partial AUC
 \details{
 default range is 0 to tmax
 is recommended to be used alongside dplyr for ease of calculation
+if an individual does not have any value within the specified range
+a warning will be issued and an NA value will be returned. This is important
+if some individuals dropped out early and do not have all observations other
+individuals have.
 }
 \examples{
 \dontrun{
