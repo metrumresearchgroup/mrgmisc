@@ -15,7 +15,7 @@ auc_inf <-function(.time,
   .time<- .time
   conc <- conc
   
-  .time.points <- length(.time)
+  time.points <- length(.time)
   #check to make sure partial .time legit option
   ###need to add warning
   
