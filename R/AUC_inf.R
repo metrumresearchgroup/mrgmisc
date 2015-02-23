@@ -8,12 +8,18 @@
 #' @export
 auc_inf <-function(.time, 
                    conc,
-                   last_points = c(3, 4, 5)){
+                   last_points = c(3, 4, 5),
+                   na.rm = TRUE){
   #checks to add
   #TODO: add check that lambda_z is positive and fail gracefully if not
   #TODO: clean up return data.frame/vector (its uuuugly now)
-  .time<- .time
-  conc <- conc
+  if(na.rm) {
+    .time<- .time
+    conc <- conc 
+  } else {
+    .time<- .time[!is.na(conc)]
+    conc <- conc[!is.na(conc)]
+  }
   if(isTRUE(all(conc ==0))) {
     return(setNames(0, paste0("AUC0_inf")))
   } 
@@ -49,7 +55,7 @@ auc_inf <-function(.time,
   for(j in 1:length(last)){
     t<-.time[start[j]:time.points]
     con <- conc[start[j]:time.points]
-    if(all(con == 0)) {
+    if(isTRUE(all(con == 0))) {
       lambda_z[j]<- 0
       adj.r.squared[j]<- 0
     } else{
@@ -69,7 +75,8 @@ auc_inf <-function(.time,
   lambda_z.final <- lambda_z[best.fit.pointer] * (-1)
   AUC.last <- sum(auci) + auc.start 
   
-  if(lambda_z.final == 0) {return(setNames(AUC.last, paste0("AUC0_inf")))
+  if(lambda_z.final == 0) {
+    return(setNames(AUC.last, paste0("AUC0_inf")))
 }
     
   AUC.inf <- AUC.last + conc[length(conc)]/lambda_z.final
