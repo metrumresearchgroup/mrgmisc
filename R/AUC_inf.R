@@ -18,6 +18,10 @@ auc_inf <-function(.time,
     .time<- .time
     conc <- conc 
   } else {
+    if(all(is.na(conc)) | all(is.na(.time))) {
+      return(setNames(NA, paste0("AUC0_inf")))
+      
+    }
     if(any(is.na(conc))) {warning("removing at least 1 NA value")}
     .time<- .time[!is.na(conc)]
     conc <- conc[!is.na(conc)]
