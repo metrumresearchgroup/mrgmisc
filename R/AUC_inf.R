@@ -14,7 +14,7 @@ auc_inf <-function(.time,
   #TODO: clean up return data.frame/vector (its uuuugly now)
   .time<- .time
   conc <- conc
-  if(all(conc ==0)) {
+  if(isTRUE(all(conc ==0))) {
     return(setNames(0, paste0("AUC0_inf")))
   } 
   time.points <- length(.time)
