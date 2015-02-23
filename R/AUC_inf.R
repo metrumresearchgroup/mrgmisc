@@ -2,6 +2,7 @@
 #' @param .time column name for time
 #' @param conc column name for conc
 #' @param last_points vector of amount of points in terminal phase that will be evaluated for extrapolation
+#' @param na.rm remove any NAs from the conc/DV column before calculating AUC
 #' @details
 #' last_points defaults to 3, 4, 5
 #' see auc_partial for other details
@@ -13,10 +14,11 @@ auc_inf <-function(.time,
   #checks to add
   #TODO: add check that lambda_z is positive and fail gracefully if not
   #TODO: clean up return data.frame/vector (its uuuugly now)
-  if(na.rm) {
+  if(!na.rm) {
     .time<- .time
     conc <- conc 
   } else {
+    if(any(is.na(conc))) {warning("removing at least 1 NA value")}
     .time<- .time[!is.na(conc)]
     conc <- conc[!is.na(conc)]
   }
