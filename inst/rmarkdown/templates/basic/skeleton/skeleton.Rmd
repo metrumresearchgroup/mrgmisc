@@ -8,7 +8,7 @@ output: html_document
 ```{r normalize_path, include=F, eval=F}
 # set this so can normalize wd from Rstudio project and when knitting
 # eg if your rmd is in /lab-notebook/<notebook>.Rmd
-# it should look like setwd(paste0(getwd(), "/lab-notebook/<notebook>.Rmd"))
+# it should look like setwd(paste0(getwd(), "/lab-notebook/"))
 setwd(paste0(getwd(), "/<PATH>"))
 ```
 
