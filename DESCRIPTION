@@ -23,3 +23,4 @@ Suggests:
     testthat,
     xpose4
 License: MIT
+VignetteBuilder: knitr
