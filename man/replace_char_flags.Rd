@@ -16,4 +16,9 @@ replace_char_flags(x, flag, nonflag = NULL, as_numeric = TRUE)
 \description{
 replace symbols or other character flags
 }
+\examples{
+df <- data.frame(ID = 1, DV = c(1, "BQL", ".", 5))
+rflags <- data.frame(flag = c("BQL", "."), replacement = -99)
+df$DVR <- replace_char_flags(df$DV, rflags)
+}
 
