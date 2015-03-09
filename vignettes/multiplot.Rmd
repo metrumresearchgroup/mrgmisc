@@ -1,0 +1,72 @@
+---
+title: "Multiplots"
+author: "Devin Pastoor"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+```{r}
+library(PKPDmisc) # for binning and other functions
+library(PKPDdatasets) # example dataset
+library(ggplot2) #plotting
+library(purrr) # dataset to handle lists
+suppressMessages(suppressWarnings(library(dplyr)))
+```
+
+All packages (except for ggplot) are only available on github
+
+```
+devtools::install_github("dpastoor/PKPDdatasets",
+              "dpastoor/PKPDmisc", 
+              "hadley/purrr")
+
+```
+
+```{r}
+dat <- sd_oral_richpk
+```
+
+Messy plot can't see individuals well
+
+```{r}
+ggplot(dat, aes(x = Time, y = Conc, group= ID)) + 
+  geom_line() +
+  facet_wrap(~ID, scales= "free")
+```
+
+What we'd like to be able to do is split up into 'bins' of specified numbers of individuals to then plot out multiple plots
+
+```{r}
+# this will automatically create a column of bins such that the
+# specified number of individuals is in each bin, in this case
+# 9 ids per bin
+dat$IDBINS <- ids_per_plot(dat$ID)
+
+# split the original dataset into subdatasets corresponding to each bin (list of dataframes)
+split_dat <- dat %>% split(.[["IDBINS"]])
+```
+
+To handle plotting each subdataframe, you need to wrap your normal ggplot into a function. You will then apply this function with `map` to each subdataframe. So in this case it is just like a normal plot, but wrapped up in a function, which takes 1 argument (the dataframe) and outputs the plot
+
+```{r}
+p_conc_time <- function(df) {
+ggplot(df, aes(x = Time, y = Conc, group= ID)) + 
+  geom_line() +
+  facet_wrap(~ID, scales= "free")
+}
+```
+
+
+To apply the above function we use `map` from `purrr`
+
+```{r}
+split_dat %>% map(p_conc_time) 
+```
+
+notice no quotes needed on the function
+
