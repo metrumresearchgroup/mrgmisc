@@ -4,10 +4,12 @@
 \alias{read_nonmem}
 \title{read nonmem files easily}
 \usage{
-read_nonmem(path)
+read_nonmem(path, header = TRUE)
 }
 \arguments{
 \item{path}{path to file}
+
+\item{header}{whether header with column names exists}
 }
 \description{
 read nonmem files easily

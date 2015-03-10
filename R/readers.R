@@ -116,11 +116,21 @@ capture_colnames <- function(x, strip_flags = c("TABLE", "ID", "DV", "MDV", "EVI
 
 #' read nonmem files easily
 #' @param path path to file
+#' @param header whether header with column names exists
 #' @export
-read_nonmem <- function(path) {
+read_nonmem <- function(path, header = TRUE) {
   lines <- readr::read_lines(path)
-  col_name <- stringr::str_trim(capture_colnames(lines))
+   if(header) {
+     col_name <- stringr::str_trim(capture_colnames(lines))
     col_name <- stringr::str_replace_all(col_name, "\\s+", ",")
-    lines <- clean_nonmem(lines)
-  readr::read_csv(text = paste0(col_name,"\n", lines))
+   }
+  lines <- clean_nonmem(lines)
+  if(header) {
+    output <- readr::read_csv(file = paste0(col_name,"\n", lines))
+  } else {
+    
+    output <- readr::read_csv(file =lines, col_names = FALSE)
+  }
+  return(output[-nrow(output),]) # because clean_nm randomly adds one extra line
+  # so temp fix until remove trailing \n
 }
