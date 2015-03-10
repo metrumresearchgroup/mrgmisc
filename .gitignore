@@ -6,3 +6,4 @@
 *.sublime-workspace
 inst/doc
 src/*.o
+src/*.so
