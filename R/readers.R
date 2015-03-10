@@ -125,9 +125,11 @@ read_nonmem <- function(path, header = TRUE) {
    }
   lines <- clean_nonmem(lines)
   if(header) {
-    readr::read_csv(file = paste0(col_name,"\n", lines))
+    output <- readr::read_csv(file = paste0(col_name,"\n", lines))
   } else {
     
-    readr::read_csv(file =lines)
+    output <- readr::read_csv(file =lines, col_names = FALSE)
   }
+  return(output[-nrow(output),]) # because clean_nm randomly adds one extra line
+  # so temp fix until remove trailing \n
 }
