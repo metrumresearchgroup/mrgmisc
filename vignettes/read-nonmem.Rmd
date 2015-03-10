@@ -1,0 +1,64 @@
+---
+title: "NONMEM readers"
+author: "Devin Pastoor"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+NONMEM's formatting of output (appending tables), especially in the context of using `NSUB` has been cause for much frustration for parsing data. Not only does it break the delimiting, but it also has inconsistent formatting:
+
+* no leading spaces for `TABLE` lines
+* one leading space for column names
+* two leading spaces for numerical values
+
+While a number of fast-reading packages are available in R, including `data.table::fread()`, and the new `readr::read_csv`, these solutions cannot handle NONMEM's output gracefully, and therefore pure R solutions such as that of `xpose4::read.nm.tables()` must be used. 
+
+This vignette introduces `PKPDmisc::read_nonmem()`, a c++ implementation to extend `readr` to handle nonmem tabular output by properly parsing rows, including:
+
+* removal of `TABLE` lines
+* proper trimming of whitespace
+
+As shown below, this package is nearly 13 times faster than xpose's current implementation.
+
+```{r}
+library(PKPDmisc)
+library(microbenchmark)
+library(ggplot2)
+```
+
+To test, 2 larger datasets (~20 MB and ~120 MB respectively) are benchmarked against
+current implementations.
+```{r}
+med_20mb_file <- "~/Repos/misc-datasets/nonmem_sim.vpc"
+large_120mb_file <- "~/Repos/misc-datasets/nonmem_sim_big.vpc"
+```
+
+```{r}
+bm_med <- microbenchmark(
+  read_nonmem(med_20mb_file),
+  vpc::read_table_nm(med_20mb_file, perl = T),
+  xpose4::read.nm.tables(med_20mb_file),
+  times = 5L
+)
+```
+
+```{r}
+bm_large <- microbenchmark(
+  read_nonmem(large_120mb_file),
+  vpc::read_table_nm(large_120mb_file, perl = T),
+  xpose4::read.nm.tables(large_120mb_file),
+  times = 5L
+)
+```
+
+```{r}
+knitr::kable(bm_med)
+knitr::kable(bm_large)
+```
+
+
+
