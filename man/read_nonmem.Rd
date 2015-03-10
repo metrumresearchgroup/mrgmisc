@@ -8,6 +8,8 @@ read_nonmem(path, header = TRUE)
 }
 \arguments{
 \item{path}{path to file}
+
+\item{header}{whether header with column names exists}
 }
 \description{
 read nonmem files easily

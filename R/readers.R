@@ -116,6 +116,7 @@ capture_colnames <- function(x, strip_flags = c("TABLE", "ID", "DV", "MDV", "EVI
 
 #' read nonmem files easily
 #' @param path path to file
+#' @param header whether header with column names exists
 #' @export
 read_nonmem <- function(path, header = TRUE) {
   lines <- readr::read_lines(path)
