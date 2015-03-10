@@ -102,3 +102,25 @@ read_table <- function(data,
   }
 return(dat)
 }
+
+capture_colnames <- function(x, strip_flags = c("TABLE", "ID", "DV", "MDV", "EVID")) {
+  no_table <- strip_flags[!(strip_flags %in% "TABLE")]
+  flags <- paste0(no_table, collapse = "|")
+  
+  for (i in seq_along(x)) {
+    if(isTRUE(as.logical(grep(flags, x[i])))) return(x[i])
+  }
+  warning("could not find column names")
+  return(NULL)
+}
+
+#' read nonmem files easily
+#' @param path path to file
+#' @export
+read_nonmem <- function(path) {
+  lines <- readr::read_lines(path)
+  col_name <- stringr::str_trim(capture_colnames(lines))
+    col_name <- stringr::str_replace_all(col_name, "\\s+", ",")
+    lines <- clean_nonmem(lines)
+  readr::read_csv(text = paste0(col_name,"\n", lines))
+}
