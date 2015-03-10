@@ -1,5 +1,6 @@
 #include <Rcpp.h>
 #include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/trim_all.hpp>
 #include <string>
 // [[Rcpp::depends(BH)]]
 using namespace Rcpp;
@@ -13,7 +14,8 @@ std::string clean_nonmem(std::vector<std::string> x) {
   for(int i = 0; i < n; ++i) {
   if(!boost::contains(x[i], table) && !boost::contains(x[i], colname)) {
     boost::trim(x[i]);
-    boost::replace_all(x[i], "  ", ",");
+    boost::trim_all(x[i]);
+    boost::replace_all(x[i], " ", ",");
     str.append(x[i]);
     str.append(line_break);
   }
