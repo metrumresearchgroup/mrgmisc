@@ -38,26 +38,69 @@ large_120mb_file <- "~/Repos/misc-datasets/nonmem_sim_big.vpc"
 ```
 
 ```{r}
+med_rtnm <- function() {
+  suppressMessages(
+    suppressWarnings(
+      vpc::read_table_nm(med_20mb_file, perl = T)
+      )) 
+}
+med_rnm <- function() {
+  suppressMessages(
+    suppressWarnings(
+      read_nonmem(med_20mb_file)
+      )) 
+}
+med_xpose <- function() {
+  suppressMessages(
+    suppressWarnings(
+    xpose4::read.nm.tables(med_20mb_file)
+    ))
+}
+
+```
+
+```{r}
+large_rtnm <- function() {
+  suppressMessages(
+    suppressWarnings(
+      vpc::read_table_nm(large_120mb_file, perl = T)
+      )) 
+}
+large_rnm <- function() {
+  suppressMessages(
+    suppressWarnings(
+      read_nonmem(large_120mb_file)
+      )) 
+}
+large_xpose <- function() {
+  suppressMessages(
+    suppressWarnings(
+    xpose4::read.nm.tables(large_120mb_file)
+    ))
+}
+```
+
+```{r}
 bm_med <- microbenchmark(
-  read_nonmem(med_20mb_file),
-  vpc::read_table_nm(med_20mb_file, perl = T),
-  xpose4::read.nm.tables(med_20mb_file),
+  med_rtnm(),
+  med_rnm(),
+  med_xpose(),
   times = 5L
 )
 ```
 
 ```{r}
 bm_large <- microbenchmark(
-  read_nonmem(large_120mb_file),
-  vpc::read_table_nm(large_120mb_file, perl = T),
-  xpose4::read.nm.tables(large_120mb_file),
+  large_rtnm(),
+  large_rnm(),
+  large_xpose(),
   times = 5L
 )
 ```
 
 ```{r}
-knitr::kable(bm_med)
-knitr::kable(bm_large)
+bm_med
+bm_large
 ```
 
 
