@@ -1,1 +1,3 @@
-#' @import dplyr
+#' @useDynLib PKPDmisc
+#' @importFrom Rcpp sourceCpp
+NULL
