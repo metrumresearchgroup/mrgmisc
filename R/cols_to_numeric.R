@@ -12,7 +12,7 @@ cols_to_numeric <- function(df, col_names) {
   if(length(col_names %in% names(df)) != length(col_names)) {
     warning("Not all columns in col_names found, will convert all available\n")
   }
-  message("converting columns (", paste(col_names[col_names %in% names(df)], collapse = ', '),") to factors\n")
+  message("converting columns (", paste(col_names[col_names %in% names(df)], collapse = ', '),") to numeric\n")
  for(i in seq_along(col_names)) {
    if (col_names[[i]] %in% names(df)){
      df[[col_names[i]]] <- as_numeric(df[[col_names[i]]])
