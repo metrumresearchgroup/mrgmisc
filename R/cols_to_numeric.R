@@ -5,7 +5,7 @@
 #' @rdname cols_to_numeric
 #' @examples 
 #' \dontrun{
-#' df <- cols_to_numeric(df, c("DOSE", "TRT")) # will convert dose and TRT columns to factor
+#' df <- cols_to_numeric(df, c("DOSE", "TRT")) # will convert dose and TRT columns to numeric
 #'}
 cols_to_numeric <- function(df, col_names) {
   # TODO: update to properly handle checks (not just length but spelling check) 
