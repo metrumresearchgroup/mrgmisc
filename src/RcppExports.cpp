@@ -6,13 +6,14 @@
 using namespace Rcpp;
 
 // clean_nonmem
-std::string clean_nonmem(std::vector<std::string> x);
-RcppExport SEXP PKPDmisc_clean_nonmem(SEXP xSEXP) {
+std::string clean_nonmem(std::vector<std::string> x, std::string sep);
+RcppExport SEXP PKPDmisc_clean_nonmem(SEXP xSEXP, SEXP sepSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
     Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
-    __result = Rcpp::wrap(clean_nonmem(x));
+    Rcpp::traits::input_parameter< std::string >::type sep(sepSEXP);
+    __result = Rcpp::wrap(clean_nonmem(x, sep));
     return __result;
 END_RCPP
 }

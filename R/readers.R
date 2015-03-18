@@ -114,17 +114,36 @@ capture_colnames <- function(x, strip_flags = c("TABLE", "ID", "DV", "MDV", "EVI
   return(NULL)
 }
 
+#' capture separator
+capture_sep <- function(lines) {
+  is_comma <- vapply(lines, function(x) {
+    grepl(",", x)
+  }, logical(1))
+  if(any(is_comma)) {
+    return(c(","))
+  } else {
+    return("auto")
+  }
+}
+
 #' read nonmem files easily
 #' @param path path to file
 #' @param header whether header with column names exists
+#' @sep separator, automatically detected by default, however can tell by default. 
 #' @export
-read_nonmem <- function(path, header = TRUE) {
+read_nonmem <- function(path, header = TRUE, sep = "auto") {
   lines <- readr::read_lines(path)
+  if(sep == "auto") {
+    sep <- capture_sep(lines[1:5])
+  }
    if(header) {
      col_name <- stringr::str_trim(capture_colnames(lines))
-    col_name <- stringr::str_replace_all(col_name, "\\s+", ",")
+    if (sep == "auto") {
+      col_name <- stringr::str_replace_all(col_name, "\\s+", ",")
+    }
    }
-  lines <- clean_nonmem(lines)
+
+  lines <- clean_nonmem(lines, sep =sep)
   if(header) {
     output <- readr::read_csv(file = paste0(col_name,"\n", lines))
   } else {
