@@ -16,4 +16,13 @@ read_nonmem(path, header = TRUE, sep = "auto")
 \description{
 read nonmem files easily
 }
+\details{
+This function is designed specifically for handling nonmem's nonstandard output format, and
+is especially useful for simulation tables output with NSUB as it will appropriately parse out
+the additional TABLE and column name rows.
+
+HOWEVER, for tables with standard formatting (eg comma separated with FORMAT=,1PE11.4) and
+no NSUB, then the `read_table()` function will likely be slightly faster. This should only be an issue
+for large (at least 20 MB) files, else the difference will be imperceptible.
+}
 
