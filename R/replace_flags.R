@@ -15,6 +15,10 @@ replace_char_flags <- function(x,
     message("converting factor to character strings before replacement")
     x <- as.character(x)
   }
+  if(is.factor(flag[[2]])) {
+    warning("replacement flags will be coerced to character  to assure replacement")
+    flag[[2]] <- as.character(flag[[2]])
+  }
   if(!is.null(nonflag)) {x[!(x %in% flag[[1]])] <- nonflag}
   tempx <- x[x %in% flag[[1]]]
   matches <- match(tempx, flag[[1]])
