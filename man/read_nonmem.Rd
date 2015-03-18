@@ -4,12 +4,14 @@
 \alias{read_nonmem}
 \title{read nonmem files easily}
 \usage{
-read_nonmem(path, header = TRUE)
+read_nonmem(path, header = TRUE, sep = "auto")
 }
 \arguments{
 \item{path}{path to file}
 
 \item{header}{whether header with column names exists}
+
+\item{separator}{automatically detected by default, however can tell by default.}
 }
 \description{
 read nonmem files easily

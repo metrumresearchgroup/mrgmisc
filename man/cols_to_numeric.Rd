@@ -16,7 +16,7 @@ convert column to type numeric
 }
 \examples{
 \dontrun{
-df <- cols_to_numeric(df, c("DOSE", "TRT")) # will convert dose and TRT columns to factor
+df <- cols_to_numeric(df, c("DOSE", "TRT")) # will convert dose and TRT columns to numeric
 }
 }
 

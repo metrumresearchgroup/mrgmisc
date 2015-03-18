@@ -129,7 +129,7 @@ capture_sep <- function(lines) {
 #' read nonmem files easily
 #' @param path path to file
 #' @param header whether header with column names exists
-#' @sep separator, automatically detected by default, however can tell by default. 
+#' @param separator automatically detected by default, however can tell by default. 
 #' @export
 read_nonmem <- function(path, header = TRUE, sep = "auto") {
   lines <- readr::read_lines(path)
@@ -142,13 +142,12 @@ read_nonmem <- function(path, header = TRUE, sep = "auto") {
       col_name <- stringr::str_replace_all(col_name, "\\s+", ",")
     }
    }
-
   lines <- clean_nonmem(lines, sep =sep)
   if(header) {
-    output <- readr::read_csv(file = paste0(col_name,"\n", lines))
+    output <- readr::read_csv(file = paste0(col_name,"\n", lines), na = ".")
   } else {
     
-    output <- readr::read_csv(file =lines, col_names = FALSE)
+    output <- readr::read_csv(file =lines, col_names = FALSE, na = ".")
   }
   return(output[-nrow(output),]) # because clean_nm randomly adds one extra line
   # so temp fix until remove trailing \n

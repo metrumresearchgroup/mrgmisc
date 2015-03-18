@@ -13,11 +13,14 @@ std::string clean_nonmem(std::vector<std::string> x, std::string sep) {
   std::string colname = "ID";
   for(int i = 0; i < n; ++i) {
   if(!boost::contains(x[i], table) && !boost::contains(x[i], colname)) {
-    if(sep == "auto") {
+    
+      if(sep == "auto") {
       boost::trim(x[i]);
       boost::trim_all(x[i]);
-      boost::replace_all(x[i], " ", ",");
-    }
+        boost::replace_all(x[i], " ", ",");
+      } else {
+      x[i].erase(std::remove(x[i].begin(), x[i].end(),' '), x[i].end());
+      }
     str.append(x[i]);
     str.append(line_break);
   }
