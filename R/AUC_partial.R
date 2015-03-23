@@ -11,7 +11,7 @@
 #' individuals have.
 #' @examples
 #' \dontrun{
-#' df %>% group_by(ID) %<% summarize(pAUC0_10 = auc_partial(TIME, DV, c(0,10)))
+#' df %>% group_by(ID) %>% summarize(pAUC0_10 = auc_partial(TIME, DV, c(0,10)))
 #' }
 #' @export
 auc_partial <-function(.time, 
