@@ -5,14 +5,14 @@
 \alias{s_pauc_}
 \title{summarize paucs}
 \usage{
-s_pauc_(df, .time, dv, paucs, digits = Inf)
+s_pauc_(df, idv, dv, paucs, digits = Inf)
 
-s_pauc(df, .time, dv, paucs, digits = Inf)
+s_pauc(df, idv, dv, paucs, digits = Inf)
 }
 \arguments{
 \item{df}{data frame}
 
-\item{.time}{string name for time column for pauc slice}
+\item{idv}{string name for time column for pauc slice}
 
 \item{dv}{string name for dependent variable column (eg. dv or cobs)}
 

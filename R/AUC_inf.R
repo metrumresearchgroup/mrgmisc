@@ -1,36 +1,36 @@
 #' Calculate AUCt-inf
-#' @param .time column name for time
-#' @param conc column name for conc
+#' @param idv column name for independent variable such as time
+#' @param dv column name for dependent variable such as concentration
 #' @param last_points vector of amount of points in terminal phase that will be evaluated for extrapolation
-#' @param na.rm remove any NAs from the conc/DV column before calculating AUC
+#' @param na.rm remove any NAs from the idv/dv column before calculating AUC
 #' @details
 #' last_points defaults to 3, 4, 5
 #' see auc_partial for other details
 #' @export
-auc_inf <-function(.time, 
-                   conc,
+auc_inf <-function(idv, 
+                   dv,
                    last_points = c(3, 4, 5),
                    na.rm = TRUE){
   #checks to add
   #TODO: add check that lambda_z is positive and fail gracefully if not
   #TODO: clean up return data.frame/vector (its uuuugly now)
   if(!na.rm) {
-    .time<- .time
-    conc <- conc 
+    idv<- idv
+    dv <- dv 
   } else {
-    if(all(is.na(conc)) | all(is.na(.time))) {
+    if(all(is.na(dv)) | all(is.na(idv))) {
       return(setNames(NA, paste0("AUC0_inf")))
       
     }
-    if(any(is.na(conc))) {warning("removing at least 1 NA value")}
-    .time<- .time[!is.na(conc)]
-    conc <- conc[!is.na(conc)]
+    if(any(is.na(dv))) {warning("removing at least 1 NA value")}
+    idv<- idv[!is.na(dv)]
+    dv <- dv[!is.na(dv)]
   }
-  if(isTRUE(all(conc ==0))) {
+  if(isTRUE(all(dv ==0))) {
     return(setNames(0, paste0("AUC0_inf")))
   } 
-  time.points <- length(.time)
-  #check to make sure partial .time legit option
+  time.points <- length(idv)
+  #check to make sure partial idv legit option
   ###need to add warning
   
   
@@ -40,16 +40,16 @@ auc_inf <-function(.time,
   #  AUCinf is calculated based on 3 parts: the beginning, the middle, and the extrapolated
   #  calculate the middle part of AUC
   for(i in 1:(time.points-1)){
-    auci[i]<-(conc[i]+conc[i+1])*(.time[i+1]-.time[i])/2
+    auci[i]<-(dv[i]+dv[i+1])*(idv[i+1]-idv[i])/2
   }
   
   
   #calculate the starting part of AUC
   auc.start <-0
-  #if(.time[1]!=0) auc.start <-.time[1]*conc[1]/2
+  #if(idv[1]!=0) auc.start <-idv[1]*dv[1]/2
   
   #calculate the ending part of AUC
-  #assuming to compare the last 3, 4 and 5 .time points for regression.
+  #assuming to compare the last 3, 4 and 5 idv points for regression.
   last <- last_points
   start<- time.points - last + 1
   # need extra + 1 in start as time.points-last will give one more time than requested otherwise
@@ -59,8 +59,8 @@ auc_inf <-function(.time,
   lambda_z <-vector("numeric", length(last))
   adj.r.squared <-vector("numeric", length(last))
   for(j in 1:length(last)){
-    t<-.time[start[j]:time.points]
-    con <- conc[start[j]:time.points]
+    t<-idv[start[j]:time.points]
+    con <- dv[start[j]:time.points]
     if(isTRUE(all(con == 0))) {
       lambda_z[j]<- 0
       adj.r.squared[j]<- 0
@@ -85,7 +85,7 @@ auc_inf <-function(.time,
     return(setNames(AUC.last, paste0("AUC0_inf")))
 }
     
-  AUC.inf <- AUC.last + conc[length(conc)]/lambda_z.final
+  AUC.inf <- AUC.last + dv[length(dv)]/lambda_z.final
 
   return(setNames(AUC.inf, paste0("AUC0_inf")))
 

@@ -5,18 +5,18 @@
 \alias{auc_inf}
 \title{Calculate AUCt-inf}
 \usage{
-auc_inf(.time, conc, last_points = c(3, 4, 5), na.rm = TRUE)
+auc_inf(idv, dv, last_points = c(3, 4, 5), na.rm = TRUE)
 
 AUC_inf(...)
 }
 \arguments{
-\item{.time}{column name for time}
+\item{idv}{column name for independent variable such as time}
 
-\item{conc}{column name for conc}
+\item{dv}{column name for dependent variable such as concentration}
 
 \item{last_points}{vector of amount of points in terminal phase that will be evaluated for extrapolation}
 
-\item{na.rm}{remove any NAs from the conc/DV column before calculating AUC}
+\item{na.rm}{remove any NAs from the idv/dv column before calculating AUC}
 
 \item{...}{args to pass to auc_inf}
 }

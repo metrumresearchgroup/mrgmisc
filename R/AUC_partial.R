@@ -1,6 +1,6 @@
 #' Calculate partial AUC
-#' @param idv time column
-#' @param dv concentration column
+#' @param idv independent variable (such as time)
+#' @param dv dependent variable (such as concentration)
 #' @param range time range for pauc calculation
 #' @details 
 #' default range is 0 to tmax

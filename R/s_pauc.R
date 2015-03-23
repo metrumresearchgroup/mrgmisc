@@ -1,19 +1,19 @@
 # summarize quantile
 # @param df data frame
-# @param .time string name for time column for pauc slice
+# @param idv string name for time column for pauc slice
 # @param dv string name for dependent variable column (eg. dv or cobs)
 # @param range whether to remove na values
 # @param digits number of digits to pass to round
 # @details 
 # for internal use in the s_pauc function
-s_pauc_i <- function(df, .time, dv, range, digits = Inf) {
-  .time <- lazyeval::as.lazy(.time)
+s_pauc_i <- function(df, idv, dv, range, digits = Inf) {
+  idv <- lazyeval::as.lazy(idv)
   dv <- lazyeval::as.lazy(dv)
-  dots = list(lazyeval::interp(~ round(auc_partial(.time, 
+  dots = list(lazyeval::interp(~ round(auc_partial(idv, 
                                           dv, 
                                           range=range), 
                                           digits), 
-                               .time = .time$expr,
+                               idv = idv$expr,
                                dv = dv$expr))
   # after discussion with hadley, the last group is dropped by design with dplyr
   # given that it is unique at that point
@@ -30,9 +30,9 @@ s_pauc_i <- function(df, .time, dv, range, digits = Inf) {
 
 #' @rdname s_pauc
 #' @export
-s_pauc_ <- function(df, .time, dv, paucs, digits = Inf) {
+s_pauc_ <- function(df, idv, dv, paucs, digits = Inf) {
   paucs <- lapply(paucs, function(x) {
-    s_pauc_i(df, .time, dv, x, digits)
+    s_pauc_i(df, idv, dv, x, digits)
   }
   )
   #check if grouped df and if so adjust behavior to bind together the list
@@ -56,7 +56,7 @@ s_pauc_ <- function(df, .time, dv, paucs, digits = Inf) {
 
 #' summarize paucs
 #' @param df data frame
-#' @param .time string name for time column for pauc slice
+#' @param idv string name for time column for pauc slice
 #' @param dv string name for dependent variable column (eg. dv or cobs)
 #' @param paucs list of ranges for pauc calculation
 #' @param digits number of decimals to round result before returning
@@ -68,16 +68,16 @@ s_pauc_ <- function(df, .time, dv, paucs, digits = Inf) {
 #' sd_oral_richpk  %>% group_by(ID) %>% s_pauc_("Time", "Conc", list(c(0,8), c(8, 24)))
 #'}
 #' @export
-s_pauc <- function(df, .time, dv, paucs, digits = Inf) {
+s_pauc <- function(df, idv, dv, paucs, digits = Inf) {
   # need to add force as if don't use force and the column name is also a function
   # then R throws a lazyloadDB error
-  if(as.character(substitute(.time)) == "time") {
-    .time <- lazyeval::lazy(force(time))
+  if(as.character(substitute(idv)) == "time") {
+    idv <- lazyeval::lazy(force(time))
   } else {
-    .time <- lazyeval::lazy(.time)
+    idv <- lazyeval::lazy(idv)
   }
   dv <- lazyeval::lazy(dv)
-  s_pauc_(df, .time, dv, paucs, digits = digits)
+  s_pauc_(df, idv, dv, paucs, digits = digits)
 }
 
 # library(PKPDdatasets)

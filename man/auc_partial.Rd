@@ -10,9 +10,9 @@ auc_partial(idv, dv, range = c(0, Inf))
 AUC_partial(...)
 }
 \arguments{
-\item{idv}{time column}
+\item{idv}{independent variable (such as time)}
 
-\item{dv}{concentration column}
+\item{dv}{dependent variable (such as concentration)}
 
 \item{range}{time range for pauc calculation}
 
