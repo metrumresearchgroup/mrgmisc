@@ -1,7 +1,7 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make developing R code easier
-Version: 0.3.2
+Version: 0.3.2.1
 Date: 2015-3-23
 Authors@R: c(
     person("Devin", "Pastoor",
@@ -20,9 +20,9 @@ Imports:
     lazyeval,
     data.table,
     stringr,
-    magrittr,
-    readr
+    magrittr
 Suggests: 
+    readr,
     knitr,
     rmarkdown,
     testthat,
