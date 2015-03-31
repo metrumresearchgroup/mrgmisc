@@ -17,6 +17,19 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// replace_chars
+std::vector<std::string> replace_chars(std::vector<std::string> strings, std::vector<std::string> values, std::vector<std::string> replacement);
+RcppExport SEXP PKPDmisc_replace_chars(SEXP stringsSEXP, SEXP valuesSEXP, SEXP replacementSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type strings(stringsSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type values(valuesSEXP);
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type replacement(replacementSEXP);
+    __result = Rcpp::wrap(replace_chars(strings, values, replacement));
+    return __result;
+END_RCPP
+}
 // replace_spaces
 std::string replace_spaces(std::vector<std::string> x);
 RcppExport SEXP PKPDmisc_replace_spaces(SEXP xSEXP) {

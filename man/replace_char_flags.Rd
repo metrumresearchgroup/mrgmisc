@@ -4,12 +4,12 @@
 \alias{replace_char_flags}
 \title{replace symbols or other character flags}
 \usage{
-replace_char_flags(x, flag, nonflag = NULL, as_numeric = TRUE)
+replace_char_flags(x, flag_df, nonflag = NULL, as_numeric = TRUE)
 }
 \arguments{
 \item{x}{vector to replace}
 
-\item{flag}{dataframe with first column being the flag and second the replacement value}
+\item{flag_df}{dataframe with first column being the flag and second the replacement value}
 
 \item{nonflag}{what to do with non-flagged elements}
 
