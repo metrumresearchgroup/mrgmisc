@@ -10,13 +10,13 @@
 #' @examples
 #' \dontrun{
 #' dv <- c(1, 2, 4, "88 (excluded)", "bql", "*")
-#' non_numerics(dv)
+#' unique_non_numerics(dv)
 #' replace_char_flags(dv, c("88 (excluded)" = -99, "bql" = -98, "*" = -97))
 #' flag <- replace_char_flags(dv, c("88 (excluded)" = -99, "bql" = -98, "*" = -97), 
 #'    nonflag = 0)
 #' flag
 #' }
-non_numerics <- function(x, na.rm = TRUE) {
+unique_non_numerics <- function(x, na.rm = TRUE) {
   if(na.rm) x <- x[!is.na(x)]
   xn <- suppressWarnings(as_numeric(x))
   unique(x[is.na(xn)])
