@@ -11,7 +11,7 @@ read_nonmem(path, header = TRUE, sep = "auto")
 
 \item{header}{whether header with column names exists}
 
-\item{separator}{automatically detected by default, however can tell by default.}
+\item{sep}{automatically detected by default, however can tell by default.}
 }
 \description{
 read nonmem files easily

@@ -114,7 +114,7 @@ capture_colnames <- function(x, strip_flags = c("TABLE", "ID", "DV", "MDV", "EVI
   return(NULL)
 }
 
-#' capture separator
+# capture separator
 capture_sep <- function(lines) {
   is_comma <- vapply(lines, function(x) {
     grepl(",", x)
@@ -129,7 +129,7 @@ capture_sep <- function(lines) {
 #' read nonmem files easily
 #' @param path path to file
 #' @param header whether header with column names exists
-#' @param separator automatically detected by default, however can tell by default. 
+#' @param sep automatically detected by default, however can tell by default. 
 #' @details 
 #' This function is designed specifically for handling nonmem's nonstandard output format, and
 #' is especially useful for simulation tables output with NSUB as it will appropriately parse out

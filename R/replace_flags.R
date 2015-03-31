@@ -2,6 +2,7 @@
 #' @param x vector to replace
 #' @param flag dataframe with first column being the flag and second the replacement value
 #' @param nonflag what to do with non-flagged elements
+#' @param as_numeric whether to return column as numeric
 #' @examples 
 #' df <- data.frame(ID = 1, DV = c(1, "BQL", ".", 5))
 #' rflags <- data.frame(flag = c("BQL", "."), replacement = -99)

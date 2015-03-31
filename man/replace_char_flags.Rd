@@ -12,6 +12,8 @@ replace_char_flags(x, flag, nonflag = NULL, as_numeric = TRUE)
 \item{flag}{dataframe with first column being the flag and second the replacement value}
 
 \item{nonflag}{what to do with non-flagged elements}
+
+\item{as_numeric}{whether to return column as numeric}
 }
 \description{
 replace symbols or other character flags
