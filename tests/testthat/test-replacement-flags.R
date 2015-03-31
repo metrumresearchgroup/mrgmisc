@@ -11,8 +11,8 @@ correct_outputn1n2 <- c(1, 1, -1, -2, 5)
 correct_output_wzero <- list(0, 0, 1, 2, 0)
 
 test_that("list elements replaced properly", {
-  expect_equal(replace_char_flags(vec, replacementn99), correct_outputn99)
-  expect_equal(replace_char_flags(vec, replacementn99,nonflag = NA), correct_outputn99_repNA)
+  expect_equal(replace_values(vec, replacementn99), correct_outputn99)
+  expect_equal(replace_values(vec, replacementn99,nonflag = NA), correct_outputn99_repNA)
 
 })
 

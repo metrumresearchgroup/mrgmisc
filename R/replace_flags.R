@@ -6,9 +6,9 @@
 #' @examples 
 #' df <- data.frame(ID = 1, DV = c(1, "BQL", ".", 5))
 #' rflags <- data.frame(flag = c("BQL", "."), replacement = -99)
-#' df$DVR <- replace_char_flags(df$DV, rflags)
+#' df$DVR <- replace_values(df$DV, rflags)
 #' @export
-replace_char_flags <- function(x, 
+replace_values <- function(x, 
                          flag_df,
                          nonflag = NULL,
                          as_numeric=TRUE) {
