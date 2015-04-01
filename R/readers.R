@@ -162,6 +162,6 @@ read_nonmem <- function(path, header = TRUE, sep = "auto") {
     
     output <- readr::read_csv(file =lines, col_names = FALSE, na = ".")
   }
-  return(output[-nrow(output),]) # because clean_nm randomly adds one extra line
+  return(output) # because clean_nm randomly adds one extra line
   # so temp fix until remove trailing \n
 }
