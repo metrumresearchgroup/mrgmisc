@@ -7,6 +7,8 @@
 #' because of R's coercion rules being somewhat unpredictable regarding character vs factor
 #' the behavior of replace_values is to always treat as character data, even if passed in 
 #' as a factor 
+#' @seealso \code{\link{unique_non_numerics}}: to identify which non-numeric values must
+#' be replaced before column can be safely coerced to a numeric
 #' @examples 
 #' df <- data.frame(ID = 1, DV = c(1, "BQL", ".", 5))
 #' rflags <- data.frame(flag = c("BQL", "."), replacement = -99)

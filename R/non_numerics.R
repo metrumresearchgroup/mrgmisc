@@ -18,7 +18,7 @@
 #' library(dplyr)
 #' df %>% filter(!(DV %in% unique_non_numerics(DV)))
 #' }
-#' @seealso \code{\link{replace_values}}: to use to replace non-numerica values
+#' @seealso \code{\link{replace_values}}: to use to replace non-numeric values
 #' in a dataframe.
 unique_non_numerics <- function(x, na.rm = TRUE) {
   if(na.rm) x <- x[!is.na(x)]
