@@ -11,11 +11,15 @@
 #' \dontrun{
 #' dv <- c(1, 2, 4, "88 (excluded)", "bql", "*")
 #' unique_non_numerics(dv)
-#' replace_char_flags(dv, c("88 (excluded)" = -99, "bql" = -98, "*" = -97))
-#' flag <- replace_char_flags(dv, c("88 (excluded)" = -99, "bql" = -98, "*" = -97), 
-#'    nonflag = 0)
-#' flag
+#' df <- data.frame(ID = 1:3, DV = c("BQL", 0.5, 9), stringsAsFactors=F)
+#' unique_non_numerics(df$DV)
+#' 
+#' #using dplyr
+#' library(dplyr)
+#' df %>% filter(!(DV %in% unique_non_numerics(DV)))
 #' }
+#' @seealso \code{\link{replace_values}}: to use to replace non-numerica values
+#' in a dataframe.
 unique_non_numerics <- function(x, na.rm = TRUE) {
   if(na.rm) x <- x[!is.na(x)]
   xn <- suppressWarnings(as_numeric(x))
