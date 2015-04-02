@@ -10,6 +10,8 @@ To install, make sure devtools and Rtools (under windows) is installed then do:
 
 ```
 devtools::install_github("dpastoor/PKPDmisc")
+# many examples can be replicated with data from the PKPDdatasets package
+devtools::install_github("dpastoor/PKPDdatasets")
 ```
 
 NOTE: the most) recent version of Rcpp `Rcpp (>= 0.11.5)`, so please check to make sure a suitable version is installed.
