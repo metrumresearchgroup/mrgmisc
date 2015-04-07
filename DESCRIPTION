@@ -1,7 +1,7 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make developing R code easier
-Version: 0.3.3
+Version: 0.3.3.9000
 Date: 2015-3-23
 Authors@R: c(
     person("Devin", "Pastoor",
@@ -16,7 +16,7 @@ Imports:
     Rcpp (>= 0.11.5),
     ggplot2,
     reshape2,
-    dplyr (>= 0.3.0.9000),
+    dplyr (>= 0.4.0),
     lazyeval,
     data.table,
     stringr,
