@@ -33,7 +33,7 @@ df \%>\% filter(!(DV \%in\% unique_non_numerics(DV)))
 }
 }
 \seealso{
-\code{\link{replace_values}}: to use to replace non-numerica values
+\code{\link{replace_values}}: to use to replace non-numeric values
 in a dataframe.
 }
 
