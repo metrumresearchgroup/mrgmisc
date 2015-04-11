@@ -29,5 +29,5 @@ The CRAN release should be sufficient, and can be installed with `install.packag
 If you would like to use the function `read_nonmem()` to quickly parse nonmem simulation tables, you must *also* install `readr` via:
 
 ```
-devtools::install_github("hadley/readr") # necessary dependency only available on github
+install.packages("readr")
 ```
