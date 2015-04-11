@@ -5,7 +5,7 @@
 \title{given a set of bin ranges, assign each value to a bin}
 \usage{
 set_bins(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf,
-  quiet = TRUE)
+  quiet = TRUE, between = NULL)
 }
 \arguments{
 \item{x}{numeric vector to assign bins}
@@ -17,6 +17,8 @@ set_bins(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf,
 \item{upper_bound}{set an upper bound for the last bind, defaults to Inf}
 
 \item{quiet}{whether to give additonal information regarding bins and assigned range for each}
+
+\item{between}{defaults to NULL, a special case of setting all inside the specified range}
 }
 \description{
 given a set of bin ranges, assign each value to a bin
@@ -30,5 +32,9 @@ used to take the breakpoints to establish bins quickly and easily
 If there is concern over data being outside the range of the assigned breaks,
 one can assign -Inf to lower and/or Inf to upper to make sure all values will be
 assigned to a bin
+
+To use the between functionality, you must specify the range you wish to bin between,
+and those values will be assigned to bin 1, with all values below as 0 and all values
+above as 2. See the examples for more details
 }
 
