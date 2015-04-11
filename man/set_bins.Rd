@@ -4,8 +4,8 @@
 \alias{set_bins}
 \title{given a set of bin ranges, assign each value to a bin}
 \usage{
-set_bins(x, breaks = quantile(x, include), lower_bound = NULL,
-  upper_bound = NULL, quiet = TRUE)
+set_bins(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf,
+  quiet = TRUE)
 }
 \arguments{
 \item{x}{numeric vector to assign bins}
