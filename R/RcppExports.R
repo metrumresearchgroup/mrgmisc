@@ -13,3 +13,16 @@ replace_spaces <- function(x) {
     .Call('PKPDmisc_replace_spaces', PACKAGE = 'PKPDmisc', x)
 }
 
+#' given a set of bin ranges, assign each value to a bin
+#' @details
+#' Given a set of quantiles/bins/etc established from a separate dataset, it can 
+#' be useful to assign the same bins to new or simulated data for comparisons
+#' or to do additional analysis such as assign dropouts etc. This function can be
+#' used to take the breakpoints to establish bins quickly and easily
+#' @param x A numeric vector of values
+#' @param left,right Boundary values
+#' @export
+set_bins_cpp <- function(x, left, right) {
+    .Call('PKPDmisc_set_bins_cpp', PACKAGE = 'PKPDmisc', x, left, right)
+}
+
