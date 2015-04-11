@@ -15,6 +15,7 @@
 #' assigned to a bin
 #' @export
 set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf, quiet = TRUE) {
+  breaks <- breaks[order(breaks)]
   if (breaks[1] > lower_bound && !is.null(lower_bound)) breaks <- c(-Inf, breaks)
   if (breaks[length(breaks)] < upper_bound && !is.null(upper_bound)) breaks <- c(breaks, Inf)
   if(length(breaks) ==1) breaks <- c(-Inf, breaks, Inf)
