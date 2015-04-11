@@ -41,3 +41,16 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// set_bins_cpp
+NumericVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector right);
+RcppExport SEXP PKPDmisc_set_bins_cpp(SEXP xSEXP, SEXP leftSEXP, SEXP rightSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type left(leftSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type right(rightSEXP);
+    __result = Rcpp::wrap(set_bins_cpp(x, left, right));
+    return __result;
+END_RCPP
+}
