@@ -19,13 +19,34 @@ get_key <- function(df,
 #' @param df dataframe
 #' @param strat_cols columns to stratify on
 #' @param n number of samples
+#' @param replace whether to resample with replacement
+#' @param return_all whether to return all columns or just keyed stratification columns
+#' @details 
+#' This function is valuable when generating a large simulated population
+#' where you goal is to create resampled sub-populations while still maintaining
+#' certain stratifications of things like covariate distributions
+#' 
+#' To note, in most pharmacometrics cases, do not forget that the 'ID" column
+#' should also be included as a stratification variable to properly resample,
+#' eg if you want to resample the dataframe and stratify by race, 
+#' the strat_cols argument should be \code{c("id", "race")}.
+#' @examples \dontrun{
+#' library(PKPDdatasets)
+#' stratify_df(sd_oral_richpk, c("ID", "Gender"), 10)
+#' # to check that your 'key' is correct
+#' stratify_df(sd_oral_richpk, c("ID", "Gender"), 10, return_all=FALSE)
+#' }
 #' @export
 stratify_df <- function(df, 
                         strat_cols,
-                        n) {
+                        n,
+                        replace = TRUE,
+                        return_all = TRUE) {
+  rdf <- df
+  df <- get_key(df, strat_cols)
   frac <- n/nrow(df)
   sample <- df %>% dplyr::group_by_(.dots=strat_cols) %>% 
-    dplyr::sample_frac(frac, replace=T)
+    dplyr::sample_frac(frac, replace=replace)
   nsample <- nrow(sample) 
   nleft <- n- nsample
   if(nleft != 0) {
@@ -39,6 +60,9 @@ stratify_df <- function(df,
     )
 
   }
+  if(return_all) {
+    sample <- dplyr::inner_join(sample, rdf)
+  }
   return(sample)
 }
 
@@ -48,19 +72,21 @@ stratify_df <- function(df,
 #' @param strat_cols columns to maintain proportion for stratification
 #' @param key_col_name name of outputted key column. Default to "KEY"
 #' @param n number of unique sampled keys, defaults to match dataset
+#' @param replace whether to stratify with replacement
 #' @export
 resample_df <- function(df, 
                         key_cols, 
                         strat_cols = NULL, 
                         key_col_name = "KEY",
-                        n = NULL) {
+                        n = NULL,
+                        replace = TRUE) {
   names <- c(key_col_name,names(df))
   key <- get_key(df, key_cols)
   if(is.null(n)) n <- nrow(key)
   
   if(is.null(strat_cols)) {
 
-    sample <- dplyr::sample_n(key, size = n, replace=T)
+    sample <- dplyr::sample_n(key, size = n, replace=replace)
     sample[[key_col_name]] <- 1:n
   } else {
     strat_key <- get_key(df, c(key_cols, strat_cols))
@@ -76,7 +102,7 @@ resample_df <- function(df,
       warning("Non-unique keys introduced from stratification,
 check that all keys only have one stratification variable associated
                                              ")}
-    sample <- stratify_df(strat_key, strat_cols, n)
+    sample <- stratify_df(strat_key, strat_cols, n, replace = replace)
     #drop strat cols so won't possibly mangle later left join
     sample <- dplyr::ungroup(sample)
     sample <- sample[, key_cols, drop=F] 

@@ -5,7 +5,7 @@
 \title{resampling}
 \usage{
 resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY",
-  n = NULL)
+  n = NULL, replace = TRUE)
 }
 \arguments{
 \item{df}{data frame}
@@ -17,6 +17,8 @@ resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY",
 \item{key_col_name}{name of outputted key column. Default to "KEY"}
 
 \item{n}{number of unique sampled keys, defaults to match dataset}
+
+\item{replace}{whether to stratify with replacement}
 }
 \description{
 resampling
