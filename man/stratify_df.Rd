@@ -4,7 +4,7 @@
 \alias{stratify_df}
 \title{stratify based on some columns}
 \usage{
-stratify_df(df, strat_cols, n, replace = TRUE, return_all = TRUE)
+stratify_df(df, strat_cols, n, replace = TRUE)
 }
 \arguments{
 \item{df}{dataframe}
@@ -14,28 +14,8 @@ stratify_df(df, strat_cols, n, replace = TRUE, return_all = TRUE)
 \item{n}{number of samples}
 
 \item{replace}{whether to resample with replacement}
-
-\item{return_all}{whether to return all columns or just keyed stratification columns}
 }
 \description{
 stratify based on some columns
-}
-\details{
-This function is valuable when generating a large simulated population
-where you goal is to create resampled sub-populations while still maintaining
-certain stratifications of things like covariate distributions
-
-To note, in most pharmacometrics cases, do not forget that the 'ID" column
-should also be included as a stratification variable to properly resample,
-eg if you want to resample the dataframe and stratify by race,
-the strat_cols argument should be \code{c("id", "race")}.
-}
-\examples{
-\dontrun{
-library(PKPDdatasets)
-stratify_df(sd_oral_richpk, c("ID", "Gender"), 10)
-# to check that your 'key' is correct
-stratify_df(sd_oral_richpk, c("ID", "Gender"), 10, return_all=FALSE)
-}
 }
 

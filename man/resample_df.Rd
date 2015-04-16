@@ -23,4 +23,30 @@ resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY",
 \description{
 resampling
 }
+\details{
+This function is valuable when generating a large simulated population
+where you goal is to create resampled sub-populations in addition to being able to
+maintain certain stratifications of factors like covariate distributions
+}
+\examples{
+\dontrun{
+library(PKPDdatasets)
+resample_df(sd_oral_richpk, key_cols = "ID", strat_cols = "Gender", 10)
+
+# make 'simulated' data with 5 replicates
+rep_dat <- rbind_all(lapply(1:5, function(x) sd_oral_richpk \%>\%
+filter(ID < 20) \%>\%
+  mutate(REP = x)))
+resample_df(rep_dat, key_cols = c("ID", "REP"))
+
+# check to see that stratification is maintained
+rep_dat \%>\% group_by(Gender) \%>\% summarize(n = n())
+resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols="Gender") \%>\%
+  group_by(Gender) \%>\% summarize(n = n())
+
+rep_dat \%>\% group_by(Gender, Race) \%>\% summarize(n = n())
+resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race")) \%>\%
+  group_by(Gender, Race) \%>\% summarize(n = n())
+}
+}
 
