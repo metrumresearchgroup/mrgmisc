@@ -5,6 +5,10 @@ clean_nonmem <- function(x, sep) {
     .Call('PKPDmisc_clean_nonmem', PACKAGE = 'PKPDmisc', x, sep)
 }
 
+fill_forward <- function(x) {
+    .Call('PKPDmisc_fill_forward', PACKAGE = 'PKPDmisc', x)
+}
+
 replace_chars <- function(strings, values, replacement) {
     .Call('PKPDmisc_replace_chars', PACKAGE = 'PKPDmisc', strings, values, replacement)
 }
