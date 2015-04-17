@@ -22,7 +22,6 @@ NumericVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector ri
       // if not in range defined for bins assign NA value and go to next
       if (x[i] < left[0] || x[i] > right[bin-1]) {
         out[i] = NA_REAL;
-        break;
       }
       for (int j = 0; j < bin; ++j) {
          if ( (x[i] >= left[j]) && (x[i] < right[j]) ) { 
