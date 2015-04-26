@@ -5,6 +5,23 @@ clean_nonmem <- function(x, sep) {
     .Call('PKPDmisc_clean_nonmem', PACKAGE = 'PKPDmisc', x, sep)
 }
 
+#' given NA values fill them with the next non-na value
+#' @param x A numeric vector of values
+#' @details
+#' Works very well in context of dplyr to carry out last-observation-carried-foward
+#' for different individuals. It will NOT replace leading NA's
+#' @examples /dontrun {
+#' fill_forward(c(1.0, NA, 2))
+#' fill_forward(c(NA, 1, NA, 2))
+#' library(dplyr)
+#' df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
+#' df %>% group_by(id) %>% mutate(obs_locf = fill_forward(obs))
+#' }
+#' @export
+fill_backward <- function(x) {
+    .Call('PKPDmisc_fill_backward', PACKAGE = 'PKPDmisc', x)
+}
+
 #' given NA values fill them with the final non-na value
 #' @param x A numeric vector of values
 #' @details

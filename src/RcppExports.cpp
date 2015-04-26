@@ -17,6 +17,17 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// fill_backward
+NumericVector fill_backward(NumericVector x);
+RcppExport SEXP PKPDmisc_fill_backward(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    __result = Rcpp::wrap(fill_backward(x));
+    return __result;
+END_RCPP
+}
 // fill_forward
 NumericVector fill_forward(NumericVector x);
 RcppExport SEXP PKPDmisc_fill_forward(SEXP xSEXP) {
