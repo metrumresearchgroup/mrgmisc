@@ -4,8 +4,8 @@
 \alias{resample_df}
 \title{resampling}
 \usage{
-resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY",
-  n = NULL, replace = TRUE)
+resample_df(df, key_cols, strat_cols = NULL, n = NULL,
+  key_col_name = "KEY", replace = TRUE)
 }
 \arguments{
 \item{df}{data frame}
@@ -14,9 +14,9 @@ resample_df(df, key_cols, strat_cols = NULL, key_col_name = "KEY",
 
 \item{strat_cols}{columns to maintain proportion for stratification}
 
-\item{key_col_name}{name of outputted key column. Default to "KEY"}
-
 \item{n}{number of unique sampled keys, defaults to match dataset}
+
+\item{key_col_name}{name of outputted key column. Default to "KEY"}
 
 \item{replace}{whether to stratify with replacement}
 }
@@ -27,6 +27,11 @@ resampling
 This function is valuable when generating a large simulated population
 where you goal is to create resampled sub-populations in addition to being able to
 maintain certain stratifications of factors like covariate distributions
+
+A new keyed column will be created (defaults to name 'KEY') that contains the uniquely
+created new samples. This allows one to easily compare against the key'd columns. Eg,
+if you would like to see how many times a particular individual was resampled you can
+check the original ID column against the number of key's associated with that ID number.
 }
 \examples{
 \dontrun{

@@ -48,13 +48,18 @@ stratify_df <- function(df,
 #' @param df data frame
 #' @param key_cols key columns to resample on
 #' @param strat_cols columns to maintain proportion for stratification
-#' @param key_col_name name of outputted key column. Default to "KEY"
 #' @param n number of unique sampled keys, defaults to match dataset
+#' @param key_col_name name of outputted key column. Default to "KEY"
 #' @param replace whether to stratify with replacement
 #' @details 
 #' This function is valuable when generating a large simulated population
 #' where you goal is to create resampled sub-populations in addition to being able to
 #' maintain certain stratifications of factors like covariate distributions
+#' 
+#' A new keyed column will be created (defaults to name 'KEY') that contains the uniquely
+#' created new samples. This allows one to easily compare against the key'd columns. Eg,
+#' if you would like to see how many times a particular individual was resampled you can 
+#' check the original ID column against the number of key's associated with that ID number.
 #' @examples \dontrun{
 #' library(PKPDdatasets)
 #' resample_df(sd_oral_richpk, key_cols = "ID", strat_cols = "Gender", 10)
@@ -76,13 +81,18 @@ stratify_df <- function(df,
 #' }
 #' @export
 resample_df <- function(df, 
-                        key_cols, 
+                        key_cols,
                         strat_cols = NULL, 
-                        key_col_name = "KEY",
                         n = NULL,
+                        key_col_name = "KEY",
                         replace = TRUE) {
   names <- c(key_col_name,names(df))
   key <- get_key(df, key_cols)
+  if(!is.character(strat_cols) & !is.null(strat_cols)) {
+    stop(paste("strat_cols should be character vector of column names!\n", 
+         "This could also be because you have put a numerical value for n
+         without properly defining it. Please explicitly state n = <number of desired keys>"))
+  }
   if(is.null(n)) n <- nrow(key)
   
   if(is.null(strat_cols)) {
