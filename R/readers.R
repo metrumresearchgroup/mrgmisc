@@ -1,4 +1,4 @@
-#' to more easily read data with a 2nd row with units
+#' to more easily read data with a 2nd row with units common to phx data
 #' @param data the name of the csv
 #' @param skip rows to skip before header row
 #' @param header logical value indicating whether the file contains the names of variables
@@ -17,11 +17,11 @@
 #' @return data frame of read-in csv
 #' @examples
 #' \dontrun{
-#' read_table("example.csv")
-#' read_table("example.csv", skip = 1) # will ignore 1st line, good for comment lines
+#' read_phx("example.csv")
+#' read_phx("example.csv", skip = 1) # will ignore 1st line, good for comment lines
 #' }
 #' @export
-read_table <- function(data, 
+read_phx <- function(data, 
                             skip = 0, 
                             header = TRUE,
                             sep = "auto",
@@ -136,7 +136,7 @@ capture_sep <- function(lines) {
 #' the additional TABLE and column name rows.
 #' 
 #' HOWEVER, for tables with standard formatting (eg comma separated with FORMAT=,1PE11.4) and
-#' no NSUB, then the `read_table()` function will likely be slightly faster. This should only be an issue
+#' no NSUB, then the `read_phx()` function will likely be slightly faster. This should only be an issue
 #' for large (at least 20 MB) files, else the difference will be imperceptible. 
 #' @export
 read_nonmem <- function(path, header = TRUE, sep = "auto") {
@@ -164,4 +164,16 @@ read_nonmem <- function(path, header = TRUE, sep = "auto") {
   }
   return(output) # because clean_nm randomly adds one extra line
   # so temp fix until remove trailing \n
+}
+
+
+#' @export
+#' @rdname read_phx
+read_table <- function(...) {
+  warning("read table in PKPDmisc is depreciated as read_table is a function in the
+          new readr package by hadley wickham and did not want to cause conflicts
+          with packges being loaded.")
+  warning("read_table has been replaced with read_phx/read_nonmem for specifically 
+          reading files from the respective programs.")
+  read_phx(...)
 }
