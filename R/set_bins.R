@@ -39,15 +39,13 @@ set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = 
       return(x_bins)
   }
   
-  
-  if (breaks[1] > lower_bound && !is.null(lower_bound)) breaks <- c(-Inf, breaks)
-  if (breaks[length(breaks)] < upper_bound && !is.null(upper_bound)) breaks <- c(breaks, Inf)
+  if (breaks[1] > lower_bound && !is.null(lower_bound)) breaks <- c(lower_bound, breaks)
+  if (breaks[length(breaks)] < upper_bound && !is.null(upper_bound)) breaks <- c(breaks, upper_bound)
   if(length(breaks) ==1) breaks <- c(-Inf, breaks, Inf)
   
   lower <- breaks[-length(breaks)]
   upper <- breaks[-1]
   x_bins <- set_bins_cpp(x, lower, upper)
-  
   if(!quiet) {
     message(paste0("there were ", length(lower), "bins calculated, with the following
                    range for each bin: "))
