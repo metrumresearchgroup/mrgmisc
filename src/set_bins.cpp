@@ -10,25 +10,29 @@ using namespace Rcpp;
 //' @param left,right Boundary values
 //' @export
 // [[Rcpp::export]]
-NumericVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector right) {
+IntegerVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector right) {
   int n = x.size();
   int bin = left.size();
-  NumericVector out = no_init(n);
+  IntegerVector out = no_init(n);
   
   for (int i = 0; i < n; ++i) {
     if (NumericVector::is_na(x[i])) {
-      out[i] = NA_REAL;
+      out[i] = NA_INTEGER;
     } else {
       // if not in range defined for bins assign NA value and go to next
       if (x[i] < left[0] || x[i] > right[bin-1]) {
-        out[i] = NA_REAL;
+        out[i] = NA_INTEGER;
       }
       for (int j = 0; j < bin; ++j) {
          if ( (x[i] >= left[j]) && (x[i] < right[j]) ) { 
           out[i] = j;
            break;
          } else {
+           if (j == bin - 1) {
+             out[i] = NA_INTEGER;
+           }
            continue;
+          
          }
       }
     }

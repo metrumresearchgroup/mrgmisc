@@ -64,7 +64,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // set_bins_cpp
-NumericVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector right);
+IntegerVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector right);
 RcppExport SEXP PKPDmisc_set_bins_cpp(SEXP xSEXP, SEXP leftSEXP, SEXP rightSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
