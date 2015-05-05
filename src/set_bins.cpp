@@ -29,7 +29,11 @@ IntegerVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector ri
            break;
          } else {
            if (j == bin - 1) {
+             if (x[i] == right[j]) {
+             out[i] = j;  
+             } else {
              out[i] = NA_INTEGER;
+             }
            }
            continue;
           
