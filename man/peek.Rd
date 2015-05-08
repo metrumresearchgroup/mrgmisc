@@ -15,9 +15,9 @@ peek(df, n = 5, message = NULL)
 peek at the results in a dplyr pipeline
 }
 \details{
-A wrapper around giving a \code{head} command but only as a side effect
-so the original data frame is passed along to continue on for further
-manipulation in the pipeline
+A wrapper around giving a \code{head} and \code{tail} command
+ but only as a side effect so the original data frame is passed
+ along to continue on for furthermanipulation in the pipeline
 }
 \examples{
 library(dplyr)
@@ -27,5 +27,12 @@ summarize(cmax = max(conc))
 Theoph \%>\% select(Subject, Time, conc) \%>\% peek(message = "after select") \%>\%
  group_by(Subject) \%>\%
 summarize(cmax = max(conc))
+
+# nice for saving full objects but still seeing their output
+cmax_theoph <- Theoph \%>\% select(Subject, Time, conc) \%>\%
+peek(message = "after select") \%>\%
+ group_by(Subject) \%>\%
+summarize(cmax = max(conc)) \%>\% peek
+cmax_theoph # still saves full output
 }
 
