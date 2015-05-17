@@ -69,14 +69,22 @@ s_pauc_ <- function(df, idv, dv, paucs, digits = Inf) {
 #'}
 #' @export
 s_pauc <- function(df, idv, dv, paucs, digits = Inf) {
-  # need to add force as if don't use force and the column name is also a function
-  # then R throws a lazyloadDB error
+  # this seems a more robust implementation as can check for any function
+  # the problem is if dv/idv are the same as one of the native
+  # r functions (eg time or c) then the lazyeval will capture the 
+  # method rather than the actual name, so if is a function
+  # instead just pass the string on to s_pauc_ rather than
+  # the lazyeval object
   if(is.function(eval(substitute(idv)))) {
     idv <- deparse(substitute(idv))
   } else {
     idv <- lazyeval::lazy(idv)
   }
-  dv <- lazyeval::lazy(dv)
+  if(is.function(eval(substitute(dv)))) {
+    dv <- deparse(substitute(dv))
+  } else {
+    dv <- lazyeval::lazy(dv)
+  }
   s_pauc_(df, idv, dv, paucs, digits = digits)
 }
 
