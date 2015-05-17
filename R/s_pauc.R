@@ -71,12 +71,8 @@ s_pauc_ <- function(df, idv, dv, paucs, digits = Inf) {
 s_pauc <- function(df, idv, dv, paucs, digits = Inf) {
   # need to add force as if don't use force and the column name is also a function
   # then R throws a lazyloadDB error
-  if(as.character(substitute(idv)) == "time") {
-    idv <- lazyeval::lazy(force(time))
-  } else {
-    idv <- lazyeval::lazy(idv)
-  }
-  dv <- lazyeval::lazy(dv)
+  idv <- check_lazy_value(idv)
+  dv <- check_lazy_value(dv)
   s_pauc_(df, idv, dv, paucs, digits = digits)
 }
 
