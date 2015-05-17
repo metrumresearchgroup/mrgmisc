@@ -18,17 +18,18 @@ replace_from_template <- function(file, patterns, replacement_df, output_dir = N
   }
   return(TRUE)
 }
-
-# pattern name must currently match the replacement df column name 
-patterns = c(CL = "<cl> ; omega_cl", V = "<v> ; omega_V")
-
-replacements = data.frame(expand.grid(CLnum = seq(0.1, 0.6, 0.1), Vnum = seq(0.1, 0.6, 0.1)))
-
-# transmute will drop unused columns so in this case the placeholder CLnum and Vnum
-replacement_df <- replacements %>% transmute(CL = paste0(CLnum, " ; omega_cl"), 
-                        V = paste0(Vnum, " ; omega_V"),
-                        file_name = paste0(CLnum,"CL-",Vnum,"V", ".mod"))
-
-
-# will write out mod files for all replacements
-replace_from_template("replacement.mod", patterns, replacement_df)
+#
+## pattern name must currently match the replacement df column name 
+#patterns = c(CL = "<cl> ; omega_cl", V = "<v> ; omega_V")
+#
+#replacements = data.frame(expand.grid(CLnum = seq(0.1, 0.6, 0.1), Vnum = seq(0.1, 0.6, 0.1)))
+#
+## transmute will drop unused columns so in this case the placeholder CLnum and Vnum
+#replacement_df <- replacements %>% dplyr::transmute(CL = paste0(CLnum, " ; omega_cl"), 
+#                        V = paste0(Vnum, " ; omega_V"),
+#                        file_name = paste0(CLnum,"CL-",Vnum,"V", ".mod"))
+#
+#
+## will write out mod files for all replacements
+#replace_from_template("replacement.mod", patterns, replacement_df)
+#
