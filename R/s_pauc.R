@@ -71,7 +71,6 @@ s_pauc_ <- function(df, idv, dv, paucs, digits = Inf) {
 s_pauc <- function(df, idv, dv, paucs, digits = Inf) {
   # need to add force as if don't use force and the column name is also a function
   # then R throws a lazyloadDB error
-  browser()
   if(is.function(eval(substitute(idv)))) {
     idv <- deparse(substitute(idv))
   } else {
