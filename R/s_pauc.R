@@ -69,28 +69,15 @@ s_pauc_ <- function(df, idv, dv, paucs, digits = Inf) {
 #'}
 #' @export
 s_pauc <- function(df, idv, dv, paucs, digits = Inf) {
-  # this seems a more robust implementation as can check for any function
-  # the problem is if dv/idv are the same as one of the native
-  # r functions (eg time or c) then the lazyeval will capture the 
-  # method rather than the actual name, so if is a function
-  # instead just pass the string on to s_pauc_ rather than
-  # the lazyeval object
-  if(is.function(eval(substitute(idv)))) {
-    idv <- deparse(substitute(idv))
-  } else {
-    idv <- lazyeval::lazy(idv)
-  }
-  if(is.function(eval(substitute(dv)))) {
-    dv <- deparse(substitute(dv))
-  } else {
-    dv <- lazyeval::lazy(dv)
-  }
-  s_pauc_(df, idv, dv, paucs, digits = digits)
+  # currently using lazyeval isn't a good solution as fails
+  # ifa column name matches a function name (eg time)
+  s_pauc_(df, deparse(substitute(idv)), deparse(substitute(dv)), paucs, digits = digits)
 }
 
 # library(PKPDdatasets)
 # library(dplyr)
 # sd_oral_richpk %>% group_by(ID) %>% s_pauc_("Time", "Conc", list(c(0, 24), c(0, 8), c(8, 24)), digits=2)
 # sd_oral_richpk %>% group_by(ID, Dose) %>% s_pauc(Time, Conc, list(c(0, 24), c(0, 8), c(8, 24)), digits=2)
-
+#names(sd_oral_richpk) <- tolower(names(sd_oral_richpk))
+# sd_oral_richpk %>% group_by(id, Dose) %>% s_pauc(time, conc, list(c(0, 24), c(0, 8), c(8, 24)), digits=2)
 #sd_oral_richpk %>% filter(ID ==1) %>% s_pauc("Time", "Conc", list(c(0,24), c(0,8), c(8,24)), digits=2) %>% do.call("cbind", .)
