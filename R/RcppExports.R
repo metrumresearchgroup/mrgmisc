@@ -39,6 +39,36 @@ fill_forward <- function(x) {
     .Call('PKPDmisc_fill_forward', PACKAGE = 'PKPDmisc', x)
 }
 
+#' give the min value up to that point
+#' @param x A numeric vector of values
+#' @details
+#' useful for safety analyses where an event may be defined as a certain change
+#' in a biomarker, so need to see how the current measurement compares to the minimum
+#' value up to that point
+#' @examples /dontrun {
+#'min_through(c(4, 3, 3, 2, 4, 1))
+#'min_through(c(NA, 2))
+#' }
+#' @export
+min_through <- function(x) {
+    .Call('PKPDmisc_min_through', PACKAGE = 'PKPDmisc', x)
+}
+
+#' give the max value up to that point
+#' @param x A numeric vector of values
+#' @details
+#' useful for safety analyses where an event may be defined as a certain change
+#' in a biomarker, so need to see how the current measurement compares to the maximum
+#' value up to that point
+#' @examples /dontrun {
+#'max_through(c(4, 3, 3, 2, 5, 1))
+#'max_through(c(NA, 2, 1, 4, 2))
+#' }
+#' @export
+max_through <- function(x) {
+    .Call('PKPDmisc_max_through', PACKAGE = 'PKPDmisc', x)
+}
+
 replace_chars <- function(strings, values, replacement) {
     .Call('PKPDmisc_replace_chars', PACKAGE = 'PKPDmisc', strings, values, replacement)
 }

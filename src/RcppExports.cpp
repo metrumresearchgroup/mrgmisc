@@ -39,6 +39,28 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// min_through
+NumericVector min_through(NumericVector x);
+RcppExport SEXP PKPDmisc_min_through(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    __result = Rcpp::wrap(min_through(x));
+    return __result;
+END_RCPP
+}
+// max_through
+NumericVector max_through(NumericVector x);
+RcppExport SEXP PKPDmisc_max_through(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
+    __result = Rcpp::wrap(max_through(x));
+    return __result;
+END_RCPP
+}
 // replace_chars
 std::vector<std::string> replace_chars(std::vector<std::string> strings, std::vector<std::string> values, std::vector<std::string> replacement);
 RcppExport SEXP PKPDmisc_replace_chars(SEXP stringsSEXP, SEXP valuesSEXP, SEXP replacementSEXP) {

@@ -1,8 +1,8 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make pharmacometric analyses easier
-Version: 0.3.4.2
-Date: 2015-4-28
+Version: 0.3.4.3
+Date: 2015-6-25
 Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
