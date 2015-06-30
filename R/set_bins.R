@@ -5,6 +5,7 @@
 #' @param upper_bound set an upper bound for the last bind, defaults to Inf
 #' @param quiet whether to give additonal information regarding bins and assigned range for each
 #' @param between defaults to NULL, a special case of setting all inside the specified range
+#' @param return_range return the range for each bin rather than the bin itself
 #' @details
 #' Given a set of quantiles/bins/etc established from a separate dataset, it can 
 #' be useful to assign the same bins to new or simulated data for comparisons
@@ -20,7 +21,8 @@
 #' above as 2. See the examples for more details
 #' @export
 set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf, quiet = TRUE,
-                     between = NULL ) {
+                     between = NULL,
+                     return_range=FALSE) {
   breaks <- breaks[order(breaks)]
   
   if (!is.null(between)) {
@@ -58,7 +60,9 @@ set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = 
       message(paste("BIN:", i-1, "range:", lower[i], "-", upper[i]))
     }
   }
-  
+  if(return_range) {
+     x_bins <- factor(xbins, labels = paste0(lower, "-", upper))
+  }
   return(x_bins)
   
   }
