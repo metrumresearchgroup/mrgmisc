@@ -61,7 +61,11 @@ set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = 
     }
   }
   if(return_range) {
-     x_bins <- factor(x_bins, labels = paste0("(", lower, "-", upper, "]"))
+    # TODO: fix return_range to work properly with dplyr 
+    # currently it will overwrite the bin ranges for the first grouping variable
+    # over all the other groups as well
+    stop("currently removed as is buggy when dealing with groups in dplyr, will fix")
+    # x_bins <- factor(x_bins, labels = paste0("(", lower, "-", upper, "]"))
   }
   return(x_bins)
   
