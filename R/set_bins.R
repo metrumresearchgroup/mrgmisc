@@ -61,7 +61,7 @@ set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = 
     }
   }
   if(return_range) {
-     x_bins <- factor(xbins, labels = paste0(lower, "-", upper))
+     x_bins <- factor(x_bins, labels = paste0("(", lower, "-", upper, "]"))
   }
   return(x_bins)
   
