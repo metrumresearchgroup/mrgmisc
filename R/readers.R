@@ -141,7 +141,7 @@ capture_sep <- function(lines) {
 #' @export
 read_nonmem <- function(path, header = TRUE, sep = "auto") {
   if(!requireNamespace("readr",quietly = TRUE)) {
-    stop("Need readr, please install with devtools::install_github(\"hadley/readr\")")
+    stop("Need readr, please install with install.packages(\"readr\")")
   }
   lines <- readr::read_lines(path)
   if(sep == "auto") {
@@ -162,18 +162,5 @@ read_nonmem <- function(path, header = TRUE, sep = "auto") {
     
     output <- readr::read_csv(file =lines, col_names = FALSE, na = ".")
   }
-  return(output) # because clean_nm randomly adds one extra line
-  # so temp fix until remove trailing \n
-}
-
-
-#' @export
-#' @rdname read_phx
-read_table <- function(...) {
-  warning("read table in PKPDmisc is depreciated as read_table is a function in the
-          new readr package by hadley wickham and did not want to cause conflicts
-          with packges being loaded.")
-  warning("read_table has been replaced with read_phx/read_nonmem for specifically 
-          reading files from the respective programs.")
-  read_phx(...)
+  return(output) 
 }
