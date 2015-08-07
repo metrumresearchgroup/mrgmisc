@@ -5,7 +5,7 @@
 \title{given a set of bin ranges, assign each value to a bin}
 \usage{
 set_bins(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf,
-  quiet = TRUE, between = NULL)
+  quiet = TRUE, between = NULL, return_range = FALSE)
 }
 \arguments{
 \item{x}{numeric vector to assign bins}
@@ -19,6 +19,8 @@ set_bins(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf,
 \item{quiet}{whether to give additonal information regarding bins and assigned range for each}
 
 \item{between}{defaults to NULL, a special case of setting all inside the specified range}
+
+\item{return_range}{return the range for each bin rather than the bin itself}
 }
 \description{
 given a set of bin ranges, assign each value to a bin

@@ -4,9 +4,9 @@
 \alias{base_theme}
 \title{A theme with better default values for pharmacometric plots, especially conc-time}
 \usage{
-base_theme(legend_text = 14, legend_title = 16, axis_title_x = 14,
-  axis_title_y = axis_title_x, axis_text_x = 12,
-  axis_text_y = axis_text_x, strip_text_x = 16,
+base_theme(legend_text = 10, legend_title = 12, axis_title_x = 12,
+  axis_title_y = axis_title_x, axis_text_x = 10,
+  axis_text_y = axis_text_x, strip_text_x = 12,
   strip_text_y = strip_text_x)
 }
 \arguments{
