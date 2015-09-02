@@ -33,7 +33,7 @@ Works well in tandem with the dplyr package and `do` verb
 \dontrun{
 library(PKPDdatasets)
 sd_oral_richpk \%>\% group_by(ID) \%>\%
-do(data.frame(NCA(.$Time, .$Conc, .$Dose)))
+do(data.frame(nca(.$Time, .$Conc, .$Dose)))
 }
 }
 
