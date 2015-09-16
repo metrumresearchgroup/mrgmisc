@@ -2,14 +2,11 @@
 % Please edit documentation in R/readers.R
 \name{read_phx}
 \alias{read_phx}
-\alias{read_table}
 \title{to more easily read data with a 2nd row with units common to phx data}
 \usage{
 read_phx(data, skip = 0, header = TRUE, sep = "auto",
   stringsAsFactors = FALSE, has_units = FALSE, fread = TRUE,
   data.table = FALSE, ...)
-
-read_table(...)
 }
 \arguments{
 \item{data}{the name of the csv}

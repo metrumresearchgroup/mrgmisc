@@ -90,12 +90,3 @@ auc_inf <-function(idv,
   return(setNames(AUC.inf, paste0("AUC0_inf")))
 
 }
-
-#' @rdname auc_inf
-#' @param ... args to pass to auc_inf
-#' @export
-AUC_inf <- function(...) {
-  warning("AUC_inf is depreciated and will be removed in future versions,
-          please use auc_inf (all lowercase)")
-  auc_inf(...)
-}

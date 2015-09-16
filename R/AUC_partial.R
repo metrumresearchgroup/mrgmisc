@@ -59,12 +59,3 @@ auc_partial <-function(idv,
 
   
 }
-
-#' @rdname auc_partial
-#' @param ... args to pass to auc_partial
-#' @export
-AUC_partial <- function(...) {
-  warning("AUC_partial is depreciated and will be removed in future versions,
-          please use auc_partial (all lowercase)")
-  auc_partial(...)
-}
