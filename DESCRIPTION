@@ -27,5 +27,5 @@ Suggests:
     rmarkdown,
     testthat,
     xpose4
-License: MIT + File License
+License: MIT + file LICENSE
 VignetteBuilder: knitr
