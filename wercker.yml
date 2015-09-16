@@ -2,6 +2,7 @@ box: rocker/hadleyverse
 build:
   steps:
     - jimhester/r-dependencies
+        github_packages: dpastoor/PKPDdatasets
     - jimhester/r-check
     - jimhester/r-lint
     - jimhester/r-coverage
