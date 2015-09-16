@@ -4,6 +4,5 @@ build:
     - jimhester/r-dependencies:
       github_packages: dpastoor/PKPDdatasets hadley/purrr
     - jimhester/r-check
-    - jimhester/r-lint
     - jimhester/r-coverage
     
