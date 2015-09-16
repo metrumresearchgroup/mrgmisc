@@ -17,7 +17,7 @@ Works very well in context of dplyr to carry out last-observation-carried-foward
 for different individuals. It will NOT replace leading NA's
 }
 \examples{
-/dontrun {
+\dontrun{
 fill_forward(c(1.0, NA, 2))
 fill_forward(c(NA, 1, NA, 2))
 library(dplyr)

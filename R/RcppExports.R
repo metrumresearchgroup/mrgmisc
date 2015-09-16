@@ -10,7 +10,7 @@ clean_nonmem <- function(x, sep) {
 #' @details
 #' Works very well in context of dplyr to carry out last-observation-carried-foward
 #' for different individuals. It will NOT replace leading NA's
-#' @examples /dontrun {
+#' @examples \dontrun{
 #' fill_forward(c(1.0, NA, 2))
 #' fill_forward(c(NA, 1, NA, 2))
 #' library(dplyr)
@@ -27,7 +27,7 @@ fill_backward <- function(x) {
 #' @details
 #' Works very well in context of dplyr to carry out last-observation-carried-foward
 #' for different individuals. It will NOT replace leading NA's
-#' @examples /dontrun {
+#' @examples \dontrun{
 #' fill_forward(c(1.0, NA, 2))
 #' fill_forward(c(NA, 1, NA, 2))
 #' library(dplyr)
@@ -45,7 +45,7 @@ fill_forward <- function(x) {
 #' useful for safety analyses where an event may be defined as a certain change
 #' in a biomarker, so need to see how the current measurement compares to the minimum
 #' value up to that point
-#' @examples /dontrun {
+#' @examples \dontrun{
 #'min_through(c(4, 3, 3, 2, 4, 1))
 #'min_through(c(NA, 2))
 #' }
@@ -60,7 +60,7 @@ min_through <- function(x) {
 #' useful for safety analyses where an event may be defined as a certain change
 #' in a biomarker, so need to see how the current measurement compares to the maximum
 #' value up to that point
-#' @examples /dontrun {
+#' @examples \dontrun{
 #'max_through(c(4, 3, 3, 2, 5, 1))
 #'max_through(c(NA, 2, 1, 4, 2))
 #' }
