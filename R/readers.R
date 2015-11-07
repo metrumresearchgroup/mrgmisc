@@ -131,7 +131,7 @@ capture_sep <- function(lines) {
 #' @param path path to file
 #' @param header whether header with column names exists
 #' @param sep automatically detected by default, however can tell by default. 
-#' @param col_name name of column to detect which rows contain header(s)
+#' @param example_name name of column to detect which rows contain header(s)
 #' @details 
 #' This function is designed specifically for handling nonmem's nonstandard output format, and
 #' is especially useful for simulation tables output with NSUB as it will appropriately parse out
