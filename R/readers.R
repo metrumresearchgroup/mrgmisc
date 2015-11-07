@@ -131,6 +131,7 @@ capture_sep <- function(lines) {
 #' @param path path to file
 #' @param header whether header with column names exists
 #' @param sep automatically detected by default, however can tell by default. 
+#' @param col_name name of column to detect which rows contain header(s)
 #' @details 
 #' This function is designed specifically for handling nonmem's nonstandard output format, and
 #' is especially useful for simulation tables output with NSUB as it will appropriately parse out
@@ -140,7 +141,7 @@ capture_sep <- function(lines) {
 #' no NSUB, then the `read_phx()` function will likely be slightly faster. This should only be an issue
 #' for large (at least 20 MB) files, else the difference will be imperceptible. 
 #' @export
-read_nonmem <- function(path, header = TRUE, sep = "auto") {
+read_nonmem <- function(path, header = TRUE, sep = "auto", example_name = NULL) {
   if(!requireNamespace("readr",quietly = TRUE)) {
     stop("Need readr, please install with install.packages(\"readr\")")
   }
@@ -149,14 +150,22 @@ read_nonmem <- function(path, header = TRUE, sep = "auto") {
     sep <- capture_sep(lines[1:5])
   }
    if(header) {
-     col_name <- stringr::str_trim(capture_colnames(lines))
+     col_name <- stringr::str_trim(capture_colnames(lines[1:5]))
     if (sep == "auto") {
       col_name <- stringr::str_replace_all(col_name, "\\s+", ",")
     } else {
       col_name <- stringr::str_replace_all(col_name, " ", "")
     }
    }
-  lines <- clean_nonmem(lines, sep =sep)
+  # if no default col_name start with 
+  header_name <- ifelse(is.null(example_name), 
+                            ifelse(header, 
+                                   ## grab first column name from col_name
+                                   stringr::str_split(col_name, ",")[[1]][[1]], 
+                 # give default of ID if nothing specified in header or col_name
+                                   "ID"), 
+                        example_name)
+  lines <- clean_nonmem(lines, sep =sep, colname = header_name)
   if(header) {
     output <- readr::read_csv(file = paste0(col_name,"\n", lines), na = ".")
   } else {
