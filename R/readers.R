@@ -103,7 +103,8 @@ read_phx <- function(data,
 return(dat)
 }
 
-capture_colnames <- function(x, strip_flags = c("TABLE", "ID", "DV", "MDV", "EVID")) {
+capture_colnames <- function(x, strip_flags = c("TABLE", "ID", "DV", "MDV", "EVID", 
+                                                "KA", "CL", "V", "REP", "ETA", "THETA")) {
   no_table <- strip_flags[!(strip_flags %in% "TABLE")]
   flags <- paste0(no_table, collapse = "|")
   
