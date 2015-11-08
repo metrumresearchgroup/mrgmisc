@@ -1,5 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/dpastoor/PKPDmisc/badge.svg)](https://coveralls.io/r/dpastoor/PKPDmisc)
-
+[![wercker status](https://app.wercker.com/status/96e246fc3e13f11190f75df5e7a2786a/m "wercker status")](https://app.wercker.com/project/bykey/96e246fc3e13f11190f75df5e7a2786a)
 
 PKPDmisc
 ========
