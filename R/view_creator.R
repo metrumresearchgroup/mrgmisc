@@ -8,7 +8,7 @@
 #' return a dataframe with return = T/F. The value of returning a function is
 #' view<x> can be embedded in a data pipeline to output intermediate results
 #' as well, while continuing on the pipeline
-#' @examples /dontrun {
+#' @examples \dontrun{
 #' path <- "~/Repos/dataView" # dataView shiny app location
 #' view2 <- view_creator(path)
 #' View2(Theoph) # will save a file Theoph.rds in dataView
