@@ -13,20 +13,11 @@ devtools::install_github("dpastoor/PKPDmisc")
 devtools::install_github("dpastoor/PKPDdatasets")
 ```
 
-NOTE: the most) recent version of Rcpp `Rcpp (>= 0.11.5)`, so please check to make sure a suitable version is installed.
+NOTE: a recent version of Rcpp `Rcpp (>= 0.11.5)`, so please check to make sure a suitable version is installed.
 
 This can be checked via:
 ```
 packageVersion("Rcpp")
 ```
 
-
 The CRAN release should be sufficient, and can be installed with `install.packages("Rcpp")` to make sure the most updated version is installed.
-
-## Optional enhanced nonmem function(s)
-
-If you would like to use the function `read_nonmem()` to quickly parse nonmem simulation tables, you must *also* install `readr` via:
-
-```
-install.packages("readr")
-```
