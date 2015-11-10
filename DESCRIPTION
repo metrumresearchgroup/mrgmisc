@@ -1,7 +1,7 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make pharmacometric analyses easier
-Version: 0.3.5
+Version: 0.4
 Date: 2015-11-07
 Authors@R: c(
     person("Devin", "Pastoor",
