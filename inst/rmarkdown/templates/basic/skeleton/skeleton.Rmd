@@ -13,10 +13,14 @@ output: html_document
 setwd(paste0(getwd(), "/<PATH>"))
 ```
 
-```{r libraries}
+```{r libraries, warning=FALSE, message=FALSE}
 # required libraries
 library("PKPDmisc")
+library("knitr")
+```
 
+```{r globalsettings}
+opts_chunk$set(fig.height = 6, fig.width = 10, dpi = 300)
 ```
 
 ```{r readdata}
