@@ -42,10 +42,10 @@ set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = 
   }
   
   if (breaks[1] > lower_bound && !is.null(lower_bound)) {
-    breaks[1] <- lower_bound
+    breaks <- c(lower_bound, breaks)
   } 
   if (breaks[length(breaks)] < upper_bound && !is.null(upper_bound)) {
-    breaks[length(breaks)] <- upper_bound 
+    breaks <- c(breaks, upper_bound)
   } 
     
   if(length(breaks) ==1) breaks <- c(-Inf, breaks, Inf)

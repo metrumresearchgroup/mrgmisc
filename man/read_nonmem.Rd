@@ -4,7 +4,7 @@
 \alias{read_nonmem}
 \title{read nonmem files easily}
 \usage{
-read_nonmem(path, header = TRUE, sep = "auto")
+read_nonmem(path, header = TRUE, sep = "auto", example_name = NULL)
 }
 \arguments{
 \item{path}{path to file}
@@ -12,6 +12,8 @@ read_nonmem(path, header = TRUE, sep = "auto")
 \item{header}{whether header with column names exists}
 
 \item{sep}{automatically detected by default, however can tell by default.}
+
+\item{example_name}{name of column to detect which rows contain header(s)}
 }
 \description{
 read nonmem files easily
