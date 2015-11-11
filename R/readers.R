@@ -157,10 +157,10 @@ read_nonmem <- function(path, header = TRUE, sep = "auto") {
    }
   lines <- clean_nonmem(lines, sep =sep)
   if(header) {
-    output <- readr::read_csv(file = paste0(col_name,"\n", lines), na = ".")
+    output <- suppressWarnings(readr::read_csv(file = paste0(col_name,"\n", lines), na = "."))
   } else {
     
-    output <- readr::read_csv(file =lines, col_names = FALSE, na = ".")
+    output <- suppressWarnings(readr::read_csv(file =lines, col_names = FALSE, na = "."))
   }
   return(output) 
 }
