@@ -15,22 +15,15 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 NumericVector fill_backward(NumericVector x) {
   int n = x.size();
-  NumericVector out = NumericVector(n, NumericVector::get_na());
-  for (int i = 0; i < n; ++i) {
+  double stored_val = NA_REAL;
+  for (int i = n-1; i >= 0; --i) {
     if (R_IsNA(x[i])) {
-      for (int j = i+1; j < n; ++j) {
-       if(R_IsNA(x[j])) {
-         continue;
-       } else {
-         out[i] = x[j];
-         break;
-       } 
-      }
+        x[i] = stored_val;
     } else { //not NA
-      out[i] = x[i];
+      stored_val = x[i];
     }
   }
-  return out;
+  return x;
 }
 
 
