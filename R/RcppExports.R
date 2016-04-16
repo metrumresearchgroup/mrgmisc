@@ -68,6 +68,10 @@ max_through <- function(x) {
     .Call('PKPDmisc_max_through', PACKAGE = 'PKPDmisc', x)
 }
 
+padLeft <- function(strings, numChars, paddingChar) {
+    .Call('PKPDmisc_padLeft', PACKAGE = 'PKPDmisc', strings, numChars, paddingChar)
+}
+
 replace_chars <- function(strings, values, replacement) {
     .Call('PKPDmisc_replace_chars', PACKAGE = 'PKPDmisc', strings, values, replacement)
 }

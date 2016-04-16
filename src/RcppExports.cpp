@@ -62,6 +62,19 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// padLeft
+std::vector< std::string > padLeft(std::vector< std::string > strings, int numChars, std::string paddingChar);
+RcppExport SEXP PKPDmisc_padLeft(SEXP stringsSEXP, SEXP numCharsSEXP, SEXP paddingCharSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< std::vector< std::string > >::type strings(stringsSEXP);
+    Rcpp::traits::input_parameter< int >::type numChars(numCharsSEXP);
+    Rcpp::traits::input_parameter< std::string >::type paddingChar(paddingCharSEXP);
+    __result = Rcpp::wrap(padLeft(strings, numChars, paddingChar));
+    return __result;
+END_RCPP
+}
 // replace_chars
 std::vector<std::string> replace_chars(std::vector<std::string> strings, std::vector<std::string> values, std::vector<std::string> replacement);
 RcppExport SEXP PKPDmisc_replace_chars(SEXP stringsSEXP, SEXP valuesSEXP, SEXP replacementSEXP) {
