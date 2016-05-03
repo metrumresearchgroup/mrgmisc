@@ -20,7 +20,7 @@
 #' and those values will be assigned to bin 1, with all values below as 0 and all values
 #' above as 2. See the examples for more details
 #' @export
-set_bins <- function(x, breaks = quantile(x), lower_bound = -Inf, upper_bound = Inf, quiet = TRUE,
+set_bins <- function(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf, upper_bound = Inf, quiet = TRUE,
                      between = NULL,
                      return_range=FALSE) {
   breaks <- breaks[order(breaks)]
