@@ -21,8 +21,7 @@
 #' above as 2. See the examples for more details
 #' @export
 set_bins <- function(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf, upper_bound = Inf, quiet = TRUE,
-                     between = NULL,
-                     return_range=FALSE) {
+                     between = NULL) {
   breaks <- breaks[order(breaks)]
   
   if (!is.null(between)) {
@@ -60,14 +59,16 @@ set_bins <- function(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf, upp
       message(paste("BIN:", i-1, "range:", lower[i], "-", upper[i]))
     }
   }
-  if(return_range) {
-    # TODO: fix return_range to work properly with dplyr 
-    # currently it will overwrite the bin ranges for the first grouping variable
-    # over all the other groups as well
-    stop("currently removed as is buggy when dealing with groups in dplyr, will fix")
-    # x_bins <- factor(x_bins, labels = paste0("(", lower, "-", upper, "]"))
-  }
   return(x_bins)
   
   }
 
+set_bins_df <- function(.df, 
+                        .x, 
+                        breaks = quantile(.x, na.rm=T),  
+                        lower_bound = -Inf, 
+                        upper_bound = Inf, 
+                        quiet = TRUE,
+                        between = NULL) {
+  
+}
