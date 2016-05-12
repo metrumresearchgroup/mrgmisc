@@ -6,6 +6,7 @@
 #' @param quiet whether to give additonal information regarding bins and assigned range for each
 #' @param between defaults to NULL, a special case of setting all inside the specified range
 #' @param return_range return the range for each bin rather than the bin itself
+#' @param inclusive include max value of largest user defined bin even though lower bins are non-inclusive
 #' @details
 #' Given a set of quantiles/bins/etc established from a separate dataset, it can 
 #' be useful to assign the same bins to new or simulated data for comparisons
@@ -21,7 +22,7 @@
 #' above as 2. See the examples for more details
 #' @export
 set_bins <- function(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf, upper_bound = Inf, quiet = TRUE,
-                     between = NULL) {
+                     between = NULL, inclusive = TRUE) {
   breaks <- breaks[order(breaks)]
   
   if (!is.null(between)) {
@@ -46,11 +47,20 @@ set_bins <- function(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf, upp
   if (breaks[length(breaks)] < upper_bound && !is.null(upper_bound)) {
     breaks <- c(breaks, upper_bound)
   } 
-    
+  
+  if (inclusive) {
+    top_user_bin_index <- ifelse(upper_bound == Inf, length(breaks) - 1, length(breaks))
+    top_bin <- breaks[top_user_bin_index]
+    breaks[top_user_bin_index] <- top_bin + top_bin*0.0001
+  }
+
+ 
   if(length(breaks) ==1) breaks <- c(-Inf, breaks, Inf)
   
   lower <- breaks[-length(breaks)]
   upper <- breaks[-1]
+  
+  
   x_bins <- set_bins_cpp(x, lower, upper)
   if(!quiet) {
     message(paste0("there were ", length(lower), "bins calculated, with the following
@@ -70,5 +80,13 @@ set_bins_df <- function(.df,
                         upper_bound = Inf, 
                         quiet = TRUE,
                         between = NULL) {
-  
+  .df 
+
 }
+
+
+
+library(PKPDdatasets)
+library(dplyr)
+dat <- sd_oral_richpk %>% capitalize_names()
+dat %>% group_by(GENDER) %>% do(data.frame(q = quantile(.$CONC)))
