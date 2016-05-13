@@ -8,5 +8,5 @@
 #' jprint("hello", result)
 #' @export
 jprint <- function(..., sep = " ") {
-  print(str_c(..., sep = sep))
+  message(stringr::str_c(..., sep = sep))
 }
