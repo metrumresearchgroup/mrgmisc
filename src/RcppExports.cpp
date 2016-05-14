@@ -5,6 +5,19 @@
 
 using namespace Rcpp;
 
+// auc_partial_cpp
+double auc_partial_cpp(NumericVector time, NumericVector dv, NumericVector range);
+RcppExport SEXP PKPDmisc_auc_partial_cpp(SEXP timeSEXP, SEXP dvSEXP, SEXP rangeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    Rcpp::traits::input_parameter< NumericVector >::type time(timeSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type dv(dvSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type range(rangeSEXP);
+    __result = Rcpp::wrap(auc_partial_cpp(time, dv, range));
+    return __result;
+END_RCPP
+}
 // clean_nonmem
 std::string clean_nonmem(std::vector<std::string> x, std::string sep, std::string colname);
 RcppExport SEXP PKPDmisc_clean_nonmem(SEXP xSEXP, SEXP sepSEXP, SEXP colnameSEXP) {
