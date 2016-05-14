@@ -6,7 +6,7 @@ df_rep <- function(df, reps) {
   for(i in 1:reps) {
     big_df[[i]] <- df %>% mutate(REP = i)
   }
-  out <- dplyr::rbind_all(big_df)
+  out <- dplyr::bind_rows(big_df)
   return(out)
 }
 bigdf <- df_rep(sd_oral_richpk, 1000)
@@ -35,12 +35,20 @@ f_c <- function(df) {
     summarize(pauc_c = pauc(Time, Conc, c(0, max(Time))))
   
 }
+f_cpp <- function(df) {
+  df %>% group_by(ID, REP) %>% 
+    summarize(pauc_c = auc_partial_cpp(Time, Conc, c(0, max(Time))))
+  
+}
 bm <- microbenchmark(f_r(bigdf),
                      f_r(meddf),
                      f_r(smalldf),
                      f_c(bigdf),
                      f_c(meddf),
                      f_c(smalldf),
+                     f_cpp(bigdf),
+                     f_cpp(meddf),
+                     f_cpp(smalldf),
                    times=10L, unit = 's')
 
 write.csv(bigdf, "~/Repos/misc-datasets/bigconc.csv", row.names=F)
