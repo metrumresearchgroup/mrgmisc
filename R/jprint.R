@@ -1,12 +1,34 @@
 #' print multiple values joined together
 #' @param ... variadic parameter to of objects to combine
-#' @param sep separator value
+#' @param sep_atomic separator value between each atomic element
+#' @param sep_vector separator value for collapsed vectors
 #' @details print can only take one value to be printed, this function j(oined)print
 #'  provides a wrapper to obviate the need to do print(paste0(...)) type work-arounds
+#'  
+#'  This is especially valuable for messages where output can be single element or
+#'  a vector/list (for example, a list of missing column names), as the 
+#'  internal vector/list can be collapsed to a single string via a different
+#'  pattern than how the various elements are combined.
 #' @examples 
 #' result <- "world"
 #' jprint("hello", result)
+#' 
+#' missing_cols <- c("WT", "HT", "OCC") #would normally actually calculate this
+#' jprint("missing columns: ", missing_cols)
+#' jprint("missing columns: ", missing_cols, sep_vector=";")
+#' jprint("missing cols", missing_cols, sep_atomic=":")
+
 #' @export
-jprint <- function(..., sep = " ") {
-  message(stringr::str_c(..., sep = sep))
+jprint <- function(..., sep_atomic = " ", sep_vector = ", ") {
+  elements <- list(...)
+  
+  flattened_elements <- lapply(elements, unlist, recursive = TRUE) %>%
+    lapply(function(x) {
+      if (length(x) > 1) {
+        return(paste0(x, collapse = sep_vector))
+      }
+      return(x)
+    })
+  message(paste0(flattened_elements, collapse = sep_atomic))
 }
+
