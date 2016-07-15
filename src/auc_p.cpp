@@ -22,9 +22,10 @@ double auc_partial_cpp(NumericVector time, NumericVector dv, NumericVector range
   int n = time.size();
   int pauc = 0;
   // will become the min value
-  for(int i = 0; i < n; ++i) {
-    Rcout << i;
-    if(time[i] > max_time) {
+  // one less than final index as need to reference the i+1 index
+  // in the summation calculation
+  for(int i = 0; i < n-1; ++i) {
+    if(time[i+1] > max_time) {
       return(pauc);
     }
     if (time[i] < min_time) {
@@ -37,9 +38,7 @@ double auc_partial_cpp(NumericVector time, NumericVector dv, NumericVector range
     if (R_IsNA(dv[i])) {
       return(NA_REAL);
     } 
-    Rcpp::Rcout << pauc;
     pauc += (dv[i] + dv[i+1])*(time[i+1] - time[i])/2;
-    Rcpp::Rcout << pauc;
       
   }
   return pauc;
