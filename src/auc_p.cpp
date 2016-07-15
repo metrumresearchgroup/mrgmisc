@@ -20,7 +20,7 @@ double auc_partial_cpp(NumericVector time, NumericVector dv, NumericVector range
   double min_time = range[0];
   double max_time = range[1];
   int n = time.size();
-  int pauc = 0;
+  double pauc = 0;
   // will become the min value
   // one less than final index as need to reference the i+1 index
   // in the summation calculation
