@@ -33,7 +33,7 @@ stratify_df <- function(df,
   if(nleft != 0) {
     ifelse(nleft > 0, {
       extras <- dplyr::sample_n(df, size = nleft)
-      sample <- rbind(sample, extras)
+      sample <- dplyr::bind_rows(sample, extras)
     }, {
       removals <- sample.int(nsample, abs(nleft))
            sample <- sample[-removals,]

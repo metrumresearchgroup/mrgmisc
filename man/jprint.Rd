@@ -4,12 +4,14 @@
 \alias{jprint}
 \title{print multiple values joined together}
 \usage{
-jprint(..., sep = " ")
+jprint(..., sep_atomic = " ", sep_vector = ", ")
 }
 \arguments{
 \item{...}{variadic parameter to of objects to combine}
 
-\item{sep}{separator value}
+\item{sep_atomic}{separator value between each atomic element}
+
+\item{sep_vector}{separator value for collapsed vectors}
 }
 \description{
 print multiple values joined together
@@ -17,9 +19,19 @@ print multiple values joined together
 \details{
 print can only take one value to be printed, this function j(oined)print
  provides a wrapper to obviate the need to do print(paste0(...)) type work-arounds
+ 
+ This is especially valuable for messages where output can be single element or
+ a vector/list (for example, a list of missing column names), as the 
+ internal vector/list can be collapsed to a single string via a different
+ pattern than how the various elements are combined.
 }
 \examples{
 result <- "world"
 jprint("hello", result)
+
+missing_cols <- c("WT", "HT", "OCC") #would normally actually calculate this
+jprint("missing columns: ", missing_cols)
+jprint("missing columns: ", missing_cols, sep_vector=";")
+jprint("missing cols", missing_cols, sep_atomic=":")
 }
 
