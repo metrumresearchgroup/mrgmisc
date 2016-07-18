@@ -24,38 +24,16 @@ auc_partial <-function(idv,
                        range = c(0, Inf)
                        ){
   if(!is.numeric(idv) || !is.numeric(dv) || !is.numeric(range)) {
-    stop("time, dv/dv, and range inputs must all be numeric")
+    stop("idv, dv, and range inputs must all be numeric")
   }
-  tfirst <- range[1]
-  tlast <- range[2]
-  
-  idv<- idv
-  dv <- dv[idv >= tfirst]
-  idv <- idv[idv >= tfirst]
-  if(length(idv) == 0) {
-    warning("no observations in requested time range")
-    return(setNames(NA, paste0("pAUC", tfirst, "-", tlast)))
+  if(length(idv) != length(dv)) {
+    stop("idv and dv columns must be equal lengths, maybe you filtered NA's only in one?")
   }
-  partial.time <- length(idv[idv <= tlast])
-  
-  time.points <- length(idv)
-  #check to make sure partial time legit option
-  ###need to add warning
-  
-  aucp <- vector("numeric", partial.time-1)
-  
-
-  for(i in 1:(partial.time-1)){
-    aucp[i]<-(dv[i]+dv[i+1])*(idv[i+1]-idv[i])/2
+  if (length(range) != 2 || range[1] > range[2]) {
+    stop("range must be a numeric vector containing a low then high(er) value")
   }
-  
-  #calculate the starting part of AUC
-  auc.start <-0
-  #if(time[1]!=0) auc.start <-time[1]*dv[1]/2 # need to check validity of this start calculation
-
-  AUC.partial <- sum(aucp) + auc.start
-
-  return(setNames(AUC.partial, paste0("pAUC", tfirst, "-", tlast)))
-
-  
+  aucp <- auc_partial_cpp(idv, dv, range)
+  tlast <- ifelse(range[2] == Inf, "tlast", range[2])
+  # dplyr select NSE does not always like "-" so using "_" 
+  return(setNames(aucp, paste0("pAUC", range[1], "_", tlast)))
 }
