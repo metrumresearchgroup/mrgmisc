@@ -1,21 +1,21 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make pharmacometric analyses easier
-Version: 0.4.3
+Version: 0.4.4
 Date: 2016-04-16 
 Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
 Description: Collection of functions for making PKPD analysis easier
 Depends:
-    R (>= 3.1.2)
+    R (>= 3.2.2)
 LinkingTo: Rcpp,
     BH
 Imports:
     Rcpp (>= 0.11.5),
     ggplot2,
     reshape2,
-    dplyr (>= 0.4.2),
+    dplyr (>= 0.4.3),
     lazyeval,
     data.table,
     stringr,

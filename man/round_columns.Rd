@@ -9,21 +9,29 @@ round_columns(df, col_list)
 \arguments{
 \item{df}{data frame}
 
-\item{col_list}{list of columns and number of digits to round}
+\item{col_list}{list of vectors of columns and number of digits to round each}
 }
 \description{
 round columns
 }
+\details{
+col_list should contain a list of list tuples, where the first element
+is a vector of column names to round, and the second value should be the number
+of digits to round to
+}
 \examples{
 \dontrun{
 library(PKPDdatasets)
-col_list <- list(list("AGE", 1), 
-list("WEIGHT", 2),
-list("SCREATININE", 2),
-list("SERUMALT", 2),
-list("DELDBP", 2),
-list("DELSBP", 2))
-round_columns(aht_trial2, col_list)
+col_list <- list(
+list("AGE", 1), 
+list(c("WEIGHT",
+       "SCREATININE",
+       "SERUMALT", 
+       "DELDBP",
+       "DELSBP"),
+     2)
+ )
+aht_trial_rounded <- round_columns(aht_trial2, col_list)
 }
 }
 
