@@ -72,21 +72,3 @@ set_bins <- function(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf, upp
   return(x_bins)
   
   }
-
-set_bins_df <- function(.df, 
-                        .x, 
-                        breaks = quantile(.x, na.rm=T),  
-                        lower_bound = -Inf, 
-                        upper_bound = Inf, 
-                        quiet = TRUE,
-                        between = NULL) {
-  .df 
-
-}
-
-
-
-library(PKPDdatasets)
-library(dplyr)
-dat <- sd_oral_richpk %>% capitalize_names()
-dat %>% group_by(GENDER) %>% do(data.frame(q = quantile(.$CONC)))
