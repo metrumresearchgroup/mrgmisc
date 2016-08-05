@@ -61,23 +61,37 @@ stratify_df <- function(df,
 #' if you would like to see how many times a particular individual was resampled you can 
 #' check the original ID column against the number of key's associated with that ID number.
 #' @examples \dontrun{
+#' library(PKPDmisc)
 #' library(PKPDdatasets)
-#' resample_df(sd_oral_richpk, key_cols = "ID", strat_cols = "Gender", 10)
+#' library(dplyr)
 #' 
-#' # make 'simulated' data with 5 replicates
-#' rep_dat <- rbind_all(lapply(1:5, function(x) sd_oral_richpk %>%
-#' filter(ID < 20) %>% 
-#'   mutate(REP = x)))
+#' # simple example resampling by ID maintaining Gender distribution, with 10 individuals
+#' resample_df(sd_oral_richpk, key_cols = "ID", strat_cols = "Gender", n = 10)
+#' 
+#' # for a more complex example lets resample "simulated" data with multiple replicates
+#' subset_data <- sd_oral_richpk %>%
+#'    filter(ID < 20)
+#'    
+#' # make 'simulated' data with 5 replicates and combine to single dataframe
+#' rep_dat <- lapply(1:5, function(x) {
+#' subset_data %>% 
+#'   mutate(REP = x)
+#'   }) %>% bind_rows()
+#' 
+#' # now when we resample we also want to maintain the ID+REP relationship as resampling
+#' # just the ID would give all rows associated for an ID with all reps, rather than 
+#' # a single "unit" of ID/REP
 #' resample_df(rep_dat, key_cols = c("ID", "REP"))
 #' 
 #' # check to see that stratification is maintained
-#' rep_dat %>% group_by(Gender) %>% summarize(n = n())
+#' rep_dat %>% group_by(Gender) %>% tally
 #' resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols="Gender") %>%
-#'   group_by(Gender) %>% summarize(n = n())
+#'   group_by(Gender) %>% tally
 #'   
-#' rep_dat %>% group_by(Gender, Race) %>% summarize(n = n())
+#' rep_dat %>% group_by(Gender, Race) %>% tally
+#' 
 #' resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race")) %>%
-#'   group_by(Gender, Race) %>% summarize(n = n())
+#'   group_by(Gender, Race) %>% tally
 #' }
 #' @export
 resample_df <- function(df, 
@@ -86,17 +100,19 @@ resample_df <- function(df,
                         n = NULL,
                         key_col_name = "KEY",
                         replace = TRUE) {
+  # checks
+  if (is.numeric(strat_cols)) {
+    stop("strat_cols must be a character vector or string representing column names, 
+         perhaps you were trying to specify the number to sample? If so, you must
+         expicitly specify n = <num> if no strat_cols are specified in order to distinguish
+         your intention")
+  }
+  
   names <- c(key_col_name,names(df))
   key <- get_key(df, key_cols)
-  if(!is.character(strat_cols) & !is.null(strat_cols)) {
-    stop(paste("strat_cols should be character vector of column names!\n", 
-         "This could also be because you have put a numerical value for n
-         without properly defining it. Please explicitly state n = <number of desired keys>"))
-  }
   if(is.null(n)) n <- nrow(key)
   
   if(is.null(strat_cols)) {
-
     sample <- dplyr::sample_n(key, size = n, replace=replace)
     sample[[key_col_name]] <- 1:n
   } else {
