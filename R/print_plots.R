@@ -7,6 +7,28 @@
 #' In addition, by controlling the start number, you can further trim the pdf
 #' to slice out the extra pages generated from the output but keep a nicely
 #' numbered plot appendix
+#' @examples \dontrun{
+#' library(dplyr)
+#' library(PKPDmisc)
+#' library(PKPDdatasets)
+#' 
+#' # given we may only plot a subset of individuals per plot
+#' # and generate multiple plots, lets split the dataframe 
+#' list_of_ids <- sd_oral_richpk %>% capitalize_names() %>%
+#' mutate(plotnum = ids_per_plot(ID)) %>% # default 9 per plot
+#' split(.$plotnum)
+#' 
+#' # now we want to plot each subplot
+#' plot_list <- list_of_ids %>%
+#' lapply(function(df) {
+#'  df %>%
+#'    ggplot(aes(x = TIME, y = CONC, group = ID)) +
+#'    geom_line() + facet_wrap(~ID)
+#' })
+#' 
+#' # to print these out (with one plot per page on pdf)
+#' print_plots(plot_list)
+#' }
 print_plots <- function(.ggplot_list, .start_page_number = 1) {
   .last <- length(.ggplot_list)
   .ggplot_list %>% seq_along() %>% lapply(function(p) {
