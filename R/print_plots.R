@@ -1,0 +1,30 @@
+#' create a list of plots cleanly with extra pdf functionality
+#' @param .ggplot_list list of ggplot plots
+#' @param .start_page_number pdf-only starting page number for plots
+#' @details 
+#' Especially for pdf, this can allow the generation of clean pdf pages
+#' with only plots, no code, warnings, etc. for all pages related to the plots. 
+#' In addition, by controlling the start number, you can further trim the pdf
+#' to slice out the extra pages generated from the output but keep a nicely
+#' numbered plot appendix
+print_plots <- function(.ggplot_list, .start_page_number = 1) {
+  .last <- length(.ggplot_list)
+  .ggplot_list %>% seq_along() %>% lapply(function(p) {
+    # make sure new page before first plot for pdf
+    if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "latex") {
+      if (p == 1) {
+        cat("\\newpage")
+        cat(paste0("\\setcounter{page}{", .start_page_number, "}"))
+      }
+    }
+    cat('\r\n\r\n')
+    suppressWarnings(suppressMessages(print(.ggplot_list[[p]])))
+    if (opts_knit$get("rmarkdown.pandoc.to") == "latex") {
+      # want after last page to do a full page break
+      if (p == .last) {
+        cat("\\newpage")
+      }
+    }
+    return(NULL)
+  })
+}
