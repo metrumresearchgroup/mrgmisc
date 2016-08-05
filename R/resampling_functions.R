@@ -102,10 +102,12 @@ resample_df <- function(df,
                         replace = TRUE) {
   # checks
   if (is.numeric(strat_cols)) {
-    stop("I see you are trying to give a numeric value for strat_cols,
-         perhaps you were trying to specify the number to sample instead? If so, you must
-         expicitly specify n = <num> if no strat_cols are specified in order to distinguish
-         your intention. For example resample_df(Theoph, 'Subject', n = 20 )")
+    message("It looks you are trying to give a numeric value for strat_cols, 
+ perhaps you were trying to specify the number to sample instead? 
+ If no strat_cols are specified you must explicitly specify 'n = ...' 
+ For example resample_df(Theoph, 'Subject', n = 20 )")
+    message("-----------------------------------")
+    stop("To set the number of samples please explicitly specify 'n = <num>'.")
   }
   
   names <- c(key_col_name,names(df))
