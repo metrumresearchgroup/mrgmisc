@@ -25,13 +25,14 @@ if some individuals dropped out early and do not have all observations other
 individuals have.
 }
 \examples{
-\dontrun{
+library(PKPDmisc)
 library(PKPDdatasets)
 library(dplyr)
-df <- capitalize_names(sd_oral_richpk)
-df2 <- rename(sd_oral_richpk, idv = Time, dv = Conc)
-df \%>\% group_by(ID) \%>\% summarize(pAUC0_10 = auc_partial(TIME, DV, c(0,10)))
-df2 \%>\% group_by(ID) \%>\% summarize(auc0_tlast = auc_partial(idv, dv, c(0, Inf))) # gives auc 0 to tlast
+df <- capitalize_names(sd_oral_richpk) # has TIME and CONC as column names
+df \%>\% group_by(ID) \%>\% summarize(pAUC0_10 = auc_partial(TIME, CONC, c(0,10)))
+df \%>\% group_by(ID) \%>\% summarize(auc0_tlast = auc_partial(idv, dv)) # gives auc 0 to tlast
 }
+\seealso{
+\code{\link{s_pauc}}
 }
 

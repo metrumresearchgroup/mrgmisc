@@ -20,6 +20,7 @@ with only plots, no code, warnings, etc. for all pages related to the plots.
 In addition, by controlling the start number, you can further trim the pdf
 to slice out the extra pages generated from the output but keep a nicely
 numbered plot appendix
+<<<<<<< HEAD
 }
 \examples{
 \dontrun{
@@ -44,5 +45,7 @@ lapply(function(df) {
 # to print these out (with one plot per page on pdf)
 print_plots(plot_list)
 }
+=======
+>>>>>>> 346973c051acc55a9d1eb27a5d8a9f4304b62471
 }
 
