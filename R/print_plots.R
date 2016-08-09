@@ -29,11 +29,13 @@
 #' # to print these out (with one plot per page on pdf)
 #' print_plots(plot_list)
 #' }
+#' @export
 print_plots <- function(.ggplot_list, .start_page_number = 1) {
   .last <- length(.ggplot_list)
   .ggplot_list %>% seq_along() %>% lapply(function(p) {
     # make sure new page before first plot for pdf
-    if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "latex") {
+    is_knitting_pdf <- isTRUE(knitr::opts_knit$get("rmarkdown.pandoc.to") == "latex")
+    if (is_knitting_pdf) {
       if (p == 1) {
         cat("\\newpage")
         cat(paste0("\\setcounter{page}{", .start_page_number, "}"))
@@ -41,7 +43,7 @@ print_plots <- function(.ggplot_list, .start_page_number = 1) {
     }
     cat('\r\n\r\n')
     suppressWarnings(suppressMessages(print(.ggplot_list[[p]])))
-    if (opts_knit$get("rmarkdown.pandoc.to") == "latex") {
+    if (is_knitting_pdf) {
       # want after last page to do a full page break
       if (p == .last) {
         cat("\\newpage")
