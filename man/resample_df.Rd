@@ -34,10 +34,9 @@ if you would like to see how many times a particular individual was resampled yo
 check the original ID column against the number of key's associated with that ID number.
 }
 \examples{
-\dontrun{
 library(PKPDmisc)
 library(PKPDdatasets)
-library(dplyr)
+library(dplyr, quiet = TRUE)
 
 # simple example resampling by ID maintaining Gender distribution, with 10 individuals
 resample_df(sd_oral_richpk, key_cols = "ID", strat_cols = "Gender", n = 10)
@@ -66,6 +65,5 @@ rep_dat \%>\% group_by(Gender, Race) \%>\% tally
 
 resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race")) \%>\%
   group_by(Gender, Race) \%>\% tally
-}
 }
 
