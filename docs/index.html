@@ -57,21 +57,78 @@
 
 <p>miscellaneous functions for use in pharmacometric analyses</p>
 
+<h2>Key Functions</h2>
+
+<h3>Data Ingestion</h3>
+
+<ul>
+<li><a href="http://devinpastoor.com/PKPDmisc/read_nonmem.html">read_nonmem</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/read_phx.html">read_phx</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/read_xpdb.html">read_xpdb</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/write_nonmem.html">write_nonmem</a></li>
+</ul>
+
+<h3>Data Manipulation</h3>
+
+<ul>
+<li><a href="http://devinpastoor.com/PKPDmisc/as_numeric.html">as_numeric</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/fill_backwards.html">fill_backwards</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/fill_forward.html">fill_forward</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/ids_per_plot.html">ids_per_plot</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/max_through.html">max_through</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/min_through.html">min_through</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/set_bins.html">set_bins</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/unique_non_numerics.html">unique_non_numerics</a></li>
+</ul>
+
+<h3>Summaries</h3>
+
+<ul>
+<li><a href="http://devinpastoor.com/PKPDmisc/s_cmax.html">s_cmax</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/s_pauc.html">s_pauc</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/s_quantiles.html">s_quantiles</a></li>
+</ul>
+
+<h3>Formatting</h3>
+
+<ul>
+<li><a href="http://devinpastoor.com/PKPDmisc/capitalize_names.html">capitalize_names</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/lowercase_names.html">lowercase_names</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/char_to_numeric.html">char_to_numeric</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/cols_to_numeric.html">cols_to_numeric</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/ordinal_to_binary_.html">ordinal<em>to_binary</em></a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/replace_dots.html">replace_dots</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/pad_left.html">pad_left</a></li>
+</ul>
+
+<h3>Visuals</h3>
+
+<h3>Pharmacometrics-specific</h3>
+
+<ul>
+<li><a href="http://devinpastoor.com/PKPDmisc/auc_inf.html">auc_inf</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/auc_partial.html">auc_partial</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/resample_df.html">resample_df</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/strip_curves.html">strip_curves</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/wam.html">wam</a></li>
+</ul>
+
+<h3>Other miscellaneous</h3>
+
+<ul>
+<li><a href="http://devinpastoor.com/PKPDmisc/jprint.html">jprint</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/view_creator.html">view_creator</a></li>
+<li><a href="http://devinpastoor.com/PKPDmisc/peek.html">peek</a></li>
+</ul>
+
+<h2>Installation information</h2>
+
 <p>To install, make sure devtools and Rtools (under windows) is installed then do:</p>
 
-<pre><code>devtools::install_github(&quot;dpastoor/PKPDmisc&quot;)
-# many examples can be replicated with data from the PKPDdatasets package
+<pre><code># many examples can be replicated with data from the PKPDdatasets package
 devtools::install_github(&quot;dpastoor/PKPDdatasets&quot;)
+devtools::install_github(&quot;dpastoor/PKPDmisc&quot;)
 </code></pre>
-
-<p>NOTE: a recent version of Rcpp <code>Rcpp (&gt;= 0.11.5)</code>, so please check to make sure a suitable version is installed.</p>
-
-<p>This can be checked via:</p>
-
-<pre><code>packageVersion(&quot;Rcpp&quot;)
-</code></pre>
-
-<p>The CRAN release should be sufficient, and can be installed with <code>install.packages(&quot;Rcpp&quot;)</code> to make sure the most updated version is installed.</p>
 
   </div>
 
