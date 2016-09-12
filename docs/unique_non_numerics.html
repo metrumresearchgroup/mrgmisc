@@ -82,16 +82,22 @@ with <code>replace_char_flags</code> instead of using nested ifelse statements</
     </div>
     
     <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
-<span class="comment"># dv &lt;- c(1, 2, 4, "88 (excluded)", "bql", "*")</span>
-<span class="comment"># unique_non_numerics(dv)</span>
-<span class="comment"># df &lt;- data.frame(ID = 1:3, DV = c("BQL", 0.5, 9), stringsAsFactors=F)</span>
-<span class="comment"># unique_non_numerics(df$DV)</span>
-<span class="comment"># </span>
-<span class="comment"># #using dplyr</span>
-<span class="comment"># library(dplyr)</span>
-<span class="comment"># df %&gt;% filter(!(DV %in% unique_non_numerics(DV)))</span>
-<span class="comment">## ---------------------------------------------</span></div></pre>
+    <pre class="examples"><div class='input'><span class="symbol">dv</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">1</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">,</span> <span class="number">4</span><span class="keyword">,</span> <span class="string">"88 (excluded)"</span><span class="keyword">,</span> <span class="string">"bql"</span><span class="keyword">,</span> <span class="string">"*"</span><span class="keyword">)</span>
+<span class="functioncall"><a href='unique_non_numerics.html'>unique_non_numerics</a></span><span class="keyword">(</span><span class="symbol">dv</span><span class="keyword">)</span></div>
+<div class='output'>[1] &quot;88 (excluded)&quot; &quot;bql&quot;           &quot;*&quot;            
+</div>
+<div class='input'><span class="symbol">df</span> <span class="assignement">&lt;-</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/data.frame'>data.frame</a></span><span class="keyword">(</span><span class="argument">ID</span> <span class="argument">=</span> <span class="number">1</span><span class="keyword">:</span><span class="number">3</span><span class="keyword">,</span> <span class="argument">DV</span> <span class="argument">=</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"BQL"</span><span class="keyword">,</span> <span class="number">0.5</span><span class="keyword">,</span> <span class="number">9</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">stringsAsFactors</span><span class="argument">=</span><span class="symbol">F</span><span class="keyword">)</span>
+<span class="functioncall"><a href='unique_non_numerics.html'>unique_non_numerics</a></span><span class="keyword">(</span><span class="symbol">df</span><span class="keyword">$</span><span class="symbol">DV</span><span class="keyword">)</span></div>
+<div class='output'>[1] &quot;BQL&quot;
+</div>
+<div class='input'>
+<span class="comment">#using dplyr</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/library'>library</a></span><span class="keyword">(</span><span class="symbol">dplyr</span><span class="keyword">)</span>
+<span class="symbol">df</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/dplyr/topics/filter'>filter</a></span><span class="keyword">(</span><span class="keyword">!</span><span class="keyword">(</span><span class="symbol">DV</span> <span class="keyword">%in%</span> <span class="functioncall"><a href='unique_non_numerics.html'>unique_non_numerics</a></span><span class="keyword">(</span><span class="symbol">DV</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>  ID  DV
+1  2 0.5
+2  3   9
+</div></pre>
   </div>
   <div class="span4 sidebar">
     <!-- <ul>

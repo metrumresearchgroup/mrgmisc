@@ -18,9 +18,7 @@ in a biomarker, so need to see how the current measurement compares to the maxim
 value up to that point
 }
 \examples{
-\dontrun{
 max_through(c(4, 3, 3, 2, 5, 1))
 max_through(c(NA, 2, 1, 4, 2))
-}
 }
 

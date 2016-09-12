@@ -6,10 +6,9 @@ using namespace Rcpp;
 //' useful for safety analyses where an event may be defined as a certain change
 //' in a biomarker, so need to see how the current measurement compares to the minimum
 //' value up to that point
-//' @examples \dontrun{
+//' @examples 
 //'min_through(c(4, 3, 3, 2, 4, 1))
 //'min_through(c(NA, 2))
-//' }
 //' @export
 // [[Rcpp::export]]
 NumericVector min_through(NumericVector x) {
@@ -37,10 +36,9 @@ NumericVector min_through(NumericVector x) {
 //' useful for safety analyses where an event may be defined as a certain change
 //' in a biomarker, so need to see how the current measurement compares to the maximum
 //' value up to that point
-//' @examples \dontrun{
+//' @examples 
 //'max_through(c(4, 3, 3, 2, 5, 1))
 //'max_through(c(NA, 2, 1, 4, 2))
-//' }
 //' @export
 // [[Rcpp::export]]
 NumericVector max_through(NumericVector x) {

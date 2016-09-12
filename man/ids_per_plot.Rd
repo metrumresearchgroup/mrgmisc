@@ -16,26 +16,6 @@ split IDs into groups to use for subsequent plotting
 }
 \details{
 works very well with hadley wickham's purrr package to create a column
-to split on then subsequently plot
-}
-\examples{
-\dontrun{
-library(PKPDdatasets)
-sd_oral_richpk$IDBIN <- ids_per_plot(sd_oral_richpk$ID)
-library(dplyr)
-sd_oral_richpk <- sd_oral_richpk \%>\% mutate(IDBIN = ids_per_plot(ID, 16))
-library(purrr)
-sid <- sd_oral_richpk \%>\% group_by(ID) \%>\% split(.[["IDBIN"]])
-
-library(ggplot2)
-p_split_id <- function(df) {
-  p <- ggplot(df, aes(x = Time, y = Conc)) + 
-    geom_point() + geom_line() + facet_wrap(~ID) + base_theme()
-  suppressWarnings(print(p))
-  return(p)
-}
-
-sid \%>\% map(p_split_id)
-}
+to split on then subsequently plot, see \code{vignette("Multiplot")} for details
 }
 

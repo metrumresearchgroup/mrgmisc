@@ -75,30 +75,10 @@
       <h2>Details</h2>
 
       <p>works very well with hadley wickham&#39;s purrr package to create a column
-to split on then subsequently plot</p>
+to split on then subsequently plot, see <code>vignette(&quot;Multiplot&quot;)</code> for details</p>
 
     </div>
-    
-    <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
-<span class="comment"># library(PKPDdatasets)</span>
-<span class="comment"># sd_oral_richpk$IDBIN &lt;- ids_per_plot(sd_oral_richpk$ID)</span>
-<span class="comment"># library(dplyr)</span>
-<span class="comment"># sd_oral_richpk &lt;- sd_oral_richpk %&gt;% mutate(IDBIN = ids_per_plot(ID, 16))</span>
-<span class="comment"># library(purrr)</span>
-<span class="comment"># sid &lt;- sd_oral_richpk %&gt;% group_by(ID) %&gt;% split(.[["IDBIN"]])</span>
-<span class="comment"># </span>
-<span class="comment"># library(ggplot2)</span>
-<span class="comment"># p_split_id &lt;- function(df) {</span>
-<span class="comment">#   p &lt;- ggplot(df, aes(x = Time, y = Conc)) + </span>
-<span class="comment">#     geom_point() + geom_line() + facet_wrap(~ID) + base_theme()</span>
-<span class="comment">#   suppressWarnings(print(p))</span>
-<span class="comment">#   return(p)</span>
-<span class="comment"># }</span>
-<span class="comment"># </span>
-<span class="comment"># sid %&gt;% map(p_split_id)</span>
-<span class="comment">## ---------------------------------------------</span></div></pre>
-  </div>
+      </div>
   <div class="span4 sidebar">
     <!-- <ul>
       <li>ids_per_plot</li>

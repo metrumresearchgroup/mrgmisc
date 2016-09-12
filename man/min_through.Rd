@@ -18,9 +18,7 @@ in a biomarker, so need to see how the current measurement compares to the minim
 value up to that point
 }
 \examples{
-\dontrun{
 min_through(c(4, 3, 3, 2, 4, 1))
 min_through(c(NA, 2))
-}
 }
 

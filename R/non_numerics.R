@@ -8,7 +8,6 @@
 #' with \code{replace_char_flags} instead of using nested ifelse statements
 #' @export
 #' @examples
-#' \dontrun{
 #' dv <- c(1, 2, 4, "88 (excluded)", "bql", "*")
 #' unique_non_numerics(dv)
 #' df <- data.frame(ID = 1:3, DV = c("BQL", 0.5, 9), stringsAsFactors=F)
@@ -17,7 +16,6 @@
 #' #using dplyr
 #' library(dplyr)
 #' df %>% filter(!(DV %in% unique_non_numerics(DV)))
-#' }
 #' @seealso \code{\link{replace_values}}: to use to replace non-numeric values
 #' in a dataframe.
 unique_non_numerics <- function(x, na.rm = TRUE) {

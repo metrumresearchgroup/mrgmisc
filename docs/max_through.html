@@ -79,10 +79,12 @@ value up to that point</p>
     </div>
     
     <h2 id="examples">Examples</h2>
-    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
-<span class="comment"># max_through(c(4, 3, 3, 2, 5, 1))</span>
-<span class="comment"># max_through(c(NA, 2, 1, 4, 2))</span>
-<span class="comment">## ---------------------------------------------</span></div></pre>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='max_through.html'>max_through</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">4</span><span class="keyword">,</span> <span class="number">3</span><span class="keyword">,</span> <span class="number">3</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">,</span> <span class="number">5</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>[1] 4 4 4 4 5 5
+</div>
+<div class='input'><span class="functioncall"><a href='max_through.html'>max_through</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">NA</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">,</span> <span class="number">1</span><span class="keyword">,</span> <span class="number">4</span><span class="keyword">,</span> <span class="number">2</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>[1] NA  2  2  4  4
+</div></pre>
   </div>
   <div class="span4 sidebar">
     <!-- <ul>
