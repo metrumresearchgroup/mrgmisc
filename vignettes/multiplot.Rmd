@@ -4,7 +4,7 @@ author: "Devin Pastoor"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Multiplot}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
@@ -18,17 +18,9 @@ library(purrr) # dataset to handle lists
 suppressMessages(suppressWarnings(library(dplyr)))
 ```
 
-All packages (except for ggplot) are only available on github
-
-```
-devtools::install_github("dpastoor/PKPDdatasets",
-              "dpastoor/PKPDmisc", 
-              "hadley/purrr")
-
-```
 
 ```{r}
-dat <- sd_oral_richpk
+dat <- sd_oral_richpk %>% filter(ID <= 20)
 ```
 
 Messy plot can't see individuals well
@@ -45,13 +37,16 @@ What we'd like to be able to do is split up into 'bins' of specified numbers of 
 # this will automatically create a column of bins such that the
 # specified number of individuals is in each bin, in this case
 # 9 ids per bin
-dat$IDBINS <- ids_per_plot(dat$ID)
 
 # split the original dataset into subdatasets corresponding to each bin (list of dataframes)
-split_dat <- dat %>% split(.[["IDBINS"]])
+split_dat <- dat %>% 
+  mutate(PLOTS = ids_per_plot(ID, 4)) %>% # default is 9 per subplot
+  split(.[["PLOTS"]])
 ```
 
-To handle plotting each subdataframe, you need to wrap your normal ggplot into a function. You will then apply this function with `map` to each subdataframe. So in this case it is just like a normal plot, but wrapped up in a function, which takes 1 argument (the dataframe) and outputs the plot
+To handle plotting each subdataframe, you need to wrap your normal ggplot into a function.
+You will then apply this function with `map` to each subdataframe. 
+So in this case it is just like a normal plot, but wrapped up in a function, which takes 1 argument (the dataframe) and outputs the plot
 
 ```{r}
 p_conc_time <- function(df) {
@@ -68,5 +63,24 @@ To apply the above function we use `map` from `purrr`
 split_dat %>% map(p_conc_time) 
 ```
 
-notice no quotes needed on the function
 
+As you can notice from the vignette, there is still a code-based output separating each subplot, which is
+not ideal for reporting. As such, there is a special function `print_plots` in PKPDmisc
+that will clean up the output slightly. It also automatically restarts the page numbering if knitting to PDF
+to page 1, making it each to extract only the pages related to plots to embed cleanly in other reports.
+
+To use `print_plots` we want to save the ggplot output (rather than let it be printed directly) and 
+give that to print plots.
+
+```{r}
+plot_list <- split_dat %>% map(p_conc_time) 
+```
+
+```{r}
+print_plots(plot_list)
+```
+
+
+```{r}
+devtools::session_info()
+```

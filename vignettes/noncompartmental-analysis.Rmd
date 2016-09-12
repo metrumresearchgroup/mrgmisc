@@ -71,4 +71,6 @@ paucs %>% ungroup() %>% s_quantiles(pAUC0_24, probs = c(0, 0.25, 0.5, 0.75, 1))
 paucs %>% ungroup() %>% s_quantiles_("pAUC0_24", probs = c(0, 0.25, 0.5, 0.75, 1))
 ```
 
-
+```{r}
+devtools::session_info()
+```
