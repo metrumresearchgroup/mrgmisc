@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>read_xpdb. PKPDmisc 0.4.4.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">PKPDmisc 0.4.4.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>read xpose tables to xpose database and save and compress as RDS</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='read_xpdb.html'>read_xpdb</a></span><span class="keyword">(</span><span class="symbol">runno</span><span class="keyword">,</span> <span class="argument">table.names</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="string">"sdtab"</span><span class="keyword">,</span> <span class="string">"mutab"</span><span class="keyword">,</span> <span class="string">"patab"</span><span class="keyword">,</span> <span class="string">"catab"</span><span class="keyword">,</span> <span class="string">"cotab"</span><span class="keyword">,</span>
+  <span class="string">"mytab"</span><span class="keyword">,</span> <span class="string">"extra"</span><span class="keyword">,</span> <span class="string">"xptab"</span><span class="keyword">,</span> <span class="string">"cwtab"</span><span class="keyword">)</span><span class="keyword">,</span> <span class="argument">RDS_name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/paste'>paste0</a></span><span class="keyword">(</span><span class="string">"xpdb"</span><span class="keyword">,</span> <span class="symbol">runno</span><span class="keyword">)</span><span class="keyword">,</span>
+  <span class="argument">rm_tabs</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>runno</dt>
+      <dd>run number</dd>
+      <dt>table.names</dt>
+      <dd>table names for xpose.data to search for</dd>
+      <dt>RDS_name</dt>
+      <dd>name of RDS save file</dd>
+      <dt>rm_tabs</dt>
+      <dd>logical value to delete output tables after saving to xpdb</dd>
+      <dt>...</dt>
+      <dd>arguments to pass to xpose.data</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>read xpose tables to xpose database and save and compress as RDS</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
+<span class="comment"># read_xpdb("001") # would save a file xpdb001.rds</span>
+<span class="comment">## ---------------------------------------------</span></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>read_xpdb</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

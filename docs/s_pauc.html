@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>s_pauc_. PKPDmisc 0.4.4.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">PKPDmisc 0.4.4.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>summarize paucs</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='s_pauc.html'>s_pauc_</a></span><span class="keyword">(</span><span class="symbol">df</span><span class="keyword">,</span> <span class="symbol">idv</span><span class="keyword">,</span> <span class="symbol">dv</span><span class="keyword">,</span> <span class="symbol">paucs</span><span class="keyword">,</span> <span class="argument">digits</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">)</span>
+
+<span class="functioncall"><a href='s_pauc.html'>s_pauc</a></span><span class="keyword">(</span><span class="symbol">df</span><span class="keyword">,</span> <span class="symbol">idv</span><span class="keyword">,</span> <span class="symbol">dv</span><span class="keyword">,</span> <span class="symbol">paucs</span><span class="keyword">,</span> <span class="argument">digits</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">Inf</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>df</dt>
+      <dd>data frame</dd>
+      <dt>idv</dt>
+      <dd>string name for time column for pauc slice</dd>
+      <dt>dv</dt>
+      <dd>string name for dependent variable column (eg. dv or cobs)</dd>
+      <dt>paucs</dt>
+      <dd>list of ranges for pauc calculation</dd>
+      <dt>digits</dt>
+      <dd>number of decimals to round result before returning</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>summarize paucs</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/library'>library</a></span><span class="keyword">(</span><span class="symbol">PKPDdatasets</span><span class="keyword">)</span>
+<span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/library'>library</a></span><span class="keyword">(</span><span class="symbol">dplyr</span><span class="keyword">)</span>
+<span class="symbol">sd_oral_richpk</span>  <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/dplyr/topics/group_by'>group_by</a></span><span class="keyword">(</span><span class="symbol">ID</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='s_pauc.html'>s_pauc</a></span><span class="keyword">(</span><span class="symbol">Time</span><span class="keyword">,</span> <span class="symbol">Conc</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/list'>list</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">0</span><span class="keyword">,</span><span class="number">8</span><span class="keyword">)</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">8</span><span class="keyword">,</span> <span class="number">24</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>Source: local data frame [50 x 3]
+Groups: ID [?]
+
+      ID  pAUC0_8  pAUC8_24
+   &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1      1 204.2096 181.36634
+2      2 523.2355 680.25930
+3      3 315.8860 150.42555
+4      4 564.1666 655.46980
+5      5 301.9122 185.65587
+6      6 154.0215 141.22655
+7      7 393.2182 345.81371
+8      8 254.8853 198.88676
+9      9 286.1393 412.84688
+10    10 121.8113  39.63712
+# ... with 40 more rows
+</div>
+<div class='input'><span class="symbol">sd_oral_richpk</span>  <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/dplyr/topics/group_by'>group_by</a></span><span class="keyword">(</span><span class="symbol">ID</span><span class="keyword">)</span> <span class="keyword">%&gt;%</span> <span class="functioncall"><a href='s_pauc.html'>s_pauc_</a></span><span class="keyword">(</span><span class="string">"Time"</span><span class="keyword">,</span> <span class="string">"Conc"</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/list'>list</a></span><span class="keyword">(</span><span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">0</span><span class="keyword">,</span><span class="number">8</span><span class="keyword">)</span><span class="keyword">,</span> <span class="functioncall"><a href='http://www.rdocumentation.org/packages/base/topics/c'>c</a></span><span class="keyword">(</span><span class="number">8</span><span class="keyword">,</span> <span class="number">24</span><span class="keyword">)</span><span class="keyword">)</span><span class="keyword">)</span></div>
+<div class='output'>Source: local data frame [50 x 3]
+Groups: ID [?]
+
+      ID  pAUC0_8  pAUC8_24
+   &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1      1 204.2096 181.36634
+2      2 523.2355 680.25930
+3      3 315.8860 150.42555
+4      4 564.1666 655.46980
+5      5 301.9122 185.65587
+6      6 154.0215 141.22655
+7      7 393.2182 345.81371
+8      8 254.8853 198.88676
+9      9 286.1393 412.84688
+10    10 121.8113  39.63712
+# ... with 40 more rows
+</div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>s_pauc</li><li>s_pauc_</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

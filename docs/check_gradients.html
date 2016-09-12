@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>check_gradients. PKPDmisc 0.4.4.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">PKPDmisc 0.4.4.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>get gradients for nonmem run running via PSN</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='check_gradients.html'>check_gradients</a></span><span class="keyword">(</span><span class="symbol">runnum</span><span class="keyword">,</span> <span class="argument">wd</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">folder_str</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">".mod.dir.1"</span><span class="keyword">,</span>
+  <span class="argument">full_directory</span>&nbsp;<span class="argument">=</span>&nbsp;NULL<span class="keyword">,</span> <span class="argument">print</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">FALSE</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>runnum</dt>
+      <dd>Xpose-style run number</dd>
+      <dt>wd</dt>
+      <dd>relative directly location where PSN run results are output</dd>
+      <dt>folder_str</dt>
+      <dd>folder name besides run number</dd>
+      <dt>full_directory</dt>
+      <dd>can be specified if folder where gradient file stored non-traditional</dd>
+      <dt>print</dt>
+      <dd>print visual plot of gradients</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>get gradients for nonmem run running via PSN</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>by default, the working directory should be set to the location of .mod file associated with the run</p>
+
+      <p>the default folder structure anticipates runs were run via psn with nomenclature such as run001.mod -mod</p>
+
+      <p>has not been checked for side effects if have multiple runs with the same file name
+due to restarts or other changes</p>
+
+      <p>default to not print visual of gradients</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
+<span class="comment"># check_gradients(001)</span>
+<span class="comment"># check_gradients(001, wd = "~/ProjX/NONMEM")</span>
+<span class="comment"># check_gradients(001, folder_str = "modelfit_dir1")</span>
+<span class="comment"># check_gradients(001, full_directory = "~/user/ProjX/NONMEM/run001.mod.dir.1/NM_run2/psn.grd")</span>
+<span class="comment">## ---------------------------------------------</span></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>check_gradients</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>execute_curve_stripping. PKPDmisc 0.4.4.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">PKPDmisc 0.4.4.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>curve strip a dataframe with multiple IDs</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='execute_curve_stripping.html'>execute_curve_stripping</a></span><span class="keyword">(</span><span class="symbol">df</span><span class="keyword">,</span> <span class="argument">TIME_name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"TIME"</span><span class="keyword">,</span> <span class="argument">DV_name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"CONC"</span><span class="keyword">,</span>
+  <span class="argument">DOSE_name</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="string">"DOSE"</span><span class="keyword">,</span> <span class="symbol">number_terminal_points</span><span class="keyword">,</span> <span class="symbol">...</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>df</dt>
+      <dd>dataframe to curve strip</dd>
+      <dt>TIME_name</dt>
+      <dd>column name for time column</dd>
+      <dt>DV_name</dt>
+      <dd>column name for dependent variable column eg. conc</dd>
+      <dt>DOSE_name</dt>
+      <dd>column name for dose column</dd>
+      <dt>number_terminal_points</dt>
+      <dd>number of data points in terminal phase</dd>
+      <dt>...</dt>
+      <dd>additional args to be passed to strip_curves</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>curve strip a dataframe with multiple IDs</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>calculates the geometric mean by dose group then curve strips each mean
+expects 3 columns will be in dataset, the independent variable (eg time), 
+dependent variable (eg concentration), and a dose column with the dose given for each ID in all rows</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
+<span class="comment"># execute_curve_stripping(dat_IV, number_terminal_points =9)</span>
+<span class="comment"># execute_curve_stripping(dat_IV, "time", "CObs", "DOSE", number_terminal_points=6)</span>
+<span class="comment">## ---------------------------------------------</span></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>execute_curve_stripping</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

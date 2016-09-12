@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>print_plots. PKPDmisc 0.4.4.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">PKPDmisc 0.4.4.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>create a list of plots cleanly with extra pdf functionality</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='print_plots.html'>print_plots</a></span><span class="keyword">(</span><span class="symbol">.ggplot_list</span><span class="keyword">,</span> <span class="argument">.start_page_number</span>&nbsp;<span class="argument">=</span>&nbsp;<span class="number">1</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>.ggplot_list</dt>
+      <dd>list of ggplot plots</dd>
+      <dt>.start_page_number</dt>
+      <dd>pdf-only starting page number for plots</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>create a list of plots cleanly with extra pdf functionality</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>Especially for pdf, this can allow the generation of clean pdf pages
+with only plots, no code, warnings, etc. for all pages related to the plots. 
+In addition, by controlling the start number, you can further trim the pdf
+to slice out the extra pages generated from the output but keep a nicely
+numbered plot appendix</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
+<span class="comment"># library(dplyr)</span>
+<span class="comment"># library(PKPDmisc)</span>
+<span class="comment"># library(PKPDdatasets)</span>
+<span class="comment"># </span>
+<span class="comment"># # given we may only plot a subset of individuals per plot</span>
+<span class="comment"># # and generate multiple plots, lets split the dataframe </span>
+<span class="comment"># list_of_ids &lt;- sd_oral_richpk %&gt;% capitalize_names() %&gt;%</span>
+<span class="comment"># mutate(plotnum = ids_per_plot(ID)) %&gt;% # default 9 per plot</span>
+<span class="comment"># split(.$plotnum)</span>
+<span class="comment"># </span>
+<span class="comment"># # now we want to plot each subplot</span>
+<span class="comment"># plot_list &lt;- list_of_ids %&gt;%</span>
+<span class="comment"># lapply(function(df) {</span>
+<span class="comment">#  df %&gt;%</span>
+<span class="comment">#    ggplot(aes(x = TIME, y = CONC, group = ID)) +</span>
+<span class="comment">#    geom_line() + facet_wrap(~ID)</span>
+<span class="comment"># })</span>
+<span class="comment"># </span>
+<span class="comment"># # to print these out (with one plot per page on pdf)</span>
+<span class="comment"># print_plots(plot_list)</span>
+<span class="comment">## ---------------------------------------------</span></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>print_plots</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>

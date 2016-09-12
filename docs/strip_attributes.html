@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+<title>strip_attributes. PKPDmisc 0.4.4.9000</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.css" rel="stylesheet">
+<link href="css/highlight.css" rel="stylesheet">
+<link href="css/staticdocs.css" rel="stylesheet">
+
+<!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+  </head>
+
+  <body>
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="index.html">PKPDmisc 0.4.4.9000</a>
+      <div class="nav">
+        <ul class="nav">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reference.html">Reference</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <div class="container">
+      <header>
+        
+      </header>
+      
+      <h1>strip additional attributes that make dplyr fail</h1>
+
+<div class="row">
+  <div class="span8">
+    <h2>Usage</h2>
+    <pre><span class="functioncall"><a href='strip_attributes.html'>strip_attributes</a></span><span class="keyword">(</span><span class="symbol">df</span><span class="keyword">,</span> <span class="symbol">attr_names</span><span class="keyword">)</span></pre>
+    
+    <h2>Arguments</h2>
+    <dl>
+      <dt>df</dt>
+      <dd>dataframe</dd>
+      <dt>attr_names</dt>
+      <dd>names of attributes that you want to remove</dd>
+    </dl>
+    
+    <div class="Description">
+      <h2>Description</h2>
+
+      <p>strip additional attributes that make dplyr fail</p>
+
+    </div>
+
+    <div class="Details">
+      <h2>Details</h2>
+
+      <p>dplyr as of 0.4 still does not handle columns with non-generic attributes and
+will error out rather than ignoring them etc.
+This function will allow one to strip attribute names to allow the data frame to be
+used within the dplyr pipeline without issue.</p>
+
+      <p>This type of data is common when dealing with SAS datasets</p>
+
+    </div>
+    
+    <h2 id="examples">Examples</h2>
+    <pre class="examples"><div class='input'><span class="comment">## Not run: ------------------------------------</span>
+<span class="comment"># foo &lt;- data.frame(a = 1:5, b = 1:5, c=letters[1:5])</span>
+<span class="comment"># df &lt;- foo</span>
+<span class="comment"># attr(df$a, "label") &lt;- "col a"</span>
+<span class="comment"># attr(df$b, "label") &lt;- "col b"</span>
+<span class="comment"># attr(df$c, "label") &lt;- "col c"</span>
+<span class="comment"># </span>
+<span class="comment"># library(dplyr)</span>
+<span class="comment"># df %&gt;% filter(a %in% c(1, 2)) # will throw an error</span>
+<span class="comment"># df %&gt;% strip_attributes("label") %&gt;% filter(a %in% c(1, 2))</span>
+<span class="comment"># </span>
+<span class="comment"># attr(df$a, "notes") &lt;- "a note"</span>
+<span class="comment"># # now column a has attributes of label and notes</span>
+<span class="comment"># df %&gt;% strip_attributes(c("label", "notes")) %&gt;% filter(a %in% c(1, 2))</span>
+<span class="comment">## ---------------------------------------------</span></div></pre>
+  </div>
+  <div class="span4 sidebar">
+    <!-- <ul>
+      <li>strip_attributes</li>
+    </ul>
+    <ul>
+      
+    </ul> -->
+
+
+
+
+  </div>
+</div>
+      
+      <footer>
+      <p class="pull-right"><a href="#">Back to top</a></p>
+<p>Built by <a href="https://github.com/hadley/staticdocs">staticdocs</a>. Styled with <a href="https://getbootstrap.com/2.0.4/">bootstrap</a>.</p>
+      </footer>
+    </div>
+  </body>
+</html>
