@@ -4,10 +4,12 @@
 \alias{view_creator}
 \title{create view commands that save rds files to where a shiny app is listening for them}
 \usage{
-view_creator(path)
+view_creator(path, save_non_interactive = FALSE)
 }
 \arguments{
 \item{path}{path to shiny app directory}
+
+\item{save_non_interactive}{whether to save data as RDS file while non-interactive mode such as knitting}
 }
 \value{
 a function with the path set

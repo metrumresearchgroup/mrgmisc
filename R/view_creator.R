@@ -1,5 +1,6 @@
 #' create view commands that save rds files to where a shiny app is listening for them
 #' @param path path to shiny app directory
+#' @param save_non_interactive whether to save data as RDS file while non-interactive mode such as knitting
 #' @return a function with the path set
 #' @details 
 #' will, by default, set up to save RDS files to the shiny app to render them,
@@ -16,13 +17,15 @@
 #' View2(Theoph, return = F) # will not return Theoph as well
 #' }
 #' @export
-view_creator <- function(path) {
+view_creator <- function(path, save_non_interactive = FALSE) {
   return(function(.data, name = NULL, return = TRUE) {
     if(is.null(name)) {
       name <- deparse(substitute(.data))
     }
-    
-    saveRDS(.data, suppressWarnings(normalizePath(file.path(path, paste0(name, ".rds")))))
+     
+    if (interactive() || save_non_interactive) {
+      saveRDS(.data, suppressWarnings(normalizePath(file.path(path, paste0(name, ".rds")))))
+    } 
     
     if(return) {
       return(.data)
