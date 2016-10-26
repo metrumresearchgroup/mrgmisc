@@ -21,6 +21,10 @@ clean_nonmem <- function(x, sep, colname) {
     .Call('PKPDmisc_clean_nonmem', PACKAGE = 'PKPDmisc', x, sep, colname)
 }
 
+clean_phi <- function(x, sep, colname) {
+    .Call('PKPDmisc_clean_phi', PACKAGE = 'PKPDmisc', x, sep, colname)
+}
+
 #' given NA values fill them with the next non-na value
 #' @param x A numeric vector of values
 #' @details

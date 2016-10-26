@@ -31,6 +31,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// clean_phi
+std::string clean_phi(std::vector<std::string> x, std::string sep, std::string colname);
+RcppExport SEXP PKPDmisc_clean_phi(SEXP xSEXP, SEXP sepSEXP, SEXP colnameSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::string >::type sep(sepSEXP);
+    Rcpp::traits::input_parameter< std::string >::type colname(colnameSEXP);
+    rcpp_result_gen = Rcpp::wrap(clean_phi(x, sep, colname));
+    return rcpp_result_gen;
+END_RCPP
+}
 // fill_backward
 NumericVector fill_backward(NumericVector x);
 RcppExport SEXP PKPDmisc_fill_backward(SEXP xSEXP) {
