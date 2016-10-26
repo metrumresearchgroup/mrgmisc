@@ -27,7 +27,7 @@ execute_curve_stripping <- function(df, TIME_name = "TIME", DV_name = "CONC", DO
   names(df)[which(names(df) == DOSE_name)] <- "DOSE" 
   mean_IV <- df %>% dplyr::group_by(TIME, DOSE) %>% dplyr::summarize(geomean = exp(mean(log(CONC))))
   result <- mean_IV %>% dplyr::group_by(DOSE) %>% dplyr::do(strip_curves(TIME = .$TIME, .$geomean,DOSE = .$DOSE, number_terminal_points,...))
-  result %>% dplyr::group_by(DOSE) %>% dplyr::summarise_each(funs(mean))
+  result %>% dplyr::group_by(DOSE) %>% dplyr::summarise_each(dplyr::funs(mean))
 }
 
 
