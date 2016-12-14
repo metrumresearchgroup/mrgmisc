@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>resample_df. PKPDmisc</title>
+<title>resampling — resample_df â€¢ PKPDmisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,21 +58,23 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>resampling</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>resampling</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>resampling</p>
     
@@ -84,7 +82,7 @@
     <pre><span class='fu'>resample_df</span>(<span class='no'>df</span>, <span class='no'>key_cols</span>, <span class='kw'>strat_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>key_col_name</span> <span class='kw'>=</span> <span class='st'>"KEY"</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>df</dt>
       <dd>data frame</dd>
@@ -100,25 +98,24 @@
       <dd>whether to stratify with replacement</dd>
     </dl>
     
-    <div class="Details">
-      <h2>Details</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-      <p>This function is valuable when generating a large simulated population
+    <p>This function is valuable when generating a large simulated population
 where you goal is to create resampled sub-populations in addition to being able to
 maintain certain stratifications of factors like covariate distributions</p>
-      <p>A new keyed column will be created (defaults to name &#39;KEY&#39;) that contains the uniquely
+    <p>A new keyed column will be created (defaults to name &#39;KEY&#39;) that contains the uniquely
 created new samples. This allows one to easily compare against the key&#39;d columns. Eg,
 if you would like to see how many times a particular individual was resampled you can 
 check the original ID column against the number of key&#39;s associated with that ID number.</p>
-    </div>
     
-    <h2 id="examples">Examples</h2>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>PKPDmisc</span>)
 <span class='fu'>library</span>(<span class='no'>PKPDdatasets</span>)
 <span class='fu'>library</span>(<span class='no'>dplyr</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># simple example resampling by ID maintaining Gender distribution, with 10 individuals</span>
-<span class='fu'>resample_df</span>(<span class='no'>sd_oral_richpk</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='st'>"ID"</span>, <span class='kw'>strat_cols</span> <span class='kw'>=</span> <span class='st'>"Gender"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; # A tibble: 120 Ã— 10
+<span class='fu'>resample_df</span>(<span class='no'>sd_oral_richpk</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='st'>"ID"</span>, <span class='kw'>strat_cols</span> <span class='kw'>=</span> <span class='st'>"Gender"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; # A tibble: 120 × 10
 #&gt;      KEY    ID  Time   Amt     Conc      Age   Weight Gender      Race  Dose
 #&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fctr&gt;    &lt;fctr&gt; &lt;int&gt;
 #&gt; 1      1     5  0.00  5000  0.00000 50.86722 73.76395 Female Caucasian  5000
@@ -131,8 +128,7 @@ check the original ID column against the number of key&#39;s associated with tha
 #&gt; 8      1     5  6.00     0 25.56447 50.86722 73.76395 Female Caucasian  5000
 #&gt; 9      1     5  8.00     0 24.36807 50.86722 73.76395 Female Caucasian  5000
 #&gt; 10     1     5 12.00     0 17.26484 50.86722 73.76395 Female Caucasian  5000
-#&gt; # ... with 110 more rows
-#&gt; </div><div class='input'>
+#&gt; # ... with 110 more rows</div><div class='input'>
 <span class='co'># for a more complex example lets resample "simulated" data with multiple replicates</span>
 <span class='no'>subset_data</span> <span class='kw'>&lt;-</span> <span class='no'>sd_oral_richpk</span> <span class='kw'>%&gt;%</span>
    <span class='fu'>filter</span>(<span class='no'>ID</span> <span class='kw'>&lt;</span> <span class='fl'>20</span>)
@@ -146,7 +142,7 @@ check the original ID column against the number of key&#39;s associated with tha
 <span class='co'># now when we resample we also want to maintain the ID+REP relationship as resampling</span>
 <span class='co'># just the ID would give all rows associated for an ID with all reps, rather than </span>
 <span class='co'># a single "unit" of ID/REP</span>
-<span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>))</div><div class='output co'>#&gt; # A tibble: 1,140 Ã— 11
+<span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>))</div><div class='output co'>#&gt; # A tibble: 1,140 × 11
 #&gt;      KEY    ID  Time   Amt     Conc      Age   Weight Gender   Race  Dose   REP
 #&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;int&gt;
 #&gt; 1      1     8  0.00  5000  0.00000 56.69499 85.01492   Male  Asian  5000     5
@@ -159,21 +155,18 @@ check the original ID column against the number of key&#39;s associated with tha
 #&gt; 8      1     8  6.00     0 27.56513 56.69499 85.01492   Male  Asian  5000     5
 #&gt; 9      1     8  8.00     0 26.36640 56.69499 85.01492   Male  Asian  5000     5
 #&gt; 10     1     8 12.00     0 18.76405 56.69499 85.01492   Male  Asian  5000     5
-#&gt; # ... with 1,130 more rows
-#&gt; </div><div class='input'>
+#&gt; # ... with 1,130 more rows</div><div class='input'>
 <span class='co'># check to see that stratification is maintained</span>
-<span class='no'>rep_dat</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 Ã— 2
+<span class='no'>rep_dat</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 × 2
 #&gt;   Gender     n
 #&gt;   &lt;fctr&gt; &lt;int&gt;
 #&gt; 1 Female   300
-#&gt; 2   Male   840
-#&gt; </div><div class='input'><span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>), <span class='kw'>strat_cols</span><span class='kw'>=</span><span class='st'>"Gender"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>group_by</span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 Ã— 2
+#&gt; 2   Male   840</div><div class='input'><span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>), <span class='kw'>strat_cols</span><span class='kw'>=</span><span class='st'>"Gender"</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>group_by</span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 × 2
 #&gt;   Gender     n
 #&gt;   &lt;fctr&gt; &lt;int&gt;
 #&gt; 1 Female   300
-#&gt; 2   Male   840
-#&gt; </div><div class='input'>
+#&gt; 2   Male   840</div><div class='input'>
 <span class='no'>rep_dat</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Gender</span>, <span class='no'>Race</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; Source: local data frame [8 x 3]
 #&gt; Groups: Gender [?]
 #&gt; 
@@ -186,8 +179,7 @@ check the original ID column against the number of key&#39;s associated with tha
 #&gt; 5   Male     Black   180
 #&gt; 6   Male Caucasian    60
 #&gt; 7   Male  Hispanic   180
-#&gt; 8   Male     Other   300
-#&gt; </div><div class='input'>
+#&gt; 8   Male     Other   300</div><div class='input'>
 <span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>), <span class='kw'>strat_cols</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"Gender"</span>, <span class='st'>"Race"</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'>group_by</span>(<span class='no'>Gender</span>, <span class='no'>Race</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; Source: local data frame [8 x 3]
 #&gt; Groups: Gender [?]
@@ -201,15 +193,30 @@ check the original ID column against the number of key&#39;s associated with tha
 #&gt; 5   Male     Black   180
 #&gt; 6   Male Caucasian    60
 #&gt; 7   Male  Hispanic   180
-#&gt; 8   Male     Other   300
-#&gt; </div></pre>
+#&gt; 8   Male     Other   300</div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Devin Pastoor.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

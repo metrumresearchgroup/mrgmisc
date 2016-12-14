@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>s_cmax. PKPDmisc</title>
+<title>cmax summary function — s_cmax â€¢ PKPDmisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-topic">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,21 +58,23 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>cmax summary function</h1>
-</div>
+      <div class="row">
+  <div class="col-md-9 contents">
+    <div class="page-header">
+    <h1>cmax summary function</h1>
+    </div>
 
-<div class="row">
-  <div class="col-md-9">
     
     <p>cmax summary function</p>
     
@@ -84,7 +82,7 @@
     <pre><span class='fu'>s_cmax</span>(<span class='no'>df</span>, <span class='no'>DV</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>name</span> <span class='kw'>=</span> <span class='st'>"CMAX"</span>, <span class='kw'>carry</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>check_duplicates</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
-    <h2>Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
       <dt>df</dt>
       <dd>data frame. Can pass in grouped data frame to calculate by group</dd>
@@ -102,21 +100,20 @@ default = TRUE</dd>
 after calculation</dd>
     </dl>
     
-    <div class="Details">
-      <h2>Details</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-      <p>one trick for better performance is to turn off check duplicates
+    <p>one trick for better performance is to turn off check duplicates
 the function is already quite fast by using dplyr under the hood, but
 if used in a simulation context where it may be used over and over, turning
 this off will result in slightly better performance as it does not perform
 the additional calculations to check for duplicate entries.</p>
-      <p>The duplicates warning is due to the nature of cmax calculations often being used
+    <p>The duplicates warning is due to the nature of cmax calculations often being used
 in subsequent steps, either to see the time that cmax was reached, or for 
 further calculations. Duplicate values per group (eg ID) can lead to odd behavior
 in later calculations, thus duplicates are checked for and the user is warned by default.</p>
-    </div>
     
-    <h2 id="examples">Examples</h2>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
 <span class='co'># library(PKPDdatasets)</span>
 <span class='co'># pr_id &lt;- dplyr::group_by(pain_relief, ID)</span>
@@ -125,12 +122,28 @@ in later calculations, thus duplicates are checked for and the user is warned by
 <span class='co'># s_cmax(pr_id, "CONC", name = "max_conc") </span>
 <span class='co'>## ---------------------------------------------</span></div></pre>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
+
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Devin Pastoor.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 

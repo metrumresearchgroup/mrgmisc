@@ -6,11 +6,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference. PKPDmisc</title>
+<title>Function reference • PKPDmisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
-
 <!-- Bootstrap -->
 
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,6 +21,7 @@
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
+<script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
 
 <!-- mathjax -->
@@ -34,10 +34,9 @@
   </head>
 
   <body>
-    <div class="container">
+    <div class="container template-reference-index">
       <header>
-      
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
@@ -50,9 +49,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">Home</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
@@ -62,150 +58,340 @@
   <a href="../news/index.html">News</a>
 </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
         
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
+
       
       </header>
 
-      <div class="page-header">
-  <h1>Function reference <small>version&nbsp;0.4.4.9000</small></h1>
-</div>
-
-<div class="row">
+      <div class="row">
   <div class="col-md-9">
-    <div class="section ">
-      <h2>All functions</h2>
+    <div class="page-header">
+      <h1>Function reference</h1>
+      <h4>version&nbsp;0.4.4.9000</h4>
+    </div>
+
+    <div class="contents">
+      <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
       <p class="section-desc"></p>
 
-      <dl class="dl-horizontal">
-        <dt><a href="as_numeric.html">as_numeric</a></dt>
-        <dd>convert to numeric passing through character for safety</dd>
-        <dt><a href="auc_inf.html">auc_inf</a></dt>
-        <dd>Calculate AUCt-inf</dd>
-        <dt><a href="auc_partial_cpp.html">auc_partial_cpp</a></dt>
-        <dd>calculate partial AUC</dd>
-        <dt><a href="auc_partial.html">auc_partial</a></dt>
-        <dd>Calculate partial AUC</dd>
-        <dt><a href="base_theme.html">base_theme</a></dt>
-        <dd>A theme with better default values for pharmacometric plots, especially conc-time</dd>
-        <dt><a href="bring_to_front.html">bring_to_front</a></dt>
-        <dd>bring select columns to the front of a dataframe</dd>
-        <dt><a href="calculate_wam.html">calculate_wam</a></dt>
-        <dd>internal WAM function</dd>
-        <dt><a href="capitalize_names.html">capitalize_names</a></dt>
-        <dd>capitalize all names for a dataframe</dd>
-        <dt><a href="capture_groups.html">capture_groups</a></dt>
-        <dd>wrapper to capture groups from a grouped data frame</dd>
-        <dt><a href="char_to_numeric.html">char_to_numeric</a></dt>
-        <dd>convert all columns to numeric</dd>
-        <dt><a href="check_gradients.html">check_gradients</a></dt>
-        <dd>get gradients for nonmem run running via PSN</dd>
-        <dt><a href="color_pallete.html">color_pallete</a></dt>
-        <dd>design-quality color palletes to use in ggplot2</dd>
-        <dt><a href="cols_to_factor.html">cols_to_factor</a></dt>
-        <dd>convert column to type factor</dd>
-        <dt><a href="cols_to_numeric.html">cols_to_numeric</a></dt>
-        <dd>convert column to type numeric</dd>
-        <dt><a href="execute_curve_stripping.html">execute_curve_stripping</a></dt>
-        <dd>curve strip a dataframe with multiple IDs</dd>
-        <dt><a href="file_rows.html">file_rows</a></dt>
-        <dd>count number of rows in a file without needing to read file into R</dd>
-        <dt><a href="fill_backward.html">fill_backward</a></dt>
-        <dd>given NA values fill them with the next non-na value</dd>
-        <dt><a href="fill_forward.html">fill_forward</a></dt>
-        <dd>given NA values fill them with the final non-na value</dd>
-        <dt><a href="has_ext.html">has_ext</a></dt>
-        <dd>check for if the passed name has a file extension</dd>
-        <dt><a href="ids_per_plot.html">ids_per_plot</a></dt>
-        <dd>split IDs into groups to use for subsequent plotting</dd>
-        <dt><a href="jprint.html">jprint</a></dt>
-        <dd>print multiple values joined together</dd>
-        <dt><a href="lowercase_names.html">lowercase_names</a></dt>
-        <dd>lowercase all names for a dataframe</dd>
-        <dt><a href="max_through.html">max_through</a></dt>
-        <dd>give the max value up to that point</dd>
-        <dt><a href="min_through.html">min_through</a></dt>
-        <dd>give the min value up to that point</dd>
-        <dt><a href="nca.html">NCA</a></dt><dt><a href="nca.html">nca</a></dt>
-        <dd>calculate basic NCA parameters t1/2 Cl, Cmax etc</dd>
-        <dt><a href="new_report.html">new_report</a></dt>
-        <dd>a better new rmd template for reports</dd>
-        <dt><a href="nm_description.html">nm_description</a></dt>
-        <dd>show description output from .mod file</dd>
-        <dt><a href="nm_notes.html">nm_notes</a></dt>
-        <dd>show notes output from .mod file</dd>
-        <dt><a href="nonmem_report.html">nonmem_report</a></dt>
-        <dd>create basic folder structure for a nonmem report</dd>
-        <dt><a href="oridinal_to_binary.html">ordinal_to_binary_</a></dt>
-        <dd>convert a column of categorical covariates into a number of 
-</dd>
-        <dt><a href="pad_left.html">pad_left</a></dt>
-        <dd>add left padding to a vector of values</dd>
-        <dt><a href="peek.html">peek</a></dt>
-        <dd>peek at the results in a dplyr pipeline</dd>
-        <dt><a href="phx_report.html">phx_report</a></dt>
-        <dd>create basic folder structure for a phoenix report</dd>
-        <dt><a href="print_plots.html">print_plots</a></dt>
-        <dd>create a list of plots cleanly with extra pdf functionality</dd>
-        <dt><a href="read_nonmem.html">read_nonmem</a></dt>
-        <dd>read nonmem files easily</dd>
-        <dt><a href="read_phx.html">read_phx</a></dt>
-        <dd>to more easily read data with a 2nd row with units common to phx data</dd>
-        <dt><a href="read_xpdb.html">read_xpdb</a></dt>
-        <dd>read xpose tables to xpose database and save and compress as RDS</dd>
-        <dt><a href="rename_table_pattern.html">rename_table_pattern</a></dt>
-        <dd>simple table name replacement for a given pattern</dd>
-        <dt><a href="replace_dots.html">replace_dots</a></dt>
-        <dd>Convert '.' values into missing values.</dd>
-        <dt><a href="replace_empty.html">replace_empty</a></dt>
-        <dd>Convert empty strings into missing values.</dd>
-        <dt><a href="replace_from_template.html">replace_from_template</a></dt>
-        <dd>replace values from a template file</dd>
-        <dt><a href="replace_list_elements.html">replace_list_elements</a></dt>
-        <dd>replace list elements by name</dd>
-        <dt><a href="replace_values.html">replace_values</a></dt>
-        <dd>replace symbols or other character flags</dd>
-        <dt><a href="resample_df.html">resample_df</a></dt>
-        <dd>resampling</dd>
-        <dt><a href="round_columns.html">round_columns</a></dt>
-        <dd>round columns</dd>
-        <dt><a href="s_cmax.html">s_cmax</a></dt>
-        <dd>cmax summary function</dd>
-        <dt><a href="s_pauc.html">s_pauc</a></dt><dt><a href="s_pauc.html">s_pauc_</a></dt>
-        <dd>summarize paucs</dd>
-        <dt><a href="s_quantile.html">s_quantile</a></dt>
-        <dd>summarize quantile</dd>
-        <dt><a href="s_quantiles.html">s_quantiles</a></dt><dt><a href="s_quantiles.html">s_quantiles_</a></dt>
-        <dd>summarize quantiles</dd>
-        <dt><a href="set_bins_cpp.html">set_bins_cpp</a></dt>
-        <dd>given a set of bin ranges, assign each value to a bin</dd>
-        <dt><a href="set_bins.html">set_bins</a></dt>
-        <dd>given a set of bin ranges, assign each value to a bin</dd>
-        <dt><a href="set_groups.html">set_groups</a></dt>
-        <dd>set groups</dd>
-        <dt><a href="strip_attributes.html">strip_attributes</a></dt>
-        <dd>strip additional attributes that make dplyr fail</dd>
-        <dt><a href="strip_curves.html">strip_curves</a></dt>
-        <dd>basic curve stripping to get initial estimates</dd>
-        <dt><a href="unique_non_numerics.html">unique_non_numerics</a></dt>
-        <dd>find all unique non-numeric values</dd>
-        <dt><a href="view_creator.html">view_creator</a></dt>
-        <dd>create view commands that save rds files to where a shiny app is listening for them</dd>
-        <dt><a href="wam.html">wam</a></dt>
-        <dd>wam function</dd>
-        <dt><a href="write_nonmem.html">write_nonmem</a></dt>
-        <dd>easily write a csv file compatible with nonmem</dd>
-      </dl>
+      
+      <p><a href="as_numeric.html">convert to numeric passing through character for safety</a></p>
+      <ul>
+        <li><code><a href="as_numeric.html">as_numeric</a></code></li>
+      </ul>
+      
+      <p><a href="auc_inf.html">Calculate AUCt-inf</a></p>
+      <ul>
+        <li><code><a href="auc_inf.html">auc_inf</a></code></li>
+      </ul>
+      
+      <p><a href="auc_partial.html">Calculate partial AUC</a></p>
+      <ul>
+        <li><code><a href="auc_partial.html">auc_partial</a></code></li>
+      </ul>
+      
+      <p><a href="auc_partial_cpp.html">calculate partial AUC</a></p>
+      <ul>
+        <li><code><a href="auc_partial_cpp.html">auc_partial_cpp</a></code></li>
+      </ul>
+      
+      <p><a href="base_theme.html">A theme with better default values for pharmacometric plots, especially conc-time</a></p>
+      <ul>
+        <li><code><a href="base_theme.html">base_theme</a></code></li>
+      </ul>
+      
+      <p><a href="bring_to_front.html">bring select columns to the front of a dataframe</a></p>
+      <ul>
+        <li><code><a href="bring_to_front.html">bring_to_front</a></code></li>
+      </ul>
+      
+      <p><a href="calculate_wam.html">internal WAM function</a></p>
+      <ul>
+        <li><code><a href="calculate_wam.html">calculate_wam</a></code></li>
+      </ul>
+      
+      <p><a href="capitalize_names.html">capitalize all names for a dataframe</a></p>
+      <ul>
+        <li><code><a href="capitalize_names.html">capitalize_names</a></code></li>
+      </ul>
+      
+      <p><a href="capture_groups.html">wrapper to capture groups from a grouped data frame</a></p>
+      <ul>
+        <li><code><a href="capture_groups.html">capture_groups</a></code></li>
+      </ul>
+      
+      <p><a href="char_to_numeric.html">convert all columns to numeric</a></p>
+      <ul>
+        <li><code><a href="char_to_numeric.html">char_to_numeric</a></code></li>
+      </ul>
+      
+      <p><a href="check_gradients.html">get gradients for nonmem run running via PSN</a></p>
+      <ul>
+        <li><code><a href="check_gradients.html">check_gradients</a></code></li>
+      </ul>
+      
+      <p><a href="color_pallete.html">design-quality color palletes to use in ggplot2</a></p>
+      <ul>
+        <li><code><a href="color_pallete.html">color_pallete</a></code></li>
+      </ul>
+      
+      <p><a href="cols_to_factor.html">convert column to type factor</a></p>
+      <ul>
+        <li><code><a href="cols_to_factor.html">cols_to_factor</a></code></li>
+      </ul>
+      
+      <p><a href="cols_to_numeric.html">convert column to type numeric</a></p>
+      <ul>
+        <li><code><a href="cols_to_numeric.html">cols_to_numeric</a></code></li>
+      </ul>
+      
+      <p><a href="execute_curve_stripping.html">curve strip a dataframe with multiple IDs</a></p>
+      <ul>
+        <li><code><a href="execute_curve_stripping.html">execute_curve_stripping</a></code></li>
+      </ul>
+      
+      <p><a href="file_rows.html">count number of rows in a file without needing to read file into R</a></p>
+      <ul>
+        <li><code><a href="file_rows.html">file_rows</a></code></li>
+      </ul>
+      
+      <p><a href="fill_backward.html">given NA values fill them with the next non-na value</a></p>
+      <ul>
+        <li><code><a href="fill_backward.html">fill_backward</a></code></li>
+      </ul>
+      
+      <p><a href="fill_forward.html">given NA values fill them with the final non-na value</a></p>
+      <ul>
+        <li><code><a href="fill_forward.html">fill_forward</a></code></li>
+      </ul>
+      
+      <p><a href="has_ext.html">check for if the passed name has a file extension</a></p>
+      <ul>
+        <li><code><a href="has_ext.html">has_ext</a></code></li>
+      </ul>
+      
+      <p><a href="ids_per_plot.html">split IDs into groups to use for subsequent plotting</a></p>
+      <ul>
+        <li><code><a href="ids_per_plot.html">ids_per_plot</a></code></li>
+      </ul>
+      
+      <p><a href="jprint.html">print multiple values joined together</a></p>
+      <ul>
+        <li><code><a href="jprint.html">jprint</a></code></li>
+      </ul>
+      
+      <p><a href="lowercase_names.html">lowercase all names for a dataframe</a></p>
+      <ul>
+        <li><code><a href="lowercase_names.html">lowercase_names</a></code></li>
+      </ul>
+      
+      <p><a href="max_through.html">give the max value up to that point</a></p>
+      <ul>
+        <li><code><a href="max_through.html">max_through</a></code></li>
+      </ul>
+      
+      <p><a href="min_through.html">give the min value up to that point</a></p>
+      <ul>
+        <li><code><a href="min_through.html">min_through</a></code></li>
+      </ul>
+      
+      <p><a href="nca.html">calculate basic NCA parameters t1/2 Cl, Cmax etc</a></p>
+      <ul>
+        <li><code><a href="nca.html">NCA</a></code></li><li><code><a href="nca.html">nca</a></code></li>
+      </ul>
+      
+      <p><a href="new_report.html">a better new rmd template for reports</a></p>
+      <ul>
+        <li><code><a href="new_report.html">new_report</a></code></li>
+      </ul>
+      
+      <p><a href="nm_description.html">show description output from .mod file</a></p>
+      <ul>
+        <li><code><a href="nm_description.html">nm_description</a></code></li>
+      </ul>
+      
+      <p><a href="nm_notes.html">show notes output from .mod file</a></p>
+      <ul>
+        <li><code><a href="nm_notes.html">nm_notes</a></code></li>
+      </ul>
+      
+      <p><a href="nonmem_report.html">create basic folder structure for a nonmem report</a></p>
+      <ul>
+        <li><code><a href="nonmem_report.html">nonmem_report</a></code></li>
+      </ul>
+      
+      <p><a href="oridinal_to_binary.html">convert a column of categorical covariates into a number of 
+</a></p>
+      <ul>
+        <li><code><a href="oridinal_to_binary.html">ordinal_to_binary_</a></code></li>
+      </ul>
+      
+      <p><a href="pad_left.html">add left padding to a vector of values</a></p>
+      <ul>
+        <li><code><a href="pad_left.html">pad_left</a></code></li>
+      </ul>
+      
+      <p><a href="peek.html">peek at the results in a dplyr pipeline</a></p>
+      <ul>
+        <li><code><a href="peek.html">peek</a></code></li>
+      </ul>
+      
+      <p><a href="phx_report.html">create basic folder structure for a phoenix report</a></p>
+      <ul>
+        <li><code><a href="phx_report.html">phx_report</a></code></li>
+      </ul>
+      
+      <p><a href="print_plots.html">create a list of plots cleanly with extra pdf functionality</a></p>
+      <ul>
+        <li><code><a href="print_plots.html">print_plots</a></code></li>
+      </ul>
+      
+      <p><a href="read_nonmem.html">read nonmem files easily</a></p>
+      <ul>
+        <li><code><a href="read_nonmem.html">read_nonmem</a></code></li>
+      </ul>
+      
+      <p><a href="read_phx.html">to more easily read data with a 2nd row with units common to phx data</a></p>
+      <ul>
+        <li><code><a href="read_phx.html">read_phx</a></code></li>
+      </ul>
+      
+      <p><a href="read_xpdb.html">read xpose tables to xpose database and save and compress as RDS</a></p>
+      <ul>
+        <li><code><a href="read_xpdb.html">read_xpdb</a></code></li>
+      </ul>
+      
+      <p><a href="rename_table_pattern.html">simple table name replacement for a given pattern</a></p>
+      <ul>
+        <li><code><a href="rename_table_pattern.html">rename_table_pattern</a></code></li>
+      </ul>
+      
+      <p><a href="replace_dots.html">Convert '.' values into missing values.</a></p>
+      <ul>
+        <li><code><a href="replace_dots.html">replace_dots</a></code></li>
+      </ul>
+      
+      <p><a href="replace_empty.html">Convert empty strings into missing values.</a></p>
+      <ul>
+        <li><code><a href="replace_empty.html">replace_empty</a></code></li>
+      </ul>
+      
+      <p><a href="replace_from_template.html">replace values from a template file</a></p>
+      <ul>
+        <li><code><a href="replace_from_template.html">replace_from_template</a></code></li>
+      </ul>
+      
+      <p><a href="replace_list_elements.html">replace list elements by name</a></p>
+      <ul>
+        <li><code><a href="replace_list_elements.html">replace_list_elements</a></code></li>
+      </ul>
+      
+      <p><a href="replace_values.html">replace symbols or other character flags</a></p>
+      <ul>
+        <li><code><a href="replace_values.html">replace_values</a></code></li>
+      </ul>
+      
+      <p><a href="resample_df.html">resampling</a></p>
+      <ul>
+        <li><code><a href="resample_df.html">resample_df</a></code></li>
+      </ul>
+      
+      <p><a href="round_columns.html">round columns</a></p>
+      <ul>
+        <li><code><a href="round_columns.html">round_columns</a></code></li>
+      </ul>
+      
+      <p><a href="s_cmax.html">cmax summary function</a></p>
+      <ul>
+        <li><code><a href="s_cmax.html">s_cmax</a></code></li>
+      </ul>
+      
+      <p><a href="s_pauc.html">summarize paucs</a></p>
+      <ul>
+        <li><code><a href="s_pauc.html">s_pauc</a></code></li><li><code><a href="s_pauc.html">s_pauc_</a></code></li>
+      </ul>
+      
+      <p><a href="s_quantile.html">summarize quantile</a></p>
+      <ul>
+        <li><code><a href="s_quantile.html">s_quantile</a></code></li>
+      </ul>
+      
+      <p><a href="s_quantiles.html">summarize quantiles</a></p>
+      <ul>
+        <li><code><a href="s_quantiles.html">s_quantiles</a></code></li><li><code><a href="s_quantiles.html">s_quantiles_</a></code></li>
+      </ul>
+      
+      <p><a href="set_bins.html">given a set of bin ranges, assign each value to a bin</a></p>
+      <ul>
+        <li><code><a href="set_bins.html">set_bins</a></code></li>
+      </ul>
+      
+      <p><a href="set_bins_cpp.html">given a set of bin ranges, assign each value to a bin</a></p>
+      <ul>
+        <li><code><a href="set_bins_cpp.html">set_bins_cpp</a></code></li>
+      </ul>
+      
+      <p><a href="set_groups.html">set groups</a></p>
+      <ul>
+        <li><code><a href="set_groups.html">set_groups</a></code></li>
+      </ul>
+      
+      <p><a href="strip_attributes.html">strip additional attributes that make dplyr fail</a></p>
+      <ul>
+        <li><code><a href="strip_attributes.html">strip_attributes</a></code></li>
+      </ul>
+      
+      <p><a href="strip_curves.html">basic curve stripping to get initial estimates</a></p>
+      <ul>
+        <li><code><a href="strip_curves.html">strip_curves</a></code></li>
+      </ul>
+      
+      <p><a href="unique_non_numerics.html">find all unique non-numeric values</a></p>
+      <ul>
+        <li><code><a href="unique_non_numerics.html">unique_non_numerics</a></code></li>
+      </ul>
+      
+      <p><a href="view_creator.html">create view commands that save rds files to where a shiny app is listening for them</a></p>
+      <ul>
+        <li><code><a href="view_creator.html">view_creator</a></code></li>
+      </ul>
+      
+      <p><a href="wam.html">wam function</a></p>
+      <ul>
+        <li><code><a href="wam.html">wam</a></code></li>
+      </ul>
+      
+      <p><a href="write_nonmem.html">easily write a csv file compatible with nonmem</a></p>
+      <ul>
+        <li><code><a href="write_nonmem.html">write_nonmem</a></code></li>
+      </ul>
+    
     </div>
+  </div>
+
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#section-all-functions">All functions</a></li>
+    </ul>
   </div>
 </div>
 
       <footer>
-      <p>Built by <a href="http://hadley.github.io/pkgdown/">pkgdown</a>. Styled with <a href="http://getbootstrap.com">Bootstrap 3</a>.</p>
+      <div class="copyright">
+  <p>Developed by Devin Pastoor.</p>
+</div>
+
+<div class="pkgdown">
+  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+</div>
+
       </footer>
    </div>
 
