@@ -20,4 +20,3 @@ be useful to assign the same bins to new or simulated data for comparisons
 or to do additional analysis such as assign dropouts etc. This function can be
 used to take the breakpoints to establish bins quickly and easily
 }
-

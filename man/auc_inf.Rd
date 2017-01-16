@@ -22,4 +22,3 @@ Calculate AUCt-inf
 last_points defaults to 3, 4, 5
 see auc_partial for other details
 }
-

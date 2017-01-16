@@ -18,4 +18,3 @@ s_quantile(df, col_name, prob, na.rm = T)
 \description{
 summarize quantile
 }
-

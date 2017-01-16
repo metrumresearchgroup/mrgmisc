@@ -34,4 +34,3 @@ and does not handle row names, so these are all presets
 write_nonmem(nonmemdat, 'folder/nonmemdat.csv')
 }
 }
-

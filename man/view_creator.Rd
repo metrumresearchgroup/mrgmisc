@@ -34,4 +34,3 @@ View2(Theoph, "theoph1") #will save a file theoph1.rds
 View2(Theoph, return = F) # will not return Theoph as well
 }
 }
-

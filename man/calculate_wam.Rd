@@ -27,4 +27,3 @@ internal WAM function
 returns model rank, the LRT, SBC, which covariates selected
 for internal use with wam()
 }
-

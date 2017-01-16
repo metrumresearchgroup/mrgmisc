@@ -18,4 +18,3 @@ split IDs into groups to use for subsequent plotting
 works very well with hadley wickham's purrr package to create a column
 to split on then subsequently plot, see \code{vignette("Multiplot")} for details
 }
-

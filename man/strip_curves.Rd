@@ -32,4 +32,3 @@ strip_curves(df$TIME, df$DV, DOSE =1000, 5, oral=TRUE)
 df \%>\% group_by(ID) \%>\% do(data.frame(strip_curves(.$TIME, .$DV, 1000, 5, TRUE)))
 }
 }
-

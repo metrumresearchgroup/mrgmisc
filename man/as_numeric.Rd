@@ -25,4 +25,3 @@ as.numeric(ex)
 # keeps the labelled values
 as_numeric(ex)
 }
-

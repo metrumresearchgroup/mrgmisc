@@ -45,4 +45,3 @@ lapply(function(df) {
 print_plots(plot_list)
 }
 }
-

@@ -25,4 +25,3 @@ wam function
 \details{
 for runnum it is recommended to pass as a string or leading 0's will be stripped
 }
-

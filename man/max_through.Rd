@@ -21,4 +21,3 @@ value up to that point
 max_through(c(4, 3, 3, 2, 5, 1))
 max_through(c(NA, 2, 1, 4, 2))
 }
-

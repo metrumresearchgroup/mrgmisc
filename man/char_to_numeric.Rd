@@ -25,4 +25,3 @@ nm_dat <- char_to_numeric(nm_dat)
 nm_dat <- char_to_numeric(nm_dat, exclude_cols = NULL) 
 }
 }
-

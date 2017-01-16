@@ -34,4 +34,3 @@ execute_curve_stripping(dat_IV, number_terminal_points =9)
 execute_curve_stripping(dat_IV, "time", "CObs", "DOSE", number_terminal_points=6)
 }
 }
-

@@ -15,4 +15,3 @@ count number of rows in a file without needing to read file into R
 \details{
 uses wc -l system call to count rows
 }
-

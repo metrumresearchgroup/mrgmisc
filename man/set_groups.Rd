@@ -27,4 +27,3 @@ theoph_cmax <- summarize(gTheoph, cmax = max(conc)) # lose Subject grouping
 theoph_cmax <- set_groups(theoph_cmax, grps) # resets the original "Subject" grouping
 }
 }
-

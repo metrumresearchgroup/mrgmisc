@@ -66,4 +66,3 @@ rep_dat \%>\% group_by(Gender, Race) \%>\% tally
 resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race")) \%>\%
   group_by(Gender, Race) \%>\% tally
 }
-

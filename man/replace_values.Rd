@@ -40,4 +40,3 @@ df <- df \%>\% mutate(DVR3 = replace_values(DV,
 \code{\link{unique_non_numerics}}: to identify which non-numeric values must
 be replaced before column can be safely coerced to a numeric
 }
-

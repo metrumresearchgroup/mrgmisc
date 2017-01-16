@@ -41,4 +41,3 @@ To use the between functionality, you must specify the range you wish to bin bet
 and those values will be assigned to bin 1, with all values below as 0 and all values
 above as 2. See the examples for more details
 }
-

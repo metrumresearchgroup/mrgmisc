@@ -46,4 +46,3 @@ s_cmax(pr_id, "CONC", carry=T)
 s_cmax(pr_id, "CONC", name = "max_conc") 
 }
 }
-

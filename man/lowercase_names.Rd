@@ -25,4 +25,3 @@ df <- lowercase_names(read.csv(...))
 df <- read.csv(...) \%>\% lowercase_names
 }
 }
-

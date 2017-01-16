@@ -30,4 +30,3 @@ df <- rename_table_pattern(read_table("data/data.csv"), "-", "_")
 df <-rename_table_pattern(df, "-", "_")
 }
 }
-

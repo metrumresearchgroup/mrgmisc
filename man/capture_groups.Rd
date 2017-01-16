@@ -18,4 +18,3 @@ gTheoph <- dplyr::group_by(Theoph, Subject)
 capture_groups(gTheoph)
 }
 }
-

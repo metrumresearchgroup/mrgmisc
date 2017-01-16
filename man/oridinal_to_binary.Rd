@@ -35,4 +35,3 @@ df2 \%>\% ordinal_to_binary_("OCC")
 df2 \%>\% ordinal_to_binary_("OCC", overwrite=T)
 }
 }
-

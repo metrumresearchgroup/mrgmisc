@@ -34,4 +34,3 @@ df \%>\% filter(!(DV \%in\% unique_non_numerics(DV)))
 \code{\link{replace_values}}: to use to replace non-numeric values
 in a dataframe.
 }
-

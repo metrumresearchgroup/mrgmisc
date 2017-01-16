@@ -27,4 +27,3 @@ has_ext("test.Rmd", ".rmd", match_case=F) #TRUE
 has_ext("testrmd", ".rmd") #FALSE
 }
 }
-

@@ -1,7 +1,7 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make pharmacometric analyses easier
-Version: 0.4.4.9000
+Version: 0.4.5
 Date: 2016-04-16 
 Authors@R: c(
     person("Devin", "Pastoor",
@@ -20,7 +20,8 @@ Imports:
     stringr,
     magrittr,
     readr (>= 0.2.0),
-    PKPDdatasets
+    PKPDdatasets,
+    parallel
 Suggests:
     knitr,
     rmarkdown,
@@ -30,4 +31,4 @@ Remotes:
     dpastoor/PKPDdatasets
 License: MIT + file LICENSE
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1
+RoxygenNote: 5.0.1.9000

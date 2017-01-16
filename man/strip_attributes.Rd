@@ -39,4 +39,3 @@ attr(df$a, "notes") <- "a note"
 df \%>\% strip_attributes(c("label", "notes")) \%>\% filter(a \%in\% c(1, 2))
 }
 }
-

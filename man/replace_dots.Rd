@@ -22,4 +22,3 @@ good for nonmem preprocessing as missing values are represented with '.' in NONM
 x <- c(".", "1", "1")
 replace_dots(x)
 }
-

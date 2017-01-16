@@ -39,4 +39,3 @@ summarize(auc0_tlast = auc_partial(TIME, CONC))
 \seealso{
 \code{\link{s_pauc}}
 }
-

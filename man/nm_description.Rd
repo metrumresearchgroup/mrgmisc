@@ -21,4 +21,3 @@ return line containing description file
 \seealso{
 nm_notes
 }
-

@@ -35,4 +35,3 @@ ggplot() + base_theme_obs()
 made for viewing in the plot window and copying out
 }
 }
-

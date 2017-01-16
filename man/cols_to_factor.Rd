@@ -19,4 +19,3 @@ convert column to type factor
 df <- cols_to_factor(df, c("DOSE", "TRT")) # will convert dose and TRT columns to factor
 }
 }
-

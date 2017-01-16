@@ -39,4 +39,3 @@ check_gradients(001, folder_str = "modelfit_dir1")
 check_gradients(001, full_directory = "~/user/ProjX/NONMEM/run001.mod.dir.1/NM_run2/psn.grd")
 }
 }
-

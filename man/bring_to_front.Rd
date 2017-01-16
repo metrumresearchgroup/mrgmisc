@@ -17,4 +17,3 @@ bring select columns to the front of a dataframe
 \examples{
 Theoph \%>\% bring_to_front(conc, Time)
 }
-

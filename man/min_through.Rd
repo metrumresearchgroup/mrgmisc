@@ -21,4 +21,3 @@ value up to that point
 min_through(c(4, 3, 3, 2, 4, 1))
 min_through(c(NA, 2))
 }
-

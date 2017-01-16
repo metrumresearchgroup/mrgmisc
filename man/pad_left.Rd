@@ -20,4 +20,3 @@ add left padding to a vector of values
 pad_left(1, 3)
 pad_left(c(1, 10, 100), 4)
 }
-

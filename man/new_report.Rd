@@ -18,4 +18,3 @@ new_report("lab-notebook/Report.Rmd")
 new_report("Report.Rmd")
 }
 }
-

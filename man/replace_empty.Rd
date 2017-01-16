@@ -19,4 +19,3 @@ Convert empty strings into missing values.
 x <- c("a", "", "c")
 replace_empty(x)
 }
-

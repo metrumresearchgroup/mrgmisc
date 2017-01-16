@@ -34,4 +34,3 @@ list(c("WEIGHT",
 aht_trial_rounded <- round_columns(aht_trial2, col_list)
 }
 }
-

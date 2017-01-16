@@ -26,4 +26,3 @@ df <- capitalize_names(df)
 df <- capitalize_names(read.csv(...))
 }
 }
-

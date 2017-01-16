@@ -27,4 +27,3 @@ HOWEVER, for tables with standard formatting (eg comma separated with FORMAT=,1P
 no NSUB, then the `read_phx()` function will likely be slightly faster. This should only be an issue
 for large (at least 20 MB) files, else the difference will be imperceptible.
 }
-

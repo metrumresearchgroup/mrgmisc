@@ -22,4 +22,3 @@ library(dplyr)
 df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
 df \%>\% group_by(id) \%>\% mutate(obs_imp = fill_backward(obs))
 }
-
