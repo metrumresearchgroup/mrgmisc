@@ -1,6 +1,8 @@
 #' create a list of plots cleanly with extra pdf functionality
 #' @param .ggplot_list list of ggplot plots
 #' @param .start_page_number pdf-only starting page number for plots
+#' @param .start_break whether to add a page break before starting to print plots
+#' @param .end_break whether to add a page break after the plot output
 #' @details 
 #' Especially for pdf, this can allow the generation of clean pdf pages
 #' with only plots, no code, warnings, etc. for all pages related to the plots. 
@@ -30,7 +32,11 @@
 #' print_plots(plot_list)
 #' }
 #' @export
-print_plots <- function(.ggplot_list, .start_page_number = 1) {
+print_plots <- function(.ggplot_list, 
+                        .start_page_number = NULL,
+                        .start_break = TRUE,
+                        .end_break = TRUE
+                        ) {
   .last <- length(.ggplot_list)
   .ggplot_list %>% seq_along() %>% lapply(function(p) {
     # make sure new page before first plot for pdf
@@ -38,10 +44,16 @@ print_plots <- function(.ggplot_list, .start_page_number = 1) {
     if (is_knitting_pdf) {
       if (p == 1) {
         cat("\\newpage")
-        cat(paste0("\\setcounter{page}{", .start_page_number, "}"))
+        if (!is.null(.start_page_number)) {
+          cat(paste0("\\setcounter{page}{", .start_page_number, "}"))
+        }
       }
     }
-    cat('\r\n\r\n')
+    if (.Platform$OS.type == "windows") {
+      cat('\r\n\r\n')
+    } else {
+      cat('\n\n')
+    }
     suppressWarnings(suppressMessages(print(.ggplot_list[[p]])))
     if (is_knitting_pdf) {
       # want after last page to do a full page break
@@ -49,6 +61,6 @@ print_plots <- function(.ggplot_list, .start_page_number = 1) {
         cat("\\newpage")
       }
     }
-    return(NULL)
+    return(invisible())
   })
 }
