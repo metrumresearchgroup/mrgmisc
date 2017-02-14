@@ -4,12 +4,17 @@
 \alias{print_plots}
 \title{create a list of plots cleanly with extra pdf functionality}
 \usage{
-print_plots(.ggplot_list, .start_page_number = 1)
+print_plots(.ggplot_list, .start_page_number = NULL, .start_break = TRUE,
+  .end_break = TRUE)
 }
 \arguments{
 \item{.ggplot_list}{list of ggplot plots}
 
 \item{.start_page_number}{pdf-only starting page number for plots}
+
+\item{.start_break}{whether to add a page break before starting to print plots}
+
+\item{.end_break}{whether to add a page break after the plot output}
 }
 \description{
 create a list of plots cleanly with extra pdf functionality
