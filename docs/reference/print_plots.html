@@ -79,7 +79,8 @@
     <p>create a list of plots cleanly with extra pdf functionality</p>
     
 
-    <pre><span class='fu'>print_plots</span>(<span class='no'>.ggplot_list</span>, <span class='kw'>.start_page_number</span> <span class='kw'>=</span> <span class='fl'>1</span>)</pre>
+    <pre><span class='fu'>print_plots</span>(<span class='no'>.ggplot_list</span>, <span class='kw'>.start_page_number</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.start_break</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>.end_break</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -87,6 +88,10 @@
       <dd>list of ggplot plots</dd>
       <dt>.start_page_number</dt>
       <dd>pdf-only starting page number for plots</dd>
+      <dt>.start_break</dt>
+      <dd>whether to add a page break before starting to print plots</dd>
+      <dt>.end_break</dt>
+      <dd>whether to add a page break after the plot output</dd>
     </dl>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
