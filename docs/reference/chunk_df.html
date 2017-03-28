@@ -95,7 +95,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>Theoph</span> <span class='kw'>%&gt;%</span> <span class='fu'>chunk_df</span>()</div><div class='output co'>#&gt; Source: local data frame [132 x 6]
-#&gt; Groups: sim_chunk [4]
+#&gt; Groups: sim_chunk [8]
 #&gt; 
 #&gt;    Subject    Wt  Dose  Time  conc sim_chunk
 #&gt;      &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
@@ -111,7 +111,7 @@
 #&gt; 10       1  79.6  4.02 12.12  5.94         1
 #&gt; # ... with 122 more rows</div><div class='input'>
 <span class='no'>Theoph</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Subject</span>) <span class='kw'>%&gt;%</span> <span class='fu'>chunk_df</span>()</div><div class='output co'>#&gt; Source: local data frame [132 x 6]
-#&gt; Groups: sim_chunk [4]
+#&gt; Groups: sim_chunk [8]
 #&gt; 
 #&gt;    Subject    Wt  Dose  Time  conc sim_chunk
 #&gt;      &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
@@ -126,7 +126,7 @@
 #&gt; 9        1  79.6  4.02  9.05  6.89         1
 #&gt; 10       1  79.6  4.02 12.12  5.94         1
 #&gt; # ... with 122 more rows</div><div class='input'><span class='no'>Theoph</span> <span class='kw'>%&gt;%</span> <span class='fu'>chunk_df</span>(<span class='no'>Subject</span>)</div><div class='output co'>#&gt; Source: local data frame [132 x 6]
-#&gt; Groups: sim_chunk [4]
+#&gt; Groups: sim_chunk [8]
 #&gt; 
 #&gt;    Subject    Wt  Dose  Time  conc sim_chunk
 #&gt;      &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
@@ -141,7 +141,7 @@
 #&gt; 9        1  79.6  4.02  9.05  6.89         1
 #&gt; 10       1  79.6  4.02 12.12  5.94         1
 #&gt; # ... with 122 more rows</div><div class='input'><span class='no'>Theoph</span> <span class='kw'>%&gt;%</span> <span class='fu'>chunk_df</span>(<span class='fu'>c</span>(<span class='st'>"Subject"</span>))</div><div class='output co'>#&gt; Source: local data frame [132 x 6]
-#&gt; Groups: sim_chunk [4]
+#&gt; Groups: sim_chunk [8]
 #&gt; 
 #&gt;    Subject    Wt  Dose  Time  conc sim_chunk
 #&gt;      &lt;ord&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;int&gt;
