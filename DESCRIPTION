@@ -1,8 +1,8 @@
 Package: PKPDmisc
 Type: Package
 Title: Tools to make pharmacometric analyses easier
-Version: 0.4.5
-Date: 2016-04-16 
+Version: 0.4.6
+Date: 2017-03-28 
 Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
@@ -12,7 +12,7 @@ Depends:
 LinkingTo: Rcpp,
     BH
 Imports:
-    Rcpp (>= 0.11.5),
+    Rcpp (>= 0.12),
     reshape2,
     dplyr (>= 0.5.0),
     lazyeval,
