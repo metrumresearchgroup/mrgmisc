@@ -8,3 +8,4 @@ demo/pandas
 ^wercker\.yml$
 ^pauc\.cpp$
 ^README-.*\.png$
+^appveyor\.yml$

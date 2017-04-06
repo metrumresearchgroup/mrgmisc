@@ -1,5 +1,5 @@
 [![wercker status](https://app.wercker.com/status/96e246fc3e13f11190f75df5e7a2786a/m "wercker status")](https://app.wercker.com/project/bykey/96e246fc3e13f11190f75df5e7a2786a)
-
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/dpastoor/PKPDmisc?branch=master&svg=true)](https://ci.appveyor.com/project/dpastoor/PKPDmisc)
 PKPDmisc
 ========
 
