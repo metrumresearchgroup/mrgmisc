@@ -7,13 +7,14 @@
 bring_to_front(.df, ...)
 }
 \arguments{
-\item{...}{columns to bring to front}
+\item{.df}{dataframe with column order to adjust}
 
-\item{df}{dataframe}
+\item{...}{columns to bring to front}
 }
 \description{
 bring select columns to the front of a dataframe
 }
 \examples{
-Theoph \%>\% bring_to_front(conc, Time)
+head(Theoph)
+head(bring_to_front(Theoph, conc, Time))
 }

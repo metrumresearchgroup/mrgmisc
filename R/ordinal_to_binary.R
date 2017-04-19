@@ -20,7 +20,6 @@
 #' @export
 ordinal_to_binary_ <- function(df, 
                                col_name, 
-                               id = NULL, 
                                prefix = NULL, 
                                overwrite = FALSE) {
   if(!is.numeric(df[[col_name]])) {
