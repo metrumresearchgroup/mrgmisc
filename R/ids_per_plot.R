@@ -6,7 +6,10 @@
 #' to split on then subsequently plot, see \code{vignette("Multiplot")} for details
 #'@export
 ids_per_plot <- function(id, id_per_plot = 9) {
-  if(!is.vector(id))stop('id must be a vector')
+  if(!is.vector(id)) {
+    warning("id not detected as vector, attempting to coerce to factor for calculations")
+    id <- as.factor(id)
+  }
   uid <- unique(id)
   mod <- length(uid)%/%id_per_plot
   remainder <- length(uid)%%id_per_plot
