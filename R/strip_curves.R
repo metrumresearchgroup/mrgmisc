@@ -23,7 +23,6 @@ strip_curves <- function(.time, .dv, dose, number_terminal_points, oral= FALSE, 
   
   terminal_time<-.time[start_terminal_points:num_time_points]
   terminal_dv <- .dv[start_terminal_points:num_time_points]
-  browser()
   terminal_xt <-lm(log(terminal_dv)~terminal_time) # log-linear terminal phase calculation for k
   terminal_lambda_z<- as.numeric(terminal_xt$coef[2])
   
