@@ -10,35 +10,34 @@
 #' for oral stripping, if multiple cmax values found per ID, will use the first
 #' @examples 
 #' \dontrun{
-#' strip_curves(df$TIME, df$DV, DOSE =1000, 5, oral=TRUE)
+#' strip_curves(df$TIME, df$DV, dose =1000, 5, oral=TRUE)
 #' df %>% group_by(ID) %>% do(data.frame(strip_curves(.$TIME, .$DV, 1000, 5, TRUE)))
 #' }
-strip_curves <- function(TIME, DV, DOSE, number_terminal_points, oral= FALSE, round = 2) {
-  time<- TIME
-  conc <- DV
+strip_curves <- function(.time, .dv, dose, number_terminal_points, oral= FALSE, round = 2) {
   
-  num_time_points <- length(time)
-  #check to make sure partial time legit option
+  num_time_points <- length(.time)
+  #check to make sure partial .time legit option
   ###need to add warning
   start_terminal_points <- num_time_points - number_terminal_points + 1
   
   
-  terminal_time<-time[start_terminal_points:num_time_points]
-  terminal_conc <- conc[start_terminal_points:num_time_points]
-  terminal_xt <-lm(log(terminal_conc)~terminal_time) # log-linear terminal phase calculation for k
+  terminal_time<-.time[start_terminal_points:num_time_points]
+  terminal_dv <- .dv[start_terminal_points:num_time_points]
+  browser()
+  terminal_xt <-lm(log(terminal_dv)~terminal_time) # log-linear terminal phase calculation for k
   terminal_lambda_z<- as.numeric(terminal_xt$coef[2])
   
-  predicted_terminal_portion <- exp(predict(terminal_xt, data.frame(terminal_time = time)))
-  remaining_alpha_conc <- conc- predicted_terminal_portion
+  predicted_terminal_portion <- exp(predict(terminal_xt, data.frame(terminal_time = .time)))
+  remaining_alpha_dv <- .dv- predicted_terminal_portion
   
   alpha_index <- 1:(num_time_points - number_terminal_points)
   if(oral) {
     # cmax to last point not in terminal phase 
-    alpha_index <- which(conc==max(conc))[1]:(num_time_points - number_terminal_points)
+    alpha_index <- which(.dv==max(.dv))[1]:(num_time_points - number_terminal_points)
   }
-  alpha_conc <- remaining_alpha_conc[alpha_index]
-  alpha_t <- time[alpha_index]
-  alpha_xt <- lm(log(alpha_conc)~alpha_t)
+  alpha_dv <- remaining_alpha_dv[alpha_index]
+  alpha_t <- .time[alpha_index]
+  alpha_xt <- lm(log(alpha_dv)~alpha_t)
   
   A <- exp(unlist(alpha_xt$coef[1]))
   B <- exp(unlist(terminal_xt$coef[1]))
@@ -49,7 +48,7 @@ strip_curves <- function(TIME, DV, DOSE, number_terminal_points, oral= FALSE, ro
   kel <- alpha*beta/k21
   k12 <- alpha + beta - k21 - kel
   
-  Vc <- DOSE/max(conc)
+  Vc <- dose/max(.dv)
   Vp <-  k12/k21*Vc
   Q <- k12*Vc
   CL <- kel*Vc
