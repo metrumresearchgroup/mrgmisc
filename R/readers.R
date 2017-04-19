@@ -142,9 +142,6 @@ capture_sep <- function(lines) {
 #' for large (at least 20 MB) files, else the difference will be imperceptible. 
 #' @export
 read_nonmem <- function(path, header = TRUE, sep = "auto", example_name = NULL) {
-  if(!requireNamespace("readr",quietly = TRUE)) {
-    stop("Need readr, please install with install.packages(\"readr\")")
-  }
   lines <- readr::read_lines(path)
   if(sep == "auto") {
     sep <- capture_sep(lines[1:5])
