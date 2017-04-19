@@ -5,14 +5,12 @@
 #' @param time vector of time values
 #' @param dv concentration measurements
 #' @param range vector of min and max value of the partial auc range
-#' @details
 #' @examples \dontrun{
 #' library(PKPDdatasets)
 #' library(dplyr)
 #' sd_oral_richpk %>% group_by(ID) %>% 
 #'   summarize(pauc0_12 = auc_partial_cpp(Time, Conc, c(0, 12)))
 #' }
-#' @export
 auc_partial_cpp <- function(time, dv, range) {
     .Call('PKPDmisc_auc_partial_cpp', PACKAGE = 'PKPDmisc', time, dv, range)
 }
