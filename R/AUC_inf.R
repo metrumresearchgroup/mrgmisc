@@ -11,6 +11,7 @@ auc_inf <-function(idv,
                    dv,
                    last_points = c(3, 4, 5),
                    na.rm = TRUE){
+ 
   #checks to add
   #TODO: add check that lambda_z is positive and fail gracefully if not
   #TODO: clean up return data.frame/vector (its uuuugly now)
@@ -33,20 +34,7 @@ auc_inf <-function(idv,
   #check to make sure partial idv legit option
   ###need to add warning
   
-  
-  auci <-vector("numeric", time.points-1)
-  
-  
-  #  AUCinf is calculated based on 3 parts: the beginning, the middle, and the extrapolated
-  #  calculate the middle part of AUC
-  for(i in 1:(time.points-1)){
-    auci[i]<-(dv[i]+dv[i+1])*(idv[i+1]-idv[i])/2
-  }
-  
-  
-  #calculate the starting part of AUC
-  auc.start <-0
-  #if(idv[1]!=0) auc.start <-idv[1]*dv[1]/2
+  auci <- auc_partial(idv, dv)
   
   #calculate the ending part of AUC
   #assuming to compare the last 3, 4 and 5 idv points for regression.
@@ -79,14 +67,12 @@ auc_inf <-function(idv,
     best.fit.pointer <-   which(adj.r.squared == max(adj.r.squared))
   }
   lambda_z.final <- lambda_z[best.fit.pointer] * (-1)
-  AUC.last <- sum(auci) + auc.start 
   
   if(lambda_z.final == 0) {
-    return(setNames(AUC.last, paste0("AUC0_inf")))
+    return(setNames(auci, paste0("AUC0_inf")))
 }
     
-  AUC.inf <- AUC.last + dv[length(dv)]/lambda_z.final
-
+  AUC.inf <- auci + dv[length(dv)]/lambda_z.final
   return(setNames(AUC.inf, paste0("AUC0_inf")))
 
 }
