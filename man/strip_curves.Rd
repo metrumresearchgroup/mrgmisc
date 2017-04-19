@@ -4,15 +4,15 @@
 \alias{strip_curves}
 \title{basic curve stripping to get initial estimates}
 \usage{
-strip_curves(TIME, DV, DOSE, number_terminal_points, oral = FALSE,
+strip_curves(.time, .dv, dose, number_terminal_points, oral = FALSE,
   round = 2)
 }
 \arguments{
-\item{TIME}{column for time}
+\item{.time}{column for time}
 
-\item{DV}{column for DV (concentration) values}
+\item{.dv}{column for DV (concentration) values}
 
-\item{DOSE}{Dose value or column}
+\item{dose}{Dose value or column}
 
 \item{number_terminal_points}{number of points in terminal phase}
 
@@ -28,7 +28,7 @@ for oral stripping, if multiple cmax values found per ID, will use the first
 }
 \examples{
 \dontrun{
-strip_curves(df$TIME, df$DV, DOSE =1000, 5, oral=TRUE)
+strip_curves(df$TIME, df$DV, dose =1000, 5, oral=TRUE)
 df \%>\% group_by(ID) \%>\% do(data.frame(strip_curves(.$TIME, .$DV, 1000, 5, TRUE)))
 }
 }

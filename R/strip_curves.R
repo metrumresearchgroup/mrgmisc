@@ -1,7 +1,7 @@
 #' basic curve stripping to get initial estimates
-#' @param TIME column for time
-#' @param DV column for DV (concentration) values
-#' @param DOSE Dose value or column
+#' @param .time column for time
+#' @param .dv column for DV (concentration) values
+#' @param dose Dose value or column
 #' @param number_terminal_points number of points in terminal phase
 #' @param oral whether data is oral (instead of IV)
 #' @param round number of decimals to round, default to 2
