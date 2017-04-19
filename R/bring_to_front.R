@@ -5,5 +5,5 @@
 #' Theoph %>% bring_to_front(conc, Time)
 #' @export
 bring_to_front <- function(.df, ...) {
-  dplyr::select(.df, ..., dplyr::one_of(names(.df)))
+  dplyr::select(.df, ..., dplyr::everything())
 }
