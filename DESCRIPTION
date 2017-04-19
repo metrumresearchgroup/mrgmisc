@@ -12,21 +12,20 @@ Depends:
 LinkingTo: Rcpp,
     BH
 Imports:
-    Rcpp (>= 0.12),
+    Rcpp (>= 0.12.6),
     reshape2,
     dplyr (>= 0.5.0),
     lazyeval,
     data.table,
     stringr,
     magrittr,
-    readr (>= 0.2.0),
+    readr (>= 1.0.0),
     PKPDdatasets,
     parallel
 Suggests:
     knitr,
     rmarkdown,
-    testthat,
-    xpose4
+    testthat
 Remotes:
     dpastoor/PKPDdatasets
 License: MIT + file LICENSE
