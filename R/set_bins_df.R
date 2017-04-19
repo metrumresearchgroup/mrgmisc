@@ -8,7 +8,6 @@
 #' @param upper_bound set an upper bound for the last bind, defaults to Inf
 #' @param quiet whether to give additonal information regarding bins and assigned range for each
 #' @param between defaults to NULL, a special case of setting all inside the specified range
-#' @param return_range return the range for each bin rather than the bin itself
 #' @param inclusive include max value of largest user defined bin even though lower bins are non-inclusive
 #' @details
 #' set_bins_df offers the ability to create bins from a dataframe and get both the binning column

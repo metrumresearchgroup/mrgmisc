@@ -5,8 +5,7 @@
 \title{convert a column of categorical covariates into a number of 
 columns with a binary flag for each category}
 \usage{
-ordinal_to_binary_(df, col_name, id = NULL, prefix = NULL,
-  overwrite = FALSE)
+ordinal_to_binary_(df, col_name, prefix = NULL, overwrite = FALSE)
 }
 \arguments{
 \item{df}{data frame}

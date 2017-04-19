@@ -21,8 +21,6 @@ set_bins(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf,
 \item{between}{defaults to NULL, a special case of setting all inside the specified range}
 
 \item{inclusive}{include max value of largest user defined bin even though lower bins are non-inclusive}
-
-\item{return_range}{return the range for each bin rather than the bin itself}
 }
 \description{
 given a set of bin ranges, assign each value to a bin
