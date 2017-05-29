@@ -26,8 +26,6 @@ Suggests:
     knitr,
     rmarkdown,
     testthat
-Remotes:
-    dpastoor/PKPDdatasets
 License: MIT + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1
