@@ -18,7 +18,7 @@
 set_bins_df <- function(
   .df, 
   .x, 
-  breaks = quantile(.df[[.x]], na.rm = T), 
+  breaks = stats::quantile(.df[[.x]], na.rm = T), 
   .name = NULL, 
   .label = NULL,
   lower_bound = -Inf, 
