@@ -25,10 +25,7 @@ Imports:
 Suggests:
     knitr,
     rmarkdown,
-    testthat,
-    xpose4
-Remotes:
-    dpastoor/PKPDdatasets
+    testthat
 License: MIT + file LICENSE
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1

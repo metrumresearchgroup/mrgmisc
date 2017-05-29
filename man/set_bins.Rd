@@ -4,7 +4,7 @@
 \alias{set_bins}
 \title{given a set of bin ranges, assign each value to a bin}
 \usage{
-set_bins(x, breaks = quantile(x, na.rm = T), lower_bound = -Inf,
+set_bins(x, breaks = stats::quantile(x, na.rm = T), lower_bound = -Inf,
   upper_bound = Inf, quiet = TRUE, between = NULL, inclusive = TRUE)
 }
 \arguments{

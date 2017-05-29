@@ -47,9 +47,6 @@ library(PKPDdatasets)
 sd_oral_richpk  \%>\% s_quantiles("Conc", probs = c(0.1, 0.5)) 
 sd_oral_richpk  \%>\% group_by(Gender) \%>\% s_quantiles("Conc", probs = c(0.1, 0.5)) 
 }
-\dontrun{
 library(dplyr)
-library(PKPDdatasets)
 sd_oral_richpk \%>\% group_by(Gender, Time) \%>\% s_quantiles(Conc, c(0.05, 0.5, 0.95))
-}
 }
