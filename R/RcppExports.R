@@ -5,7 +5,6 @@
 #' @param time vector of time values
 #' @param dv concentration measurements
 #' @param range vector of min and max value of the partial auc range
-#' @details
 #' @examples \dontrun{
 #' library(PKPDdatasets)
 #' library(dplyr)
