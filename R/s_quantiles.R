@@ -48,11 +48,8 @@ s_quantiles_<- function(.data, x, probs, na_rm = TRUE) {
 #' @param na_rm remove na's before calculating value for quantile
 #' @rdname s_quantiles
 #' @examples 
-#' \dontrun{
 #' library(dplyr)
-#' library(PKPDdatasets)
 #' sd_oral_richpk %>% group_by(Gender, Time) %>% s_quantiles(Conc, c(0.05, 0.5, 0.95))
-#' }
 #' @export
 s_quantiles <- function(.data, x, probs, na_rm = TRUE) {
   s_quantiles_(.data, deparse(substitute(x)), probs, na_rm)

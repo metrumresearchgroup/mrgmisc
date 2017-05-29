@@ -53,7 +53,6 @@ chunk_df <- function(.gdf, ..., .nchunks = NULL) {
     sim_chunk = chunk_indices
   )
   return(
-    dplyr::select(dplyr::left_join(.gdf, indices_df, by="indices__"), -indices__) %>%
-      purrr::slice_rows("sim_chunk")
+    dplyr::select(dplyr::left_join(.gdf, indices_df, by="indices__"), -indices__) 
   )
 }
