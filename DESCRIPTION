@@ -20,7 +20,9 @@ Imports:
     stringr,
     magrittr,
     readr (>= 1.0.0),
-    parallel
+    parallel,
+    ggplot2,
+    purrr
 Suggests:
     knitr,
     rmarkdown,
