@@ -9,7 +9,7 @@
 #' the pattern will first check for names, and if matching names in replacement df will follow, however
 #' if no names are detected, then will match by position
 replace_from_template <- function(file, patterns, replacement_df, output_dir = NULL, file_name = NULL, ...) {
-  warning("this function will be deprecated in the future - please check out the package infuser for excellent template replacement")
+  warning("this function will be removed in the future - please check out the package infuser for excellent template replacement")
   file_lines <- readLines(file, ...)
   for (i in 1:nrow(replacement_df)) {
   new_file_lines <- stringr::str_replace_all(file_lines,
