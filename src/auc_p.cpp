@@ -5,7 +5,6 @@ using namespace Rcpp;
 //' @param dv concentration measurements
 //' @param range vector of min and max value of the partial auc range
 //' @examples \dontrun{
-//' library(PKPDdatasets)
 //' library(dplyr)
 //' sd_oral_richpk %>% group_by(ID) %>% 
 //'   summarize(pauc0_12 = auc_partial_cpp(Time, Conc, c(0, 12)))

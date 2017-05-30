@@ -95,9 +95,8 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>fill_backward</span>(<span class='fu'>c</span>(<span class='fl'>1.0</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>))</div><div class='output co'>#&gt; [1] 1 2 2</div><div class='input'><span class='fu'>fill_backward</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>))</div><div class='output co'>#&gt; [1] 1 1 2 2</div><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data_frame</span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>), <span class='kw'>obs</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1.2</span>, <span class='fl'>4.8</span>, <span class='fl'>2.5</span>, <span class='fl'>NA</span>))
-<span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>id</span>) <span class='kw'>%&gt;%</span> <span class='fu'>mutate</span>(<span class='kw'>obs_imp</span> <span class='kw'>=</span> <span class='fu'>fill_backward</span>(<span class='no'>obs</span>))</div><div class='output co'>#&gt; Source: local data frame [4 x 3]
-#&gt; Groups: id [2]
-#&gt; 
+<span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>id</span>) <span class='kw'>%&gt;%</span> <span class='fu'>mutate</span>(<span class='kw'>obs_imp</span> <span class='kw'>=</span> <span class='fu'>fill_backward</span>(<span class='no'>obs</span>))</div><div class='output co'>#&gt; # A tibble: 4 × 3
+#&gt; # Groups: id [2]
 #&gt;      id   obs obs_imp
 #&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
 #&gt; 1     1   1.2     1.2

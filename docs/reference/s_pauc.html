@@ -99,37 +99,34 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>PKPDdatasets</span>)
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>ID</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_pauc</span>(<span class='no'>Time</span>, <span class='no'>Conc</span>, <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='fl'>0</span>,<span class='fl'>8</span>), <span class='fu'>c</span>(<span class='fl'>8</span>, <span class='fl'>24</span>)))</div><div class='output co'>#&gt; Source: local data frame [50 x 3]
-#&gt; Groups: ID [?]
-#&gt; 
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>ID</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_pauc</span>(<span class='no'>Time</span>, <span class='no'>Conc</span>, <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='fl'>0</span>,<span class='fl'>8</span>), <span class='fu'>c</span>(<span class='fl'>8</span>, <span class='fl'>24</span>)))</div><div class='output co'>#&gt; # A tibble: 50 × 3
+#&gt; # Groups: ID [?]
 #&gt;       ID  pAUC0_8  pAUC8_24
 #&gt;    &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1      1 204.2096 181.36634
-#&gt; 2      2 523.2355 680.25930
-#&gt; 3      3 315.8860 150.42555
-#&gt; 4      4 564.1666 655.46980
-#&gt; 5      5 301.9122 185.65587
-#&gt; 6      6 154.0215 141.22655
-#&gt; 7      7 393.2182 345.81371
-#&gt; 8      8 254.8853 198.88676
-#&gt; 9      9 286.1393 412.84688
+#&gt;  1     1 204.2096 181.36634
+#&gt;  2     2 523.2355 680.25930
+#&gt;  3     3 315.8860 150.42555
+#&gt;  4     4 564.1666 655.46980
+#&gt;  5     5 301.9122 185.65587
+#&gt;  6     6 154.0215 141.22655
+#&gt;  7     7 393.2182 345.81371
+#&gt;  8     8 254.8853 198.88676
+#&gt;  9     9 286.1393 412.84688
 #&gt; 10    10 121.8113  39.63712
-#&gt; # ... with 40 more rows</div><div class='input'><span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>ID</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_pauc_</span>(<span class='st'>"Time"</span>, <span class='st'>"Conc"</span>, <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='fl'>0</span>,<span class='fl'>8</span>), <span class='fu'>c</span>(<span class='fl'>8</span>, <span class='fl'>24</span>)))</div><div class='output co'>#&gt; Source: local data frame [50 x 3]
-#&gt; Groups: ID [?]
-#&gt; 
+#&gt; # ... with 40 more rows</div><div class='input'><span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>ID</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_pauc_</span>(<span class='st'>"Time"</span>, <span class='st'>"Conc"</span>, <span class='fu'>list</span>(<span class='fu'>c</span>(<span class='fl'>0</span>,<span class='fl'>8</span>), <span class='fu'>c</span>(<span class='fl'>8</span>, <span class='fl'>24</span>)))</div><div class='output co'>#&gt; # A tibble: 50 × 3
+#&gt; # Groups: ID [?]
 #&gt;       ID  pAUC0_8  pAUC8_24
 #&gt;    &lt;int&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1      1 204.2096 181.36634
-#&gt; 2      2 523.2355 680.25930
-#&gt; 3      3 315.8860 150.42555
-#&gt; 4      4 564.1666 655.46980
-#&gt; 5      5 301.9122 185.65587
-#&gt; 6      6 154.0215 141.22655
-#&gt; 7      7 393.2182 345.81371
-#&gt; 8      8 254.8853 198.88676
-#&gt; 9      9 286.1393 412.84688
+#&gt;  1     1 204.2096 181.36634
+#&gt;  2     2 523.2355 680.25930
+#&gt;  3     3 315.8860 150.42555
+#&gt;  4     4 564.1666 655.46980
+#&gt;  5     5 301.9122 185.65587
+#&gt;  6     6 154.0215 141.22655
+#&gt;  7     7 393.2182 345.81371
+#&gt;  8     8 254.8853 198.88676
+#&gt;  9     9 286.1393 412.84688
 #&gt; 10    10 121.8113  39.63712
 #&gt; # ... with 40 more rows</div></pre>
   </div>

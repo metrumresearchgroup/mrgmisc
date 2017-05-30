@@ -26,7 +26,6 @@ individuals have.
 }
 \examples{
 library(PKPDmisc)
-library(PKPDdatasets)
 library(dplyr, quiet = TRUE)
 df <- capitalize_names(sd_oral_richpk) 
 head(df)

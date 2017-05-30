@@ -116,16 +116,28 @@ Can also pass in a grouped df using dplyr::group_by to get summaries by group</p
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'># library(PKPDdatasets)</span>
-<span class='co'># sd_oral_richpk  %&gt;% s_quantiles("Conc", probs = c(0.1, 0.5)) </span>
-<span class='co'># sd_oral_richpk  %&gt;% group_by(Gender) %&gt;% s_quantiles("Conc", probs = c(0.1, 0.5)) </span>
-<span class='co'>## ---------------------------------------------</span>
-<span class='co'>## Not run: ------------------------------------</span>
-<span class='co'># library(dplyr)</span>
-<span class='co'># library(PKPDdatasets)</span>
-<span class='co'># sd_oral_richpk %&gt;% group_by(Gender, Time) %&gt;% s_quantiles(Conc, c(0.05, 0.5, 0.95))</span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'>s_quantiles</span>(<span class='no'>Conc</span>, <span class='kw'>probs</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.1</span>, <span class='fl'>0.5</span>))</div><div class='output co'>#&gt;   Conc_q10 Conc_q50
+#&gt; 1 1.631003 29.88521</div><div class='input'><span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_quantiles_</span>(<span class='st'>"Conc"</span>, <span class='kw'>probs</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.1</span>, <span class='fl'>0.5</span>))</div><div class='output co'>#&gt; # A tibble: 2 × 3
+#&gt; # Groups: Gender [?]
+#&gt;   Gender Conc_q10 Conc_q50
+#&gt;   &lt;fctr&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 Female 1.508296 31.25790
+#&gt; 2   Male 1.901556 28.97848</div><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='no'>sd_oral_richpk</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Gender</span>, <span class='no'>Time</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_quantiles</span>(<span class='no'>Conc</span>, <span class='fu'>c</span>(<span class='fl'>0.05</span>, <span class='fl'>0.5</span>, <span class='fl'>0.95</span>))</div><div class='output co'>#&gt; # A tibble: 24 × 5
+#&gt; # Groups: Gender [?]
+#&gt;    Gender  Time   Conc_q5 Conc_q50  Conc_q95
+#&gt;    &lt;fctr&gt; &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+#&gt;  1 Female  0.00  0.000000  0.00000   0.00000
+#&gt;  2 Female  0.25  8.266324 19.62901  40.93315
+#&gt;  3 Female  0.50 16.474862 30.26571  62.60952
+#&gt;  4 Female  1.00 25.800352 47.54689 108.90100
+#&gt;  5 Female  2.00 36.338094 48.48951 105.16014
+#&gt;  6 Female  3.00 36.800376 50.83126  95.82737
+#&gt;  7 Female  4.00 27.461765 48.88379 106.87681
+#&gt;  8 Female  6.00 18.837319 35.08397  81.03672
+#&gt;  9 Female  8.00 16.192136 27.73593  66.71031
+#&gt; 10 Female 12.00  5.344051 24.76458  59.63218
+#&gt; # ... with 14 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

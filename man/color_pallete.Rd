@@ -13,17 +13,14 @@ color_pallete(pallete)
 design-quality color palletes to use in ggplot2
 }
 \examples{
-\dontrun{
-library(PKPDdatasets)
 library(PKPDmisc)
 library(ggplot2)
 library(dplyr)
-ggplot(sd_oral_richpk \%>\% filter(ID < 20), 
+ggplot(sd_oral_richpk \%>\% filter(ID < 10), 
 aes(x = Time,
 y= Conc, 
 group = ID, 
 color = Gender)) + 
   geom_line(size = 1.5) + scale_color_manual(values =color_pallete(1)) +
   base_theme()
-} 
 }

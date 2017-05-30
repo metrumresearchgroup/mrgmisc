@@ -79,9 +79,9 @@
     <p>given a set of bin ranges, assign each value to a bin and provide the label</p>
     
 
-    <pre><span class='fu'>set_bins_df</span>(<span class='no'>.df</span>, <span class='no'>.x</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='fu'>quantile</span>(<span class='no'>.df</span><span class='kw'>[[</span><span class='no'>.x</span>]], <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='no'>T</span>), <span class='kw'>.name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lower_bound</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper_bound</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>between</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre><span class='fu'>set_bins_df</span>(<span class='no'>.df</span>, <span class='no'>.x</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='kw'>stats</span><span class='kw'>::</span><span class='fu'>quantile</span>(<span class='no'>.df</span><span class='kw'>[[</span><span class='no'>.x</span>]], <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='no'>T</span>),
+  <span class='kw'>.name</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>.label</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lower_bound</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>, <span class='kw'>upper_bound</span> <span class='kw'>=</span> <span class='fl'>Inf</span>,
+  <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>between</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <dl class="dl-horizontal">
@@ -105,8 +105,6 @@
       <dd>defaults to NULL, a special case of setting all inside the specified range</dd>
       <dt>inclusive</dt>
       <dd>include max value of largest user defined bin even though lower bins are non-inclusive</dd>
-      <dt>return_range</dt>
-      <dd>return the range for each bin rather than the bin itself</dd>
     </dl>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>

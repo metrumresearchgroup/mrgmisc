@@ -26,13 +26,3 @@ AUCinf extrapolation default 3-5}
 \description{
 calculate basic NCA parameters t1/2 Cl, Cmax etc
 }
-\details{
-Works well in tandem with the dplyr package and `do` verb
-}
-\examples{
-\dontrun{
-library(PKPDdatasets)
-sd_oral_richpk \%>\% group_by(ID) \%>\%
-do(data.frame(nca(.$Time, .$Conc, .$Dose)))
-}
-}

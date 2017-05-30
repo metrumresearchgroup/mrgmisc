@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>design-quality color palletes to use in ggplot2 — color_pallete â€¢ PKPDmisc</title>
+<title>One-compartment pharmacokinetic data given single oral dose — sd_oral_richpk â€¢ PKPDmisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -72,41 +72,53 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>design-quality color palletes to use in ggplot2</h1>
+    <h1>One-compartment pharmacokinetic data given single oral dose</h1>
     </div>
 
     
-    <p>design-quality color palletes to use in ggplot2</p>
+    <p>A dataset containing dose, plasma concentration and time data, as well as 
+ demographic data of Age, Weight, Gender, and Race for each individual</p>
     
 
-    <pre><span class='fu'>color_pallete</span>(<span class='no'>pallete</span>)</pre>
+    <pre><span class='fu'>data</span>(<span class='no'>sd_oral_richpk</span>)</pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 4300 rows and 9 variables</p>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>pallete</dt>
-      <dd>pallete number or name</dd>
-    </dl>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><ul>
+<li> ID. Numerical ID  (1--50)
+  </li>
+<li> Time. Time in hours (0--24)
+  </li>
+<li> Amt. Amount of drug given, time dependent, in milligrams
+  </li>
+<li> Conc. Plasma concentration in mg/L
+  </li>
+<li> Age. Age in years
+  </li>
+<li> Weight. Weight in kg
+ </li>
+<li> Gender. Male or Female gender identification
+  </li>
+<li> Race. Ethnicity
+  </li>
+<li> Dose. Dose given to each individual in milligrams
+</li>
+</ul></p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>PKPDmisc</span>)
-<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>ggplot</span>(<span class='no'>sd_oral_richpk</span> <span class='kw'>%&gt;%</span> <span class='fu'>filter</span>(<span class='no'>ID</span> <span class='kw'>&lt;</span> <span class='fl'>10</span>),
-<span class='fu'>aes</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Time</span>,
-<span class='kw'>y</span><span class='kw'>=</span> <span class='no'>Conc</span>,
-<span class='kw'>group</span> <span class='kw'>=</span> <span class='no'>ID</span>,
-<span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>Gender</span>)) +
-  <span class='fu'>geom_line</span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1.5</span>) + <span class='fu'>scale_color_manual</span>(<span class='kw'>values</span> <span class='kw'>=</span><span class='fu'>color_pallete</span>(<span class='fl'>1</span>)) +
-  <span class='fu'><a href='base_theme.html'>base_theme</a></span>()</div><img src='color_pallete-2.png' alt='' width='540' height='400' /></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>
