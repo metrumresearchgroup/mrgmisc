@@ -12,7 +12,6 @@
 #' @examples \dontrun{
 #' library(dplyr)
 #' library(PKPDmisc)
-#' library(PKPDdatasets)
 #' 
 #' # given we may only plot a subset of individuals per plot
 #' # and generate multiple plots, lets split the dataframe 

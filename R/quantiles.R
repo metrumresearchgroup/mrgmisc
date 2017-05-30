@@ -22,11 +22,8 @@ s_quantile <- function(df, col_name, prob, na.rm=T) {
 #' can calculate multiple quantiles by passing in a vector of probabilities.
 #' Can also pass in a grouped df using dplyr::group_by to get summaries by group
 #' @examples
-#' \dontrun{
-#' library(PKPDdatasets)
-#' sd_oral_richpk  %>% s_quantiles("Conc", probs = c(0.1, 0.5)) 
-#' sd_oral_richpk  %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.1, 0.5)) 
-#'}
+#' sd_oral_richpk  %>% s_quantiles(Conc, probs = c(0.1, 0.5)) 
+#' sd_oral_richpk  %>% group_by(Gender) %>% s_quantiles_("Conc", probs = c(0.1, 0.5)) 
 #' @export
 #' @rdname s_quantiles
 s_quantiles_ <- function(df, col_name, probs=c(0, 0.25, 0.5, 0.75, 1), na.rm=T) {

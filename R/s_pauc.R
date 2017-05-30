@@ -62,7 +62,6 @@ s_pauc_ <- function(df, idv, dv, paucs, digits = Inf) {
 #' @param digits number of decimals to round result before returning
 #' @rdname s_pauc
 #' @examples
-#' library(PKPDdatasets)
 #' library(dplyr)
 #' sd_oral_richpk  %>% group_by(ID) %>% s_pauc(Time, Conc, list(c(0,8), c(8, 24)))
 #' sd_oral_richpk  %>% group_by(ID) %>% s_pauc_("Time", "Conc", list(c(0,8), c(8, 24)))

@@ -5,14 +5,6 @@
 #' @param last_times vector of numbers of time points to evaluate for 
 #'    AUCinf extrapolation default 3-5
 #' @param digits number of digits to round to. Can use NULL for no rounding
-#' @details
-#' Works well in tandem with the dplyr package and `do` verb
-#' @examples
-#' \dontrun{
-#' library(PKPDdatasets)
-#' sd_oral_richpk %>% group_by(ID) %>%
-#' do(data.frame(nca(.$Time, .$Conc, .$Dose)))
-#' }
 #' @export
 nca <-function(.time, 
                dv, 
