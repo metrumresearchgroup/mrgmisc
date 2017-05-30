@@ -30,7 +30,6 @@ For the examples, the `sd_oral_richpk` dataset from `PKPDdatasets` will be used.
 To install, run `devtools::install_github("dpastoor/PKPDdatasets")`
 
 ```{r}
-library("PKPDdatasets")
 library("PKPDmisc")
 library("dplyr")
 pkdat <- sd_oral_richpk

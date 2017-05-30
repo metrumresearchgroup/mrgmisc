@@ -12,7 +12,6 @@ vignette: >
 
 ```{r}
 library(PKPDmisc) # for binning and other functions
-library(PKPDdatasets) # example dataset
 library(ggplot2) #plotting
 library(purrr) # dataset to handle lists
 suppressMessages(suppressWarnings(library(dplyr)))
