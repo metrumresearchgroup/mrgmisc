@@ -10,7 +10,7 @@
 #' @examples
 #' dv <- c(1, 2, 4, "88 (excluded)", "bql", "*")
 #' unique_non_numerics(dv)
-#' df <- data.frame(ID = 1:3, DV = c("BQL", 0.5, 9), stringsAsFactors=F)
+#' df <- tibble::data_frame(ID = 1:3, DV = c("BQL", 0.5, 9))
 #' unique_non_numerics(df$DV)
 #' 
 #' #using dplyr
