@@ -1,5 +1,4 @@
 library(testthat)
 library(PKPDmisc)
 library(dplyr)
-library(PKPDdatasets)
 test_check("PKPDmisc")
