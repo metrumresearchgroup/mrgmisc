@@ -1,8 +1,7 @@
 context("resampledf")
 
-library(PKPDdatasets)
 
-dapa<-dapa_IV_oral%>%
+dapa<- sd_oral_richpk %>% capitalize_names() %>%
   dplyr::filter(TIME %in% c(0, 0.5), ID %in% 5:7)%>%
   dplyr::select(ID, AGE, TIME)
 
