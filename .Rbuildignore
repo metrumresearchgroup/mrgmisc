@@ -9,3 +9,4 @@ demo/pandas
 ^pauc\.cpp$
 ^README-.*\.png$
 ^appveyor\.yml$
+docs
