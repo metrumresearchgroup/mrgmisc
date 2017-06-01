@@ -138,3 +138,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+
+static const R_CallMethodDef CallEntries[] = {
+    {"PKPDmisc_auc_partial_cpp", (DL_FUNC) &PKPDmisc_auc_partial_cpp, 3},
+    {"PKPDmisc_clean_nonmem", (DL_FUNC) &PKPDmisc_clean_nonmem, 3},
+    {"PKPDmisc_clean_phi", (DL_FUNC) &PKPDmisc_clean_phi, 3},
+    {"PKPDmisc_fill_backward", (DL_FUNC) &PKPDmisc_fill_backward, 1},
+    {"PKPDmisc_fill_forward", (DL_FUNC) &PKPDmisc_fill_forward, 1},
+    {"PKPDmisc_min_through", (DL_FUNC) &PKPDmisc_min_through, 1},
+    {"PKPDmisc_max_through", (DL_FUNC) &PKPDmisc_max_through, 1},
+    {"PKPDmisc_padLeft", (DL_FUNC) &PKPDmisc_padLeft, 3},
+    {"PKPDmisc_replace_chars", (DL_FUNC) &PKPDmisc_replace_chars, 3},
+    {"PKPDmisc_replace_spaces", (DL_FUNC) &PKPDmisc_replace_spaces, 1},
+    {"PKPDmisc_set_bins_cpp", (DL_FUNC) &PKPDmisc_set_bins_cpp, 3},
+    {NULL, NULL, 0}
+};
+
+RcppExport void R_init_PKPDmisc(DllInfo *dll) {
+    R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
+    R_useDynamicSymbols(dll, FALSE);
+}
