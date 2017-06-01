@@ -12,17 +12,17 @@ Depends:
 LinkingTo: Rcpp,
     BH
 Imports:
-    Rcpp (>= 0.12.6),
-    reshape2,
     dplyr (>= 0.5.0),
-    lazyeval,
     data.table,
-    stringr,
-    magrittr,
-    readr (>= 1.0.0),
-    parallel,
     ggplot2,
-    purrr
+    lazyeval,
+    magrittr,
+    parallel,
+    purrr,
+    Rcpp (>= 0.12.10),
+    readr (>= 1.0.0),
+    stringr,
+    tibble
 Suggests:
     knitr,
     rmarkdown,
