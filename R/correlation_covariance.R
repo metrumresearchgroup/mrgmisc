@@ -14,6 +14,7 @@ cor_to_cov <- function(.cor_mat, .sd) {
 #' covariance to correlation
 #' @param .cov_mat covariance matrix
 #' @return list of unit correlation matrix and vector of standard deviations
+#' @export
 cov_to_cor <- function(.cov_mat) {
   dc <- diag(.cov_mat)
   So <- sqrt(dc)
