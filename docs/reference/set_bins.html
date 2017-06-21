@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,26 +82,41 @@
     <p>given a set of bin ranges, assign each value to a bin</p>
     
 
-    <pre><span class='fu'>set_bins</span>(<span class='no'>x</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='kw'>stats</span><span class='kw'>::</span><span class='fu'>quantile</span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='no'>T</span>), <span class='kw'>lower_bound</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
+    <pre class="usage"><span class='fu'>set_bins</span>(<span class='no'>x</span>, <span class='kw'>breaks</span> <span class='kw'>=</span> <span class='kw pkg'>stats</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/stats/topics/quantile'>quantile</a></span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='no'>T</span>), <span class='kw'>lower_bound</span> <span class='kw'>=</span> -<span class='fl'>Inf</span>,
   <span class='kw'>upper_bound</span> <span class='kw'>=</span> <span class='fl'>Inf</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>between</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>inclusive</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>numeric vector to assign bins</dd>
-      <dt>breaks</dt>
-      <dd>breaks for each bin, defaults to quantiles</dd>
-      <dt>lower_bound</dt>
-      <dd>set a lower bound for the first bin, defaults to -Inf</dd>
-      <dt>upper_bound</dt>
-      <dd>set an upper bound for the last bind, defaults to Inf</dd>
-      <dt>quiet</dt>
-      <dd>whether to give additonal information regarding bins and assigned range for each</dd>
-      <dt>between</dt>
-      <dd>defaults to NULL, a special case of setting all inside the specified range</dd>
-      <dt>inclusive</dt>
-      <dd>include max value of largest user defined bin even though lower bins are non-inclusive</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>numeric vector to assign bins</p></td>
+    </tr>
+    <tr>
+      <th>breaks</th>
+      <td><p>breaks for each bin, defaults to quantiles</p></td>
+    </tr>
+    <tr>
+      <th>lower_bound</th>
+      <td><p>set a lower bound for the first bin, defaults to -Inf</p></td>
+    </tr>
+    <tr>
+      <th>upper_bound</th>
+      <td><p>set an upper bound for the last bind, defaults to Inf</p></td>
+    </tr>
+    <tr>
+      <th>quiet</th>
+      <td><p>whether to give additonal information regarding bins and assigned range for each</p></td>
+    </tr>
+    <tr>
+      <th>between</th>
+      <td><p>defaults to NULL, a special case of setting all inside the specified range</p></td>
+    </tr>
+    <tr>
+      <th>inclusive</th>
+      <td><p>include max value of largest user defined bin even though lower bins are non-inclusive</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -106,10 +124,10 @@
 be useful to assign the same bins to new or simulated data for comparisons
 or to do additional analysis such as assign dropouts etc. This function can be
 used to take the breakpoints to establish bins quickly and easily</p>
-    <p>If there is concern over data being outside the range of the assigned breaks, 
+<p>If there is concern over data being outside the range of the assigned breaks, 
 one can assign -Inf to lower and/or Inf to upper to make sure all values will be 
 assigned to a bin</p>
-    <p>To use the between functionality, you must specify the range you wish to bin between,
+<p>To use the between functionality, you must specify the range you wish to bin between,
 and those values will be assigned to bin 1, with all values below as 0 and all values
 above as 2. See the examples for more details</p>
     

@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,15 +82,20 @@
     <p>find all unique non-numeric values</p>
     
 
-    <pre><span class='fu'>unique_non_numerics</span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>unique_non_numerics</span>(<span class='no'>x</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>x</dt>
-      <dd>vector to check on</dd>
-      <dt>na.rm</dt>
-      <dd>remove existing na values before checking</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>vector to check on</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>remove existing na values before checking</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -104,13 +112,15 @@ in a dataframe.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>dv</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>4</span>, <span class='st'>"88 (excluded)"</span>, <span class='st'>"bql"</span>, <span class='st'>"*"</span>)
-<span class='fu'>unique_non_numerics</span>(<span class='no'>dv</span>)</div><div class='output co'>#&gt; [1] &quot;88 (excluded)&quot; &quot;bql&quot;           &quot;*&quot;            </div><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>ID</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>DV</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"BQL"</span>, <span class='fl'>0.5</span>, <span class='fl'>9</span>), <span class='kw'>stringsAsFactors</span><span class='kw'>=</span><span class='no'>F</span>)
-<span class='fu'>unique_non_numerics</span>(<span class='no'>df</span>$<span class='no'>DV</span>)</div><div class='output co'>#&gt; [1] &quot;BQL&quot;</div><div class='input'>
+<span class='fu'>unique_non_numerics</span>(<span class='no'>dv</span>)</div><div class='output co'>#&gt; [1] "88 (excluded)" "bql"           "*"            </div><div class='input'><span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>tibble</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/tibble'>data_frame</a></span>(<span class='kw'>ID</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>DV</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"BQL"</span>, <span class='fl'>0.5</span>, <span class='fl'>9</span>))
+<span class='fu'>unique_non_numerics</span>(<span class='no'>df</span>$<span class='no'>DV</span>)</div><div class='output co'>#&gt; [1] "BQL"</div><div class='input'>
 <span class='co'>#using dplyr</span>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>filter</span>(!(<span class='no'>DV</span> <span class='kw'>%in%</span> <span class='fu'>unique_non_numerics</span>(<span class='no'>DV</span>)))</div><div class='output co'>#&gt;   ID  DV
-#&gt; 1  2 0.5
-#&gt; 2  3   9</div></pre>
+<span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(!(<span class='no'>DV</span> <span class='kw'>%in%</span> <span class='fu'>unique_non_numerics</span>(<span class='no'>DV</span>)))</div><div class='output co'>#&gt; # A tibble: 2 x 2
+#&gt;      ID    DV
+#&gt;   &lt;int&gt; &lt;chr&gt;
+#&gt; 1     2   0.5
+#&gt; 2     3     9</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

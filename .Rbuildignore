@@ -10,3 +10,4 @@ demo/pandas
 ^README-.*\.png$
 ^appveyor\.yml$
 docs
+^_pkgdown\.yml$

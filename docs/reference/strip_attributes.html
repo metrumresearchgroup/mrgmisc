@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,15 +82,20 @@
     <p>strip additional attributes that make dplyr fail</p>
     
 
-    <pre><span class='fu'>strip_attributes</span>(<span class='no'>df</span>, <span class='no'>attr_names</span>)</pre>
+    <pre class="usage"><span class='fu'>strip_attributes</span>(<span class='no'>df</span>, <span class='no'>attr_names</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>df</dt>
-      <dd>dataframe</dd>
-      <dt>attr_names</dt>
-      <dd>names of attributes that you want to remove</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>dataframe</p></td>
+    </tr>
+    <tr>
+      <th>attr_names</th>
+      <td><p>names of attributes that you want to remove</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -95,25 +103,25 @@
 will error out rather than ignoring them etc.
 This function will allow one to strip attribute names to allow the data frame to be
 used within the dplyr pipeline without issue.</p>
-    <p>This type of data is common when dealing with SAS datasets</p>
+<p>This type of data is common when dealing with SAS datasets</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>## Not run: ------------------------------------</span>
-<span class='co'># foo &lt;- data.frame(a = 1:5, b = 1:5, c=letters[1:5])</span>
-<span class='co'># df &lt;- foo</span>
-<span class='co'># attr(df$a, "label") &lt;- "col a"</span>
-<span class='co'># attr(df$b, "label") &lt;- "col b"</span>
-<span class='co'># attr(df$c, "label") &lt;- "col c"</span>
-<span class='co'># </span>
-<span class='co'># library(dplyr)</span>
-<span class='co'># df %&gt;% filter(a %in% c(1, 2)) # will throw an error</span>
-<span class='co'># df %&gt;% strip_attributes("label") %&gt;% filter(a %in% c(1, 2))</span>
-<span class='co'># </span>
-<span class='co'># attr(df$a, "notes") &lt;- "a note"</span>
-<span class='co'># # now column a has attributes of label and notes</span>
-<span class='co'># df %&gt;% strip_attributes(c("label", "notes")) %&gt;% filter(a %in% c(1, 2))</span>
-<span class='co'>## ---------------------------------------------</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>not_run</span>({
+  <span class='no'>foo</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>, <span class='kw'>c</span><span class='kw'>=</span><span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>5</span>])
+  <span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='no'>foo</span>
+  <span class='fu'>attr</span>(<span class='no'>df</span>$<span class='no'>a</span>, <span class='st'>"label"</span>) <span class='kw'>&lt;-</span> <span class='st'>"col a"</span>
+  <span class='fu'>attr</span>(<span class='no'>df</span>$<span class='no'>b</span>, <span class='st'>"label"</span>) <span class='kw'>&lt;-</span> <span class='st'>"col b"</span>
+  <span class='fu'>attr</span>(<span class='no'>df</span>$<span class='no'>c</span>, <span class='st'>"label"</span>) <span class='kw'>&lt;-</span> <span class='st'>"col c"</span>
+
+  <span class='fu'>library</span>(<span class='no'>dplyr</span>)
+  <span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>a</span> <span class='kw'>%in%</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>)) <span class='co'># will throw an error</span>
+  <span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>strip_attributes</span>(<span class='st'>"label"</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>a</span> <span class='kw'>%in%</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
+
+  <span class='fu'>attr</span>(<span class='no'>df</span>$<span class='no'>a</span>, <span class='st'>"notes"</span>) <span class='kw'>&lt;-</span> <span class='st'>"a note"</span>
+  <span class='co'># now column a has attributes of label and notes</span>
+  <span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'>strip_attributes</span>(<span class='fu'>c</span>(<span class='st'>"label"</span>, <span class='st'>"notes"</span>)) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>a</span> <span class='kw'>%in%</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>))
+})</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

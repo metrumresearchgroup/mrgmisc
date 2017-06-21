@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,34 +82,47 @@
     <p>resampling</p>
     
 
-    <pre><span class='fu'>resample_df</span>(<span class='no'>df</span>, <span class='no'>key_cols</span>, <span class='kw'>strat_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>resample_df</span>(<span class='no'>df</span>, <span class='no'>key_cols</span>, <span class='kw'>strat_cols</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>key_col_name</span> <span class='kw'>=</span> <span class='st'>"KEY"</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>df</dt>
-      <dd>data frame</dd>
-      <dt>key_cols</dt>
-      <dd>key columns to resample on</dd>
-      <dt>strat_cols</dt>
-      <dd>columns to maintain proportion for stratification</dd>
-      <dt>n</dt>
-      <dd>number of unique sampled keys, defaults to match dataset</dd>
-      <dt>key_col_name</dt>
-      <dd>name of outputted key column. Default to &quot;KEY&quot;</dd>
-      <dt>replace</dt>
-      <dd>whether to stratify with replacement</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>df</th>
+      <td><p>data frame</p></td>
+    </tr>
+    <tr>
+      <th>key_cols</th>
+      <td><p>key columns to resample on</p></td>
+    </tr>
+    <tr>
+      <th>strat_cols</th>
+      <td><p>columns to maintain proportion for stratification</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>number of unique sampled keys, defaults to match dataset</p></td>
+    </tr>
+    <tr>
+      <th>key_col_name</th>
+      <td><p>name of outputted key column. Default to "KEY"</p></td>
+    </tr>
+    <tr>
+      <th>replace</th>
+      <td><p>whether to stratify with replacement</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function is valuable when generating a large simulated population
 where you goal is to create resampled sub-populations in addition to being able to
 maintain certain stratifications of factors like covariate distributions</p>
-    <p>A new keyed column will be created (defaults to name &#39;KEY&#39;) that contains the uniquely
-created new samples. This allows one to easily compare against the key&#39;d columns. Eg,
+<p>A new keyed column will be created (defaults to name 'KEY') that contains the uniquely
+created new samples. This allows one to easily compare against the key'd columns. Eg,
 if you would like to see how many times a particular individual was resampled you can 
-check the original ID column against the number of key&#39;s associated with that ID number.</p>
+check the original ID column against the number of key's associated with that ID number.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -114,60 +130,60 @@ check the original ID column against the number of key&#39;s associated with tha
 <span class='fu'>library</span>(<span class='no'>dplyr</span>, <span class='kw'>quiet</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='co'># simple example resampling by ID maintaining Gender distribution, with 10 individuals</span>
-<span class='fu'>resample_df</span>(<span class='no'>sd_oral_richpk</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='st'>"ID"</span>, <span class='kw'>strat_cols</span> <span class='kw'>=</span> <span class='st'>"Gender"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; # A tibble: 120 × 10
-#&gt;      KEY    ID  Time   Amt     Conc      Age   Weight Gender      Race  Dose
-#&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fctr&gt;    &lt;fctr&gt; &lt;int&gt;
-#&gt;  1     1     5  0.00  5000  0.00000 50.86722 73.76395 Female Caucasian  5000
-#&gt;  2     1     5  0.25     0 17.61997 50.86722 73.76395 Female Caucasian  5000
-#&gt;  3     1     5  0.50     0 28.70406 50.86722 73.76395 Female Caucasian  5000
-#&gt;  4     1     5  1.00     0 46.76939 50.86722 73.76395 Female Caucasian  5000
-#&gt;  5     1     5  2.00     0 51.63110 50.86722 73.76395 Female Caucasian  5000
-#&gt;  6     1     5  3.00     0 50.83126 50.86722 73.76395 Female Caucasian  5000
-#&gt;  7     1     5  4.00     0 49.13784 50.86722 73.76395 Female Caucasian  5000
-#&gt;  8     1     5  6.00     0 25.56447 50.86722 73.76395 Female Caucasian  5000
-#&gt;  9     1     5  8.00     0 24.36807 50.86722 73.76395 Female Caucasian  5000
-#&gt; 10     1     5 12.00     0 17.26484 50.86722 73.76395 Female Caucasian  5000
+<span class='fu'>resample_df</span>(<span class='no'>sd_oral_richpk</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='st'>"ID"</span>, <span class='kw'>strat_cols</span> <span class='kw'>=</span> <span class='st'>"Gender"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)</div><div class='output co'>#&gt; # A tibble: 120 x 10
+#&gt;      KEY    ID  Time   Amt      Conc      Age   Weight Gender   Race  Dose
+#&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt;
+#&gt;  1     1    26  0.00  5000   0.00000 41.26571 56.59549 Female  Black  5000
+#&gt;  2     1    26  0.25     0  27.73210 41.26571 56.59549 Female  Black  5000
+#&gt;  3     1    26  0.50     0  53.33475 41.26571 56.59549 Female  Black  5000
+#&gt;  4     1    26  1.00     0  82.48312 41.26571 56.59549 Female  Black  5000
+#&gt;  5     1    26  2.00     0 101.91661 41.26571 56.59549 Female  Black  5000
+#&gt;  6     1    26  3.00     0  81.67875 41.26571 56.59549 Female  Black  5000
+#&gt;  7     1    26  4.00     0  89.99290 41.26571 56.59549 Female  Black  5000
+#&gt;  8     1    26  6.00     0  73.01971 41.26571 56.59549 Female  Black  5000
+#&gt;  9     1    26  8.00     0  60.02791 41.26571 56.59549 Female  Black  5000
+#&gt; 10     1    26 12.00     0  48.67562 41.26571 56.59549 Female  Black  5000
 #&gt; # ... with 110 more rows</div><div class='input'>
 <span class='co'># for a more complex example lets resample "simulated" data with multiple replicates</span>
 <span class='no'>subset_data</span> <span class='kw'>&lt;-</span> <span class='no'>sd_oral_richpk</span> <span class='kw'>%&gt;%</span>
-   <span class='fu'>filter</span>(<span class='no'>ID</span> <span class='kw'>&lt;</span> <span class='fl'>20</span>)
+   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>ID</span> <span class='kw'>&lt;</span> <span class='fl'>20</span>)
 
 <span class='co'># make 'simulated' data with 5 replicates and combine to single dataframe</span>
 <span class='no'>rep_dat</span> <span class='kw'>&lt;-</span> <span class='fu'>lapply</span>(<span class='fl'>1</span>:<span class='fl'>5</span>, <span class='kw'>function</span>(<span class='no'>x</span>) {
 <span class='no'>subset_data</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>mutate</span>(<span class='kw'>REP</span> <span class='kw'>=</span> <span class='no'>x</span>)
-  }) <span class='kw'>%&gt;%</span> <span class='fu'>bind_rows</span>()
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>REP</span> <span class='kw'>=</span> <span class='no'>x</span>)
+  }) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/bind.html'>bind_rows</a></span>()
 
 <span class='co'># now when we resample we also want to maintain the ID+REP relationship as resampling</span>
 <span class='co'># just the ID would give all rows associated for an ID with all reps, rather than </span>
 <span class='co'># a single "unit" of ID/REP</span>
-<span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>))</div><div class='output co'>#&gt; # A tibble: 1,140 × 11
-#&gt;      KEY    ID  Time   Amt     Conc      Age   Weight Gender   Race  Dose   REP
-#&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fctr&gt; &lt;fctr&gt; &lt;int&gt; &lt;int&gt;
-#&gt;  1     1     8  0.00  5000  0.00000 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  2     1     8  0.25     0 16.32241 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  3     1     8  0.50     0 22.99479 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  4     1     8  1.00     0 32.43056 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  5     1     8  2.00     0 36.36604 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  6     1     8  3.00     0 44.44578 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  7     1     8  4.00     0 37.03352 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  8     1     8  6.00     0 27.56513 56.69499 85.01492   Male  Asian  5000     5
-#&gt;  9     1     8  8.00     0 26.36640 56.69499 85.01492   Male  Asian  5000     5
-#&gt; 10     1     8 12.00     0 18.76405 56.69499 85.01492   Male  Asian  5000     5
-#&gt; # ... with 1,130 more rows</div><div class='input'>
+<span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>))</div><div class='output co'>#&gt; # A tibble: 1,140 x 11
+#&gt;      KEY    ID  Time   Amt     Conc      Age   Weight Gender      Race  Dose
+#&gt;    &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;fctr&gt;    &lt;fctr&gt; &lt;int&gt;
+#&gt;  1     1     4  0.00  5000  0.00000 46.87347 62.47354 Female Caucasian  5000
+#&gt;  2     1     4  0.25     0 29.30308 46.87347 62.47354 Female Caucasian  5000
+#&gt;  3     1     4  0.50     0 50.49399 46.87347 62.47354 Female Caucasian  5000
+#&gt;  4     1     4  1.00     0 66.44664 46.87347 62.47354 Female Caucasian  5000
+#&gt;  5     1     4  2.00     0 88.99138 46.87347 62.47354 Female Caucasian  5000
+#&gt;  6     1     4  3.00     0 75.05583 46.87347 62.47354 Female Caucasian  5000
+#&gt;  7     1     4  4.00     0 96.68389 46.87347 62.47354 Female Caucasian  5000
+#&gt;  8     1     4  6.00     0 56.19676 46.87347 62.47354 Female Caucasian  5000
+#&gt;  9     1     4  8.00     0 66.60407 46.87347 62.47354 Female Caucasian  5000
+#&gt; 10     1     4 12.00     0 38.96617 46.87347 62.47354 Female Caucasian  5000
+#&gt; # ... with 1,130 more rows, and 1 more variables: REP &lt;int&gt;</div><div class='input'>
 <span class='co'># check to see that stratification is maintained</span>
-<span class='no'>rep_dat</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 × 2
+<span class='no'>rep_dat</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 x 2
 #&gt;   Gender     n
 #&gt;   &lt;fctr&gt; &lt;int&gt;
 #&gt; 1 Female   300
 #&gt; 2   Male   840</div><div class='input'><span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>), <span class='kw'>strat_cols</span><span class='kw'>=</span><span class='st'>"Gender"</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'>group_by</span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 × 2
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 2 x 2
 #&gt;   Gender     n
 #&gt;   &lt;fctr&gt; &lt;int&gt;
 #&gt; 1 Female   300
 #&gt; 2   Male   840</div><div class='input'>
-<span class='no'>rep_dat</span> <span class='kw'>%&gt;%</span> <span class='fu'>group_by</span>(<span class='no'>Gender</span>, <span class='no'>Race</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 8 × 3
-#&gt; # Groups: Gender [?]
+<span class='no'>rep_dat</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Gender</span>, <span class='no'>Race</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 8 x 3
+#&gt; # Groups:   Gender [?]
 #&gt;   Gender      Race     n
 #&gt;   &lt;fctr&gt;    &lt;fctr&gt; &lt;int&gt;
 #&gt; 1 Female Caucasian   180
@@ -179,8 +195,8 @@ check the original ID column against the number of key&#39;s associated with tha
 #&gt; 7   Male  Hispanic   180
 #&gt; 8   Male     Other   300</div><div class='input'>
 <span class='fu'>resample_df</span>(<span class='no'>rep_dat</span>, <span class='kw'>key_cols</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"ID"</span>, <span class='st'>"REP"</span>), <span class='kw'>strat_cols</span><span class='kw'>=</span><span class='fu'>c</span>(<span class='st'>"Gender"</span>, <span class='st'>"Race"</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'>group_by</span>(<span class='no'>Gender</span>, <span class='no'>Race</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 8 × 3
-#&gt; # Groups: Gender [?]
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Gender</span>, <span class='no'>Race</span>) <span class='kw'>%&gt;%</span> <span class='no'>tally</span></div><div class='output co'>#&gt; # A tibble: 8 x 3
+#&gt; # Groups:   Gender [?]
 #&gt;   Gender      Race     n
 #&gt;   &lt;fctr&gt;    &lt;fctr&gt; &lt;int&gt;
 #&gt; 1 Female Caucasian   180

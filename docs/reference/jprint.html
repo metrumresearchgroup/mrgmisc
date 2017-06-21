@@ -11,8 +11,8 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
@@ -23,14 +23,17 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-
+  
+  
 <!-- mathjax -->
-<script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+<script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+
+
   </head>
 
   <body>
@@ -79,23 +82,30 @@
     <p>print multiple values joined together</p>
     
 
-    <pre><span class='fu'>jprint</span>(<span class='no'>...</span>, <span class='kw'>sep_atomic</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>sep_vector</span> <span class='kw'>=</span> <span class='st'>", "</span>)</pre>
+    <pre class="usage"><span class='fu'>jprint</span>(<span class='no'>...</span>, <span class='kw'>sep_atomic</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>sep_vector</span> <span class='kw'>=</span> <span class='st'>", "</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <dl class="dl-horizontal">
-      <dt>...</dt>
-      <dd>variadic parameter to of objects to combine</dd>
-      <dt>sep_atomic</dt>
-      <dd>separator value between each atomic element</dd>
-      <dt>sep_vector</dt>
-      <dd>separator value for collapsed vectors</dd>
-    </dl>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>...</th>
+      <td><p>variadic parameter to of objects to combine</p></td>
+    </tr>
+    <tr>
+      <th>sep_atomic</th>
+      <td><p>separator value between each atomic element</p></td>
+    </tr>
+    <tr>
+      <th>sep_vector</th>
+      <td><p>separator value for collapsed vectors</p></td>
+    </tr>
+    </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>print can only take one value to be printed, this function j(oined)print
- provides a wrapper to obviate the need to do print(paste0(...)) type work-arounds</p>
-    <p>This is especially valuable for messages where output can be single element or
+ provides a wrapper to obviate the need to do print(paste0(...)) type work-arounds</p> 
+<p>This is especially valuable for messages where output can be single element or
  a vector/list (for example, a list of missing column names), as the 
  internal vector/list can be collapsed to a single string via a different
  pattern than how the various elements are combined.</p>
