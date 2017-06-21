@@ -1,6 +1,5 @@
 context("resampledf")
 
-library(PKPDdatasets)
 
 dapa<-dapa_IV_oral%>%
   filter(TIME==0|TIME==0.5, ID==5|ID==6|ID==7)%>%
