@@ -13,5 +13,5 @@
 #' as_numeric(ex)
 #' @export
 as_numeric <- function(x, ...) {
-  as.numeric(as.character(x, ...))
+  suppressWarnings(as.numeric(as.character(x, ...)))
 }
