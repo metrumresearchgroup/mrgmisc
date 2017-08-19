@@ -4,12 +4,14 @@
 \alias{replace_list_elements}
 \title{replace list elements by name}
 \usage{
-replace_list_elements(list, replacement)
+replace_list_elements(.list, replacement, add = TRUE)
 }
 \arguments{
-\item{list}{original list}
+\item{.list}{original list}
 
 \item{replacement}{replacement list}
+
+\item{add}{add replacement values if they don't exist, default = TRUE}
 }
 \description{
 replace list elements by name
@@ -19,9 +21,7 @@ Finds and replaces list elements by name and throws an error if an
    element is not available in the original list.
 }
 \examples{
-\dontrun{
-list <- list(dv = "dv", idv = "idv")
-replacement <- list(dv = "conc", idv = "time")
-list <- replace_list_elements(list, replacement)
-}
+olist <- list(dv = "dv", idv = "idv", notreplace = "somethingelse")
+replacement <- list(dv = "conc")
+combined_list <- replace_list_elements(olist, replacement)
 }
