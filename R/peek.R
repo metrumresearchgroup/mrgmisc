@@ -1,6 +1,7 @@
 #' peek at the results in a dplyr pipeline
 #' @param df dataframe in pipeline
 #' @param n number of rows to show
+#' @param message give a message along with peeking at the data
 #' @details 
 #' A wrapper around giving a \code{head} and \code{tail} command
 #'  but only as a side effect so the original data frame is passed 

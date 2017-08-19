@@ -47,12 +47,10 @@ s_quantiles_ <- function(df, col_name, probs=c(0, 0.25, 0.5, 0.75, 1), na.rm=T) 
       return(unlist(quantiles))
     }
 }
+
 #' @export
 #' @rdname s_quantiles
 s_quantiles <- function(df, col_name, probs=c(0, 0.25, 0.5, 0.75, 1), na.rm=T) {
   col_name <- lazyeval::lazy(col_name)
   s_quantiles_(df, col_name, probs, na.rm)
 }
-#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.7))
-#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.5, 0.7))
-#sd_oral_richpk %>% group_by(Gender) %>% s_quantiles("Conc", probs = c(0.2, 0.5, 0.7))

@@ -14,9 +14,10 @@ read_phx(data, skip = 0, header = TRUE, sep = "auto",
 \item{skip}{rows to skip before header row}
 
 \item{header}{logical value indicating whether the file contains the names of variables
-  as it's first line
-@param sep field separator character. With fread defaults to 'auto', else defaults
-  to ","}
+as it's first line}
+
+\item{sep}{field separator character. With fread defaults to 'auto', else defaults
+to ","}
 
 \item{stringsAsFactors}{logical value whether to include string columns as factors}
 

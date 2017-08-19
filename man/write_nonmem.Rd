@@ -5,7 +5,7 @@
 \title{easily write a csv file compatible with nonmem}
 \usage{
 write_nonmem(x, file, sep = ",", row.names = FALSE, na = ".",
-  quote = FALSE)
+  quote = FALSE, ...)
 }
 \arguments{
 \item{x}{dataframe to be written to csv}
@@ -20,7 +20,7 @@ write_nonmem(x, file, sep = ",", row.names = FALSE, na = ".",
 
 \item{quote}{whether character or factor columns should be surrounded by double quotes}
 
-\item{...}{remaining arguments passed to write.csv}
+\item{...}{remaining arguments passed to data.table::fwrite}
 }
 \description{
 easily write a csv file compatible with nonmem

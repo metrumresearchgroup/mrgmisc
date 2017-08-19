@@ -11,15 +11,15 @@
 #'   summarize(pauc0_12 = auc_partial_cpp(Time, Conc, c(0, 12)))
 #' }
 auc_partial_cpp <- function(time, dv, range) {
-    .Call('PKPDmisc_auc_partial_cpp', PACKAGE = 'PKPDmisc', time, dv, range)
+    .Call('_PKPDmisc_auc_partial_cpp', PACKAGE = 'PKPDmisc', time, dv, range)
 }
 
 clean_nonmem <- function(x, sep, colname) {
-    .Call('PKPDmisc_clean_nonmem', PACKAGE = 'PKPDmisc', x, sep, colname)
+    .Call('_PKPDmisc_clean_nonmem', PACKAGE = 'PKPDmisc', x, sep, colname)
 }
 
 clean_phi <- function(x, sep, colname) {
-    .Call('PKPDmisc_clean_phi', PACKAGE = 'PKPDmisc', x, sep, colname)
+    .Call('_PKPDmisc_clean_phi', PACKAGE = 'PKPDmisc', x, sep, colname)
 }
 
 #' given NA values fill them with the next non-na value
@@ -34,7 +34,7 @@ clean_phi <- function(x, sep, colname) {
 #' df %>% group_by(id) %>% mutate(obs_imp = fill_backward(obs))
 #' @export
 fill_backward <- function(x) {
-    .Call('PKPDmisc_fill_backward', PACKAGE = 'PKPDmisc', x)
+    .Call('_PKPDmisc_fill_backward', PACKAGE = 'PKPDmisc', x)
 }
 
 #' given NA values fill them with the final non-na value
@@ -50,7 +50,7 @@ fill_backward <- function(x) {
 #' df %>% group_by(id) %>% mutate(obs_locf = fill_forward(obs))
 #' @export
 fill_forward <- function(x) {
-    .Call('PKPDmisc_fill_forward', PACKAGE = 'PKPDmisc', x)
+    .Call('_PKPDmisc_fill_forward', PACKAGE = 'PKPDmisc', x)
 }
 
 #' give the min value up to that point
@@ -64,7 +64,7 @@ fill_forward <- function(x) {
 #'min_through(c(NA, 2))
 #' @export
 min_through <- function(x) {
-    .Call('PKPDmisc_min_through', PACKAGE = 'PKPDmisc', x)
+    .Call('_PKPDmisc_min_through', PACKAGE = 'PKPDmisc', x)
 }
 
 #' give the max value up to that point
@@ -78,19 +78,19 @@ min_through <- function(x) {
 #'max_through(c(NA, 2, 1, 4, 2))
 #' @export
 max_through <- function(x) {
-    .Call('PKPDmisc_max_through', PACKAGE = 'PKPDmisc', x)
+    .Call('_PKPDmisc_max_through', PACKAGE = 'PKPDmisc', x)
 }
 
 padLeft <- function(strings, numChars, paddingChar) {
-    .Call('PKPDmisc_padLeft', PACKAGE = 'PKPDmisc', strings, numChars, paddingChar)
+    .Call('_PKPDmisc_padLeft', PACKAGE = 'PKPDmisc', strings, numChars, paddingChar)
 }
 
 replace_chars <- function(strings, values, replacement) {
-    .Call('PKPDmisc_replace_chars', PACKAGE = 'PKPDmisc', strings, values, replacement)
+    .Call('_PKPDmisc_replace_chars', PACKAGE = 'PKPDmisc', strings, values, replacement)
 }
 
 replace_spaces <- function(x) {
-    .Call('PKPDmisc_replace_spaces', PACKAGE = 'PKPDmisc', x)
+    .Call('_PKPDmisc_replace_spaces', PACKAGE = 'PKPDmisc', x)
 }
 
 #' given a set of bin ranges, assign each value to a bin
@@ -103,6 +103,6 @@ replace_spaces <- function(x) {
 #' @param left,right Boundary values
 #' @export
 set_bins_cpp <- function(x, left, right) {
-    .Call('PKPDmisc_set_bins_cpp', PACKAGE = 'PKPDmisc', x, left, right)
+    .Call('_PKPDmisc_set_bins_cpp', PACKAGE = 'PKPDmisc', x, left, right)
 }
 

@@ -3,7 +3,7 @@
 #' @param skip rows to skip before header row
 #' @param header logical value indicating whether the file contains the names of variables
 #'    as it's first line
-#'  @param sep field separator character. With fread defaults to 'auto', else defaults
+#' @param sep field separator character. With fread defaults to 'auto', else defaults
 #'    to ","
 #' @param stringsAsFactors logical value whether to include string columns as factors
 #' @param has_units logical value whether has a units row below the header (eg phx nlme data)

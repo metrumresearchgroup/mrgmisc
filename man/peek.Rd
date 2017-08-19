@@ -10,6 +10,8 @@ peek(df, n = 5, message = NULL)
 \item{df}{dataframe in pipeline}
 
 \item{n}{number of rows to show}
+
+\item{message}{give a message along with peeking at the data}
 }
 \description{
 peek at the results in a dplyr pipeline

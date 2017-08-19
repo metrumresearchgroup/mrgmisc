@@ -26,11 +26,12 @@ NULL
 #' @name sd_oral_richpk
 #' @usage data(sd_oral_richpk)
 #' @format A data frame with 4300 rows and 9 variables
-
+NULL
 
 #' IV and oral pharmacokinetic data for daptomycin
 #' 
 #' A dataset containing simulated dapagliflozin PK.  A single IV dose followed by 3 escalating oral doses
+#' 
 #' \itemize{
 #'   \item ID. Numerical ID  (1-24)
 #'   \item TIME. Nominal Time after first dose (hrs)

@@ -6,7 +6,7 @@ Date: 2017-07-21
 Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
-Description: Collection of functions for making PKPD analysis easier
+Description: PKPDmisc is a collection of functions for making PKPD analysis easier.
 Depends:
     R (>= 3.2.2)
 LinkingTo: Rcpp,
@@ -21,6 +21,7 @@ Imports:
     purrr,
     Rcpp (>= 0.12.10),
     readr (>= 1.0.0),
+    rlang,
     stringr,
     tibble
 Suggests:

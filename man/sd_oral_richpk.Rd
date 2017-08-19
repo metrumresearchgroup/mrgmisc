@@ -4,23 +4,7 @@
 \name{sd_oral_richpk}
 \alias{sd_oral_richpk}
 \title{One-compartment pharmacokinetic data given single oral dose}
-\format{A data frame with 4300 rows and 9 variables
-IV and oral pharmacokinetic data for daptomycin
-
-A dataset containing simulated dapagliflozin PK.  A single IV dose followed by 3 escalating oral doses
-\itemize{
-  \item ID. Numerical ID  (1-24)
-  \item TIME. Nominal Time after first dose (hrs)
-  \item TAD. Time After Dose (hrs)
-  \item COBS. Observed Concentration (ug/L)
-  \item AMT_IV. IV dose amount when given (ug)
-  \item AMT_ORAL. Oral dose amount when given (ug)
-  \item OCC. Occasion, associated with each dosing event
-  \item AGE. Age (years)
-  \item WEIGHT Weight (kg)
-  \item GENDER. Gender flag (female=1, male=0)
-  \item FORMULATION Formulation associated with dose (IV or oral)
-}}
+\format{A data frame with 4300 rows and 9 variables}
 \usage{
 data(sd_oral_richpk)
 }
