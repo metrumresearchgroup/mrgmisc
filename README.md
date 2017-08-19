@@ -9,55 +9,55 @@ miscellaneous functions for use in pharmacometric analyses
 
 ### Data Ingestion
 
-* [read_nonmem](http://devinpastoor.com/PKPDmisc/reference/read_nonmem.html)
-* [read_phx](http://devinpastoor.com/PKPDmisc/reference/read_phx.html)
-* [read_xpdb](http://devinpastoor.com/PKPDmisc/reference/read_xpdb.html)
-* [write_nonmem](http://devinpastoor.com/PKPDmisc/reference/write_nonmem.html)
+* [read_nonmem](https://dpastoor.github.io/PKPDmisc/reference/read_nonmem.html)
+* [read_phx](https://dpastoor.github.io/PKPDmisc/reference/read_phx.html)
+* [read_xpdb](https://dpastoor.github.io/PKPDmisc/reference/read_xpdb.html)
+* [write_nonmem](https://dpastoor.github.io/PKPDmisc/reference/write_nonmem.html)
 
 ### Data Manipulation
 
-* [as_numeric](http://devinpastoor.com/PKPDmisc/reference/as_numeric.html)
-* [fill_backwards](http://devinpastoor.com/PKPDmisc/reference/fill_backwards.html)
-* [fill_forward](http://devinpastoor.com/PKPDmisc/reference/fill_forward.html)
-* [ids_per_plot](http://devinpastoor.com/PKPDmisc/reference/ids_per_plot.html)
-* [max_through](http://devinpastoor.com/PKPDmisc/reference/max_through.html)
-* [min_through](http://devinpastoor.com/PKPDmisc/reference/min_through.html)
-* [set_bins](http://devinpastoor.com/PKPDmisc/reference/set_bins.html)
-* [unique_non_numerics](http://devinpastoor.com/PKPDmisc/reference/unique_non_numerics.html)
+* [as_numeric](https://dpastoor.github.io/PKPDmisc/reference/as_numeric.html)
+* [fill_backwards](https://dpastoor.github.io/PKPDmisc/reference/fill_backwards.html)
+* [fill_forward](https://dpastoor.github.io/PKPDmisc/reference/fill_forward.html)
+* [ids_per_plot](https://dpastoor.github.io/PKPDmisc/reference/ids_per_plot.html)
+* [max_through](https://dpastoor.github.io/PKPDmisc/reference/max_through.html)
+* [min_through](https://dpastoor.github.io/PKPDmisc/reference/min_through.html)
+* [set_bins](https://dpastoor.github.io/PKPDmisc/reference/set_bins.html)
+* [unique_non_numerics](https://dpastoor.github.io/PKPDmisc/reference/unique_non_numerics.html)
 
 ### Summaries
 
-* [s_cmax](http://devinpastoor.com/PKPDmisc/reference/s_cmax.html)
-* [s_pauc](http://devinpastoor.com/PKPDmisc/reference/s_pauc.html)
-* [s_quantiles](http://devinpastoor.com/PKPDmisc/reference/s_quantiles.html)
+* [s_cmax](https://dpastoor.github.io/PKPDmisc/reference/s_cmax.html)
+* [s_pauc](https://dpastoor.github.io/PKPDmisc/reference/s_pauc.html)
+* [s_quantiles](https://dpastoor.github.io/PKPDmisc/reference/s_quantiles.html)
  
 
 ### Formatting
 
-* [capitalize_names](http://devinpastoor.com/PKPDmisc/reference/capitalize_names.html)
-* [lowercase_names](http://devinpastoor.com/PKPDmisc/reference/lowercase_names.html)
-* [char_to_numeric](http://devinpastoor.com/PKPDmisc/reference/char_to_numeric.html)
-* [cols_to_numeric](http://devinpastoor.com/PKPDmisc/reference/cols_to_numeric.html)
-* [ordinal_to_binary_](http://devinpastoor.com/PKPDmisc/reference/ordinal_to_binary_.html)
-* [replace_dots](http://devinpastoor.com/PKPDmisc/reference/replace_dots.html)
-* [pad_left](http://devinpastoor.com/PKPDmisc/reference/pad_left.html)
+* [capitalize_names](https://dpastoor.github.io/PKPDmisc/reference/capitalize_names.html)
+* [lowercase_names](https://dpastoor.github.io/PKPDmisc/reference/lowercase_names.html)
+* [char_to_numeric](https://dpastoor.github.io/PKPDmisc/reference/char_to_numeric.html)
+* [cols_to_numeric](https://dpastoor.github.io/PKPDmisc/reference/cols_to_numeric.html)
+* [ordinal_to_binary_](https://dpastoor.github.io/PKPDmisc/reference/ordinal_to_binary_.html)
+* [replace_dots](https://dpastoor.github.io/PKPDmisc/reference/replace_dots.html)
+* [pad_left](https://dpastoor.github.io/PKPDmisc/reference/pad_left.html)
 
 ### Visuals
 
 ### Pharmacometrics-specific
 
-* [auc_inf](http://devinpastoor.com/PKPDmisc/reference/auc_inf.html)
-* [auc_partial](http://devinpastoor.com/PKPDmisc/reference/auc_partial.html)
-* [resample_df](http://devinpastoor.com/PKPDmisc/reference/resample_df.html)
-* [strip_curves](http://devinpastoor.com/PKPDmisc/reference/strip_curves.html)
-* [wam](http://devinpastoor.com/PKPDmisc/reference/wam.html)
+* [auc_inf](https://dpastoor.github.io/PKPDmisc/reference/auc_inf.html)
+* [auc_partial](https://dpastoor.github.io/PKPDmisc/reference/auc_partial.html)
+* [resample_df](https://dpastoor.github.io/PKPDmisc/reference/resample_df.html)
+* [strip_curves](https://dpastoor.github.io/PKPDmisc/reference/strip_curves.html)
+* [wam](https://dpastoor.github.io/PKPDmisc/reference/wam.html)
 
 
 ### Other miscellaneous 
 
-* [jprint](http://devinpastoor.com/PKPDmisc/reference/jprint.html)
-* [view_creator](http://devinpastoor.com/PKPDmisc/reference/view_creator.html)
-* [peek](http://devinpastoor.com/PKPDmisc/reference/peek.html)
+* [jprint](https://dpastoor.github.io/PKPDmisc/reference/jprint.html)
+* [view_creator](https://dpastoor.github.io/PKPDmisc/reference/view_creator.html)
+* [peek](https://dpastoor.github.io/PKPDmisc/reference/peek.html)
 
 ## Installation information
 
