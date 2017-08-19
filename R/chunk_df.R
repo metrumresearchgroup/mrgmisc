@@ -1,3 +1,6 @@
+# 'global' variables that dplyr uses in NSE mutate calls
+if(getRversion() >= "2.15.1")  utils::globalVariables(c(".", "indices__", "chunk__", "n"))
+
 #' chunk dataframes so easy to split for parallel processing
 #' @param .gdf (grouped) data frame
 #' @param ... grouping variables, either a character vector or NSE-style column names
@@ -16,7 +19,8 @@ chunk_df <- function(.gdf, ..., .nchunks = NULL) {
   if (is.null(.nchunks)) {
     .nchunks <- parallel::detectCores()
   }
-  .dots <- dplyr:::dots(...)
+  # this is equivalent to dplyrs internal dots()
+  .dots <- rlang::eval_bare(substitute(alist(...)))
   if (length(.dots) > 0) {
     # handle NSE
     if (class(.dots[[1]]) == "name") {
@@ -50,7 +54,7 @@ chunk_df <- function(.gdf, ..., .nchunks = NULL) {
   chunk_indices <- chunk_indices[order(chunk_indices)]
   indices_df <- tibble::tibble(
     indices__ = indices, 
-    sim_chunk = chunk_indices
+    chunk__ = chunk_indices
   )
   return(
     dplyr::select(dplyr::left_join(.gdf, indices_df, by="indices__"), -indices__) 
