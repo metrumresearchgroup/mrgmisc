@@ -6,7 +6,7 @@
 #'    the binary flag columns other than the original col_name
 #' @param overwrite overwrite any existing columns if the newly generated columns
 #'    share the same name
-#' @rdname oridinal_to_binary
+#' @rdname ordinal_to_binary
 #' @examples \donttest{
 #' library(dplyr)
 #' df <- data_frame(OCC = c(1, 1, 2, 3))
