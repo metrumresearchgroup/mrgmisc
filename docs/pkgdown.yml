@@ -1,4 +1,6 @@
-reference_url: https://dpastoor.github.io/PKPDmisc/reference
+urls:
+  reference: https://dpastoor.github.io/PKPDmisc/reference
+  article: https://dpastoor.github.io/PKPDmisc/articles
 articles:
   multiplot: multiplot.html
   noncompartmental-analysis: noncompartmental-analysis.html

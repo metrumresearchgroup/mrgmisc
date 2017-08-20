@@ -29,16 +29,41 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/multiplot.html">Multiplots</a>
+    </li>
+    <li>
+      <a href="../articles/noncompartmental-analysis.html">Noncompartmental Analysis</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li>
+  <a href="https://github.com/dpastoor/PKPDmisc">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -53,16 +78,18 @@
       <h1>Multiplots</h1>
                         <h4 class="author">Devin Pastoor</h4>
             
-            <h4 class="date">2017-06-21</h4>
+            <h4 class="date">2017-08-20</h4>
           </div>
 
     
     
 <div class="contents">
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(PKPDmisc) <span class="co"># for binning and other functions</span>
-<span class="kw">library</span>(ggplot2) <span class="co">#plotting</span>
-<span class="kw">library</span>(purrr) <span class="co"># dataset to handle lists</span>
-<span class="kw">suppressMessages</span>(<span class="kw">suppressWarnings</span>(<span class="kw">library</span>(dplyr)))</code></pre></div>
+<span class="kw">library</span>(ggplot2) <span class="co">#plotting</span></code></pre></div>
+<pre><code>## Warning: package 'ggplot2' was built under R version 3.4.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(purrr) <span class="co"># dataset to handle lists</span></code></pre></div>
+<pre><code>## Warning: package 'purrr' was built under R version 3.4.1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">suppressMessages</span>(<span class="kw">suppressWarnings</span>(<span class="kw">library</span>(dplyr)))</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dat &lt;-<span class="st"> </span>sd_oral_richpk <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(ID <span class="op">&lt;=</span><span class="st"> </span><span class="dv">20</span>)</code></pre></div>
 <p>Messy plot can’t see individuals well</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/ggplot">ggplot</a></span>(dat, <span class="kw"><a href="http://www.rdocumentation.org/packages/ggplot2/topics/aes">aes</a></span>(<span class="dt">x =</span> Time, <span class="dt">y =</span> Conc, <span class="dt">group=</span> ID)) <span class="op">+</span><span class="st"> </span>
@@ -118,52 +145,53 @@ split_dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span 
 ##  language (EN)                        
 ##  collate  English_United States.1252  
 ##  tz       America/New_York            
-##  date     2017-06-21</code></pre>
+##  date     2017-08-20</code></pre>
 <pre><code>## Packages -----------------------------------------------------------------</code></pre>
-<pre><code>##  package    * version date       source                            
-##  assertthat   0.2.0   2017-04-11 CRAN (R 3.4.0)                    
-##  backports    1.1.0   2017-05-22 CRAN (R 3.4.0)                    
-##  base       * 3.4.0   2017-04-21 local                             
-##  bindr        0.1     2016-11-13 CRAN (R 3.4.0)                    
-##  bindrcpp   * 0.1     2016-12-11 CRAN (R 3.4.0)                    
-##  colorspace   1.3-2   2016-12-14 CRAN (R 3.4.0)                    
-##  compiler     3.4.0   2017-04-21 local                             
-##  datasets   * 3.4.0   2017-04-21 local                             
-##  devtools     1.13.2  2017-06-02 CRAN (R 3.4.0)                    
-##  digest       0.6.12  2017-01-27 CRAN (R 3.4.0)                    
-##  dplyr      * 0.7.0   2017-06-09 CRAN (R 3.4.0)                    
-##  evaluate     0.10    2016-10-11 CRAN (R 3.4.0)                    
-##  ggplot2    * 2.2.1   2016-12-30 CRAN (R 3.4.0)                    
-##  glue         1.1.0   2017-06-13 CRAN (R 3.4.0)                    
-##  graphics   * 3.4.0   2017-04-21 local                             
-##  grDevices  * 3.4.0   2017-04-21 local                             
-##  grid         3.4.0   2017-04-21 local                             
-##  gtable       0.2.0   2016-02-26 CRAN (R 3.4.0)                    
-##  htmltools    0.3.6   2017-04-28 CRAN (R 3.4.0)                    
-##  knitr        1.16    2017-05-18 CRAN (R 3.4.0)                    
-##  labeling     0.3     2014-08-23 CRAN (R 3.4.0)                    
-##  lazyeval     0.2.0   2016-06-12 CRAN (R 3.4.0)                    
-##  magrittr     1.5     2014-11-22 CRAN (R 3.4.0)                    
-##  memoise      1.1.0   2017-04-21 CRAN (R 3.4.0)                    
-##  methods    * 3.4.0   2017-04-21 local                             
-##  munsell      0.4.3   2016-02-13 CRAN (R 3.4.0)                    
-##  PKPDmisc   * 1.1.0   2017-06-21 Github (dpastoor/PKPDmisc@9033193)
-##  plyr         1.8.4   2016-06-08 CRAN (R 3.4.0)                    
-##  purrr      * 0.2.2.2 2017-05-11 CRAN (R 3.4.0)                    
-##  R6           2.2.2   2017-06-17 CRAN (R 3.4.0)                    
-##  Rcpp         0.12.11 2017-05-22 CRAN (R 3.4.0)                    
-##  rlang        0.1.1   2017-05-18 CRAN (R 3.4.0)                    
-##  rmarkdown    1.6     2017-06-17 Github (rstudio/rmarkdown@ca634d7)
-##  rprojroot    1.2     2017-01-16 CRAN (R 3.4.0)                    
-##  scales       0.4.1   2016-11-09 CRAN (R 3.4.0)                    
-##  stats      * 3.4.0   2017-04-21 local                             
-##  stringi      1.1.5   2017-04-07 CRAN (R 3.4.0)                    
-##  stringr      1.2.0   2017-02-18 CRAN (R 3.4.0)                    
-##  tibble       1.3.3   2017-05-28 CRAN (R 3.4.0)                    
-##  tools        3.4.0   2017-04-21 local                             
-##  utils      * 3.4.0   2017-04-21 local                             
-##  withr        1.0.2   2016-06-20 CRAN (R 3.4.0)                    
-##  yaml         2.1.14  2016-11-12 CRAN (R 3.4.0)</code></pre>
+<pre><code>##  package    * version    date       source                            
+##  assertthat   0.2.0      2017-04-11 CRAN (R 3.4.0)                    
+##  backports    1.1.0      2017-05-22 CRAN (R 3.4.0)                    
+##  base       * 3.4.0      2017-04-21 local                             
+##  bindr        0.1        2016-11-13 CRAN (R 3.4.0)                    
+##  bindrcpp   * 0.2        2017-06-17 CRAN (R 3.4.0)                    
+##  colorspace   1.3-2      2016-12-14 CRAN (R 3.4.0)                    
+##  compiler     3.4.0      2017-04-21 local                             
+##  datasets   * 3.4.0      2017-04-21 local                             
+##  devtools     1.13.3     2017-08-02 CRAN (R 3.4.1)                    
+##  digest       0.6.12     2017-01-27 CRAN (R 3.4.0)                    
+##  dplyr      * 0.7.2      2017-07-20 CRAN (R 3.4.1)                    
+##  evaluate     0.10.1     2017-06-24 CRAN (R 3.4.1)                    
+##  ggplot2    * 2.2.1      2016-12-30 CRAN (R 3.4.1)                    
+##  glue         1.1.1      2017-06-21 CRAN (R 3.4.0)                    
+##  graphics   * 3.4.0      2017-04-21 local                             
+##  grDevices  * 3.4.0      2017-04-21 local                             
+##  grid         3.4.0      2017-04-21 local                             
+##  gtable       0.2.0      2016-02-26 CRAN (R 3.4.0)                    
+##  htmltools    0.3.6      2017-04-28 CRAN (R 3.4.0)                    
+##  knitr        1.17       2017-08-10 CRAN (R 3.4.1)                    
+##  labeling     0.3        2014-08-23 CRAN (R 3.4.0)                    
+##  lazyeval     0.2.0      2016-06-12 CRAN (R 3.4.0)                    
+##  magrittr     1.5        2014-11-22 CRAN (R 3.4.0)                    
+##  memoise      1.1.0      2017-04-21 CRAN (R 3.4.0)                    
+##  methods    * 3.4.0      2017-04-21 local                             
+##  munsell      0.4.3      2016-02-13 CRAN (R 3.4.0)                    
+##  pkgconfig    2.0.1      2017-03-21 CRAN (R 3.4.0)                    
+##  PKPDmisc   * 2.0.0      2017-08-19 local                             
+##  plyr         1.8.4      2016-06-08 CRAN (R 3.4.0)                    
+##  purrr      * 0.2.3      2017-08-02 CRAN (R 3.4.1)                    
+##  R6           2.2.2      2017-06-17 CRAN (R 3.4.0)                    
+##  Rcpp         0.12.12    2017-07-15 CRAN (R 3.4.1)                    
+##  rlang        0.1.2.9000 2017-08-20 Github (tidyverse/rlang@f20124b)  
+##  rmarkdown    1.6        2017-06-17 Github (rstudio/rmarkdown@ca634d7)
+##  rprojroot    1.2        2017-01-16 CRAN (R 3.4.0)                    
+##  scales       0.4.1      2016-11-09 CRAN (R 3.4.0)                    
+##  stats      * 3.4.0      2017-04-21 local                             
+##  stringi      1.1.5      2017-04-07 CRAN (R 3.4.0)                    
+##  stringr      1.2.0      2017-02-18 CRAN (R 3.4.0)                    
+##  tibble       1.3.3      2017-05-28 CRAN (R 3.4.0)                    
+##  tools        3.4.0      2017-04-21 local                             
+##  utils      * 3.4.0      2017-04-21 local                             
+##  withr        2.0.0      2017-07-28 CRAN (R 3.4.1)                    
+##  yaml         2.1.14     2016-11-12 CRAN (R 3.4.0)</code></pre>
 </div>
   </div>
 

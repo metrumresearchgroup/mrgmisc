@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>summarize quantiles — s_quantiles_ â€¢ PKPDmisc</title>
+<title>summarize quantiles for a column — s_quantiles_ â€¢ PKPDmisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -52,10 +52,28 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/multiplot.html">Multiplots</a>
+    </li>
+    <li>
+      <a href="../articles/noncompartmental-analysis.html">Noncompartmental Analysis</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -63,7 +81,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/dpastoor/PKPDmisc">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -75,19 +98,14 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>summarize quantiles</h1>
+    <h1>summarize quantiles for a column</h1>
     </div>
 
     
-    <p>summarize quantiles</p>
-<p>summarize quantiles for a column</p>
+    <p>summarize quantiles for a column</p>
     
 
     <pre class="usage"><span class='fu'>s_quantiles_</span>(<span class='no'>.data</span>, <span class='no'>x</span>, <span class='no'>probs</span>, <span class='kw'>na_rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='fu'>s_quantiles</span>(<span class='no'>.data</span>, <span class='no'>x</span>, <span class='no'>probs</span>, <span class='kw'>na_rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-
-<span class='fu'>s_quantiles_</span>(<span class='no'>.data</span>, <span class='no'>x</span>, <span class='no'>probs</span>, <span class='kw'>na_rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='fu'>s_quantiles</span>(<span class='no'>.data</span>, <span class='no'>x</span>, <span class='no'>probs</span>, <span class='kw'>na_rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
     
@@ -104,45 +122,17 @@
     </tr>
     <tr>
       <th>probs</th>
-      <td><p>probability for quantiles of interest</p></td>
+      <td><p>probabilities to calculate quantiles for</p></td>
     </tr>
     <tr>
       <th>na_rm</th>
       <td><p>remove na's before calculating value for quantile</p></td>
     </tr>
-    <tr>
-      <th>df</th>
-      <td><p>data frame</p></td>
-    </tr>
-    <tr>
-      <th>col_name</th>
-      <td><p>string name for column to calculate quantiles on</p></td>
-    </tr>
-    <tr>
-      <th>na.rm</th>
-      <td><p>whether to remove na values</p></td>
-    </tr>
-    <tr>
-      <th>quantiles</th>
-      <td><p>probabilities to calculate quantiles for</p></td>
-    </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>can calculate multiple quantiles by passing in a vector of probabilities.
-Can also pass in a grouped df using dplyr::group_by to get summaries by group</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'>s_quantiles</span>(<span class='no'>Conc</span>, <span class='kw'>probs</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.1</span>, <span class='fl'>0.5</span>))</div><div class='output co'>#&gt;   Conc_q10 Conc_q50
-#&gt; 1 1.631003 29.88521</div><div class='input'><span class='no'>sd_oral_richpk</span>  <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Gender</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_quantiles_</span>(<span class='st'>"Conc"</span>, <span class='kw'>probs</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0.1</span>, <span class='fl'>0.5</span>))</div><div class='output co'>#&gt; # A tibble: 2 x 3
-#&gt; # Groups:   Gender [?]
-#&gt;   Gender Conc_q10 Conc_q50
-#&gt;   &lt;fctr&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1 Female 1.508296 31.25790
-#&gt; 2   Male 1.901556 28.97848</div><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='no'>sd_oral_richpk</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>Gender</span>, <span class='no'>Time</span>) <span class='kw'>%&gt;%</span> <span class='fu'>s_quantiles</span>(<span class='no'>Conc</span>, <span class='fu'>c</span>(<span class='fl'>0.05</span>, <span class='fl'>0.5</span>, <span class='fl'>0.95</span>))</div><div class='output co'>#&gt; # A tibble: 24 x 5
 #&gt; # Groups:   Gender [?]
 #&gt;    Gender  Time   Conc_q5 Conc_q50  Conc_q95
@@ -163,9 +153,7 @@ Can also pass in a grouped df using dplyr::group_by to get summaries by group</p
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

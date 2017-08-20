@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>given NA values fill them with the final non-na value — fill_forward â€¢ PKPDmisc</title>
+<title>factory to create read fort51 file — rf51_factory â€¢ PKPDmisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -98,49 +98,44 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>given NA values fill them with the final non-na value</h1>
+    <h1>factory to create read fort51 file</h1>
     </div>
 
     
-    <p>given NA values fill them with the final non-na value</p>
+    <p>factory to create read fort51 file</p>
     
 
-    <pre class="usage"><span class='fu'>fill_forward</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>rf51_factory</span>(<span class='no'>.names</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A numeric vector of values</p></td>
+      <th>.names</th>
+      <td><p>names of columns in the fort51 file</p></td>
     </tr>
     </table>
     
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Works very well in context of dplyr to carry out last-observation-carried-foward
-for different individuals. It will NOT replace leading NA's</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>fill_forward</span>(<span class='fu'>c</span>(<span class='fl'>1.0</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>))</div><div class='output co'>#&gt; [1] 1 1 2</div><div class='input'><span class='fu'>fill_forward</span>(<span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>2</span>))</div><div class='output co'>#&gt; [1] NA  1  1  2</div><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='no'>df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>id</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>), <span class='kw'>obs</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1.2</span>, <span class='fl'>4.8</span>, <span class='fl'>2.5</span>, <span class='fl'>NA</span>))
-<span class='no'>df</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>id</span>) <span class='kw'>%&gt;%</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>obs_locf</span> <span class='kw'>=</span> <span class='fu'>fill_forward</span>(<span class='no'>obs</span>))</div><div class='output co'>#&gt; # A tibble: 4 x 3
-#&gt; # Groups:   id [2]
-#&gt;      id   obs obs_locf
-#&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1     1   1.2      1.2
-#&gt; 2     1   4.8      4.8
-#&gt; 3     2   2.5      2.5
-#&gt; 4     2    NA      2.5</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>rf51</span> <span class='kw'>&lt;-</span> <span class='fu'>rf51_factory</span>(<span class='fu'>c</span>(
+<span class='st'>"Iteration"</span>,
+<span class='st'>"ID"</span>,
+<span class='st'>"CL"</span>,
+<span class='st'>"V"</span>,
+<span class='st'>"LNTVCL"</span>,
+<span class='st'>"LNTVV"</span>,
+<span class='st'>"CLEGFR"</span>,
+<span class='st'>"nCL"</span>,
+<span class='st'>"nV"</span>
+))
+<span class='co'># could now do rf51("path/to/fort.51")</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#details">Details</a></li>
-      
+            
       <li><a href="#examples">Examples</a></li>
     </ul>
 

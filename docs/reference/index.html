@@ -52,10 +52,28 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/multiplot.html">Multiplots</a>
+    </li>
+    <li>
+      <a href="../articles/noncompartmental-analysis.html">Noncompartmental Analysis</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -63,7 +81,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/dpastoor/PKPDmisc">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -77,7 +100,7 @@
     <div class="page-header">
       <h1>
         Reference
-        <small>version&nbsp;1.1.0</small>
+        <small>version&nbsp;2.0.0</small>
       </h1>
     </div>
 
@@ -126,6 +149,12 @@
             <p><code><a href="base_theme.html">base_theme</a></code> </p>
           </td>
           <td><p>A theme with better default values for pharmacometric plots, especially conc-time</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="basename_sans_ext.html">basename_sans_ext</a></code> </p>
+          </td>
+          <td><p>get the basename of a filepath, minus any extensions</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -195,6 +224,12 @@
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="dapa_IV_oral.html">data</a></code> </p>
+          </td>
+          <td><p>IV and oral pharmacokinetic data for daptomycin</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="file_rows.html">file_rows</a></code> </p>
           </td>
           <td><p>count number of rows in a file without needing to read file into R</p></td>
@@ -222,6 +257,12 @@
             <p><code><a href="ids_per_plot.html">ids_per_plot</a></code> </p>
           </td>
           <td><p>split IDs into groups to use for subsequent plotting</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
+            <p><code><a href="is_dir.html">is_dir</a></code> </p>
+          </td>
+          <td><p>detect if a filepath is for a directory</p></td>
         </tr><tr>
           <!--  -->
           <td>
@@ -364,6 +405,12 @@ columns with a binary flag for each category</p></td>
         </tr><tr>
           <!--  -->
           <td>
+            <p><code><a href="rf51_factory.html">rf51_factory</a></code> </p>
+          </td>
+          <td><p>factory to create read fort51 file</p></td>
+        </tr><tr>
+          <!--  -->
+          <td>
             <p><code><a href="round_columns.html">round_columns</a></code> </p>
           </td>
           <td><p>round columns</p></td>
@@ -382,15 +429,9 @@ columns with a binary flag for each category</p></td>
         </tr><tr>
           <!--  -->
           <td>
-            <p><code><a href="s_quantile.html">s_quantile</a></code> </p>
-          </td>
-          <td><p>summarize quantile</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
             <p><code><a href="s_quantiles.html">s_quantiles_</a></code> <code><a href="s_quantiles.html">s_quantiles</a></code> </p>
           </td>
-          <td><p>summarize quantiles</p></td>
+          <td><p>summarize quantiles for a column</p></td>
         </tr><tr>
           <!--  -->
           <td>

@@ -52,10 +52,28 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="..//index.html">
+    <span class="fa fa-home fa-lg"></span>
+     
+  </a>
 </li>
 <li>
-  <a href="../articles/index.html">Articles</a>
+  <a href="../reference/index.html">Reference</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/multiplot.html">Multiplots</a>
+    </li>
+    <li>
+      <a href="../articles/noncompartmental-analysis.html">Noncompartmental Analysis</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="../news/index.html">News</a>
@@ -63,7 +81,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/dpastoor/PKPDmisc">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -87,21 +110,7 @@
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 4300 rows and 9 variables
-IV and oral pharmacokinetic data for daptomycin</p>
-<p>A dataset containing simulated dapagliflozin PK.  A single IV dose followed by 3 escalating oral doses</p><ul>
-<li><p>ID. Numerical ID  (1-24)</p></li>
-<li><p>TIME. Nominal Time after first dose (hrs)</p></li>
-<li><p>TAD. Time After Dose (hrs)</p></li>
-<li><p>COBS. Observed Concentration (ug/L)</p></li>
-<li><p>AMT_IV. IV dose amount when given (ug)</p></li>
-<li><p>AMT_ORAL. Oral dose amount when given (ug)</p></li>
-<li><p>OCC. Occasion, associated with each dosing event</p></li>
-<li><p>AGE. Age (years)</p></li>
-<li><p>WEIGHT Weight (kg)</p></li>
-<li><p>GENDER. Gender flag (female=1, male=0)</p></li>
-<li><p>FORMULATION Formulation associated with dose (IV or oral)</p></li>
-</ul>
+    <p>A data frame with 4300 rows and 9 variables</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
