@@ -6,7 +6,10 @@ Date: 2017-08-19
 Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
-Description: PKPDmisc is a collection of functions for making PKPD analysis easier.
+Description:  Provides utility functions for common pharmacokinetic and pharmacokinetic 
+    modeling and simulation activities.
+URL: https://github.com/dpastoor/PKPDmisc
+BugReports: https://github.com/dpastoor/PKPDmisc/issues
 Depends:
     R (>= 3.2.2)
 LinkingTo: Rcpp,
