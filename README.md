@@ -27,7 +27,6 @@ miscellaneous functions for use in pharmacometric analyses
 
 ### Summaries
 
-* [s_cmax](https://dpastoor.github.io/PKPDmisc/reference/s_cmax.html)
 * [s_pauc](https://dpastoor.github.io/PKPDmisc/reference/s_pauc.html)
 * [s_quantiles](https://dpastoor.github.io/PKPDmisc/reference/s_quantiles.html)
  
