@@ -17,7 +17,7 @@ miscellaneous functions for use in pharmacometric analyses
 ### Data Manipulation
 
 * [as_numeric](https://dpastoor.github.io/PKPDmisc/reference/as_numeric.html)
-* [fill_backwards](https://dpastoor.github.io/PKPDmisc/reference/fill_backwards.html)
+* [fill_backwards](https://dpastoor.github.io/PKPDmisc/reference/fill_backward.html)
 * [fill_forward](https://dpastoor.github.io/PKPDmisc/reference/fill_forward.html)
 * [ids_per_plot](https://dpastoor.github.io/PKPDmisc/reference/ids_per_plot.html)
 * [max_through](https://dpastoor.github.io/PKPDmisc/reference/max_through.html)
@@ -38,7 +38,7 @@ miscellaneous functions for use in pharmacometric analyses
 * [lowercase_names](https://dpastoor.github.io/PKPDmisc/reference/lowercase_names.html)
 * [char_to_numeric](https://dpastoor.github.io/PKPDmisc/reference/char_to_numeric.html)
 * [cols_to_numeric](https://dpastoor.github.io/PKPDmisc/reference/cols_to_numeric.html)
-* [ordinal_to_binary_](https://dpastoor.github.io/PKPDmisc/reference/ordinal_to_binary_.html)
+* [ordinal_to_binary_](https://dpastoor.github.io/PKPDmisc/reference/ordinal_to_binary.html)
 * [replace_dots](https://dpastoor.github.io/PKPDmisc/reference/replace_dots.html)
 * [pad_left](https://dpastoor.github.io/PKPDmisc/reference/pad_left.html)
 
