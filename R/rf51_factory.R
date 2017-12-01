@@ -15,10 +15,11 @@
 #' # could now do rf51("path/to/fort.51")
 #' @export
 rf51_factory <- function(.names) {
-  return(function(dir, .names = names) {
-    df <- data.table::fread(file.path(dir, "fort.51"), na = ".") %>% tibble::as_data_frame()
+  return(function(.dir) {
+    df <- data.table::fread(file.path(.dir, "fort.51"), na = ".") %>% tibble::as_data_frame()
     if (length(df) != length(.names)) {
-      stop("names don't align")
+      stop("names don't align, trying to set ",
+           length(.names), " column names vs ", length(df), " columns in dataset")
     }
     names(df) <- .names 
     return(df)
