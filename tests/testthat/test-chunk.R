@@ -20,6 +20,12 @@ describe("chunking works", {
                       c("d", "e", "f"), 
                       c("g", "h", "i")))
   })
+  it("chunks unique elements into equal list if not grp_list", {
+    expect_equal(chunk_list(letters[c(1, 1, 1:7)], 3), 
+                 list(c("a", "a", "a"), 
+                      c("b", "c", "d"), 
+                      c("e", "f", "g")))
+  })
   it("chunks grouped elements into ragged arrays", {
     expect_equal(chunk_grp_list(c(letters[1], letters[1], letters[1:7]), 3),
                  list(c("a", "a", "a", "b", "c"),

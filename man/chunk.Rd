@@ -56,6 +56,8 @@ chunk_grp(c(1, 1, 1:7), 3)
 # chunk list will both split the data and keep the original values
 chunk_list(letters[1:9], 3)
 
+chunk_list(c(letters[1], letters[1], letters[1:7]), 3)
+
 # in this case ragged arrays will be created to keep the number of 
 # unique elements consistent as possible between chunks
 chunk_grp_list(c(letters[1], letters[1], letters[1:7]), 3)
