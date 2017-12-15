@@ -22,6 +22,8 @@
 #' # chunk list will both split the data and keep the original values
 #' chunk_list(letters[1:9], 3)
 #' 
+#' chunk_list(c(letters[1], letters[1], letters[1:7]), 3)
+#' 
 #' # in this case ragged arrays will be created to keep the number of 
 #' # unique elements consistent as possible between chunks
 #' chunk_grp_list(c(letters[1], letters[1], letters[1:7]), 3)
@@ -64,7 +66,7 @@ chunk_grp <- function(.x, .nchunk = parallel::detectCores()) {
 #' @rdname chunk
 #' @export
 chunk_list <- function(.x, .nchunk = parallel::detectCores()) {
-  .c <- chunk_grp(.x, .nchunk)
+  .c <- chunk(.x, .nchunk)
   unname(split(.x, .c))
 }
 
