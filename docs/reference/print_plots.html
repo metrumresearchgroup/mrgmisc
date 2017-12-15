@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>create a list of plots cleanly with extra pdf functionality � print_plots • PKPDmisc</title>
+<title>create a list of plots cleanly with extra pdf functionality — print_plots • PKPDmisc</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -146,7 +146,7 @@ numbered plot appendix</p>
 <span class='co'># given we may only plot a subset of individuals per plot</span>
 <span class='co'># and generate multiple plots, lets split the dataframe </span>
 <span class='no'>list_of_ids</span> <span class='kw'>&lt;-</span> <span class='no'>sd_oral_richpk</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='capitalize_names.html'>capitalize_names</a></span>() <span class='kw'>%&gt;%</span>
-<span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>plotnum</span> <span class='kw'>=</span> <span class='fu'><a href='ids_per_plot.html'>ids_per_plot</a></span>(<span class='no'>ID</span>)) <span class='kw'>%&gt;%</span> <span class='co'># default 9 per plot</span>
+<span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>plotnum</span> <span class='kw'>=</span> <span class='fu'><a href='chunk.html'>ids_per_plot</a></span>(<span class='no'>ID</span>)) <span class='kw'>%&gt;%</span> <span class='co'># default 9 per plot</span>
 <span class='fu'>split</span>(<span class='no'>.</span>$<span class='no'>plotnum</span>)
 
 <span class='co'># now we want to plot each subplot</span>
