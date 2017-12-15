@@ -27,17 +27,17 @@ ids_per_plot <- function(id, id_per_plot = 9) {
 #' @details 
 #' chunk by group, unique values, and return as a vector or a list with elememts
 #' @export
-chunk_grp <- function(.x, .nchunk = parallel::detectCores()) {
-  .c <- chunk(unique(.x), .nchunk)
-  .c[match(.x, unique(.x))]
-}
-
-#' @rdname chunk
-#' @export
 chunk <- function(.x, .nchunk = parallel::detectCores()) {
   mod <- length(.x)%/%.nchunk
   bin_number <- sort(rep(1:.nchunk, each = mod, length.out = length(.x)))
   return(bin_number)
+}
+
+#' @rdname chunk
+#' @export
+chunk_grp <- function(.x, .nchunk = parallel::detectCores()) {
+  .c <- chunk(unique(.x), .nchunk)
+  .c[match(.x, unique(.x))]
 }
 
 #' @rdname chunk
