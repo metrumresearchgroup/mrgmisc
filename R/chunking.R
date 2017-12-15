@@ -28,31 +28,28 @@ ids_per_plot <- function(id, id_per_plot = 9) {
 #' chunk by group, unique values, and return as a vector or a list with elememts
 #' @export
 chunk_grp <- function(.x, .nchunk) {
-  ids_per_plot(.x, .nchunk)
+  .c <- chunk(unique(.x), .nchunk)
+  .c[match(.x, unique(.x))]
 }
 
 #' @rdname chunk
 #' @export
 chunk <- function(.x, .nchunk) {
   mod <- length(.x)%/%.nchunk
-  remainder <- length(.x)%%.nchunk
-  bin_number <- c(rep(1:mod, each= .nchunk),
-                  rep(mod + 1, times = remainder ))
-  bin_number <- sort(bin_number)
-  if(length(bin_number) != length(uid)) stop("something went wrong in bin_number calculation")
+  bin_number <- sort(rep(1:.nchunk, each = mod, length.out = length(.x)))
   return(bin_number)
 }
 
 #' @rdname chunk
 #' @export
 chunk_list <- function(.x, .nchunk) {
-  chunk <- chunk_grp(.x, .nchunk)
-  split(chunk, chunk)
+  .c <- chunk_grp(.x, .nchunk)
+  unname(split(.x, .c))
 }
 
 #' @rdname chunk
 #' @export
 chunk_grp_list <- function(.x, .nchunk) {
-  chunk <- chunk_grp(.x, .nchunk)
-  split(chunk, chunk)
+  .c <- chunk_grp(.x, .nchunk)
+  unname(split(.x, .c))
 }
