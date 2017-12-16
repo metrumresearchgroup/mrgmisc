@@ -1,13 +1,15 @@
 Package: PKPDmisc
 Type: Package
-Title: Tools to make pharmacometric analyses easier
+Title: Pharmacokinetic and Pharmacodynamic Data Management Functions
 Version: 2.1.1
 Date: 2017-12-15 
 Authors@R: c(
     person("Devin", "Pastoor",
     email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
-Description:  Provides utility functions for common pharmacokinetic and pharmacokinetic 
-    modeling and simulation activities.
+Description: A toolbox for data management common to pharmacokinetic and
+  pharmacokinetic modeling and simulation, such as resampling,
+  area-under-the-curve calculation, data chunking, custom csv
+  output, and project scaffolding.
 URL: https://github.com/dpastoor/PKPDmisc
 BugReports: https://github.com/dpastoor/PKPDmisc/issues
 Depends:
