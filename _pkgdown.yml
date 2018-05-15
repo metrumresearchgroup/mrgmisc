@@ -2,4 +2,50 @@ url: https://dpastoor.github.io/PKPDmisc
 
 template:
   params:
-    bootswatch: cerulean
+  docsearch:
+    api_key: wrong
+    index_name: pkpdmisc
+
+reference:
+  - title: Data Ingestion
+    desc: Ingest Data.
+    contents:
+    - read_nonmem
+    - read_phx
+    - write_nonmem
+  - title: Data Manipulation
+    contents:
+    - as_numeric
+    - fill_backward
+    - fill_forward
+    - ids_per_plot
+    - max_through
+    - min_through
+    - set_bins
+    - unique_non_numerics
+  - title: Summaries
+    contents:
+    - s_pauc
+    - s_quantiles
+  - title: Formatting
+    contents:
+    - capitalize_names
+    - lowercase_names
+    - char_to_numeric
+    - cols_to_numeric
+    - ordinal_to_binary_
+    - replace_dots
+    - pad_left
+  - title: Pharmacometrics-specific
+    contents:
+    - auc_inf
+    - auc_partial
+    - resample_df
+    - strip_curves
+    - wam
+  - title: misc
+    contents:
+    - jprint
+    - view_creator
+    - peek
+    - pad_left
