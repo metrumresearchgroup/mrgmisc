@@ -2,9 +2,9 @@ url: https://dpastoor.github.io/PKPDmisc
 
 template:
   params:
-  docsearch:
-    api_key: 6417058f1efec10fab175718f9ee85d7
-    index_name: pkpdmisc
+    docsearch:
+      api_key: 6417058f1efec10fab175718f9ee85d7
+      index_name: pkpdmisc
 
 reference:
   - title: Data Ingestion
