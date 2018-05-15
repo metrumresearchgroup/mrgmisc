@@ -11,20 +11,26 @@
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+
+
+
+<meta property="og:title" content="Function reference" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +53,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">PKPDmisc</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">PKPDmisc</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">2.1.1</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -76,7 +86,7 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -88,6 +98,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -95,413 +106,255 @@
       
       </header>
 
-      <div class="row">
-  <div class="col-md-9">
+<div class="row">
+  <div class="contents col-md-9">
     <div class="page-header">
-      <h1>
-        Reference
-        <small>version&nbsp;2.1.1</small>
-      </h1>
+      <h1>Reference</h1>
     </div>
 
-    <div class="contents">
-      <table class="ref-index">
+    <table class="ref-index">
 
-      <colgroup>
-        <col class="alias" />
-        <col class="title" />
-      </colgroup>
+    <colgroup>
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-      <tbody>
-        <tr>
-          <th colspan="2">
-            <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-            <p class="section-desc"></p>
-          </th>
-        </tr>
-        <tr>
-          <!--  -->
-          <td>
-            <p><code><a href="as_numeric.html">as_numeric</a></code> </p>
-          </td>
-          <td><p>convert to numeric passing through character for safety</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="auc_inf.html">auc_inf</a></code> </p>
-          </td>
-          <td><p>Calculate AUCt-inf</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="auc_partial_cpp.html">auc_partial_cpp</a></code> </p>
-          </td>
-          <td><p>calculate partial AUC</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="auc_partial.html">auc_partial</a></code> </p>
-          </td>
-          <td><p>Calculate partial AUC</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="base_theme.html">base_theme</a></code> </p>
-          </td>
-          <td><p>A theme with better default values for pharmacometric plots, especially conc-time</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="basename_sans_ext.html">basename_sans_ext</a></code> </p>
-          </td>
-          <td><p>get the basename of a filepath, minus any extensions</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="bring_to_front.html">bring_to_front</a></code> </p>
-          </td>
-          <td><p>bring select columns to the front of a dataframe</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="calculate_wam.html">calculate_wam</a></code> </p>
-          </td>
-          <td><p>internal WAM function</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="capitalize_names.html">capitalize_names</a></code> </p>
-          </td>
-          <td><p>capitalize all names for a dataframe</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="capture_groups.html">capture_groups</a></code> </p>
-          </td>
-          <td><p>wrapper to capture groups from a grouped data frame</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="char_to_numeric.html">char_to_numeric</a></code> </p>
-          </td>
-          <td><p>convert all columns to numeric</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="chunk_df.html">chunk_df</a></code> </p>
-          </td>
-          <td><p>chunk dataframes so easy to split for parallel processing</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="chunk.html">ids_per_plot</a></code> <code><a href="chunk.html">chunk</a></code> <code><a href="chunk.html">chunk_grp</a></code> <code><a href="chunk.html">chunk_list</a></code> <code><a href="chunk.html">chunk_grp_list</a></code> </p>
-          </td>
-          <td><p>split IDs into groups to use for subsequent plotting</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="color_pallete.html">color_pallete</a></code> </p>
-          </td>
-          <td><p>design-quality color palletes to use in ggplot2</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cols_to_factor.html">cols_to_factor</a></code> </p>
-          </td>
-          <td><p>convert column to type factor</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cols_to_numeric.html">cols_to_numeric</a></code> </p>
-          </td>
-          <td><p>convert column to type numeric</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cor_to_cov.html">cor_to_cov</a></code> </p>
-          </td>
-          <td><p>correlation to covariance matrix</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="cov_to_cor.html">cov_to_cor</a></code> </p>
-          </td>
-          <td><p>covariance to correlation</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="dapa_IV_oral.html">data</a></code> </p>
-          </td>
-          <td><p>IV and oral pharmacokinetic data for daptomycin</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="file_rows.html">file_rows</a></code> </p>
-          </td>
-          <td><p>count number of rows in a file without needing to read file into R</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fill_backward.html">fill_backward</a></code> </p>
-          </td>
-          <td><p>given NA values fill them with the next non-na value</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="fill_forward.html">fill_forward</a></code> </p>
-          </td>
-          <td><p>given NA values fill them with the final non-na value</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="has_ext.html">has_ext</a></code> </p>
-          </td>
-          <td><p>check for if the passed name has a file extension</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="is_dir.html">is_dir</a></code> </p>
-          </td>
-          <td><p>detect if a filepath is for a directory</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="jprint.html">jprint</a></code> </p>
-          </td>
-          <td><p>print multiple values joined together</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="lowercase_names.html">lowercase_names</a></code> </p>
-          </td>
-          <td><p>lowercase all names for a dataframe</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="max_through.html">max_through</a></code> </p>
-          </td>
-          <td><p>give the max value up to that point</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="min_through.html">min_through</a></code> </p>
-          </td>
-          <td><p>give the min value up to that point</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nca.html">nca</a></code> <code><a href="nca.html">NCA</a></code> </p>
-          </td>
-          <td><p>calculate basic NCA parameters t1/2 Cl, Cmax etc</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="new_report.html">new_report</a></code> </p>
-          </td>
-          <td><p>a better new rmd template for reports</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nm_description.html">nm_description</a></code> </p>
-          </td>
-          <td><p>show description output from .mod file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nm_notes.html">nm_notes</a></code> </p>
-          </td>
-          <td><p>show notes output from .mod file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="nonmem_report.html">nonmem_report</a></code> </p>
-          </td>
-          <td><p>create basic folder structure for a nonmem report</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="ordinal_to_binary.html">ordinal_to_binary_</a></code> </p>
-          </td>
-          <td><p>convert a column of categorical covariates into a number of 
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data-ingestion" class="hasAnchor"><a href="#section-data-ingestion" class="anchor"></a>Data Ingestion</h2>
+          <p class="section-desc"><p>Ingest Data.</p></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_nonmem.html">read_nonmem()</a></code> </p>
+        </td>
+        <td><p>read nonmem files easily</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="read_phx.html">read_phx()</a></code> </p>
+        </td>
+        <td><p>to more easily read data with a 2nd row with units common to phx data</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="write_nonmem.html">write_nonmem()</a></code> </p>
+        </td>
+        <td><p>easily write a csv file compatible with nonmem</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data-manipulation" class="hasAnchor"><a href="#section-data-manipulation" class="anchor"></a>Data Manipulation</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="as_numeric.html">as_numeric()</a></code> </p>
+        </td>
+        <td><p>convert to numeric passing through character for safety</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fill_backward.html">fill_backward()</a></code> </p>
+        </td>
+        <td><p>given NA values fill them with the next non-na value</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="fill_forward.html">fill_forward()</a></code> </p>
+        </td>
+        <td><p>given NA values fill them with the final non-na value</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="chunk.html">ids_per_plot()</a></code> <code><a href="chunk.html">chunk()</a></code> <code><a href="chunk.html">chunk_grp()</a></code> <code><a href="chunk.html">chunk_list()</a></code> <code><a href="chunk.html">chunk_grp_list()</a></code> </p>
+        </td>
+        <td><p>split IDs into groups to use for subsequent plotting</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="max_through.html">max_through()</a></code> </p>
+        </td>
+        <td><p>give the max value up to that point</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="min_through.html">min_through()</a></code> </p>
+        </td>
+        <td><p>give the min value up to that point</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="set_bins.html">set_bins()</a></code> </p>
+        </td>
+        <td><p>given a set of bin ranges, assign each value to a bin</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="unique_non_numerics.html">unique_non_numerics()</a></code> </p>
+        </td>
+        <td><p>find all unique non-numeric values</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-summaries" class="hasAnchor"><a href="#section-summaries" class="anchor"></a>Summaries</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="s_pauc.html">s_pauc_()</a></code> <code><a href="s_pauc.html">s_pauc()</a></code> </p>
+        </td>
+        <td><p>summarize paucs</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="s_quantiles.html">s_quantiles_()</a></code> <code><a href="s_quantiles.html">s_quantiles()</a></code> </p>
+        </td>
+        <td><p>summarize quantiles for a column</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-formatting" class="hasAnchor"><a href="#section-formatting" class="anchor"></a>Formatting</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="capitalize_names.html">capitalize_names()</a></code> </p>
+        </td>
+        <td><p>capitalize all names for a dataframe</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="lowercase_names.html">lowercase_names()</a></code> </p>
+        </td>
+        <td><p>lowercase all names for a dataframe</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="char_to_numeric.html">char_to_numeric()</a></code> </p>
+        </td>
+        <td><p>convert all columns to numeric</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="cols_to_numeric.html">cols_to_numeric()</a></code> </p>
+        </td>
+        <td><p>convert column to type numeric</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="ordinal_to_binary.html">ordinal_to_binary_()</a></code> </p>
+        </td>
+        <td><p>convert a column of categorical covariates into a number of 
 columns with a binary flag for each category</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="pad_left.html">pad_left</a></code> </p>
-          </td>
-          <td><p>add left padding to a vector of values</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="peek.html">peek</a></code> </p>
-          </td>
-          <td><p>peek at the results in a dplyr pipeline</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="phx_report.html">phx_report</a></code> </p>
-          </td>
-          <td><p>create basic folder structure for a phoenix report</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="print_plots.html">print_plots</a></code> </p>
-          </td>
-          <td><p>create a list of plots cleanly with extra pdf functionality</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_nonmem.html">read_nonmem</a></code> </p>
-          </td>
-          <td><p>read nonmem files easily</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="read_phx.html">read_phx</a></code> </p>
-          </td>
-          <td><p>to more easily read data with a 2nd row with units common to phx data</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="rename_table_pattern.html">rename_table_pattern</a></code> </p>
-          </td>
-          <td><p>simple table name replacement for a given pattern</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="replace_dots.html">replace_dots</a></code> </p>
-          </td>
-          <td><p>Convert '.' values into missing values.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="replace_empty.html">replace_empty</a></code> </p>
-          </td>
-          <td><p>Convert empty strings into missing values.</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="replace_from_template.html">replace_from_template</a></code> </p>
-          </td>
-          <td><p>replace values from a template file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="replace_list_elements.html">replace_list_elements</a></code> </p>
-          </td>
-          <td><p>replace list elements by name</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="replace_values.html">replace_values</a></code> </p>
-          </td>
-          <td><p>replace symbols or other character flags</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="resample_df.html">resample_df</a></code> </p>
-          </td>
-          <td><p>resampling</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="rf51_factory.html">rf51_factory</a></code> </p>
-          </td>
-          <td><p>factory to create read fort51 file</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="round_columns.html">round_columns</a></code> </p>
-          </td>
-          <td><p>round columns</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="s_pauc.html">s_pauc_</a></code> <code><a href="s_pauc.html">s_pauc</a></code> </p>
-          </td>
-          <td><p>summarize paucs</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="s_quantiles.html">s_quantiles_</a></code> <code><a href="s_quantiles.html">s_quantiles</a></code> </p>
-          </td>
-          <td><p>summarize quantiles for a column</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="sd_oral_richpk.html">data</a></code> </p>
-          </td>
-          <td><p>One-compartment pharmacokinetic data given single oral dose</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="set_bins_cpp.html">set_bins_cpp</a></code> </p>
-          </td>
-          <td><p>given a set of bin ranges, assign each value to a bin</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="set_bins_df.html">set_bins_df</a></code> </p>
-          </td>
-          <td><p>given a set of bin ranges, assign each value to a bin and provide the label</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="set_bins.html">set_bins</a></code> </p>
-          </td>
-          <td><p>given a set of bin ranges, assign each value to a bin</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="set_groups.html">set_groups</a></code> </p>
-          </td>
-          <td><p>set groups</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="strip_attributes.html">strip_attributes</a></code> </p>
-          </td>
-          <td><p>strip additional attributes that make dplyr fail</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="strip_curves.html">strip_curves</a></code> </p>
-          </td>
-          <td><p>basic curve stripping to get initial estimates</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="unique_non_numerics.html">unique_non_numerics</a></code> </p>
-          </td>
-          <td><p>find all unique non-numeric values</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="view_creator.html">view_creator</a></code> </p>
-          </td>
-          <td><p>create view commands that save rds files to where a shiny app is listening for them</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="wam.html">wam</a></code> </p>
-          </td>
-          <td><p>wam function</p></td>
-        </tr><tr>
-          <!--  -->
-          <td>
-            <p><code><a href="write_nonmem.html">write_nonmem</a></code> </p>
-          </td>
-          <td><p>easily write a csv file compatible with nonmem</p></td>
-        </tr>
-      </tbody>
-      </table>
-    </div>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="replace_dots.html">replace_dots()</a></code> </p>
+        </td>
+        <td><p>Convert '.' values into missing values.</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="pad_left.html">pad_left()</a></code> </p>
+        </td>
+        <td><p>add left padding to a vector of values</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-pharmacometrics-specific" class="hasAnchor"><a href="#section-pharmacometrics-specific" class="anchor"></a>Pharmacometrics-specific</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="auc_inf.html">auc_inf()</a></code> </p>
+        </td>
+        <td><p>Calculate AUCt-inf</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="auc_partial.html">auc_partial()</a></code> </p>
+        </td>
+        <td><p>Calculate partial AUC</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="resample_df.html">resample_df()</a></code> </p>
+        </td>
+        <td><p>resampling</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="strip_curves.html">strip_curves()</a></code> </p>
+        </td>
+        <td><p>basic curve stripping to get initial estimates</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="wam.html">wam()</a></code> </p>
+        </td>
+        <td><p>wam function</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-misc" class="hasAnchor"><a href="#section-misc" class="anchor"></a>misc</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        <!--  -->
+        <td>
+          <p><code><a href="jprint.html">jprint()</a></code> </p>
+        </td>
+        <td><p>print multiple values joined together</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="view_creator.html">view_creator()</a></code> </p>
+        </td>
+        <td><p>create view commands that save rds files to where a shiny app is listening for them</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="peek.html">peek()</a></code> </p>
+        </td>
+        <td><p>peek at the results in a dplyr pipeline</p></td>
+      </tr><tr>
+        <!--  -->
+        <td>
+          <p><code><a href="pad_left.html">pad_left()</a></code> </p>
+        </td>
+        <td><p>add left padding to a vector of values</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-data-ingestion">Data Ingestion</a></li>
+      <li><a href="#section-data-manipulation">Data Manipulation</a></li>
+      <li><a href="#section-summaries">Summaries</a></li>
+      <li><a href="#section-formatting">Formatting</a></li>
+      <li><a href="#section-pharmacometrics-specific">Pharmacometrics-specific</a></li>
+      <li><a href="#section-misc">misc</a></li>
     </ul>
   </div>
 </div>
@@ -512,11 +365,14 @@ columns with a binary flag for each category</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
    </div>
 
+  
+
   </body>
 </html>
+
