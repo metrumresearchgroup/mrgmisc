@@ -1,0 +1,19 @@
+kind: pipeline
+name: testing
+
+steps:
+- name: R36
+  image: dpastoor/metworx-pkg-deps:latest
+  depends_on: [clone]
+  environment:
+    R_LIBS_USER: "/rpkgs/3.6"
+  commands:
+  - /opt/R/3.6.0/bin/R -e "devtools::check()" 
+
+- name: R35
+  image: dpastoor/metworx-pkg-deps:latest
+  environment:
+    R_LIBS_USER: "/rpkgs/3.5"
+  commands:
+  - /opt/R/3.5.3/bin/R -e "devtools::check()" 
+  
