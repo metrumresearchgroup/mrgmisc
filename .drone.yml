@@ -1,5 +1,5 @@
 kind: pipeline
-name: testing
+name: test
 
 steps:
 - name: R36
