@@ -4,8 +4,14 @@
 \alias{resample_df}
 \title{resampling}
 \usage{
-resample_df(df, key_cols, strat_cols = NULL, n = NULL,
-  key_col_name = "KEY", replace = TRUE)
+resample_df(
+  df,
+  key_cols,
+  strat_cols = NULL,
+  n = NULL,
+  key_col_name = "KEY",
+  replace = TRUE
+)
 }
 \arguments{
 \item{df}{data frame}

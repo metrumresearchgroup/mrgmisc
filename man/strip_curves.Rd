@@ -4,8 +4,7 @@
 \alias{strip_curves}
 \title{basic curve stripping to get initial estimates}
 \usage{
-strip_curves(.time, .dv, dose, number_terminal_points, oral = FALSE,
-  round = 2)
+strip_curves(.time, .dv, dose, number_terminal_points, oral = FALSE, round = 2)
 }
 \arguments{
 \item{.time}{column for time}

@@ -4,8 +4,14 @@
 \alias{replace_from_template}
 \title{replace values from a template file}
 \usage{
-replace_from_template(file, patterns, replacement_df, output_dir = NULL,
-  file_name = NULL, ...)
+replace_from_template(
+  file,
+  patterns,
+  replacement_df,
+  output_dir = NULL,
+  file_name = NULL,
+  ...
+)
 }
 \arguments{
 \item{file}{template file}

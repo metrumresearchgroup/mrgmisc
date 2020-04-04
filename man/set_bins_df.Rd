@@ -4,9 +4,18 @@
 \alias{set_bins_df}
 \title{given a set of bin ranges, assign each value to a bin and provide the label}
 \usage{
-set_bins_df(.df, .x, breaks = stats::quantile(.df[[.x]], na.rm = T),
-  .name = NULL, .label = NULL, lower_bound = -Inf, upper_bound = Inf,
-  quiet = TRUE, between = NULL, inclusive = TRUE)
+set_bins_df(
+  .df,
+  .x,
+  breaks = stats::quantile(.df[[.x]], na.rm = T),
+  .name = NULL,
+  .label = NULL,
+  lower_bound = -Inf,
+  upper_bound = Inf,
+  quiet = TRUE,
+  between = NULL,
+  inclusive = TRUE
+)
 }
 \arguments{
 \item{.df}{data frame}

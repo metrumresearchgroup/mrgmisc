@@ -4,8 +4,11 @@
 \alias{phx_report}
 \title{create basic folder structure for a phoenix report}
 \usage{
-phx_report(project, secondary_folders = list("Rscripts", "phoenix-output",
-  "for-phoenix", "lab-notebook", "data"))
+phx_report(
+  project,
+  secondary_folders = list("Rscripts", "phoenix-output", "for-phoenix", "lab-notebook",
+    "data")
+)
 }
 \arguments{
 \item{project}{name of top level project folder}

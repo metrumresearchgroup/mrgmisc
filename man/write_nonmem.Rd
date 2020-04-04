@@ -4,8 +4,15 @@
 \alias{write_nonmem}
 \title{easily write a csv file compatible with nonmem}
 \usage{
-write_nonmem(x, file, sep = ",", row.names = FALSE, na = ".",
-  quote = FALSE, ...)
+write_nonmem(
+  x,
+  file,
+  sep = ",",
+  row.names = FALSE,
+  na = ".",
+  quote = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{dataframe to be written to csv}

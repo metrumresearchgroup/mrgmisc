@@ -4,8 +4,12 @@
 \alias{print_plots}
 \title{create a list of plots cleanly with extra pdf functionality}
 \usage{
-print_plots(.ggplot_list, .start_page_number = NULL, .start_break = TRUE,
-  .end_break = TRUE)
+print_plots(
+  .ggplot_list,
+  .start_page_number = NULL,
+  .start_break = TRUE,
+  .end_break = TRUE
+)
 }
 \arguments{
 \item{.ggplot_list}{list of ggplot plots}

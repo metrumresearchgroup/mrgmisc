@@ -7,7 +7,7 @@
 #' @param overwrite overwrite any existing columns if the newly generated columns
 #'    share the same name
 #' @rdname ordinal_to_binary
-#' @examples \donttest{
+#' @examples 
 #' library(dplyr)
 #' df <- data_frame(OCC = c(1, 1, 2, 3))
 #' df %>% ordinal_to_binary_("OCC")
@@ -15,8 +15,7 @@
 #' 
 #' df2 <- data_frame(OCC = c(1, 1, 2, 3), OCC1 = 999)
 #' df2 %>% ordinal_to_binary_("OCC")
-#' df2 %>% ordinal_to_binary_("OCC", overwrite=T)
-#' }
+#' df2 %>% ordinal_to_binary_("OCC", overwrite = TRUE)
 #' @export
 ordinal_to_binary_ <- function(df, 
                                col_name, 

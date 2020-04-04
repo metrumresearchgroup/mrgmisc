@@ -81,5 +81,5 @@ print_plots(plot_list)
 
 
 ```{r}
-devtools::session_info()
+sessioninfo::session_info()
 ```

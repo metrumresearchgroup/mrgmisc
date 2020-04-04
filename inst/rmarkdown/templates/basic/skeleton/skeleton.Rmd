@@ -33,5 +33,5 @@ opts_chunk$set(fig.height = 6, fig.width = 10, dpi = 300)
 
 
 ```{r}
-devtools::session_info()
+sessioninfo::session_info()
 ```
