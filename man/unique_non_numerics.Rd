@@ -2,7 +2,7 @@
 % Please edit documentation in R/non_numerics.R
 \name{unique_non_numerics}
 \alias{unique_non_numerics}
-\title{find all unique non-numeric values}
+\title{Find all unique non-numeric values}
 \usage{
 unique_non_numerics(x, na.rm = TRUE)
 }
@@ -12,7 +12,7 @@ unique_non_numerics(x, na.rm = TRUE)
 \item{na.rm}{remove existing na values before checking}
 }
 \description{
-find all unique non-numeric values
+Find all unique non-numeric values
 }
 \details{
 This function is especially useful for figuring out what
@@ -33,4 +33,8 @@ df \%>\% filter(!(DV \%in\% unique_non_numerics(DV)))
 \seealso{
 \code{\link{replace_values}}: to use to replace non-numeric values
 in a dataframe.
+
+Other Numerics: 
+\code{\link{as_numeric}()}
 }
+\concept{Numerics}

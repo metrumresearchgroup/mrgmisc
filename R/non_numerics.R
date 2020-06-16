@@ -1,4 +1,5 @@
-#' find all unique non-numeric values
+#' Find all unique non-numeric values
+#' 
 #' @param x vector to check on
 #' @param na.rm remove existing na values before checking
 #' @details
@@ -18,8 +19,15 @@
 #' df %>% filter(!(DV %in% unique_non_numerics(DV)))
 #' @seealso \code{\link{replace_values}}: to use to replace non-numeric values
 #' in a dataframe.
+#' @family Numerics
 unique_non_numerics <- function(x, na.rm = TRUE) {
   if(na.rm) x <- x[!is.na(x)]
   xn <- suppressWarnings(as_numeric(x))
-  unique(x[is.na(xn)])
+  na.last <-
+    if (na.rm) {
+      NA
+    } else {
+      TRUE
+    }
+  sort(unique(x[is.na(xn)]), na.last=na.last)
 }
