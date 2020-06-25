@@ -2,6 +2,7 @@
 #' 
 #' @param x vector to check on
 #' @param na.rm remove existing na values before checking
+#' @param .sort sort the results
 #' @details
 #' This function is especially useful for figuring out what
 #' non-numeric unique values are in in a column that should be numeric
@@ -20,14 +21,19 @@
 #' @seealso \code{\link{replace_values}}: to use to replace non-numeric values
 #' in a dataframe.
 #' @family Numerics
-unique_non_numerics <- function(x, na.rm = TRUE) {
+unique_non_numerics <- function(x, na.rm = TRUE, .sort = TRUE) {
   if(na.rm) x <- x[!is.na(x)]
   xn <- suppressWarnings(as_numeric(x))
-  na.last <-
-    if (na.rm) {
-      NA
-    } else {
-      TRUE
-    }
-  sort(unique(x[is.na(xn)]), na.last=na.last)
+  
+  res <- unique(x[is.na(xn)])
+  if (.sort) {
+    na.last <-
+      if (na.rm) {
+        NA
+      } else {
+        TRUE
+      }
+    return(sort(res, na.last=na.last))
+  }
+  return(res)
 }

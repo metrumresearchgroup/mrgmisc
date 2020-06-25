@@ -4,12 +4,14 @@
 \alias{unique_non_numerics}
 \title{Find all unique non-numeric values}
 \usage{
-unique_non_numerics(x, na.rm = TRUE)
+unique_non_numerics(x, na.rm = TRUE, .sort = TRUE)
 }
 \arguments{
 \item{x}{vector to check on}
 
 \item{na.rm}{remove existing na values before checking}
+
+\item{.sort}{sort the results}
 }
 \description{
 Find all unique non-numeric values

@@ -1,10 +1,6 @@
 context("replacement-flags")
 
-
-
-vec <- c(1, 1, "*", "-", 5)    
-replacementn99 <- data.frame(flag = c("*", "-"), rep=c(-99))
-replacementn99unn <- data.frame(flag = unique_non_numerics(vec), rep=c(-99))
+vec <- c(1, 1, "b", "a", 5)    
 correct_outputn99 <- c(1, 1, -99, -99, 5)
 correct_outputn99_repNA <- c(NA, NA, -99, -99, NA)
 correct_outputn1n2 <- c(1, 1, -1, -2, 5)
@@ -17,5 +13,7 @@ test_that("list elements replaced properly", {
 })
 
 test_that("non numerics flags correctly", {
-  expect_equal(replacementn99, replacementn99unn) 
+  expect_equal(unique_non_numerics(vec) , c("a", "b")) 
+  expect_equal(unique_non_numerics(vec, na.rm = FALSE) , c("a", "b")) 
+  expect_equal(unique_non_numerics(vec, .sort = FALSE) , c("b", "a")) 
 })
