@@ -2,17 +2,22 @@
 % Please edit documentation in R/as_numeric.R
 \name{as_numeric}
 \alias{as_numeric}
-\title{convert to numeric passing through character for safety}
+\title{Convert to numeric passing through character for safety}
 \usage{
-as_numeric(x, ...)
+as_numeric(x, ..., require_conversion = NULL)
 }
 \arguments{
 \item{x}{vector}
 
 \item{...}{additional argument to as.character}
+
+\item{require_conversion}{If values are converted to \code{NA}, should
+nothing be done (\code{NULL}), a warning be printed (\code{FALSE}), or an
+error occur (\code{TRUE})?  (Inputs that are \code{NA} do not trigger the
+warning or error.)}
 }
 \description{
-convert to numeric passing through character for safety
+Convert to numeric passing through character for safety
 }
 \examples{
 # factor with weird levels that we don't want to keep
@@ -24,4 +29,11 @@ as.numeric(ex)
 
 # keeps the labelled values
 as_numeric(ex)
+
+as_numeric(c("1", "A"), require_conversion=FALSE)
 }
+\seealso{
+Other Numerics: 
+\code{\link{unique_non_numerics}()}
+}
+\concept{Numerics}
