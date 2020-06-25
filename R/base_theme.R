@@ -7,11 +7,6 @@
 #' @param axis_text_y size of Y axis text
 #' @param strip_text_x size of strip text for X axis
 #' @param strip_text_y size of strip text for Y axis
-#' @examples
-#' \dontrun{
-#' ggplot() + base_theme_obs()
-#' made for viewing in the plot window and copying out
-#' }
 #' @export
 base_theme <- function(legend_text= 10,
                            legend_title = 12,

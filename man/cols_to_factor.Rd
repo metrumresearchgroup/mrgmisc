@@ -14,8 +14,3 @@ cols_to_factor(df, col_names)
 \description{
 convert column to type factor
 }
-\examples{
-\dontrun{
-df <- cols_to_factor(df, c("DOSE", "TRT")) # will convert dose and TRT columns to factor
-}
-}

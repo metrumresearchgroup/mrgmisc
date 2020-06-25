@@ -5,11 +5,10 @@
 #' @param df dataframe to convert character columns to numeric
 #' @param exclude_cols vector of column names to be skipped from conversion
 #' @examples
-#' \dontrun{
-#' nm_dat <- char_to_numeric(nm_dat)
+#' nm_dat <- data.frame(C = c('.', '.'), DV = c("1", "2"), stringsAsFactors = FALSE)
+#' char_to_numeric(nm_dat)
 #'    # if 'C' col is 0/1 rather than typical 'C' or '.'
-#' nm_dat <- char_to_numeric(nm_dat, exclude_cols = NULL) 
-#' }
+#' char_to_numeric(nm_dat, exclude_cols = NULL) 
 #' @export
 #' @return dataframe
 char_to_numeric <- function(df, exclude_cols = "C") {

@@ -3,10 +3,6 @@
 #' @param col_names vector of column names or indices to convert to numeric
 #' @export
 #' @rdname cols_to_numeric
-#' @examples 
-#' \dontrun{
-#' df <- cols_to_numeric(df, c("DOSE", "TRT")) # will convert dose and TRT columns to numeric
-#'}
 cols_to_numeric <- function(df, col_names) {
   # TODO: update to properly handle checks (not just length but spelling check) 
   if(length(col_names %in% names(df)) != length(col_names)) {

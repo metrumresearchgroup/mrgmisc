@@ -20,9 +20,4 @@ as it is read from a file
 names(Theoph)
 cTheoph <- capitalize_names(Theoph)
 names(cTheoph)
-\dontrun{
-df <- capitalize_names(df)
-# make sure all names are capitalized as a file is read
-df <- capitalize_names(read.csv(...))
-}
 }

@@ -13,8 +13,6 @@ capture_groups(df)
 wrapper to capture groups from a grouped data frame
 }
 \examples{
-\dontrun{
 gTheoph <- dplyr::group_by(Theoph, Subject)
 capture_groups(gTheoph)
-}
 }

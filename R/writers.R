@@ -9,9 +9,6 @@
 #' @param na value for NA
 #' @param quote whether character or factor columns should be surrounded by double quotes
 #' @param ... remaining arguments passed to data.table::fwrite
-#' @examples \dontrun{
-#' write_nonmem(nonmemdat, 'folder/nonmemdat.csv')
-#' }
 #' @export
 write_nonmem <- function(x, file, sep = ",", row.names=FALSE, na = ".", quote = FALSE, ...) {
   data.table::fwrite(x, file, quote = quote, row.names = row.names, sep = sep, na = na, ...)

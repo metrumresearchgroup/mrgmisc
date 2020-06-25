@@ -9,7 +9,7 @@
 #' used within the dplyr pipeline without issue.
 #' 
 #' This type of data is common when dealing with SAS datasets
-#' @examples \dontrun{
+#' @examples 
 #' foo <- data.frame(a = 1:5, b = 1:5, c=letters[1:5])
 #' df <- foo
 #' attr(df$a, "label") <- "col a"
@@ -17,13 +17,12 @@
 #' attr(df$c, "label") <- "col c"
 #' 
 #' library(dplyr)
-#' df %>% filter(a %in% c(1, 2)) # will throw an error
+#' df %>% filter(a %in% c(1, 2)) # used to throw an error in old versions
 #' df %>% strip_attributes("label") %>% filter(a %in% c(1, 2))
 #' 
 #' attr(df$a, "notes") <- "a note"
 #' # now column a has attributes of label and notes
 #' df %>% strip_attributes(c("label", "notes")) %>% filter(a %in% c(1, 2))
-#' }
 strip_attributes <- function(df, attr_names) {
   df[] <- lapply(df, function(x, attr_names) {
     lapply(attr_names, function(attr, x) {

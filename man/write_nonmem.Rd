@@ -36,8 +36,3 @@ easily write a csv file compatible with nonmem
 nonmem uses '.' for NA values, does not like quotes in column names
 and does not handle row names, so these are all presets
 }
-\examples{
-\dontrun{
-write_nonmem(nonmemdat, 'folder/nonmemdat.csv')
-}
-}

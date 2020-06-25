@@ -21,9 +21,7 @@ check for if the passed name has a file extension
 This is not a particularly robust checker, but serves its purpose
 }
 \examples{
-\dontrun{
 has_ext("test.rmd", ".rmd") #TRUE
 has_ext("test.Rmd", ".rmd", match_case=F) #TRUE
 has_ext("testrmd", ".rmd") #FALSE
-}
 }

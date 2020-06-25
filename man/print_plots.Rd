@@ -31,7 +31,6 @@ to slice out the extra pages generated from the output but keep a nicely
 numbered plot appendix
 }
 \examples{
-\dontrun{
 library(dplyr)
 library(PKPDmisc)
 
@@ -51,5 +50,4 @@ lapply(function(df) {
 
 # to print these out (with one plot per page on pdf)
 print_plots(plot_list)
-}
 }

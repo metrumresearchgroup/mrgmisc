@@ -9,7 +9,7 @@
 #' In addition, by controlling the start number, you can further trim the pdf
 #' to slice out the extra pages generated from the output but keep a nicely
 #' numbered plot appendix
-#' @examples \dontrun{
+#' @examples 
 #' library(dplyr)
 #' library(PKPDmisc)
 #' 
@@ -29,7 +29,6 @@
 #' 
 #' # to print these out (with one plot per page on pdf)
 #' print_plots(plot_list)
-#' }
 #' @export
 print_plots <- function(.ggplot_list, 
                         .start_page_number = NULL,
