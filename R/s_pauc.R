@@ -21,8 +21,8 @@ s_pauc_i <- function(df, idv, dv, range, digits = Inf) {
   # variables to determine how to handle the summaries after (eg will want additional)
   # summaries on all non-group columns (in this case all pauc cols) so don't want
   # the group to be dropped
-  grps <- if (inherits(.data, "grouped_df")) {
-    dplyr::groups(.data)
+  grps <- if (inherits(df, "grouped_df")) {
+    dplyr::groups(df)
   } else {
     NULL
   }
