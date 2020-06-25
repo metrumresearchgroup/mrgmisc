@@ -4,7 +4,9 @@
 \name{dapa_IV_oral}
 \alias{dapa_IV_oral}
 \title{IV and oral pharmacokinetic data for daptomycin}
-\format{A data frame with 1536 rows and 11 variables}
+\format{
+A data frame with 1536 rows and 11 variables
+}
 \usage{
 data(dapa_IV_oral)
 }

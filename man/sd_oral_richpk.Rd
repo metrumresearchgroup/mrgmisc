@@ -4,7 +4,9 @@
 \name{sd_oral_richpk}
 \alias{sd_oral_richpk}
 \title{One-compartment pharmacokinetic data given single oral dose}
-\format{A data frame with 4300 rows and 9 variables}
+\format{
+A data frame with 4300 rows and 9 variables
+}
 \usage{
 data(sd_oral_richpk)
 }

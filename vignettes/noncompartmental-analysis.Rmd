@@ -25,13 +25,9 @@ However, there are certain analyses that are frequently used enough that `PKPDmi
 
 For those getting accustomed to R, keep in mind that there is also simple examples provided with each function that are available by doing `?<function>`, so for example `?auc_partial`.
 
-For the examples, the `sd_oral_richpk` dataset from `PKPDdatasets` will be used.
-
-To install, run `devtools::install_github("dpastoor/PKPDdatasets")`
-
 ```{r}
-library("PKPDmisc")
-library("dplyr")
+library(PKPDmisc)
+library(dplyr)
 pkdat <- sd_oral_richpk
 head(pkdat)
 ```

@@ -31,7 +31,7 @@ chunk_df <- function(.gdf, ..., .nchunks = NULL) {
       if (!is.character(dot_cols)) {
         stop("grouping vars passed to dots must be a single character vector or unquoted column names")
       }
-      .gdf <- dplyr::group_by_(.gdf, .dots = dot_cols)
+      .gdf <- dplyr::group_by(.gdf, !!!rlang::syms(dot_cols))
     }
   }
   .gdf$indices__ <- dplyr::group_indices(.gdf)

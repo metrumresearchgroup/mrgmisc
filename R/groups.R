@@ -27,6 +27,6 @@ capture_groups <- function(df) {
 #' }
 #' @export
 set_groups <- function(df, groups) {
-  if(!is.null(groups)) df <- dplyr::group_by_(df, .dots=groups)
+  if(!is.null(groups)) df <- dplyr::group_by(df, !!!rlang::syms(groups))
   return(df)
 }

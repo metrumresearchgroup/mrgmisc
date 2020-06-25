@@ -11,7 +11,7 @@ get_key <- function(df,
   unique_df <- df[, key_cols, drop=F] %>%
     data.table::as.data.table() %>%
     unique(by=key_cols)
-  return(dplyr::tbl_df(unique_df))
+  return(tibble::as_tibble(unique_df))
 }
 
 # stratify based on some columns
@@ -25,7 +25,7 @@ stratify_df <- function(df,
                         replace = TRUE
                         ) {
   frac <- n/nrow(df)
-  sample <- df %>% dplyr::group_by_(.dots=strat_cols) %>% 
+  sample <- df %>% dplyr::group_by(!!!rlang::syms(strat_cols)) %>% 
     dplyr::sample_frac(frac, replace=replace)
   nsample <- nrow(sample) 
   nleft <- n- nsample

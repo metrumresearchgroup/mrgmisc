@@ -7,12 +7,16 @@ s_quantiles_i <- function(.data, x, prob, na_rm = TRUE) {
   # variables to determine how to handle the summaries after (eg will want additional)
   # summaries on all non-group columns (in this case all pauc cols) so don't want
   # the group to be dropped
-  grps <- ifelse(!is.null(dplyr::groups(.data)), dplyr::groups(.data), NA)
+  grps <- if (inherits(.data, "grouped_df")) {
+    dplyr::groups(.data)
+  } else {
+    NULL
+  }
   out <- .data %>% dplyr::summarize_(.dots = setNames(dots, 
                                                       paste0(x, 
                                                              "_q", 
                                                              prob*100)))
-  if(!is.na(grps)) out <- dplyr::group_by_(out, .dots=grps)
+  if(!is.null(grps)) out <- dplyr::group_by(out, !!!rlang::syms(grps))
   return(out)
 }
 
