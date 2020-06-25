@@ -7,6 +7,7 @@
   @billdenney). Can keep ordering by setting `.sort = FALSE`
 * chunk_df returns a list by default. To retain the df set `.as_list = FALSE`
 * internal refactoring to support dplyr 1.0 while still maintaining backwards compat.
+* removed NCA/nca - please use PKNCA for NCA needs. auc_partial and auc_infinity can still be used for fast auc calculations
 
 # 0.4
 
