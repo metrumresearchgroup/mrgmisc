@@ -1,8 +1,0 @@
-box: rocker/hadleyverse
-build:
-  steps:
-    - jimhester/r-dependencies:
-      github_packages: dpastoor/PKPDdatasets hadley/purrr
-    - jimhester/r-check
-    - jimhester/r-coverage
-    
