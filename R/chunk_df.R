@@ -5,6 +5,7 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c(".", "indices__", "chunk
 #' @param .gdf (grouped) data frame
 #' @param ... grouping variables, either a character vector or NSE-style column names
 #' @param .nchunks set number of chunks
+#' @param .as_list return df as a list
 #' @examples 
 #' library(dplyr)
 #' Theoph %>% chunk_df()
@@ -14,11 +15,11 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c(".", "indices__", "chunk
 #' Theoph %>% chunk_df(c("Subject"))
 #' 
 #' Theoph %>% chunk_df(Subject, .nchunks = 3)
+#' 
+#' # to retain the df without being a list
+#' Theoph %>% chunk_df(Subject, .nchunks = 3, .as_list = FALSE)
 #' @export
-chunk_df <- function(.gdf, ..., .nchunks = NULL) {
-  if (is.null(.nchunks)) {
-    .nchunks <- parallel::detectCores()
-  }
+chunk_df <- function(.gdf, ..., .nchunks = parallel::detectCores(), .as_list = TRUE) {
   # this is equivalent to dplyrs internal dots()
   .dots <- rlang::eval_bare(substitute(alist(...)))
   if (length(.dots) > 0) {
@@ -56,7 +57,10 @@ chunk_df <- function(.gdf, ..., .nchunks = NULL) {
     indices__ = indices, 
     chunk__ = chunk_indices
   )
-  return(
-    dplyr::select(dplyr::left_join(.gdf, indices_df, by="indices__"), -indices__) 
-  )
+  output <-  dplyr::select(dplyr::left_join(.gdf, indices_df, by="indices__"), -indices__) 
+  
+  if (.as_list) {
+    return(split(output, output$chunk__))
+  } 
+  return(output)
 }
