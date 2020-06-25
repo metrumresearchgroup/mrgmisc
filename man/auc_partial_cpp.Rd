@@ -16,8 +16,3 @@ auc_partial_cpp(time, dv, range)
 \description{
 calculate partial AUC
 }
-\examples{
-library(dplyr)
-sd_oral_richpk \%>\% group_by(ID) \%>\% 
-  summarize(pauc0_12 = auc_partial_cpp(Time, Conc, c(0, 12)))
-}

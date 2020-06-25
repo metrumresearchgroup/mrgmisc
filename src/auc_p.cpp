@@ -4,10 +4,6 @@ using namespace Rcpp;
 //' @param time vector of time values
 //' @param dv concentration measurements
 //' @param range vector of min and max value of the partial auc range
-//' @examples 
-//' library(dplyr)
-//' sd_oral_richpk %>% group_by(ID) %>% 
-//'   summarize(pauc0_12 = auc_partial_cpp(Time, Conc, c(0, 12)))
 // [[Rcpp::export]]
 double auc_partial_cpp(NumericVector time, NumericVector dv, NumericVector range) {
   if (time.size() != dv.size()) {
