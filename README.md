@@ -1,6 +1,4 @@
 [![Build Status](https://github-drone.metrumrg.com/api/badges/metrumresearchgroup/PKPDmisc/status.svg)](https://github-drone.metrumrg.com/metrumresearchgroup/PKPDmisc)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version-ago/PKPDmisc)](https://cran.r-project.org/package=PKPDmisc)
-[![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/PKPDmisc)](https://cran.r-project.org/package=PKPDmisc)
 
 
 PKPDmisc
@@ -10,13 +8,15 @@ Check the [documentation](https://metrumresearchgroup.github.io/PKPDmisc).
 
 ## Installation information
 
-PKPDmisc on CRAN:
+You can install the latest version of `PKPDmisc` from
+[MPN](https://mpn.metworx.com/docs/snapshots) by specifying the
+snapshot URL as a repository.  For example:
 
 ```
-install.packages("PKPDmisc")
+install.packages("PKPDmisc", repos = "https://mpn.metworx.com/snapshots/stable/{DATE}")
 ```
 
-or the development version:
+You can install development versions from GitHub with
 
 ```
 devtools::install_github("metrumresearchgroup/PKPDmisc")
