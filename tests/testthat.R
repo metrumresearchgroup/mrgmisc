@@ -1,4 +1,4 @@
 library(testthat)
-library(PKPDmisc)
+library(mrgmisc)
 library(dplyr)
-test_check("PKPDmisc")
+test_check("mrgmisc")
