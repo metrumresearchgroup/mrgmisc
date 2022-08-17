@@ -26,7 +26,7 @@ However, there are certain analyses that are frequently used enough that `PKPDmi
 For those getting accustomed to R, keep in mind that there is also simple examples provided with each function that are available by doing `?<function>`, so for example `?auc_partial`.
 
 ```{r}
-library(PKPDmisc)
+library(mrgmisc)
 library(dplyr)
 pkdat <- sd_oral_richpk
 head(pkdat)

@@ -11,7 +11,7 @@ vignette: >
 
 
 ```{r}
-library(PKPDmisc) # for binning and other functions
+library(mrgmisc) # for binning and other functions
 library(ggplot2) #plotting
 library(purrr) # dataset to handle lists
 suppressMessages(suppressWarnings(library(dplyr)))
