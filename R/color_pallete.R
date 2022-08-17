@@ -1,7 +1,7 @@
 #' design-quality color palletes to use in ggplot2
 #' @param pallete pallete number or name
 #' @examples 
-#' library(PKPDmisc)
+#' library(mrgmisc)
 #' library(ggplot2)
 #' library(dplyr)
 #' ggplot(sd_oral_richpk %>% filter(ID < 10), 

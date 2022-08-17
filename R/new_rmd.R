@@ -45,5 +45,5 @@ new_report <- function(report) {
     stop("Please install the rmarkdown package to use new_report()")
   }
   
-  rmarkdown::draft(report, "basic", package = "PKPDmisc")
+  rmarkdown::draft(report, "basic", package = "mrgmisc")
 }

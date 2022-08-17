@@ -60,7 +60,7 @@ stratify_df <- function(df,
 #' if you would like to see how many times a particular individual was resampled you can 
 #' check the original ID column against the number of key's associated with that ID number.
 #' @examples
-#' library(PKPDmisc)
+#' library(mrgmisc)
 #' library(dplyr, quiet = TRUE)
 #' 
 #' # simple example resampling by ID maintaining Gender distribution, with 10 individuals
