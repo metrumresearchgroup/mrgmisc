@@ -25,7 +25,7 @@ if some individuals dropped out early and do not have all observations other
 individuals have.
 }
 \examples{
-library(PKPDmisc)
+library(mrgmisc)
 library(dplyr, quiet = TRUE)
 df <- capitalize_names(sd_oral_richpk) 
 head(df)

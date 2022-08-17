@@ -13,7 +13,7 @@ color_pallete(pallete)
 design-quality color palletes to use in ggplot2
 }
 \examples{
-library(PKPDmisc)
+library(mrgmisc)
 library(ggplot2)
 library(dplyr)
 ggplot(sd_oral_richpk \%>\% filter(ID < 10), 

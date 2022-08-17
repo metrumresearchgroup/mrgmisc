@@ -32,7 +32,7 @@ numbered plot appendix
 }
 \examples{
 library(dplyr)
-library(PKPDmisc)
+library(mrgmisc)
 library(ggplot2)
 
 # given we may only plot a subset of individuals per plot
