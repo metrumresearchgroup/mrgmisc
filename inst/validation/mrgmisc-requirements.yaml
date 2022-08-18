@@ -1,0 +1,4 @@
+MRGMISC-R001:
+  description: auc_partial works with simple AUC calculation
+  tests:
+  - MRG-MISC-001

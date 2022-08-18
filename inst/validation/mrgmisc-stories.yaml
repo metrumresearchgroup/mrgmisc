@@ -1,0 +1,6 @@
+AUC-S001:
+  name: Create partial AUC
+  description: As a user, 
+  ProductRisk: Low
+  requirements:
+  - MRG-MISC-001
