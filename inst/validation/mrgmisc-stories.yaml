@@ -22,6 +22,12 @@ NOM-S002:
   ProductRisk: Low
   requirements:
   - MRGMISC-R011
+NOM-S003:
+  name: Ordinal to binary
+  description: As a user, I want to create a binary column for each group of categorical covariates.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R015
 MIS-S001:
   name: Create groups of IDs
   description: As a user, I want to split IDs within a data set into appropriate groups for subplots. 

@@ -57,6 +57,7 @@ MRGMISC-R014:
   - MRG-MISC-014
   - MRG-MISC-015
 MRGMISC-R015:
-  description: ordinal_to_binary_
+  description: ordinal_to_binary_ converts a column of categorical covariates into a number of 
+    columns with a binary flag for each category
   tests:
   - 
