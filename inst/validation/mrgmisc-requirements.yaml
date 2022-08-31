@@ -50,10 +50,12 @@ MRGMISC-R013:
   description: max_through
   tests:
   - MRG-MISC-013
+  - MRG-MISC-015
 MRGMISC-R014:
   description: min_through
   tests:
   - MRG-MISC-014
+  - MRG-MISC-015
 MRGMISC-R015:
   description: ordinal_to_binary_
   tests:

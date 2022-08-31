@@ -43,7 +43,10 @@ MIS-S003:
   - MRGMISC-R010
 MIS-S004:
   name: Set bins
-  description: 
+  description: As a user, I want to distribute elements of vectors into bins based on given lower and upper bounds.
+  ProductRisk: Low
+  requirements:
+  - 
 CNK-S001:
   name: Create chunks
   description: As a user, I want to evenly distribute tasks across the number of cores available.
