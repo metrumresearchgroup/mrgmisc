@@ -1,6 +1,6 @@
 context("test-chunk.R")
 
-describe("chunking works", {
+describe("chunking works [MRG-MISC-005]", {
   it("chunks together by unique elements", {
     expect_equal(chunk(1:9, 3), c(1, 1, 1, 2, 2, 2, 3, 3, 3))
   })

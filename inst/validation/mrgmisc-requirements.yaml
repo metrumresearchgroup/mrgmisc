@@ -2,3 +2,59 @@ MRGMISC-R001:
   description: auc_partial works with simple AUC calculation
   tests:
   - MRG-MISC-001
+MRGMISC-R002:
+  description: auc_inf NEEDS TEST
+  tests:
+  - 
+MRGMISC-R003:
+  description: write_nonmem easily writes a csv file compatible with NONMEM
+  tests:
+  - MRG-MISC-003
+MRGMISC-R004:
+  description: ids_per_plot splits IDs into groups to use for subsequent plotting NEEDS TEST
+  tests:
+  - 
+MRGMISC-R005:
+  description: chunk assigns elements from a vector evenly into unique chunks
+  tests:
+  - MRG-MISC-005
+MRGMISC-R006:
+  description: chunk_grp assigns unique elements from a vector into chunks
+  tests:
+  - 
+MRGMISC-R007:
+  description: chunk_list
+  tests:
+  - 
+MRGMISC-R008:
+  description: chunk_grp_list
+  tests:
+  - 
+MRGMISC-R009:
+  description: resample_df resamples sub-populations while maintaining stratifications in the data
+  tests:
+  - MRG-MISC-009
+MRGMISC-R010:
+  description: pad_left adds left padding to a vector of values
+  tests:
+  - MRG-MISC-010
+MRGMISC-R011:
+  description: replace_dots
+  tests:
+  - 
+MRGMISC-R012:
+  description: set_bins
+  tests:
+  - 
+MRGMISC-R013:
+  description: max_through
+  tests:
+  - 
+MRGMISC-R014:
+  description: min_through
+  tests:
+  - 
+MRGMISC-R015:
+  description: ordinal_to_binary_
+  tests:
+  - 

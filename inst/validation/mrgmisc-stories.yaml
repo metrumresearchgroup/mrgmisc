@@ -1,6 +1,63 @@
 AUC-S001:
   name: Create partial AUC
-  description: As a user, 
+  description: As a user, I want to perform a simple area under the curve calculation over a discrete range. 
   ProductRisk: Low
   requirements:
-  - MRG-MISC-001
+  - MRGMISC-R001
+AUC-S002:
+  name: Calculate AUCt-inf
+  description: As a user, I want to calculate the area under the curve across an infinite range.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R002
+NOM-S001:
+  name: Write NONMEM compatible csv file
+  description: As a user, I want to be able to create csv files that are compatible with NONMEM.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R003
+MIS-S001:
+  name: Create groups of IDs
+  description: As a user, I want to split IDs within a data set into appropriate groups for subplots. 
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R004
+MIS-S002:
+  name: Resampling a dataframe
+  description: As a user, I want to create resampled sub-populations when generating a large simulated population. I want to do 
+    this while still being able to maintain certain stratifications of factors like covariate distributions.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R009
+MIS-S003:
+  name: Left padding
+  description: As a user, I want to add a given number of a padding character to the left of all the elements in a vector.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R010
+CNK-S001:
+  name: Create chunks
+  description: As a user, I want to evenly distribute tasks across the number of cores available.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R005
+CNK-S002:
+  name: Create grouped chunks
+  description: As a user, I want to assign grouped elements to the same chunk.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R005
+CNK-S002:
+  name: Create list chunks
+  description: As a user,
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R005
+CNK-S002:
+  name: Create grouped list chunks
+  description: As a user,
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R005
+
+  
