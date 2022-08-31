@@ -16,6 +16,12 @@ NOM-S001:
   ProductRisk: Low
   requirements:
   - MRGMISC-R003
+NOM-S002:
+  name: Replace dots with NA
+  description: As a user, I want to replace dots in a vector with NA.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R011
 MIS-S001:
   name: Create groups of IDs
   description: As a user, I want to split IDs within a data set into appropriate groups for subplots. 
@@ -35,6 +41,9 @@ MIS-S003:
   ProductRisk: Low
   requirements:
   - MRGMISC-R010
+MIS-S004:
+  name: Set bins
+  description: 
 CNK-S001:
   name: Create chunks
   description: As a user, I want to evenly distribute tasks across the number of cores available.

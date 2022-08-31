@@ -39,11 +39,11 @@ MRGMISC-R010:
   tests:
   - MRG-MISC-010
 MRGMISC-R011:
-  description: replace_dots
+  description: replace_dots converts dots to NA
   tests:
   - 
 MRGMISC-R012:
-  description: set_bins
+  description: set_bins assigns elements to bins with specified ranges
   tests:
   - 
 MRGMISC-R013:
