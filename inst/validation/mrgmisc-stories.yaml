@@ -47,6 +47,13 @@ MIS-S004:
   ProductRisk: Low
   requirements:
   - 
+MIS-S005:
+  name: Min Max through
+  description: As a user, I want to search through a vector and find the maximum and minimum values up to each index in the vector.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R013
+  - MRGMISC-R014
 CNK-S001:
   name: Create chunks
   description: As a user, I want to evenly distribute tasks across the number of cores available.
