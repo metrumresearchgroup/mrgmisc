@@ -44,7 +44,6 @@ reference:
     - wam
   - title: misc
     contents:
-    - jprint
     - view_creator
     - peek
     - pad_left
