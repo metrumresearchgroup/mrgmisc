@@ -40,9 +40,6 @@ reference:
     - auc_inf
     - auc_partial
     - resample_df
-    - strip_curves
-    - wam
   - title: misc
     contents:
-    - view_creator
     - pad_left
