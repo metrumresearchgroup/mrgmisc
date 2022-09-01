@@ -31,7 +31,6 @@ reference:
     contents:
     - capitalize_names
     - lowercase_names
-    - char_to_numeric
     - cols_to_numeric
     - ordinal_to_binary_
     - replace_dots
