@@ -60,6 +60,12 @@ MIS-S005:
   requirements:
   - MRGMISC-R013
   - MRGMISC-R014
+MIS-S006:
+  name: Print plots
+  description: As a user, I want to create a pdf with only plots from a report.
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R016
 CNK-S001:
   name: Create chunks
   description: As a user, I want to evenly distribute tasks across the number of cores available.

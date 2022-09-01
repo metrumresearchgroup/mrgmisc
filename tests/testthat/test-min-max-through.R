@@ -24,7 +24,7 @@ test_that("max values properly calculated [MRGMISC-R013]", {
   expect_equal(max_through(vec2), vec2_maxes)
 })
 
-test_that("NA's properly maintained [MRGMISC-015]", {
+test_that("NA's properly maintained [MRGMISC-013]", {
   expect_equal(min_through(vec3), vec3_mins)
   expect_equal(min_through(vec3), vec3_mins)
   expect_equal(max_through(vec3), vec3_maxes)

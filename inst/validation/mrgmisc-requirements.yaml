@@ -50,14 +50,17 @@ MRGMISC-R013:
   description: max_through
   tests:
   - MRG-MISC-013
-  - MRG-MISC-015
 MRGMISC-R014:
   description: min_through
   tests:
+  - MRG-MISC-013
   - MRG-MISC-014
-  - MRG-MISC-015
 MRGMISC-R015:
   description: ordinal_to_binary_ converts a column of categorical covariates into a number of 
     columns with a binary flag for each category
+  tests:
+  - 
+MRGMISC-R016:
+  description: print_plots creates a list of plots cleanly with extra pdf functionality
   tests:
   - 
