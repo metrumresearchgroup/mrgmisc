@@ -64,3 +64,8 @@ MRGMISC-R016:
   description: print_plots creates a list of plots cleanly with extra pdf functionality
   tests:
   - 
+MRGMISC-R017:
+  description: set_bins_df offers the ability to create bins from a dataframe and get both the binning column
+    as well as a label column with the range of values associated with a given bin 
+  tests:
+  - 

@@ -66,6 +66,12 @@ MIS-S006:
   ProductRisk: Low
   requirements:
   - MRGMISC-R016
+MIS-S007:
+  name: Set bins dataframe
+  description: As a user, 
+  ProductRisk: Low
+  requirements:
+  - MRGMISC-R017
 CNK-S001:
   name: Create chunks
   description: As a user, I want to evenly distribute tasks across the number of cores available.
