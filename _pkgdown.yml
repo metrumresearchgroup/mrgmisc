@@ -45,5 +45,4 @@ reference:
   - title: misc
     contents:
     - view_creator
-    - peek
     - pad_left
