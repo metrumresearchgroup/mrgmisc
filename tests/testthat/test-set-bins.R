@@ -40,22 +40,6 @@ test_that("works with default 4 bins quartiles if not break not specified [MRG-M
   )
 })
 
-# bin and break n
-test_that("works with 2 bins: n bins = n breaks -1 [MRG-MISC-0121]", {
-  x <- Theoph$conc
-  xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
-  res <- set_bins(x, breaks = xbreak)
-  expect_equal(
-    length(xbreak) - 1,
-    length(unique(res))
-  )
-  expect_equal(
-    sort(unique(res)),
-    c(1,2)
-  )
-})
-
-
 # prob out of range error message- FIX
 test_that("works with error message: breaks provided are out of range [MRG-MISC-0121]", {
   x <- Theoph$conc
@@ -146,132 +130,133 @@ test_that("upper_bound test: discrete number < actual max [MRG-MISC-0122]", {
 })
 
 # Inclusive argument ------------------------------------------------------
-
 #include max value of largest user defined bin even though lower bins are non-inclusive
-test_that("upper_bound test: discrete number < actual max [MRG-MISC-0123]", {
+test_that("inclusive test: inclusive = TRUE and upper bound = Inf, n bins = n breaks -1 [MRG-MISC-0123]", {
   x <- Theoph$conc
-  xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 0.8))
-  
-  res <- set_bins(x, breaks = xbreak, upper_bound = 5, inclusive = TRUE) 
-  res2 <- set_bins(x, breaks = xbreak, upper_bound = 5, inclusive = FALSE) 
+  xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+  xupper = Inf
+  res <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = TRUE)
   expect_equal(
-          res,
-          res2
-  )
-  expect_lt(max(xbreak),
-            max(x))
-  expect_false(all(!is.na(res)))
-  expect_equal(
-    sort(unique(res)),
-    c(0, 1, 2, 3)
+    length(xbreak)-1,
+    length(unique(res))
   )
 })
 
+test_that("inclusive test: inclusive = FALSE and upper bound = Inf, n bins = n breaks [MRG-MISC-0123]", {
+  x <- Theoph$conc
+  xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+  xupper = Inf
+  res <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = FALSE)
+  expect_equal(
+    length(xbreak),
+    length(unique(res))
+  )
+})
 
-if (inclusive) {
-  top_user_bin_index <- ifelse(upper_bound == Inf, length(breaks) - 1, length(breaks))
-  top_bin <- breaks[top_user_bin_index]
-  breaks[top_user_bin_index] <- top_bin + top_bin*0.0001
-}
+test_that("inclusive test: inclusive = TRUE and discrete upper bound, n bins = n breaks -1 [MRG-MISC-0123]", {
+  x <- Theoph$conc
+  xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+  xupper = max(x)-2
+  res <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = TRUE)
+  expect_equal(
+    length(xbreak)-1,
+    length(unique(res))
+  )
+})
 
-
+test_that("inclusive test: inclusive = FALSE and discrete upper bound, n bins = n breaks -1 [MRG-MISC-0123]", {
+  x <- Theoph$conc
+  xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+  xupper = max(x)-2
+  res <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = FALSE)
+  expect_equal(
+    length(xbreak) -1,
+    length(unique(res))
+  )
+})
 
 # Between argument --------------------------------------------------------
 
-#' To use the between functionality, you must specify the range you wish to bin between,
-#' and those values will be assigned to bin 1, with all values below as 0 and all values
-#' above as 2. See the examples for more details
-if (!is.null(between)) {
-  if(length(between) != 2) {
-    stop("can only have 2 breaks to use the between functionality")
-  }
-  x_bins <- ifelse(dplyr::between(x, between[1], between[2]), 1, 
-                   ifelse(x > between[2], 2, 0))
-  
-  test_that("between test: discrete number []", {
+# if val between c(min_between, max_between), then bin 1. Less than min_between, then bin 0. Greater than max_between, then bin 2
+  # useful if want to cut obs at certain num (i.e. mainly interested in age 5-12)- add as example
+  test_that("between test: discrete number with between argument [MRG-MISC-0124]", {
     x <- Theoph$conc
-    res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 1)), upper_bound = 5) 
-    res2 <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 1)), upper_bound = Inf)
-    expect_true(all(!is.na(res)))
-    expect_equal(
-      sort(unique(res)),
-      c(0, 1, 2)
-    )
+    min_between <- min(x) + 1
+    max_between <- max(x) - 5
+    res <- set_bins(x,  between = c(min_between, max_between)) 
+    res2 <- ifelse(dplyr::between(x, min_between, max_between), 1, 
+                   ifelse(x > max_between, 2, 0))
     expect_equal(
       res,
       res2
     )
+    expect_true(all(!is.na(res)))
   })
 
-# try to get NAs
-test_that("upper_bound test: discrete number [MISC-BINS-002]", {
+test_that("between test: discrete number with between argument all > max val [MRG-MISC-0124]", {
   x <- Theoph$conc
-  res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 1)), upper_bound = 5) #if upper bound set to be less than all data, then ignores it?
-  res2 <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 1)), upper_bound = Inf)
-  expect_true(all(!is.na(res)))
-  expect_equal(
-    sort(unique(res)),
-    c(0, 1, 2)
-  )
+  min_between <- max(x) + 1
+  max_between <- max(x) + 5
+  res <- set_bins(x,  between = c(min_between, max_between)) 
+  res2 <- ifelse(dplyr::between(x, min_between, max_between), 1, 
+                 ifelse(x > max_between, 2, 0))
   expect_equal(
     res,
     res2
   )
+  expect_true(all(!is.na(res)))
 })
+
+test_that("between test: discrete number with between argument all < min val [MRG-MISC-0124]", {
+  x <- Theoph$conc
+  min_between <- min(x) + 1
+  max_between <- min(x) - 5
+  res <- set_bins(x,  between = c(min_between, max_between)) 
+  res2 <- ifelse(dplyr::between(x, min_between, max_between), 1, 
+                 ifelse(x > max_between, 2, 0))
+  expect_equal(
+    res,
+    res2
+  )
+  expect_true(all(!is.na(res)))
+})
+
+# error message if between length(between) != 2
+  test_that("between test: error length(between) !=2 [MRG-MISC-0124]", {
+    x <- Theoph$conc
+    expect_error(set_bins(x,  between = c(1)),
+                 "can only have 2 breaks to use the between functionality") 
+  })
 
 # Quiet argument ----------------------------------------------------------
-# need to work on this//// 
 
-if (!is.null(between)) {
-  if(length(between) != 2) {
-    stop("can only have 2 breaks to use the between functionality")
-  }
-  x_bins <- ifelse(dplyr::between(x, between[1], between[2]), 1, 
-                   ifelse(x > between[2], 2, 0))
-  if(!quiet) {
-    message(paste0("there were 3 bins calculated, with the following
-                   range for each bin: "))
-    message(paste0("BIN 0: All values less than ", between[1]))
-    message(paste0("BIN 1: All values between ", between[1], " and ", between[2]))
-    message(paste0("BIN 2: All values greater than ", between[2]))
-  }
-  return(x_bins)
-}
-
-test_that("works quiet true: []", {
+test_that("quiet test: quiet= false print message [MRG-MISC-0125]", {
   x <- Theoph$conc
-  res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)), quiet = TRUE)
-  expect_message(res)
-  # need to add sink here maybe?
-})
-
-test_that("works quiet false: []", {
-  x <- Theoph$conc
-  res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)), quiet = FALSE)
-  expect_equal(
-    sort(unique(res)),
-    c(1,2)
-  )
-  # need to add sink here maybe?
-})
-
-test_that("works quiet false: []",{
-  
-  # set up tempfile to sink output to
-  .f <- tempfile()
-  withr::defer(unlink(.f))
-  withr::local_message_sink(.f)
-  
-  x <- Theoph$conc
-  xres <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)), quiet = FALSE)
-  
-  # print and read result from temp file
-  capture.output(print(xres))
-  res <- readLines(.f)
-  expect_true(any(grepl_fixed(
-    glue::glue("there were 4bins calculated"),
-    res
+  xbreaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+  res <- set_bins(x, breaks= xbreaks, quiet = FALSE)
+  xbin <- length(xbreaks) + 1
+  expect_message(any(grepl(
+    glue::glue("there were {xbin} bins calculated, with the following range for each bin:
+               BIN: 0 range: -Inf - {xbreaks[1]}
+               BIN: 1 range: 0 - {xbreaks[2]}
+               BIN: 2 range: {xbreaks[2]} - {xbreaks[3]}
+               BIN: 3 range: {xbreaks[3]} - Inf"),
+    set_bins(x, breaks = xbreaks, quiet = FALSE),
+    fixed =TRUE
   )))
 })
 
-  
+  test_that("quiet test: quiet= between argument and false print message[MRG-MISC-0125]", {
+    x <- Theoph$conc
+    xbreaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+    res <- set_bins(x, breaks= xbreaks, quiet = FALSE, between = c(5, 8))
+    xbin <- as.numeric(paste0(length(xbreaks) + 1))
+    expect_message(any(grepl(
+      glue::glue("there were {xbin} bins calculated, with the following range for each bin:
+               BIN: 0 range: All values less than {xbreaks[1]}
+               BIN: 1 range: All values between {xbreaks[1]} and {xbreaks[3]}
+               BIN: 2 range: All values greater than {xbreaks[3]}"),
+      set_bins(x, breaks = xbreaks, quiet = FALSE),
+      fixed =TRUE
+    )))
+  })

@@ -62,7 +62,7 @@ set_bins <- function(x, breaks = stats::quantile(x, na.rm = T), lower_bound = -I
   
   x_bins <- set_bins_cpp(x, lower, upper)
   if(!quiet) {
-    message(paste0("there were ", length(lower), "bins calculated, with the following
+    message(paste0("there were ", length(lower), " bins calculated, with the following
                    range for each bin: "))
     for (i in seq_along(lower)) {
       message(paste("BIN:", i-1, "range:", lower[i], "-", upper[i]))
@@ -70,4 +70,4 @@ set_bins <- function(x, breaks = stats::quantile(x, na.rm = T), lower_bound = -I
   }
   return(x_bins)
   
-  }
+}
