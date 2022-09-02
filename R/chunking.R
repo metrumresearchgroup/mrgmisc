@@ -1,5 +1,5 @@
 
-#' Chunking inputs...
+#' Chunking
 #' 
 #' chunk by group, unique values, and return as a vector or a list with elememts
 #' 

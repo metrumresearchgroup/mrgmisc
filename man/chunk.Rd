@@ -6,7 +6,7 @@
 \alias{chunk_grp}
 \alias{chunk_list}
 \alias{chunk_grp_list}
-\title{Chunking inputs...}
+\title{Chunking}
 \usage{
 chunk(.x, .nchunk = parallel::detectCores())
 

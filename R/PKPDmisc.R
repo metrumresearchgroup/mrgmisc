@@ -2,6 +2,7 @@
 #' @importFrom Rcpp sourceCpp
 #' @importFrom stats lm predict quantile setNames
 #' @importFrom utils head read.table tail write.table
+#' @importFrom magrittr %>%
 NULL
 
 #' One-compartment pharmacokinetic data given single oral dose
