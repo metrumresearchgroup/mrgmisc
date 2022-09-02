@@ -40,15 +40,6 @@ test_that("works with default 4 bins quartiles if not break not specified [MRG-M
   )
 })
 
-# prob out of range error message- FIX
-test_that("works with error message: breaks provided are out of range [MRG-MISC-0121]", {
-  x <- Theoph$conc
-  res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.5, 1, 1.5))) # give error message- need to test this 
-  expect_equal("Error in set_bins(x, breaks = stats::quantile(x, na.rm = T, probs = c(0.5)),  : \n  can only have 2 breaks to use the between functionality",
-               res)
-  expect_error()
-})
-
 # Upper and lower bounds argument -----------------------------------------
 
 ## Lower bound ------------------------------------------------------------

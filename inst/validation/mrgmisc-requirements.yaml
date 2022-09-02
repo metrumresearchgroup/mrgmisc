@@ -45,7 +45,11 @@ MRGMISC-R011:
 MRGMISC-R012:
   description: set_bins assigns elements to bins with specified ranges
   tests:
-  - 
+  - MRG-MISC-0121
+  - MRG-MISC-0122
+  - MRG-MISC-0123
+  - MRG-MISC-0124
+  - MRG-MISC-0125
 MRGMISC-R013:
   description: max_through
   tests:
@@ -68,9 +72,5 @@ MRGMISC-R017:
   description: set_bins_df offers the ability to create bins from a dataframe and get both the binning column
     as well as a label column with the range of values associated with a given bin 
   tests:
-  - MRG-MISC-0121
-  - MRG-MISC-0122
-  - MRG-MISC-0123
-  - MRG-MISC-0124
-  - MRG-MISC-0125
+
   
