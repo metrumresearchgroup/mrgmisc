@@ -1,35 +1,53 @@
 
 #' Chunking
 #' 
-#' chunk by group, unique values, and return as a vector or a list with elememts
-#' 
+#' Create chunks by group, unique values, and return as a vector or a list with elements. 
+#'  
 #' @examples 
-#' #chunking will provide the chunk index by splitting the data as evenly as possible
-#' # into the number chunks specified
-#' letters[1:9]
+#' # Chunking will provide the chunk index by splitting the data 
+#' # as evenly as possible into the number chunks specified
 #' 
-#' chunk(letters[1:9], 3)
+#' chunk(letters[1:9], 3) 
+#' [1] 1 1 1 2 2 2 3 3 3
 #' 
-#' letters[c(1, 1, 1:7)]
-#' chunk(letters[c(1, 1, 1:7)], 3)
+#' # When the vector length isn't divisible by the number of chunks, 
+#' # some chunks will be filled with 1 more element than others. 
 #' 
-#' # sometimes you want to evenly chunk by unique values rather than purely balancing
+#' chunk(letters[c(1, 1, 2, 1:7)], 3)
+#' [1] 1 1 1 1 2 2 2 3 3 3
+#' 
+#' # If interested in evenly chunking by unique values rather than balancing,
+#' # notice how the first chunk contains many more elements since there are 3, 1's.
+#' 
 #' chunk_grp(c(1, 1, 1:7), 3)
+#' [1] 1 1 1 1 1 2 2 3 3
 #' 
-#' # a next step after chunking is splitting into a list, so this does thus for you
+#' # A potential next step after chunking is splitting the output into a list.
 #' 
-#' # chunk list will both split the data and keep the original values
 #' chunk_list(letters[1:9], 3)
+#' [[1]]
+#' [1] "a" "b" "c"
+#' [[2]]
+#' [1] "d" "e" "f"
+#' [[3]]
+#' [1] "g" "h" "i"
 #' 
-#' chunk_list(c(letters[1], letters[1], letters[1:7]), 3)
+#' # If we want to keep unique elements consistent as possible between chunks
 #' 
-#' # in this case ragged arrays will be created to keep the number of 
-#' # unique elements consistent as possible between chunks
 #' chunk_grp_list(c(letters[1], letters[1], letters[1:7]), 3)
+#' 
+#' [[1]]
+#' [1] "a" "a" "a" "b" "c"
+#' [[2]]
+#' [1] "d" "e"
+#' [[3]]
+#' [1] "f" "g"
+#' 
 #' @param .x vector of values
 #' @param .nchunk number of chunks to identify
 #' @export
 chunk <- function(.x, .nchunk = parallel::detectCores()) {
+  if (length(.x) < .nchunk) stop('# of chunks must be less than or equal to length of vector')
   mod <- length(.x)%/%.nchunk
   bin_number <- sort(rep(1:.nchunk, each = mod, length.out = length(.x)))
   return(bin_number)
@@ -58,21 +76,23 @@ ids_per_plot <- function(id, id_per_plot = 9) {
 
 
 
-#' @describeIn chunk _this one is for groups, it returns  this..._
+#' @describeIn chunk used when desirable to have unique elements in same chunk
 #' @export
 chunk_grp <- function(.x, .nchunk = parallel::detectCores()) {
   .c <- chunk(unique(.x), .nchunk)
   .c[match(.x, unique(.x))]
 }
 
-#' @rdname chunk
+#' @describeIn chunk used when desirable to have output be a list
 #' @export
 chunk_list <- function(.x, .nchunk = parallel::detectCores()) {
+  if (class(.x) == "list") warning("It's recommended to input a vector as this function converts input to list")
   .c <- chunk(.x, .nchunk)
   unname(split(.x, .c))
 }
 
-#' @rdname chunk
+#' @describeIn chunk used when desirable to have output be a list with unique
+#' elements in the same chunk
 #' @export
 chunk_grp_list <- function(.x, .nchunk = parallel::detectCores()) {
   .c <- chunk_grp(.x, .nchunk)
