@@ -1,25 +1,36 @@
 # 'global' variables that dplyr uses in NSE mutate calls
 if(getRversion() >= "2.15.1")  utils::globalVariables(c(".", "indices__", "chunk__", "n"))
 
-#' chunk dataframes so easy to split for parallel processing
-#' @param .gdf (grouped) data frame
+#' Chunking dataframes 
+#' 
+#' @description 
+#' Use to split dataframes for parallel processing
+#' 
+#' @param .gdf (grouped) dataframe
 #' @param ... grouping variables, either a character vector or NSE-style column names
 #' @param .nchunks set number of chunks
-#' @param .as_list return df as a list
+#' @param .as_list return dataframe as a list
+#' 
 #' @examples 
+#' # Chunking will split the rows of the dataframe as evenly
+#' # as possible into the number chunks specified.
+#' 
 #' library(dplyr)
-#' Theoph %>% chunk_df()
+#' Theoph %>% chunk_df(.nchunks = 6)
 #' 
-#' Theoph %>% group_by(Subject) %>% chunk_df()
-#' Theoph %>% chunk_df(Subject)
-#' Theoph %>% chunk_df(c("Subject"))
+#' # Chunking with grouped data will evenly distribute the 
+#' # number of unique group elements across the chunks.  
 #' 
-#' Theoph %>% chunk_df(Subject, .nchunks = 3)
+#' Theoph %>% group_by(Subject) %>% chunk_df(.nchunks = 5)
 #' 
-#' # to retain the df without being a list
+#' # The dataframe can be retained by preventing the output
+#' # from being a list.
+#' 
 #' Theoph %>% chunk_df(Subject, .nchunks = 3, .as_list = FALSE)
+#' 
 #' @export
 chunk_df <- function(.gdf, ..., .nchunks = parallel::detectCores(), .as_list = TRUE) {
+  if (!any(class(.gdf) %in% c("nfnGroupedData", "nfGroupedData", "groupedData", "data.frame"))) stop("Input needs to be class data.frame")
   # this is equivalent to dplyrs internal dots()
   .dots <- rlang::eval_bare(substitute(alist(...)))
   if (length(.dots) > 0) {

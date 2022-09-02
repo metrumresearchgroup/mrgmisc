@@ -2,32 +2,37 @@
 % Please edit documentation in R/chunk_df.R
 \name{chunk_df}
 \alias{chunk_df}
-\title{chunk dataframes so easy to split for parallel processing}
+\title{Chunking dataframes}
 \usage{
 chunk_df(.gdf, ..., .nchunks = parallel::detectCores(), .as_list = TRUE)
 }
 \arguments{
-\item{.gdf}{(grouped) data frame}
+\item{.gdf}{(grouped) dataframe}
 
 \item{...}{grouping variables, either a character vector or NSE-style column names}
 
 \item{.nchunks}{set number of chunks}
 
-\item{.as_list}{return df as a list}
+\item{.as_list}{return dataframe as a list}
 }
 \description{
-chunk dataframes so easy to split for parallel processing
+Use to split dataframes for parallel processing
 }
 \examples{
+# Chunking will split the rows of the dataframe as evenly
+# as possible into the number chunks specified.
+
 library(dplyr)
-Theoph \%>\% chunk_df()
+Theoph \%>\% chunk_df(.nchunks = 6)
 
-Theoph \%>\% group_by(Subject) \%>\% chunk_df()
-Theoph \%>\% chunk_df(Subject)
-Theoph \%>\% chunk_df(c("Subject"))
+# Chunking with grouped data will evenly distribute the 
+# number of unique group elements across the chunks.  
 
-Theoph \%>\% chunk_df(Subject, .nchunks = 3)
+Theoph \%>\% group_by(Subject) \%>\% chunk_df(.nchunks = 5)
 
-# to retain the df without being a list
+# The dataframe can be retained by preventing the output
+# from being a list.
+
 Theoph \%>\% chunk_df(Subject, .nchunks = 3, .as_list = FALSE)
+
 }
