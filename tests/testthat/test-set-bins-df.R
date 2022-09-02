@@ -373,7 +373,7 @@ test_that("quiet test: quiet= false print message [MRG-MISC-0175]", {
   #   x <- Theoph$conc
   #   xbreak <- stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 0.8))
   #   lbound = 2
-  #   ubound = 9
+  #   ubound = 9 
   #   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak, lower_bound = lbound, upper_bound = ubound)
   #   xbin <- length(xbreak) + 1
   #   expect_equal(

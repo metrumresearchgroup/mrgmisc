@@ -72,5 +72,12 @@ MRGMISC-R017:
   description: set_bins_df offers the ability to create bins from a dataframe and get both the binning column
     as well as a label column with the range of values associated with a given bin 
   tests:
+  - MRG-MISC-0171 
+  - MRG-MISC-0172
+  - MRG-MISC-0173
+  - MRG-MISC-0174
+  - MRG-MISC-0175
+  - MRG-MISC-0176
+  - MRG-MISC-0177
 
   
