@@ -60,7 +60,7 @@ test_that("chunks unique elements into a list with their representative values [
                                  c("g", "h", "i")), 3))
 })
 
-test_that("chunks unique elements into equal list if not grp_list", {
+test_that("chunks unique elements into equal list if not grp_list [MRG-MISC-0052]", {
   expect_equal(chunk_list(letters[c(1, 1, 2, 1:7)], 3), 
                list(c("a", "a", "b", "a"), 
                     c("b", "c", "d"), 
