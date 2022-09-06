@@ -9,13 +9,27 @@
 #' @rdname ordinal_to_binary
 #' @examples 
 #' library(dplyr)
-#' df <- data_frame(OCC = c(1, 1, 2, 3))
+#' df <- tibble(OCC = c(1, 1, 2, 3))
 #' df %>% ordinal_to_binary_("OCC")
+#'     OCC OCC1 OCC2 OCC3
+#'[1]   1    1    0    0
+#'[2]   1    1    0    0
+#'[3]   2    0    1    0
+#'[4]   3    0    0    1
+#'
 #' df %>% ordinal_to_binary_("OCC", prefix = "OCCASION")
+#'     OCC OCCASION1 OCCASION2 OCCASION3
+#'[1]   1         1         0         0
 #' 
-#' df2 <- data_frame(OCC = c(1, 1, 2, 3), OCC1 = 999)
+#' df2 <- tibble(OCC = c(1, 1, 2, 3), OCC1 = 999)
 #' df2 %>% ordinal_to_binary_("OCC")
+#'    OCC OCC1 _OCC1 _OCC2 _OCC3
+#'[1]   1  999     1     0     0
+#'
 #' df2 %>% ordinal_to_binary_("OCC", overwrite = TRUE)
+#'    OCC OCC1 OCC2 OCC3
+#'[1]   1    1    0    0
+#'
 #' @export
 ordinal_to_binary_ <- function(df, 
                                col_name, 

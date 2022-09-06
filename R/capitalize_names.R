@@ -1,33 +1,21 @@
-#' capitalize all names for a dataframe
+#' Capitalize all names for a dataframe
 #' @param df data frame to capitalize names
 #' @details
-#' is a simple wrapper function to reduce typing and more easily pass data
-#' as it is read from a file
+#' This is a simple wrapper function to reduce typing and more
+#' easily pass data as it is read from a file
+#' 
 #' @examples 
 #' names(Theoph)
+#' [1] "Subject" "Wt"      "Dose"    "Time"    "conc" 
+#' 
 #' cTheoph <- capitalize_names(Theoph)
 #' names(cTheoph)
+#' [1] "SUBJECT" "WT"      "DOSE"    "TIME"    "CONC" 
+#' 
 #' @export
 capitalize_names <- function(df) {
+  if (any(class(df) == "character")) stop("Input must be dataframe")
+  if (any(class(df) == "list")) stop("Input must be dataframe")
   names(df) <- toupper(names(df))
-  return(df)
-}
-
-#' lowercase all names for a dataframe
-#' @param df data frame to lowercase names
-#' @details
-#' is a simple wrapper function to reduce typing and more easily pass data
-#' as it is read from a file
-#' @examples 
-#' \dontrun{
-#' df <- lowercase_names(df)
-#' # make sure all names are lowered as a file is read
-#' df <- lowercase_names(read.csv(...))
-#' # or via dplyr pipe syntax
-#' df <- read.csv(...) %>% lowercase_names
-#' }
-#' @export
-lowercase_names <- function(df) {
-  names(df) <- tolower(names(df))
   return(df)
 }

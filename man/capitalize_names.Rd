@@ -2,7 +2,7 @@
 % Please edit documentation in R/capitalize_names.R
 \name{capitalize_names}
 \alias{capitalize_names}
-\title{capitalize all names for a dataframe}
+\title{Capitalize all names for a dataframe}
 \usage{
 capitalize_names(df)
 }
@@ -10,14 +10,18 @@ capitalize_names(df)
 \item{df}{data frame to capitalize names}
 }
 \description{
-capitalize all names for a dataframe
+Capitalize all names for a dataframe
 }
 \details{
-is a simple wrapper function to reduce typing and more easily pass data
-as it is read from a file
+This is a simple wrapper function to reduce typing and more
+easily pass data as it is read from a file
 }
 \examples{
 names(Theoph)
+[1] "Subject" "Wt"      "Dose"    "Time"    "conc" 
+
 cTheoph <- capitalize_names(Theoph)
 names(cTheoph)
+[1] "SUBJECT" "WT"      "DOSE"    "TIME"    "CONC" 
+
 }
