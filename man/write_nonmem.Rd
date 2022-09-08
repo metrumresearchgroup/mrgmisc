@@ -2,7 +2,7 @@
 % Please edit documentation in R/write_nonmem.R
 \name{write_nonmem}
 \alias{write_nonmem}
-\title{easily write a csv file compatible with nonmem}
+\title{Write a csv file compatible with nonmem}
 \usage{
 write_nonmem(
   x,
@@ -30,7 +30,7 @@ write_nonmem(
 \item{...}{remaining arguments passed to data.table::fwrite}
 }
 \description{
-easily write a csv file compatible with nonmem
+Write a csv file compatible with nonmem
 }
 \details{
 nonmem uses '.' for NA values, does not like quotes in column names

@@ -32,6 +32,6 @@ test_that("NA's properly maintained [MRGMISC-013]", {
 })
 
 test_that("Works with tidy pipe [MRGMISC-013]", {
-  chk1 <- Theoph %>% mutate(minthrough = min_through(Subject))
+  chk1 <- Theoph %>% dplyr::mutate(minthrough = min_through(Subject))
   expect_equal(chk1$minthrough[50], 5)
 })

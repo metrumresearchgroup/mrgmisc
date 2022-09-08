@@ -13,6 +13,6 @@ test_that("Expected number of chunks is created", {
 })
 
 test_that("Column added to dataframe if list set to false", {
-  chk_df <- Theoph %>% group_by(Subject) %>% chunk_df(.nchunks = 3, .as_list = FALSE)
+  chk_df <- Theoph %>% dplyr::group_by(Subject) %>% chunk_df(.nchunks = 3, .as_list = FALSE)
   expect_equal(length(unique(chk_df$chunk__)), 3)
 })

@@ -1,7 +1,7 @@
-df <- tibble(OCC = c(1, 1, 2, 3))
-df2 <- tibble(OCC = c(1, 5, 2, 3, 1, 4, 6, 3, 7, 2, 8))
+df <- dplyr::tibble(OCC = c(1, 1, 2, 3))
+df2 <- dplyr::tibble(OCC = c(1, 5, 2, 3, 1, 4, 6, 3, 7, 2, 8))
 
-df3 <- tibble(OCC = c(1, 1, 2, 3), OCC1 = 999)
+df3 <- dplyr::tibble(OCC = c(1, 1, 2, 3), OCC1 = 999)
 
 test_that("expected number of binary flag variables are generated", {
   occvars <- df %>% ordinal_to_binary_("OCC")
@@ -13,16 +13,16 @@ test_that("expected number of binary flag variables are generated", {
 
 test_that("Only 1 binary flag made per row", {
   occvars2 <- df2 %>% ordinal_to_binary_("OCC")
-  occvars2 <- occvars2 %>% mutate(SUM = rowSums(across(OCC1:OCC8)))
+  occvars2 <- occvars2 %>% dplyr::mutate(SUM = rowSums(dplyr::across(OCC1:OCC8)))
   expect_equal(min(occvars2$SUM), 1)
 })
 
 test_that("Binary flags made in correct columns", {
   occvars2 <- df2 %>% ordinal_to_binary_("OCC")
-  occvars2 <- occvars2 %>% filter(OCC == 1)
+  occvars2 <- occvars2 %>% dplyr::filter(OCC == 1)
   expect_true(all(occvars2$OCC1 == 1))
   
-  occvars2 <- occvars2 %>% filter(OCC == 2)
+  occvars2 <- occvars2 %>% dplyr::filter(OCC == 2)
   expect_true(all(occvars2$OCC2 == 1))
 })  
 

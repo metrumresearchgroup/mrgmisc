@@ -1,5 +1,5 @@
 
-dat <- tibble(
+dat <- dplyr::tibble(
   var1 = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
   var2 = c(1, 1, 4, 3, 5, 1, 2, 3, 3)
 )
