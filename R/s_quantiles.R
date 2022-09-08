@@ -45,7 +45,7 @@ s_quantiles_<- function(.data, x, probs, na_rm = TRUE) {
   }
 }
 
-#' summarize quantiles for a column
+#' Summarize quantiles for a column
 #' @param .data data frame
 #' @param x column to calculate quantiles for
 #' @param probs probabilities to calculate quantiles for
