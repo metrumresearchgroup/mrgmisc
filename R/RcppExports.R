@@ -27,7 +27,6 @@ clean_phi <- function(x, sep, colname) {
 #' library(dplyr)
 #' df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
 #' df %>% group_by(id) %>% mutate(obs_imp = fill_backward(obs))
-#' @export
 fill_backward <- function(x) {
     .Call('_mrgmisc_fill_backward', PACKAGE = 'mrgmisc', x)
 }
@@ -43,7 +42,6 @@ fill_backward <- function(x) {
 #' library(dplyr)
 #' df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
 #' df %>% group_by(id) %>% mutate(obs_locf = fill_forward(obs))
-#' @export
 fill_forward <- function(x) {
     .Call('_mrgmisc_fill_forward', PACKAGE = 'mrgmisc', x)
 }

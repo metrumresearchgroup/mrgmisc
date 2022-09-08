@@ -13,15 +13,13 @@ reference:
     - write_nonmem
   - title: Data Manipulation
     contents:
-    - fill_backward
-    - fill_forward
+    - chunk
+    - chunk_df
     - ids_per_plot
     - max_through
     - min_through
     - set_bins
     - set_bins_df
-    - chunk
-    - chunk_df
   - title: Summaries
     contents:
     - s_pauc
