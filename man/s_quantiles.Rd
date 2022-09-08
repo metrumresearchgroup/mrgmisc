@@ -3,7 +3,7 @@
 \name{s_quantiles_}
 \alias{s_quantiles_}
 \alias{s_quantiles}
-\title{summarize quantiles for a column}
+\title{Summarize quantiles for a column}
 \usage{
 s_quantiles_(.data, x, probs, na_rm = TRUE)
 
@@ -19,7 +19,7 @@ s_quantiles(.data, x, probs, na_rm = TRUE)
 \item{na_rm}{remove na's before calculating value for quantile}
 }
 \description{
-summarize quantiles for a column
+Summarize quantiles for a column
 }
 \examples{
 library(dplyr)
