@@ -12,8 +12,6 @@ auc_inf <-function(idv,
                    last_points = c(3, 4, 5),
                    na.rm = TRUE){
  
-  #checks to add
-  #TODO: add check that lambda_z is positive and fail gracefully if not
   #TODO: clean up return data.frame/vector (its uuuugly now)
   if(!na.rm) {
     idv<- idv
@@ -70,7 +68,11 @@ auc_inf <-function(idv,
   
   if(lambda_z.final == 0) {
     return(setNames(auci, paste0("AUC0_inf")))
-}
+  }
+  
+  if(lambda_z.final < 0) {
+    stop("lambda_z is negative and should be positive")
+  }
     
   AUC.inf <- auci + dv[length(dv)]/lambda_z.final
   return(setNames(AUC.inf, paste0("AUC0_inf")))

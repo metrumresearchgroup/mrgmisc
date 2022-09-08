@@ -1,10 +1,10 @@
-# find unique values for key
-# @param df data frame
-# @param key_cols vector of column names. Defaults to all columns
-# @details 
-# used in stratify_df, however also made available to find
-# non-duplicated values across multiple columns 
-# when !duplicated(col) is not sufficient
+#' find unique values for key
+#' @param df data frame
+#' @param key_cols vector of column names. Defaults to all columns
+#' @details 
+#' used in stratify_df, however also made available to find
+#' non-duplicated values across multiple columns 
+#' when !duplicated(col) is not sufficient
 get_key <- function(df, 
                     key_cols = names(df)) {
   # add check to see if all key_cols available
@@ -14,11 +14,11 @@ get_key <- function(df,
   return(tibble::as_tibble(unique_df))
 }
 
-# stratify based on some columns
-# @param df dataframe
-# @param strat_cols columns to stratify on
-# @param n number of samples
-# @param replace whether to resample with replacement
+#' stratify based on some columns
+#' @param df dataframe
+#' @param strat_cols columns to stratify on
+#' @param n number of samples
+#' @param replace whether to resample with replacement
 stratify_df <- function(df, 
                         strat_cols,
                         n,
@@ -98,6 +98,7 @@ resample_df <- function(df,
                         key_col_name = "KEY",
                         replace = TRUE) {
   # checks
+  if (n < 1) stop("n should be 1 or greater")
   if (is.numeric(strat_cols)) {
     message("It looks you are trying to give a numeric value for strat_cols, 
  perhaps you were trying to specify the number to sample instead? 

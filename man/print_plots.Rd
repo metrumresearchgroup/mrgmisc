@@ -2,7 +2,7 @@
 % Please edit documentation in R/print_plots.R
 \name{print_plots}
 \alias{print_plots}
-\title{create a list of plots cleanly with extra pdf functionality}
+\title{Create a list of plots cleanly with extra pdf functionality}
 \usage{
 print_plots(
   .ggplot_list,
@@ -21,7 +21,7 @@ print_plots(
 \item{.end_break}{whether to add a page break after the plot output}
 }
 \description{
-create a list of plots cleanly with extra pdf functionality
+Create a list of plots cleanly with extra pdf functionality
 }
 \details{
 Especially for pdf, this can allow the generation of clean pdf pages

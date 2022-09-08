@@ -2,7 +2,7 @@
 % Please edit documentation in R/pad_left.R
 \name{pad_left}
 \alias{pad_left}
-\title{add left padding to a vector of values}
+\title{Add character to left of every character}
 \usage{
 pad_left(.x, .n, padding_char = "0")
 }
@@ -14,9 +14,20 @@ pad_left(.x, .n, padding_char = "0")
 \item{padding_char}{padding char to use, defaults to 0}
 }
 \description{
-add left padding to a vector of values
+Add character to left of every character
+}
+\details{
+Use this function to add specific character to the
+left of each element in a given vector.
+
+The output is a character vector and default padding
+character is "0".
 }
 \examples{
 pad_left(1, 3)
-pad_left(c(1, 10, 100), 4)
+[1] "001"
+
+pad_left(c(1, 10), 4, "Z")
+[1] "ZZZ1" "ZZ10"
+
 }

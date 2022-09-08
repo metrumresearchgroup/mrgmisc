@@ -17,9 +17,11 @@ auc_partial(idv, dv, range = c(0, Inf))
 Calculate partial AUC
 }
 \details{
-default range is 0 to tmax
-is recommended to be used alongside dplyr for ease of calculation
-if an individual does not have any value within the specified range
+default range is 0 to tmax.
+
+It is recommended to be used alongside dplyr for ease of calculation.
+
+If an individual does not have any value within the specified range
 a warning will be issued and an NA value will be returned. This is important
 if some individuals dropped out early and do not have all observations other
 individuals have.
@@ -27,8 +29,9 @@ individuals have.
 \examples{
 library(mrgmisc)
 library(dplyr, quiet = TRUE)
+
 df <- capitalize_names(sd_oral_richpk) 
-head(df)
+
 df \%>\% group_by(ID) \%>\% 
 summarize(pAUC0_10 = auc_partial(TIME, CONC, c(0,10)))
 

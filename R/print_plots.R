@@ -1,4 +1,4 @@
-#' create a list of plots cleanly with extra pdf functionality
+#' Create a list of plots cleanly with extra pdf functionality
 #' @param .ggplot_list list of ggplot plots
 #' @param .start_page_number pdf-only starting page number for plots
 #' @param .start_break whether to add a page break before starting to print plots

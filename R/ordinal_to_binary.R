@@ -41,7 +41,7 @@ ordinal_to_binary_ <- function(df,
   unique_categories <- unique(df[[col_name]])
   cols <- lapply(unique_categories, function(x, df, col_name) {
     result <- ifelse(df[[col_name]] == x, 1, 0)
-    result <- setNames(dplyr::data_frame(nm = result), paste0(col_name, x))
+    result <- setNames(dplyr::tibble(nm = result), paste0(col_name, x))
     return(result)
   }, df, col_name)
   #df_cols <- do.call(dplyr::data_frame, cols)
