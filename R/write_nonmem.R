@@ -1,4 +1,4 @@
-#' easily write a csv file compatible with nonmem
+#' Write a csv file compatible with nonmem
 #' @details 
 #' nonmem uses '.' for NA values, does not like quotes in column names
 #' and does not handle row names, so these are all presets
