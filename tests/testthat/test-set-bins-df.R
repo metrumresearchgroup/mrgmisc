@@ -8,10 +8,6 @@ test_that("works with breaks out of order [MRG-MISC-0171]", {
     res,
     res2
   )
-  expect_equal(
-    sort(unique(res$conc_bins)),
-    c(1,2)
-  )
 })
 
 # if one break provided, assumes breaks <- c(-Inf, breaks, Inf)
@@ -20,20 +16,6 @@ test_that("works with 1 break provided [MRG-MISC-0171]", {
   expect_equal(
     sort(unique(res$conc_bins)),
     c(0,1) 
-  )
-})
-
-# if no break specified, do quartiles
-test_that("works with default 4 bins quartiles if not break not specified [MRG-MISC-0171]", {
-  res <- set_bins_df(.df = Theoph, .x= "conc") 
-  res2 <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.25, 0.5, 0.75, 1)))
-  expect_equal(
-    res,
-    res2
-  )
-  expect_equal(
-    sort(unique(res$conc_bins)),
-    c(1,2, 3, 4)
   )
 })
 

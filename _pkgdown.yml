@@ -10,19 +10,18 @@ reference:
   - title: Data Ingestion
     desc: Ingest Data.
     contents:
-    - read_nonmem
-    - read_phx
     - write_nonmem
   - title: Data Manipulation
     contents:
-    - as_numeric
     - fill_backward
     - fill_forward
     - ids_per_plot
     - max_through
     - min_through
     - set_bins
-    - unique_non_numerics
+    - set_bins_df
+    - chunk
+    - chunk_df
   - title: Summaries
     contents:
     - s_pauc
@@ -30,8 +29,6 @@ reference:
   - title: Formatting
     contents:
     - capitalize_names
-    - lowercase_names
-    - cols_to_numeric
     - ordinal_to_binary_
     - replace_dots
     - pad_left
@@ -40,6 +37,3 @@ reference:
     - auc_inf
     - auc_partial
     - resample_df
-  - title: misc
-    contents:
-    - pad_left
