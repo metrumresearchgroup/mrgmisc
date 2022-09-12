@@ -75,3 +75,14 @@ test_that("chunks grouped elements into ragged arrays [MRG-MISC-0053]", {
                     c("d", "e"), 
                     c("f", "g")))
 })
+
+# ID per plot -------------------------------------------------------------
+
+test_that("Error occurs if input ID's are not vector", {
+  expect_error(ids_per_plot(Theoph$Subject[1], id_per_plot = 9), "chunking requires a vector")
+})
+
+test_that("IDs are sorted properly", {
+  expect_equal(ids_per_plot(id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), id_per_plot = 5), 
+               c(1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3))
+})

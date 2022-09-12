@@ -98,7 +98,6 @@ resample_df <- function(df,
                         key_col_name = "KEY",
                         replace = TRUE) {
   # checks
-  if (n < 1) stop("n should be 1 or greater")
   if (is.numeric(strat_cols)) {
     message("It looks you are trying to give a numeric value for strat_cols, 
  perhaps you were trying to specify the number to sample instead? 

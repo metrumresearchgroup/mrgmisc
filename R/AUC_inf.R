@@ -66,6 +66,10 @@ auc_inf <-function(idv,
   }
   lambda_z.final <- lambda_z[best.fit.pointer] * (-1)
   
+  if(is.na(lambda_z.final)) {
+    stop("lambda_z is NA")
+  }
+  
   if(lambda_z.final == 0) {
     return(setNames(auci, paste0("AUC0_inf")))
   }
