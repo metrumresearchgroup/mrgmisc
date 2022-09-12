@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{min_through}
 \alias{min_through}
-\title{Give the min value up to that point}
+\title{give the min value up to that point}
 \usage{
 min_through(x)
 }
@@ -10,18 +10,14 @@ min_through(x)
 \item{x}{A numeric vector of values}
 }
 \description{
-Give the min value up to that point
+give the min value up to that point
 }
 \details{
 useful for safety analyses where an event may be defined as a certain change
-in a biomarker. This will show you how the current measurement compares
-to the minimum value up to that point
+in a biomarker, so need to see how the current measurement compares to the minimum
+value up to that point
 }
 \examples{
 min_through(c(4, 3, 3, 2, 4, 1))
-[1] 4 3 3 2 2 1
-
 min_through(c(NA, 2))
-[1] NA  2
-
 }
