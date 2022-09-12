@@ -6,13 +6,21 @@
 #' @param .label name of the new label column, defaults to appending _label to bin column name
 #' @param lower_bound set a lower bound for the first bin, defaults to -Inf
 #' @param upper_bound set an upper bound for the last bind, defaults to Inf
-#' @param quiet whether to give additonal information regarding bins and assigned range for each
+#' @param quiet whether to give additional information regarding bins and assigned range for each
 #' @param between defaults to NULL, a special case of setting all inside the specified range
 #' @param inclusive include max value of largest user defined bin even though lower bins are non-inclusive
 #' @details
 #' set_bins_df offers the ability to create bins from a dataframe and get both the binning column
-#' as well as a label column with the range of values associated with a given bin 
-#' @seealso \code{\link{set_bins}}
+#' as well as a label column with the range of values associated with a given bin
+#' 
+#' 
+#' @examples
+#' x <- Theoph$conc
+#' head(x)
+#' 
+#' 
+#'  
+#' @seealso \code{\link{set_bins}}: This function creates bins from a data frame. The output is the new assigned bin columns. 
 #' @export
 set_bins_df <- function(
   .df, 

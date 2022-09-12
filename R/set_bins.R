@@ -3,7 +3,7 @@
 #' @param breaks breaks for each bin, defaults to quantiles
 #' @param lower_bound set a lower bound for the first bin, defaults to -Inf
 #' @param upper_bound set an upper bound for the last bind, defaults to Inf
-#' @param quiet whether to give additonal information regarding bins and assigned range for each
+#' @param quiet whether to give additional information regarding bins and assigned range for each
 #' @param between defaults to NULL, a special case of setting all inside the specified range
 #' @param inclusive include max value of largest user defined bin even though lower bins are non-inclusive
 #' @details
@@ -19,6 +19,33 @@
 #' To use the between functionality, you must specify the range you wish to bin between,
 #' and those values will be assigned to bin 1, with all values below as 0 and all values
 #' above as 2. See the examples for more details
+#' 
+#' 
+#' @examples 
+#' x <- Theoph$conc
+#' head(x, 15)
+#' 
+#' assign all obs < min to NA
+#' res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(min(x) + 0.1, 0.5, 1)), lower_bound = min(x)+ 0.1)
+#' head(res,15)
+#' table(res)
+#' table(is.na(res))
+#' 
+#' include max value of largest user defined bin even though lower bins are non-inclusive
+#' x <- Theoph$conc
+#' head(x)
+#' xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+#' xupper = Inf
+#' res <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = TRUE)
+#' head(res)
+#' table(res)
+#' 
+#' 
+#' 
+#' @seealso \code{\link{set_bins_df}}: This function creates bins from a dataframe and outputs both the binning column
+#' as well as a label column with the range of values associated with a given bin
+#' 
+#' 
 #' @export
 set_bins <- function(x, breaks = stats::quantile(x, na.rm = T), lower_bound = -Inf, upper_bound = Inf, quiet = TRUE,
                      between = NULL, inclusive = TRUE) {

@@ -2,6 +2,7 @@
 # Break argument ----------------------------------------------------------
 
 test_that("works with breaks out of order [MRG-MISC-0171]", {
+  x <- Theoph$conc
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(1, 0, 0.5)))
   res2 <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
   expect_equal(
@@ -12,18 +13,36 @@ test_that("works with breaks out of order [MRG-MISC-0171]", {
 
 # if one break provided, assumes breaks <- c(-Inf, breaks, Inf)
 test_that("works with 1 break provided [MRG-MISC-0171]", {
-  res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0.2)))
+  x <- Theoph$conc
+  xbreak <- stats::quantile(x, na.rm = T, probs= c(0.2))
+  xbin <- length(xbreak) + 1
+  res <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak)
+  expect_equal(
+    length(xbreak),
+    1 
+  )
   expect_equal(
     sort(unique(res$conc_bins)),
     c(0,1) 
   )
+  expect_equal(
+    as.character(unique(levels(res$conc_bins_label))[xbin-1]),
+    paste("[", paste("-Inf", {xbreak[1]}, sep  = "_"), ")", sep = "")
+  )
+  expect_equal(
+    as.character(unique(levels(res$conc_bins_label))[xbin]),
+    paste("[", paste({xbreak[1]}, "Inf", sep  = "_"), ")", sep = "")
+  )
 })
+
+
 
 # Upper and lower bounds argument -----------------------------------------
 
 ## Lower bound ------------------------------------------------------------
 # lower_bound default -Inf
 test_that("lower_bound test: -Inf [MRG-MISC-0172]", {
+  x <- Theoph$conc
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 1)), lower_bound = -Inf)
   expect_true(all(!is.na(res)))
   expect_equal(
@@ -233,6 +252,7 @@ test_that("quiet test: quiet= false print message [MRG-MISC-0175]", {
 # Name and label arguments ------------------------------------------------
 
   test_that("name and label test: default [MRG-MISC-0176]", {
+    x <- Theoph$conc
     .x= "conc"
     res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
     expect_equal(
@@ -250,6 +270,7 @@ test_that("quiet test: quiet= false print message [MRG-MISC-0175]", {
   })
   
   test_that("name test: specified name [MRG-MISC-0176]", {
+    x <- Theoph$conc
     .name = "conc_category"
     res <- set_bins_df(.df = Theoph, .x= "conc", .name = "conc_category", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
     expect_equal(
@@ -263,6 +284,7 @@ test_that("quiet test: quiet= false print message [MRG-MISC-0175]", {
   })
   
   test_that("name test: specified name and label [MRG-MISC-0176]", {
+    x <- Theoph$conc
     .name = "conc_category"
     .label = "conc_ranges"
     res <- set_bins_df(.df = Theoph, .x= "conc", .name = "conc_category", .label = "conc_ranges", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
@@ -277,6 +299,7 @@ test_that("quiet test: quiet= false print message [MRG-MISC-0175]", {
   })
   
   test_that("name test: specified label [MRG-MISC-0176]", {
+    x <- Theoph$conc
     .x= "conc"
     .label = "conc_ranges"
     res <- set_bins_df(.df = Theoph, .x= "conc", .label = "conc_ranges", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
@@ -294,6 +317,7 @@ test_that("quiet test: quiet= false print message [MRG-MISC-0175]", {
 
   
   test_that("label test: default [MRG-MISC-0176]", {
+    x <- Theoph$conc
     .x= "conc"
     res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
     expect_equal(
@@ -349,30 +373,3 @@ test_that("quiet test: quiet= false print message [MRG-MISC-0175]", {
       paste("[", paste({xbreak[3]}, {ubound}, sep  = "_"), ")", sep = "")
     )
   })
-  
-  # NEED TO ADD: does between and inclusive statements affect label col output 
-  # test_that("label test: contents of label column with between and inclusive [MRG-MISC-0177]", {
-  #   x <- Theoph$conc
-  #   xbreak <- stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 0.8))
-  #   lbound = 2
-  #   ubound = 9 
-  #   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak, lower_bound = lbound, upper_bound = ubound)
-  #   xbin <- length(xbreak) + 1
-  #   expect_equal(
-  #     as.character(unique(levels(res$conc_bins_label))[xbin-3]),
-  #     paste("[", paste({lbound}, {xbreak[1]}, sep  = "_"), ")", sep = "")
-  #   )
-  #   expect_equal(
-  #     as.character(unique(levels(res$conc_bins_label))[xbin-2]),
-  #     paste("[", paste({xbreak[1]}, {xbreak[2]}, sep  = "_"), ")", sep = "")
-  #   )
-  #   expect_equal(
-  #     as.character(unique(levels(res$conc_bins_label))[xbin-1]),
-  #     paste("[", paste({xbreak[2]}, {xbreak[3]}, sep  = "_"), ")", sep = "")
-  #   )
-  #   expect_equal(
-  #     as.character(unique(levels(res$conc_bins_label))[xbin]),
-  #     paste("[", paste({xbreak[3]}, {ubound}, sep  = "_"), ")", sep = "")
-  #   )
-  # })
-  # 

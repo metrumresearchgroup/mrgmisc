@@ -19,9 +19,14 @@ test_that("works with breaks out of order [MRG-MISC-0121]", {
 test_that("works with 1 break provided [MRG-MISC-0121]", {
   x <- Theoph$conc
   res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.2)))
+  res2 <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.2)),lower_bound = -Inf, upper_bound = Inf)
   expect_equal(
     sort(unique(res)),
     c(0,1) 
+  )
+  expect_equal(
+    res,
+    res2
   )
 })
 
