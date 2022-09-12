@@ -32,7 +32,7 @@ set_bins_df(
 
 \item{upper_bound}{set an upper bound for the last bind, defaults to Inf}
 
-\item{quiet}{whether to give additonal information regarding bins and assigned range for each}
+\item{quiet}{whether to give additional information regarding bins and assigned range for each}
 
 \item{between}{defaults to NULL, a special case of setting all inside the specified range}
 
@@ -45,6 +45,13 @@ given a set of bin ranges, assign each value to a bin and provide the label
 set_bins_df offers the ability to create bins from a dataframe and get both the binning column
 as well as a label column with the range of values associated with a given bin
 }
+\examples{
+x <- Theoph$conc
+head(x)
+
+
+ 
+}
 \seealso{
-\code{\link{set_bins}}
+\code{\link{set_bins}}: This function creates bins from a data frame. The output is the new assigned bin columns.
 }
