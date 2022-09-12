@@ -15,4 +15,4 @@
 #' parens('x')
 #' 
 #' @export
-parens <- function(x,...)glue('(',x,')')
+parens <- function(x,...)glue::glue('(',x,')')
