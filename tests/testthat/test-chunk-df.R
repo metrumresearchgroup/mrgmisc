@@ -2,6 +2,7 @@ test_that("Error message occurs if input is not correct type", {
   expect_error(chunk_df(c(1, 2, 3, 4)))
   expect_error(chunk_df(Theoph, .nchunks = 0))
   expect_error(chunk_df(Theoph, .nchunks = -1))
+  expect_error(chunk_df(Theoph, 14, .nchunks = 5), "grouping vars passed to dots must be a single character vector or unquoted column names")
 })
 
 test_that("Expected number of chunks is created", {
@@ -15,4 +16,9 @@ test_that("Expected number of chunks is created", {
 test_that("Column added to dataframe if list set to false", {
   chk_df <- Theoph %>% dplyr::group_by(Subject) %>% chunk_df(.nchunks = 3, .as_list = FALSE)
   expect_equal(length(unique(chk_df$chunk__)), 3)
+})
+
+test_that("Chunk df with column name", {
+  chk_sub <- chunk_df(Theoph, Subject, .nchunks = 3)
+  expect_equal(length(chk_sub), 3)
 })
