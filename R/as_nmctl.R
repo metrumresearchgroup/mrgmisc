@@ -41,6 +41,32 @@
 #' @author Tim Bergsma
 #' 
 #' @export
+
+`contains` <-
+  function(pattern,text,...){
+    hits <- regexpr(pattern,text,...)
+    hits >=0
+  }
+
+`%contains%` <- function(x,y)contains(y,x)
+
+`prev` <-
+  #function(x)c(NA,x[-length(x)])#last observation
+  function(x){
+    s <- seq_along(x)
+    s <- c(length(s),s[-length(s)])
+    x <- x[s]
+    if(length(x))x[[1]] <- NA
+    x
+  }
+
+`runhead` <-
+  function(x){#not like last observation
+    n <- x != prev(x)
+    if(length(n)) n[[1]] <- TRUE
+    n
+  }
+
 as.nmctl <-
   function(x,...)UseMethod('as.nmctl')
 
@@ -54,7 +80,7 @@ as.character.nmctl <-
     flag <- runhead(record)
     content <- as.character(unlist(x))
     nms <- toupper(names(x))
-    content[flag] <- paste(glue('$',nms),content[flag])
+    content[flag] <- paste(glue::glue('$',nms),content[flag])
     content[flag] <- sub(' $','',content[flag])
     content
   }
