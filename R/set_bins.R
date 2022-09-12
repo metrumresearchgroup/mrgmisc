@@ -1,4 +1,4 @@
-#' given a set of bin ranges, assign each value to a bin
+#' Given a set of bin ranges, assign each value to a bin
 #' @param x numeric vector to assign bins
 #' @param breaks breaks for each bin, defaults to quantiles
 #' @param lower_bound set a lower bound for the first bin, defaults to -Inf
@@ -23,25 +23,63 @@
 #' 
 #' @examples 
 #' x <- Theoph$conc
-#' head(x, 15)
 #' 
-#' assign all obs < min to NA
-#' res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(min(x) + 0.1, 0.5, 1)), lower_bound = min(x)+ 0.1)
-#' head(res,15)
-#' table(res)
-#' table(is.na(res))
-#' 
-#' include max value of largest user defined bin even though lower bins are non-inclusive
-#' x <- Theoph$conc
 #' head(x)
+#' [1]  0.74  2.84  6.57 10.50  9.66  8.58
+#' 
+#' #basic example
+#' res <- set_bins(x)
+#' 
+#' head(res)
+#' [1] 1 1 3 4 4 4
+#' 
+#' table(res)
+#' res
+#' 1  2  3  4 
+#' 33 33 32 34
+#' 
+#' #assign all obs < lower bound to NA
+#' res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.1, 0.5, 1)), lower_bound = 1)
+#' 
+#' head(res)
+#' [1] NA  0  1  1  1  1
+#' 
+#' table(res)
+#' res
+#' 0  1 
+#' 52 66 
+#' 
+#' #use inclusive argument to get desired bins
+#' ## include max value of largest user defined bin
 #' xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
 #' xupper = Inf
-#' res <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = TRUE)
+#' 
+#' res1 <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = TRUE)
+#' 
+#' table(res1)
+#' res1
+#' 1  2 
+#' 66 66 
+#' 
+#' ## do not include max value of largest user-defined bin- create new bin for it
+#' res2 <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = FALSE)
+#' 
+#' table(res2)
+#' res2
+#' 1  2  3 
+#' 66 65  1
+#' 
+#' # use between argument to cut obs at certain values. For example, want a bin of conc between 3-7
+#' res <- set_bins(x,  between = c(3, 7)) 
+#' 
 #' head(res)
+#' [1] 0 0 1 2 2 2
+#' 
 #' table(res)
-#' 
-#' 
-#' 
+#' res
+#' 0  1  2 
+#' 34 62 36 
+
 #' @seealso \code{\link{set_bins_df}}: This function creates bins from a dataframe and outputs both the binning column
 #' as well as a label column with the range of values associated with a given bin
 #' 

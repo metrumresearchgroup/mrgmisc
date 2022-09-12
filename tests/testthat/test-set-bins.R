@@ -174,7 +174,6 @@ test_that("inclusive test: inclusive = FALSE and discrete upper bound, n bins = 
 # Between argument --------------------------------------------------------
 
 # if val between c(min_between, max_between), then bin 1. Less than min_between, then bin 0. Greater than max_between, then bin 2
-  # useful if want to cut obs at certain num (i.e. mainly interested in age 5-12)- add as example
   test_that("between test: discrete number with between argument [MRG-MISC-0124]", {
     x <- Theoph$conc
     min_between <- min(x) + 1
