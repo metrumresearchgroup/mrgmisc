@@ -4,7 +4,7 @@
 #' For each value in a numeric vector, return the closest match from
 #' a vector of candidate values.
 #' 
-#' @param x A character vector
+#' @param x A numeric vector
 #' @param rule a vector of (finite numeric) candidates, or a 
 #' single value giving candidate interval on the real number line
 #' @param left whether to return the lesser of two equidistant candidates
@@ -26,12 +26,16 @@
 #' 
 #' @examples
 #' snap(c(0.0, 1.0, 1.2, 2.0, 2.9, 3))
-#' snap(-10:10, 0.3)
-#' xyplot(conc~Time,data=Theoph,groups=Subject)
-#' times <- c(0,.25,.5,1,2,4,5,7,9,12,24)
-#' xyplot(conc~snap(Time,times),data=Theoph,groups=Subject)
-#' snap(c(3,NA,5), c(2,4,6))
+#' [1] 0 1 1 2 3 3
+#' 
+#' snap(-3:3, 0.3)
+#' [1] -3.0 -2.1 -0.9  0.0  0.9  2.1  3.0
+#' 
+#' snap(c(3,NA,5), c(2,3,6))
+#' [1]  3 NA  6
+#' 
 #' snap(c(3,NA,5), numeric(0))
+#' [1] NA NA NA
 #' 
 #' @export
 snap <- function(x,rule=1,left=TRUE,...){
