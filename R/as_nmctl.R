@@ -1,3 +1,46 @@
+#' Create, Manipulate, Read, and Write NONMEM Control Streams
+#'
+#' @description 
+#' This family of functions implements the class \code{nmctl}: an object
+#' model of the NONMEM control stream.  \code{nmctl} models a control stream
+#' as a list of records; each record is a character vector. The read and write 
+#' functions (not generic) convert \code{nmctl} to and from file format. 
+#' The print, format, and \code{as.character} methods display \code{nmctl} 
+#' as it normally looks in a text editor.  \code{as.list.nmctl} simply 
+#' unclasses its argument. \code{as.nmctl.character} does the heavy work, 
+#' breaking up a character vector into records and storing as a list. 
+#' If \code{parse} is \code{TRUE}, \code{as.nmctl} attempts to convert 
+#' certain records to higher-level objects: currently the \code{theta} 
+#' record will be converted to \code{\link{initList}} .
+#' 
+#' @param x an nmctl object (or analogous character vector)
+#' @param \dots extra arguments passed to other functions
+#' @param pattern regular expression for first line of a control record
+#' @param head regular expression (relative to \code{pattern}) 
+#' giving the name of the control record
+#' @param tail regular expression (relative to \code{pattern}) giving the
+#' balance of the control record
+#' @param con a connection or the name of a file to open
+#' @param parse whether to create R objects from the character 
+#' vectors serving as records
+#' @param file passed to \code{write}
+#' @param ncolumns passed to \code{write}
+#' @param append passed to \code{write}
+#' @param sep passed to \code{write}
+#' @param drop coerce to lowest possible dimension
+#' 
+#' @details
+#' Serendipitously, the record indicator in NONMEM control stream syntax is the 
+#' same as the element selector in R list syntax: $.  The convention is that names
+#' of elements in \code{nmctl} (lower case) are converted to record types (upper case)
+#' in the control stream.  The user is free to add, delete, rearrange, and edit
+#' records using standard list manipulation techniques. When printed, records 
+#' appear in list order. The write function warns if the 80 character limit is exceeded
+#' (not including comments).
+#' 
+#' @author Tim Bergsma
+#' 
+#' @export
 as.nmctl <-
   function(x,...)UseMethod('as.nmctl')
 
