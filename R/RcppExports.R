@@ -27,6 +27,7 @@ clean_phi <- function(x, sep, colname) {
 #' library(dplyr)
 #' df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
 #' df %>% group_by(id) %>% mutate(obs_imp = fill_backward(obs))
+#' @export
 fill_backward <- function(x) {
     .Call('_mrgmisc_fill_backward', PACKAGE = 'mrgmisc', x)
 }
@@ -42,40 +43,34 @@ fill_backward <- function(x) {
 #' library(dplyr)
 #' df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
 #' df %>% group_by(id) %>% mutate(obs_locf = fill_forward(obs))
+#' @export
 fill_forward <- function(x) {
     .Call('_mrgmisc_fill_forward', PACKAGE = 'mrgmisc', x)
 }
 
-#' Give the min value up to that point
+#' give the min value up to that point
 #' @param x A numeric vector of values
 #' @details
 #' useful for safety analyses where an event may be defined as a certain change
-#' in a biomarker. This will show you how the current measurement compares
-#' to the minimum value up to that point
+#' in a biomarker, so need to see how the current measurement compares to the minimum
+#' value up to that point
 #' @examples 
 #'min_through(c(4, 3, 3, 2, 4, 1))
-#'[1] 4 3 3 2 2 1
-#'
 #'min_through(c(NA, 2))
-#'[1] NA  2
-#'
 #' @export
 min_through <- function(x) {
     .Call('_mrgmisc_min_through', PACKAGE = 'mrgmisc', x)
 }
 
-#' Give the max value up to that point
+#' give the max value up to that point
 #' @param x A numeric vector of values
 #' @details
-#' useful for seeing how a current measurement compares to the maximum
+#' useful for safety analyses where an event may be defined as a certain change
+#' in a biomarker, so need to see how the current measurement compares to the maximum
 #' value up to that point
 #' @examples 
 #'max_through(c(4, 3, 3, 2, 5, 1))
-#'[1] 4 4 4 4 5 5
-#'
 #'max_through(c(NA, 2, 1, 4, 2))
-#'[1] NA  2  2  4  4
-#'
 #' @export
 max_through <- function(x) {
     .Call('_mrgmisc_max_through', PACKAGE = 'mrgmisc', x)
