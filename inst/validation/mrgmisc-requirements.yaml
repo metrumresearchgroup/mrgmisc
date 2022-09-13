@@ -86,8 +86,33 @@ POOL-R001:
   description: pool determines the shared and unique elements between two vectors
   tests:
   - MRG-POOL-001
-
-
-
+PSMT-R001:
+  description: posmat produces an accurate output from a given square matrix input
+  tests:
+  - MRG-PSMT-001
+PSMT-R002:
+  description: posmat responds appropriately to unintended input formats
+  tests:
+  - MRG-PSMT-002
+RDOT-R001:
+  description: replace_dots converts dots in a vector to NA
+  tests:
+  - MRG-RDOT-001
+RDOT-R002:
+  description: replace_dots appropriately hands special case inputs
+  tests:
+  - MRG-RDOT-002
+RESM-R001:
+  description: resample_df appropriately resamples a dataframe
+  tests:
+  - MRG-RESM-001
+RESM-R002:
+  description: resample_df allows for customization in stratification and replacement
+  tests:
+  - MRG-RESM-002
+RESM-R003:
+  description: resample_df appropriately responds to unintended inputs
+  tests:
+  - MRG-RESM-003
 
 

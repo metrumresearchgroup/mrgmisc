@@ -92,8 +92,28 @@ POOL-S001:
   ProductRisk: Low
   requirements:
   - POOL-R001
-
-
+PSMT-S001:
+  name: posmat
+  description: As a user, I want to coerce a matrix to be positive definite.
+  ProductRisk: Low
+  requirements:
+  - PSMT-R001
+  - PSMT-R002
+RDOT-S001:
+  name: replace_dots
+  description: As a user, I want to easily convert dots in a vector to NA.
+  ProductRisk: Low
+  requirements:
+  - RDOT-R001
+  - RDOT-R002
+RESM-S001:
+  name: resample_df
+  description: As a user, I want to resample a dataframe with determined stratifications in the data.
+  ProductRisk: Low
+  requirements:
+  - RESM-R001
+  - RESM-R002
+  - RESM-R003
 
 
 
