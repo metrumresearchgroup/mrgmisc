@@ -114,6 +114,22 @@ RESM-S001:
   - RESM-R001
   - RESM-R002
   - RESM-R003
-
-
-
+SPAC-S001:
+  name: s_pauc
+  description: As a user, I want to easily summarize any given quantile.
+  ProductRisk: Low
+  requirements:
+  - SPAC-R001
+SQUN-S001:
+  name: s_quantiles
+  description: As a user, I want to summarize any quantile from a column in a data frame.
+  ProductRisk: Low
+  requirements:
+  - SQUN-R001
+  - SQUN-R002
+SNAP-S001:
+  name: snap
+  description: As a user, I want to coerce values to nearest of given candidates.
+  ProductRisk: Low
+  requirements:
+  - SQUN-R001

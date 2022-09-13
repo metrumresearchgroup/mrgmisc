@@ -114,5 +114,22 @@ RESM-R003:
   description: resample_df appropriately responds to unintended inputs
   tests:
   - MRG-RESM-003
+SPAC-R001:
+  description: s_pauc appropriately summarize the given quantile
+  tests:
+  - MRG-SPAC-001
+SQUN-R001:
+  description: s_quantiles summarizes quantiles for an individual column
+  tests:
+  - MRG-SQUN-001
+SQUN-R002:
+  description: s_quantiles appropriately responds to unexpected inputs
+  tests:
+  - MRG-SQUN-002
+SNAP-R001:
+  description: snap coerces values to nearest of given candidates
+  tests:
+  - MRG-SNAP-001
+
 
 
