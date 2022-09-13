@@ -38,6 +38,38 @@ CKDF-S001:
   requirements:
   - CKDF-R001
   - CKDF-R002
+CHNK-S001:
+  name: Chunk
+  description: As a user, I want to group elements in vectors and lists with easily
+    customizable grouping rules.
+  ProductRisk: Low
+  requirements:
+  - CHNK-R001
+  - CHNK-R002
+  - CHNK-R003
+MMAX-S001:
+  name: max_through
+  description: As a user, I want to find the maximum value found up to each index of the input.
+  ProductRisk: Low
+  requirements:
+  - MMAX-R002
+  - MMAX-R003
+MMIN-S001:
+  name: max_through
+  description: As a user, I want to find the minimum value found up to each index of the input.
+  ProductRisk: Low
+  requirements:
+  - MMAX-R001
+  - MMAX-R003
+NASM-S001:
+  name: nasum
+  description: As a user, I want to quickly find the total number of NA values in each column.
+  ProductRisk: Low
+  requirements:
+  - NASM-R001
+
+
+
 
 
 

@@ -3,7 +3,7 @@ Theoph2$Subject[2:4] = NA_real_
 Theoph2$conc[5:9] = NA_real_
 Theoph2$Time = NA_real_
 
-test_that("Finds NA within dataframe", {
+test_that("Finds NA within dataframe [MRG-NASM-001]", {
   Theoph_na <- nasum(Theoph2)
   expect_equal(Theoph_na[1], setNames(3, "Subject"))
   expect_equal(Theoph_na[2], setNames(0, "Wt"))

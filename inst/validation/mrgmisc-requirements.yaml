@@ -38,6 +38,37 @@ CKDF-R002:
   description: chunk_df handles inappropriate inputs and offers multiple output formats
   tests:
   - MRG-CKDF-002
+CHNK-R001:
+  description: chunk accurately creates groups with different input formats
+  tests:
+  - MRG-CHNK-001
+CHNK-R002:
+  description: chunk_grp accurately creates groups while respecting grouped variables
+  tests:
+  - MRG-CHNK-002
+CHNK-R003:
+  description: chunk_list and chunk_grp_list accurately creates groups in list format customized to specified groups.
+  tests:
+  - MRG-CHNK-003
+MMAX-R001:
+  description: min_through accurately finds the minimum value up to each index in the input
+  tests:
+  - MRG-MMAX-001
+MMAX-R002:
+  description: max_through accurately finds the maximum value up to each index in the input
+  tests:
+  - MRG-MMAX-002
+MMAX-R003:
+  description: min_through and max_through appropriately hands inputs of different formats
+  tests:
+  - MRG-MMAX-003
+NASM-R001:
+  description: nasum finds all the NA values present in each column of a data frame
+  tests:
+  - MRG-NASM-001
+
+
+
 
 
 

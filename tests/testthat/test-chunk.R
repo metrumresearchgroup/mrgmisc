@@ -6,7 +6,7 @@ dat <- dplyr::tibble(
 
 # chunk testing -----------------------------------------------------------
 
-test_that("chunking works with unique elements", {
+test_that("chunking works with unique elements [MRG-CHNK-001]", {
   uni_chunk <- chunk(1:9, 3) # sorted
   expect_outcome <- c(1, 1, 1, 2, 2, 2, 3, 3, 3)
   expect_equal(uni_chunk, expect_outcome)
@@ -25,7 +25,7 @@ test_that("chunking works with unique elements", {
   expect_error(chunk(1:9, 10))
 })
 
-test_that("chunking ignores non-unique elements", {
+test_that("chunking ignores non-unique elements [MRG-CHNK-001]", {
   nonuni_chunk <- chunk(c(1, 1, 1:7), 3)
   expect_outcome <- c(1, 1, 1, 2, 2, 2, 3, 3, 3)
   expect_equal(nonuni_chunk, expect_outcome)
@@ -33,7 +33,7 @@ test_that("chunking ignores non-unique elements", {
 
 # Group chunking testing --------------------------------------------------
 
-test_that("chunks unique groups as evenly as possible", {
+test_that("chunks unique groups as evenly as possible [MRG-CHNK-002]", {
   unigrp_chunk <- chunk_grp(c(1, 1, 1:7), 3)
   expect_outcome <- c(1, 1, 1, 1, 1, 2, 2, 3, 3)
   expect_equal(unigrp_chunk, expect_outcome)
@@ -49,7 +49,7 @@ test_that("chunks unique groups as evenly as possible", {
 
 # List chunking -----------------------------------------------------------
 
-test_that("chunks unique elements into a list with their representative values", {
+test_that("chunks unique elements into a list with their representative values [MRG-CHNK-003]", {
   expect_equal(chunk_list(letters[1:9], 3), 
                list(c("a", "b", "c"), 
                     c("d", "e", "f"), 
@@ -60,7 +60,7 @@ test_that("chunks unique elements into a list with their representative values",
                                  c("g", "h", "i")), 3))
 })
 
-test_that("chunks unique elements into equal list if not grp_list", {
+test_that("chunks unique elements into equal list if not grp_list [MRG-CHNK-003]", {
   expect_equal(chunk_list(letters[c(1, 1, 2, 1:7)], 3), 
                list(c("a", "a", "b", "a"), 
                     c("b", "c", "d"), 
@@ -69,7 +69,7 @@ test_that("chunks unique elements into equal list if not grp_list", {
 
 # Group listing testing ---------------------------------------------------
 
-test_that("chunks grouped elements into ragged arrays", {
+test_that("chunks grouped elements into ragged arrays [MRG-CHNK-003]", {
   expect_equal(chunk_grp_list(c(letters[1], letters[1], letters[1:7]), 3),
                list(c("a", "a", "a", "b", "c"),
                     c("d", "e"), 
