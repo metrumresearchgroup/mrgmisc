@@ -66,77 +66,28 @@ NASM-R001:
   description: nasum finds all the NA values present in each column of a data frame
   tests:
   - MRG-NASM-001
+ORBI-R001:
+  description: ordinal_to_binary_ creates the expected number of binary flag variables
+  tests:
+  - MRG-ORBI-001
+ORBI-R002:
+  description: ordinal_to_binary_ has appropriate outputs for special cases
+  tests:
+  - MRG-ORBI-002
+PADL-R001:
+  description: pad_left adds the given character to the left of each element in a vector
+  tests:
+  - MRG-PADL-001
+PRNS-R001:
+  description: parens adds paranthesis to the given character
+  tests:
+  - MRG-PRNS-001
+POOL-R001:
+  description: pool determines the shared and unique elements between two vectors
+  tests:
+  - MRG-POOL-001
 
 
 
 
 
-
-
-MRGMISC-R005:
-  description: chunk assigns elements from a vector evenly into unique chunks
-  tests:
-  - MRG-MISC-005
-MRGMISC-R006:
-  description: chunk_grp assigns unique elements from a vector into chunks
-  tests:
-  - 
-MRGMISC-R007:
-  description: chunk_list
-  tests:
-  - 
-MRGMISC-R008:
-  description: chunk_grp_list
-  tests:
-  - 
-MRGMISC-R009:
-  description: resample_df resamples sub-populations while maintaining stratifications in the data
-  tests:
-  - MRG-MISC-009
-MRGMISC-R010:
-  description: pad_left adds left padding to a vector of values
-  tests:
-  - MRG-MISC-010
-MRGMISC-R011:
-  description: replace_dots converts dots to NA
-  tests:
-  - 
-MRGMISC-R012:
-  description: set_bins assigns elements to bins with specified ranges
-  tests:
-  - MRG-MISC-0121
-  - MRG-MISC-0122
-  - MRG-MISC-0123
-  - MRG-MISC-0124
-  - MRG-MISC-0125
-MRGMISC-R013:
-  description: max_through
-  tests:
-  - MRG-MISC-013
-MRGMISC-R014:
-  description: min_through
-  tests:
-  - MRG-MISC-013
-  - MRG-MISC-014
-MRGMISC-R015:
-  description: ordinal_to_binary_ converts a column of categorical covariates into a number of 
-    columns with a binary flag for each category
-  tests:
-  - 
-MRGMISC-R016:
-  description: print_plots creates a list of plots cleanly with extra pdf functionality
-  tests:
-  - 
-MRGMISC-R017:
-  description: set_bins_df offers the ability to create bins from a dataframe and get both the binning column
-    as well as a label column with the range of values associated with a given bin 
-  tests:
-  - MRG-MISC-0171 
-  - MRG-MISC-0172
-  - MRG-MISC-0173
-  - MRG-MISC-0174
-  - MRG-MISC-0175
-  - MRG-MISC-0176
-  - MRG-MISC-0177
-
-  

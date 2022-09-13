@@ -67,88 +67,33 @@ NASM-S001:
   ProductRisk: Low
   requirements:
   - NASM-R001
+ORBI-S001:
+  name: ordinal_to_binary_
+  description: As a user, I want to expand a single column to the appropriate number of binary flag columns.
+  ProductRisk: Low
+  requirements:
+  - ORBI-R001
+  - ORBI-R002
+PADL-S001:
+  name: pad_left
+  description: As a user, I want to add a customizable prefix to every element in a vector.
+  ProductRisk: Low
+  requirements:
+  - PADL-R001
+PRNS-S001:
+  name: parens
+  description: As a user, I want to add parenthesis to a given element.
+  ProductRisk: Low
+  requirements:
+  - PRNS-R001
+POOL-S001:
+  name: pool
+  description: As a user, I want to determine which elements are shared or unique between two vectors. 
+  ProductRisk: Low
+  requirements:
+  - POOL-R001
 
 
 
 
 
-
-
-
-NOM-S002:
-  name: Replace dots with NA
-  description: As a user, I want to replace dots in a vector with NA.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R011
-NOM-S003:
-  name: Ordinal to binary
-  description: As a user, I want to create a binary column for each group of categorical covariates.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R015
-
-MIS-S002:
-  name: Resampling a dataframe
-  description: As a user, I want to create resampled sub-populations when generating a large simulated population. I want to do 
-    this while still being able to maintain certain stratifications of factors like covariate distributions.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R009
-MIS-S003:
-  name: Left padding
-  description: As a user, I want to add a given number of a padding character to the left of all the elements in a vector.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R010
-MIS-S004:
-  name: Set bins
-  description: As a user, I want to distribute elements of vectors into bins based on given lower and upper bounds.
-  ProductRisk: Low
-  requirements:
-  - 
-MIS-S005:
-  name: Min Max through
-  description: As a user, I want to search through a vector and find the maximum and minimum values up to each index in the vector.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R013
-  - MRGMISC-R014
-MIS-S006:
-  name: Print plots
-  description: As a user, I want to create a pdf with only plots from a report.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R016
-MIS-S007:
-  name: Set bins dataframe
-  description: As a user, 
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R017
-CNK-S001:
-  name: Create chunks
-  description: As a user, I want to evenly distribute tasks across the number of cores available.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R005
-CNK-S002:
-  name: Create grouped chunks
-  description: As a user, I want to assign grouped elements to the same chunk.
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R005
-CNK-S002:
-  name: Create list chunks
-  description: As a user,
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R005
-CNK-S002:
-  name: Create grouped list chunks
-  description: As a user,
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R005
-
-  
