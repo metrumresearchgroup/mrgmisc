@@ -2,7 +2,7 @@ context("partial auc")
 
 x <- c(0, 1, 2, 3)
 y <- c(1, 1, 1, 1)
-test_that("auc_partial works with simple AUC calculation [MRG-MISC-001]", {
+test_that("auc_partial works with simple AUC calculation [MRG-AUCP-001]", {
   auc_default <- auc_partial(x, y)
   auc0_2 <- auc_partial(x, y, c(0, 2))
   auc0_4 <- auc_partial(x, y, c(0, 4))

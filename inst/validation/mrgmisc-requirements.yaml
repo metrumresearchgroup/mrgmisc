@@ -1,19 +1,47 @@
-MRGMISC-R001:
-  description: auc_partial works with simple AUC calculation
+AUCP-R001:
+  description: auc_partial returns the area under the curve across a discrete range
   tests:
-  - MRG-MISC-001
-MRGMISC-R002:
-  description: auc_inf NEEDS TEST
+  - MRG-AUCP-001
+AUCI-R001:
+  description: auc_inf accurately returns the area under the curve across an infinite range
   tests:
-  - 
-MRGMISC-R003:
+  - MRG-AUCI-001
+AUCI-R002:
+  description: auc_inf appropriately handles NA values and returns expected output if all DV is NA
+  tests:
+  - MRG-AUCI-002
+AUCI-R003:
+  description: auc_inf appropriately handles cases where all DV is 0
+  tests:
+  - MRG-AUCI-003
+WRNM-R001:
   description: write_nonmem easily writes a csv file compatible with NONMEM
   tests:
-  - MRG-MISC-003
-MRGMISC-R004:
-  description: ids_per_plot splits IDs into groups to use for subsequent plotting NEEDS TEST
+  - MRG-WRNM-001
+WRNM-R002:
+  description: write_nonmem appropriately handles special cases
   tests:
-  - 
+  - MRG-WRNM-002
+IDPL-R001:
+  description: ids_per_plot splits IDs into groups to use for subsequent plotting
+  tests:
+  - MRG-IDPL-001
+CPNM-R001:
+  description: capitalize_names sets the first letter of the column names to uppercase
+  tests:
+  - MRG-CPNM-001
+CKDF-R001:
+  description: chunk_df creates expected number of groups
+  tests:
+  - MRG-CKDF-001
+CKDF-R002:
+  description: chunk_df handles inappropriate inputs and offers multiple output formats
+  tests:
+  - MRG-CKDF-002
+
+
+
+
 MRGMISC-R005:
   description: chunk assigns elements from a vector evenly into unique chunks
   tests:

@@ -1,21 +1,48 @@
-AUC-S001:
+AUCP-S001:
   name: Create partial AUC
   description: As a user, I want to perform a simple area under the curve calculation over a discrete range. 
   ProductRisk: Low
   requirements:
-  - MRGMISC-R001
-AUC-S002:
+  - AUCP-R001
+AUCI-S002:
   name: Calculate AUCt-inf
   description: As a user, I want to calculate the area under the curve across an infinite range.
   ProductRisk: Low
   requirements:
-  - MRGMISC-R002
-NOM-S001:
+  - AUCI-R001
+  - AUCI-R002
+  - AUCI-R003
+WRNM-S001:
   name: Write NONMEM compatible csv file
   description: As a user, I want to be able to create csv files that are compatible with NONMEM.
   ProductRisk: Low
   requirements:
-  - MRGMISC-R003
+  - WRNM-R001
+  - WRNM-R002
+IDPL-S001:
+  name: Create groups of IDs
+  description: As a user, I want to split IDs within a data set into appropriate groups for subplots. 
+  ProductRisk: Low
+  requirements:
+  - IDPL-R001
+CPNM-S001:
+  name: Capitalize names
+  description: As a user, I want to easily capitalize the column names of my tibble.
+  ProductRisk: Low
+  requirements:
+  - CPNM-R001
+CKDF-S001:
+  name: Chunk dataframe
+  description: As a user, I want to create easily customizable groups within a dataframe.
+  ProductRisk: Low
+  requirements:
+  - CKDF-R001
+  - CKDF-R002
+
+
+
+
+
 NOM-S002:
   name: Replace dots with NA
   description: As a user, I want to replace dots in a vector with NA.
@@ -28,12 +55,7 @@ NOM-S003:
   ProductRisk: Low
   requirements:
   - MRGMISC-R015
-MIS-S001:
-  name: Create groups of IDs
-  description: As a user, I want to split IDs within a data set into appropriate groups for subplots. 
-  ProductRisk: Low
-  requirements:
-  - MRGMISC-R004
+
 MIS-S002:
   name: Resampling a dataframe
   description: As a user, I want to create resampled sub-populations when generating a large simulated population. I want to do 

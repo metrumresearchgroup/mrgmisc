@@ -6,7 +6,7 @@ dat <- dplyr::tibble(
 
 # chunk testing -----------------------------------------------------------
 
-test_that("chunking works with unique elements [MRG-MISC-005]", {
+test_that("chunking works with unique elements", {
   uni_chunk <- chunk(1:9, 3) # sorted
   expect_outcome <- c(1, 1, 1, 2, 2, 2, 3, 3, 3)
   expect_equal(uni_chunk, expect_outcome)
@@ -25,7 +25,7 @@ test_that("chunking works with unique elements [MRG-MISC-005]", {
   expect_error(chunk(1:9, 10))
 })
 
-test_that("chunking ignores non-unique elements [MRG-MISC-005]", {
+test_that("chunking ignores non-unique elements", {
   nonuni_chunk <- chunk(c(1, 1, 1:7), 3)
   expect_outcome <- c(1, 1, 1, 2, 2, 2, 3, 3, 3)
   expect_equal(nonuni_chunk, expect_outcome)
@@ -33,7 +33,7 @@ test_that("chunking ignores non-unique elements [MRG-MISC-005]", {
 
 # Group chunking testing --------------------------------------------------
 
-test_that("chunks unique groups as evenly as possible [MRG-MISC-0051]", {
+test_that("chunks unique groups as evenly as possible", {
   unigrp_chunk <- chunk_grp(c(1, 1, 1:7), 3)
   expect_outcome <- c(1, 1, 1, 1, 1, 2, 2, 3, 3)
   expect_equal(unigrp_chunk, expect_outcome)
@@ -49,7 +49,7 @@ test_that("chunks unique groups as evenly as possible [MRG-MISC-0051]", {
 
 # List chunking -----------------------------------------------------------
 
-test_that("chunks unique elements into a list with their representative values [MRG-MISC-0052]", {
+test_that("chunks unique elements into a list with their representative values", {
   expect_equal(chunk_list(letters[1:9], 3), 
                list(c("a", "b", "c"), 
                     c("d", "e", "f"), 
@@ -60,7 +60,7 @@ test_that("chunks unique elements into a list with their representative values [
                                  c("g", "h", "i")), 3))
 })
 
-test_that("chunks unique elements into equal list if not grp_list [MRG-MISC-0052]", {
+test_that("chunks unique elements into equal list if not grp_list", {
   expect_equal(chunk_list(letters[c(1, 1, 2, 1:7)], 3), 
                list(c("a", "a", "b", "a"), 
                     c("b", "c", "d"), 
@@ -69,7 +69,7 @@ test_that("chunks unique elements into equal list if not grp_list [MRG-MISC-0052
 
 # Group listing testing ---------------------------------------------------
 
-test_that("chunks grouped elements into ragged arrays [MRG-MISC-0053]", {
+test_that("chunks grouped elements into ragged arrays", {
   expect_equal(chunk_grp_list(c(letters[1], letters[1], letters[1:7]), 3),
                list(c("a", "a", "a", "b", "c"),
                     c("d", "e"), 
@@ -78,11 +78,11 @@ test_that("chunks grouped elements into ragged arrays [MRG-MISC-0053]", {
 
 # ID per plot -------------------------------------------------------------
 
-test_that("Error occurs if input ID's are not vector", {
+test_that("Error occurs if input ID's are not vector [MRG-IDPL-001]", {
   expect_error(ids_per_plot(Theoph$Subject[1], id_per_plot = 9), "chunking requires a vector")
 })
 
-test_that("IDs are sorted properly", {
+test_that("IDs are sorted properly [MRG-IDPL-001]", {
   expect_equal(ids_per_plot(id = c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12), id_per_plot = 5), 
                c(1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3))
 })
