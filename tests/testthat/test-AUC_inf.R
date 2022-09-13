@@ -28,5 +28,6 @@ test_that("Correct output if all time is 0", {
   df2 <- Theoph
   df2$Time <- 0
   expect_error(auc_inf(df2$Time, df2$conc), "lambda_z is NA")
+  expect_error(auc_inf(idv = c(1, 2, 4, 5, 8), dv = c(1, 0, 0, 0, 6)), "NA/NaN/Inf in 'y'")
 })
 

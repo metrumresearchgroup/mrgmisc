@@ -1,3 +1,28 @@
+`contains` <-
+  function(pattern,text,...){
+    hits <- regexpr(pattern,text,...)
+    hits >=0
+  }
+
+`%contains%` <- function(x,y)contains(y,x)
+
+`prev` <-
+  #function(x)c(NA,x[-length(x)])#last observation
+  function(x){
+    s <- seq_along(x)
+    s <- c(length(s),s[-length(s)])
+    x <- x[s]
+    if(length(x))x[[1]] <- NA
+    x
+  }
+
+`runhead` <-
+  function(x){#not like last observation
+    n <- x != prev(x)
+    if(length(n)) n[[1]] <- TRUE
+    n
+  }
+
 #' Create, Manipulate, Read, and Write NONMEM Control Streams
 #'
 #' @description 
@@ -41,32 +66,6 @@
 #' @author Tim Bergsma
 #' 
 #' @export
-
-`contains` <-
-  function(pattern,text,...){
-    hits <- regexpr(pattern,text,...)
-    hits >=0
-  }
-
-`%contains%` <- function(x,y)contains(y,x)
-
-`prev` <-
-  #function(x)c(NA,x[-length(x)])#last observation
-  function(x){
-    s <- seq_along(x)
-    s <- c(length(s),s[-length(s)])
-    x <- x[s]
-    if(length(x))x[[1]] <- NA
-    x
-  }
-
-`runhead` <-
-  function(x){#not like last observation
-    n <- x != prev(x)
-    if(length(n)) n[[1]] <- TRUE
-    n
-  }
-
 as.nmctl <-
   function(x,...)UseMethod('as.nmctl')
 
@@ -108,7 +107,7 @@ as.nmctl.character <-
     names(content) <- nms
     class(content) <- c('nmctl',class(content))
     thetas <- names(content)=='theta'
-    if(parse)content[thetas] <- lapply(content[thetas],as.initList)
+    if(parse)content[thetas] <- lapply(content[thetas],as.list)
     content
   }
 
@@ -122,7 +121,7 @@ read.nmctl <-
   function(con,parse=FALSE,...)as.nmctl(readLines(con,...),parse=parse,...)
 
 write.nmctl <-
-  function(x, file='data',ncolumns=1,append=FALSE, sep=" ",...){
+  function(x, file='data',ncolumns=1,append=FALSE, sep=" ", ...){
     out <- format(x)
     write(
       out,
@@ -133,13 +132,3 @@ write.nmctl <-
       ...
     )
   }
-
-`[.nmctl` <- function (x, ..., drop = TRUE){
-  cl <- oldClass(x)
-  class(x) <- NULL
-  val <- NextMethod("[")
-  class(val) <- cl
-  val
-}
-
-`[[.nmctl` <- function (x, ..., drop = TRUE)NextMethod("[[")
