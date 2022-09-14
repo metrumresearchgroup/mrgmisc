@@ -6,11 +6,9 @@
 #' 
 #' @examples 
 #' names(Theoph)
-#' [1] "Subject" "Wt"      "Dose"    "Time"    "conc" 
 #' 
 #' cTheoph <- capitalize_names(Theoph)
 #' names(cTheoph)
-#' [1] "SUBJECT" "WT"      "DOSE"    "TIME"    "CONC" 
 #' 
 #' @export
 capitalize_names <- function(df) {

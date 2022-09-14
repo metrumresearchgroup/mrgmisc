@@ -9,7 +9,6 @@
 #' @examples
 #' x <- c(".", "1", "1")
 #' replace_dots(x)
-#' [1] NA  "1" "1"
 #' 
 replace_dots <- function(x) {
   stopifnot(is.character(x))

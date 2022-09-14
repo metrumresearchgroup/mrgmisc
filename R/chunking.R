@@ -8,40 +8,24 @@
 #' # as evenly as possible into the number chunks specified
 #' 
 #' chunk(letters[1:9], 3) 
-#' [1] 1 1 1 2 2 2 3 3 3
 #' 
 #' # When the vector length isn't divisible by the number of chunks, 
 #' # some chunks will be filled with 1 more element than others. 
 #' 
 #' chunk(letters[c(1, 1, 2, 1:7)], 3)
-#' [1] 1 1 1 1 2 2 2 3 3 3
 #' 
 #' # If interested in evenly chunking by unique values rather than balancing,
 #' # notice how the first chunk contains many more elements since there are 3, 1's.
 #' 
 #' chunk_grp(c(1, 1, 1:7), 3)
-#' [1] 1 1 1 1 1 2 2 3 3
 #' 
 #' # A potential next step after chunking is splitting the output into a list.
 #' 
 #' chunk_list(letters[1:9], 3)
-#' [[1]]
-#' [1] "a" "b" "c"
-#' [[2]]
-#' [1] "d" "e" "f"
-#' [[3]]
-#' [1] "g" "h" "i"
 #' 
 #' # If we want to keep unique elements consistent as possible between chunks
 #' 
 #' chunk_grp_list(c(letters[1], letters[1], letters[1:7]), 3)
-#' 
-#' [[1]]
-#' [1] "a" "a" "a" "b" "c"
-#' [[2]]
-#' [1] "d" "e"
-#' [[3]]
-#' [1] "f" "g"
 #' 
 #' @param .x vector of values
 #' @param .nchunk number of chunks to identify
