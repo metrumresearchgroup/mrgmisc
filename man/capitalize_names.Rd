@@ -18,10 +18,8 @@ easily pass data as it is read from a file
 }
 \examples{
 names(Theoph)
-[1] "Subject" "Wt"      "Dose"    "Time"    "conc" 
 
 cTheoph <- capitalize_names(Theoph)
 names(cTheoph)
-[1] "SUBJECT" "WT"      "DOSE"    "TIME"    "CONC" 
 
 }

@@ -23,54 +23,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// clean_nonmem
-std::string clean_nonmem(std::vector<std::string> x, std::string sep, std::string colname);
-RcppExport SEXP _mrgmisc_clean_nonmem(SEXP xSEXP, SEXP sepSEXP, SEXP colnameSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type sep(sepSEXP);
-    Rcpp::traits::input_parameter< std::string >::type colname(colnameSEXP);
-    rcpp_result_gen = Rcpp::wrap(clean_nonmem(x, sep, colname));
-    return rcpp_result_gen;
-END_RCPP
-}
-// clean_phi
-std::string clean_phi(std::vector<std::string> x, std::string sep, std::string colname);
-RcppExport SEXP _mrgmisc_clean_phi(SEXP xSEXP, SEXP sepSEXP, SEXP colnameSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type sep(sepSEXP);
-    Rcpp::traits::input_parameter< std::string >::type colname(colnameSEXP);
-    rcpp_result_gen = Rcpp::wrap(clean_phi(x, sep, colname));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fill_backward
-NumericVector fill_backward(NumericVector x);
-RcppExport SEXP _mrgmisc_fill_backward(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(fill_backward(x));
-    return rcpp_result_gen;
-END_RCPP
-}
-// fill_forward
-NumericVector fill_forward(NumericVector x);
-RcppExport SEXP _mrgmisc_fill_forward(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(fill_forward(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // min_through
 NumericVector min_through(NumericVector x);
 RcppExport SEXP _mrgmisc_min_through(SEXP xSEXP) {
@@ -106,30 +58,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// replace_chars
-std::vector<std::string> replace_chars(std::vector<std::string> strings, std::vector<std::string> values, std::vector<std::string> replacement);
-RcppExport SEXP _mrgmisc_replace_chars(SEXP stringsSEXP, SEXP valuesSEXP, SEXP replacementSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type strings(stringsSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type values(valuesSEXP);
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type replacement(replacementSEXP);
-    rcpp_result_gen = Rcpp::wrap(replace_chars(strings, values, replacement));
-    return rcpp_result_gen;
-END_RCPP
-}
-// replace_spaces
-std::string replace_spaces(std::vector<std::string> x);
-RcppExport SEXP _mrgmisc_replace_spaces(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(replace_spaces(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // set_bins_cpp
 IntegerVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector right);
 RcppExport SEXP _mrgmisc_set_bins_cpp(SEXP xSEXP, SEXP leftSEXP, SEXP rightSEXP) {
@@ -146,15 +74,9 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_mrgmisc_auc_partial_cpp", (DL_FUNC) &_mrgmisc_auc_partial_cpp, 3},
-    {"_mrgmisc_clean_nonmem", (DL_FUNC) &_mrgmisc_clean_nonmem, 3},
-    {"_mrgmisc_clean_phi", (DL_FUNC) &_mrgmisc_clean_phi, 3},
-    {"_mrgmisc_fill_backward", (DL_FUNC) &_mrgmisc_fill_backward, 1},
-    {"_mrgmisc_fill_forward", (DL_FUNC) &_mrgmisc_fill_forward, 1},
     {"_mrgmisc_min_through", (DL_FUNC) &_mrgmisc_min_through, 1},
     {"_mrgmisc_max_through", (DL_FUNC) &_mrgmisc_max_through, 1},
     {"_mrgmisc_padLeft", (DL_FUNC) &_mrgmisc_padLeft, 3},
-    {"_mrgmisc_replace_chars", (DL_FUNC) &_mrgmisc_replace_chars, 3},
-    {"_mrgmisc_replace_spaces", (DL_FUNC) &_mrgmisc_replace_spaces, 1},
     {"_mrgmisc_set_bins_cpp", (DL_FUNC) &_mrgmisc_set_bins_cpp, 3},
     {NULL, NULL, 0}
 };

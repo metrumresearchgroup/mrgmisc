@@ -25,9 +25,7 @@ character is "0".
 }
 \examples{
 pad_left(1, 3)
-[1] "001"
 
 pad_left(c(1, 10), 4, "Z")
-[1] "ZZZ1" "ZZ10"
 
 }

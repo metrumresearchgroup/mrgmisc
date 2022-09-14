@@ -20,16 +20,21 @@ reference:
     - min_through
     - set_bins
     - set_bins_df
+    - posmat
+    - snap
   - title: Summaries
     contents:
     - s_pauc
     - s_quantiles
+    - pool
+    - nasum
   - title: Formatting
     contents:
     - capitalize_names
     - ordinal_to_binary_
     - replace_dots
     - pad_left
+    - parens
   - title: Pharmacometrics-specific
     contents:
     - auc_inf

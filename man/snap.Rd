@@ -34,16 +34,12 @@ rule is zero, value is all NA.
 }
 \examples{
 snap(c(0.0, 1.0, 1.2, 2.0, 2.9, 3))
-[1] 0 1 1 2 3 3
 
 snap(-3:3, 0.3)
-[1] -3.0 -2.1 -0.9  0.0  0.9  2.1  3.0
 
 snap(c(3,NA,5), c(2,3,6))
-[1]  3 NA  6
 
 snap(c(3,NA,5), numeric(0))
-[1] NA NA NA
 
 }
 \author{

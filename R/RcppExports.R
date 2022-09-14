@@ -9,45 +9,6 @@ auc_partial_cpp <- function(time, dv, range) {
     .Call('_mrgmisc_auc_partial_cpp', PACKAGE = 'mrgmisc', time, dv, range)
 }
 
-clean_nonmem <- function(x, sep, colname) {
-    .Call('_mrgmisc_clean_nonmem', PACKAGE = 'mrgmisc', x, sep, colname)
-}
-
-clean_phi <- function(x, sep, colname) {
-    .Call('_mrgmisc_clean_phi', PACKAGE = 'mrgmisc', x, sep, colname)
-}
-
-#' given NA values fill them with the next non-na value
-#' @param x A numeric vector of values
-#' @details
-#' Works very well in context of dplyr to carry out backwards imputation
-#' @examples 
-#' fill_backward(c(1.0, NA, 2))
-#' fill_backward(c(NA, 1, NA, 2))
-#' library(dplyr)
-#' df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
-#' df %>% group_by(id) %>% mutate(obs_imp = fill_backward(obs))
-#' @export
-fill_backward <- function(x) {
-    .Call('_mrgmisc_fill_backward', PACKAGE = 'mrgmisc', x)
-}
-
-#' given NA values fill them with the final non-na value
-#' @param x A numeric vector of values
-#' @details
-#' Works very well in context of dplyr to carry out last-observation-carried-foward
-#' for different individuals. It will NOT replace leading NA's
-#' @examples 
-#' fill_forward(c(1.0, NA, 2))
-#' fill_forward(c(NA, 1, NA, 2))
-#' library(dplyr)
-#' df <- data_frame(id = c(1, 1, 2, 2), obs = c(1.2, 4.8, 2.5, NA))
-#' df %>% group_by(id) %>% mutate(obs_locf = fill_forward(obs))
-#' @export
-fill_forward <- function(x) {
-    .Call('_mrgmisc_fill_forward', PACKAGE = 'mrgmisc', x)
-}
-
 #' give the min value up to that point
 #' @param x A numeric vector of values
 #' @details
@@ -78,14 +39,6 @@ max_through <- function(x) {
 
 padLeft <- function(strings, numChars, paddingChar) {
     .Call('_mrgmisc_padLeft', PACKAGE = 'mrgmisc', strings, numChars, paddingChar)
-}
-
-replace_chars <- function(strings, values, replacement) {
-    .Call('_mrgmisc_replace_chars', PACKAGE = 'mrgmisc', strings, values, replacement)
-}
-
-replace_spaces <- function(x) {
-    .Call('_mrgmisc_replace_spaces', PACKAGE = 'mrgmisc', x)
 }
 
 #' given a set of bin ranges, assign each value to a bin
