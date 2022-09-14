@@ -133,3 +133,24 @@ SNAP-S001:
   ProductRisk: Low
   requirements:
   - SQUN-R001
+STBN-S001:
+  name: set_bins
+  description: As a user, I want to create bins from a column of data with optionally customizable bin ranges.
+  ProductRisk: Low
+  requirements:
+  - STBN-R001
+  - STBN-R002
+  - STBN-R003
+  - STBN-R004
+  - STBN-R005
+SBDF-S001:
+  name: set_bins_df
+  description: As a user, I want to create bins for data frame columns with optionally customizable bin ranges.
+  ProductRisk: Low
+  requirements:
+  - SBDF-R001
+  - SBDF-R002
+  - SBDF-R003
+  - SBDF-R004
+  - SBDF-R005
+  - SBDF-R006

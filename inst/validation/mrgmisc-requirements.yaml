@@ -130,6 +130,48 @@ SNAP-R001:
   description: snap coerces values to nearest of given candidates
   tests:
   - MRG-SNAP-001
-
-
-
+STBN-R001:
+  description: set_bins creates bins with specified breaks or default quartiles
+  tests:
+  - MRG-STBN-001
+STBN-R002:
+  description: set_bins respects upper and lower bound arguments
+  tests:
+  - MRG-STBN-002
+STBN-R003:
+  description: set_bins creates bins using inclusive arguments
+  tests:
+  - MRG-STBN-003
+STBN-R004:
+  description: set_bins creates bins using between argument
+  tests:
+  - MRG-STBN-004
+STBN-R005:
+  description: set_bins respects quiet argument
+  tests:
+  - MRG-STBN-005
+SBDF-R001:
+  description: set_bins_df creates bins within a dataframe with specified breaks or default quartiles
+  tests:
+  - MRG-SBDF-001
+SBDF-R002:
+  description: set_bins_df respects upper and lower bound arguments
+  tests:
+  - MRG-SBDF-002
+SBDF-R003:
+  description: set_bins_df creates bins using inclusive arguments
+  tests:
+  - MRG-SBDF-003
+SBDF-R004:
+  description: set_bins_df creates bins using between argument
+  tests:
+  - MRG-SBDF-004
+SBDF-R005:
+  description: set_bins_df respects quiet argument
+  tests:
+  - MRG-SBDF-005
+SBDF-R006:
+  description: set_bins_df appropriately applies name and label arguments
+  tests:
+  - MRG-SBDF-006
+  
