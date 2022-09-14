@@ -40,3 +40,4 @@ reference:
     - auc_inf
     - auc_partial
     - resample_df
+    - as.nmctl
