@@ -1,17 +1,17 @@
-Package: PKPDmisc
+Package: mrgmisc
 Type: Package
-Title: Pharmacokinetic and Pharmacodynamic Data Management Functions
-Version: 3.0.0
-Date: 2020-06-25 
+Title: MRG Helpers
+Version: 0.0.0.9000
+Date: 2022-08-02
 Authors@R: c(
-    person("Devin", "Pastoor",
-    email = "devin.pastoor@gmail.com", role = c("aut", "cre")))
-Description: A toolbox for data management common to pharmacokinetic and
-  pharmacokinetic modeling and simulation, such as resampling,
-  area-under-the-curve calculation, data chunking, custom csv
-  output, and project scaffolding.
-URL: https://github.com/metrumresearchgroup/PKPDmisc
-BugReports: https://github.com/metrumresearchgroup/PKPDmisc/issues
+    person("Michael", "McDermott",
+    email = "michaelm@metrumrg.com", role = c("aut", "cre")),
+    person("Devin", "Pastoor", email = "devin.pastoor@gmail.com", role = "aut"),
+    person("Kyle", "Baron", email = "kyleb@metrumrg.com", role = "aut"),
+    person("Tim", "B", email = "TODO", role = "aut"))
+Description: MRG Helpers.
+URL: https://github.com/metrumresearchgroup/mrgmisc
+BugReports: https://github.com/metrumresearchgroup/mrgmisc/issues
 Depends:
     R (>= 3.2.2)
 LinkingTo: Rcpp,
@@ -35,7 +35,7 @@ Suggests:
     rmarkdown,
     testthat
 LazyData: TRUE
-License: MIT + file LICENSE
+License: GPL (>=2)
 VignetteBuilder: knitr
 RoxygenNote: 7.1.0
 Encoding: UTF-8
