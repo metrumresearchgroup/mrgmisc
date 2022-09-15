@@ -7,3 +7,5 @@
 inst/doc
 src/*.o
 src/*.so
+renv/
+.Rprofile
