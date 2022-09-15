@@ -154,3 +154,12 @@ SBDF-S001:
   - SBDF-R004
   - SBDF-R005
   - SBDF-R006
+ASNM-S001:
+  name: as.nmctl
+  description: As a user, I want to create, manipulate, read, and write NONMEM control streams.
+  ProductRisk: Low
+  requirements:
+  - ASNM-R001
+  - ASNM-R002
+  - ASNM-R003
+  - ASNM-R004

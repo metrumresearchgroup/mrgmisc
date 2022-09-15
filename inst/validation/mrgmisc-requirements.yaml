@@ -174,4 +174,19 @@ SBDF-R006:
   description: set_bins_df appropriately applies name and label arguments
   tests:
   - MRG-SBDF-006
-  
+ASNM-R001:
+  description: read.nmctl reads and formats files appropriately
+  tests:
+  - MRG-ASNM-001
+ASNM-R002:
+  description: write.nmctl outputs control file to expected location
+  tests:
+  - MRG-ASNM-002
+ASNM-R003:
+  description: as.character.nmctl works with expected outputs for various cases
+  tests:
+  - MRG-ASNM-003
+ASNM-R004:
+  description: print.nmctl has expected output
+  tests:
+  - MRG-ASNM-004  
