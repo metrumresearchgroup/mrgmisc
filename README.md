@@ -3,7 +3,7 @@ Miscellaneous helpers for getting work done on MetrumRG projects. Inheriting muc
 
 ## Development
 
-`bbr` uses [pkgr](https://github.com/metrumresearchgroup/pkgr) to manage
+`mrgmisc` uses [pkgr](https://github.com/metrumresearchgroup/pkgr) to manage
 development dependencies and [renv](https://rstudio.github.io/renv/) to
 provide isolation. To replicate this environment,
 
