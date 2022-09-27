@@ -5,6 +5,7 @@
 #' used in stratify_df, however also made available to find
 #' non-duplicated values across multiple columns 
 #' when !duplicated(col) is not sufficient
+#' @keywords internal
 get_key <- function(df, 
                     key_cols = names(df)) {
   # add check to see if all key_cols available
@@ -19,6 +20,7 @@ get_key <- function(df,
 #' @param strat_cols columns to stratify on
 #' @param n number of samples
 #' @param replace whether to resample with replacement
+#' @keywords internal
 stratify_df <- function(df, 
                         strat_cols,
                         n,

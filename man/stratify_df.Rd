@@ -18,3 +18,4 @@ stratify_df(df, strat_cols, n, replace = TRUE)
 \description{
 stratify based on some columns
 }
+\keyword{internal}

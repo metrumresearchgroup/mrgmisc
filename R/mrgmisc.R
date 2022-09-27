@@ -26,6 +26,7 @@ NULL
 #' @keywords datasets
 #' @name sd_oral_richpk
 #' @usage data(sd_oral_richpk)
+#' @keywords internal
 #' @format A data frame with 4300 rows and 9 variables
 NULL
 
@@ -50,5 +51,6 @@ NULL
 #' @keywords datasets
 #' @name dapa_IV_oral
 #' @usage data(dapa_IV_oral)
+#' @keywords internal
 #' @format A data frame with 1536 rows and 11 variables
 NULL

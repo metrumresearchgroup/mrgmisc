@@ -32,18 +32,18 @@ Create chunks by group, unique values, and return as a vector or a list with ele
 }
 \section{Functions}{
 \itemize{
-\item \code{ids_per_plot}: split IDs into groups to use for subsequent plotting
+\item \code{ids_per_plot()}: split IDs into groups to use for subsequent plotting
 works very well with hadley wickham's purrr package to create a column
 to split on then subsequently plot, see \code{vignette("Multiplot")} for details
 
-\item \code{chunk_grp}: used when desirable to have unique elements in same chunk
+\item \code{chunk_grp()}: used when desirable to have unique elements in same chunk
 
-\item \code{chunk_list}: used when desirable to have output be a list
+\item \code{chunk_list()}: used when desirable to have output be a list
 
-\item \code{chunk_grp_list}: used when desirable to have output be a list with unique
+\item \code{chunk_grp_list()}: used when desirable to have output be a list with unique
 elements in the same chunk
-}}
 
+}}
 \examples{
 # Chunking will provide the chunk index by splitting the data 
 # as evenly as possible into the number chunks specified
