@@ -1,7 +1,7 @@
 Package: mrgmisc
 Type: Package
 Title: MRG Helpers
-Version: 0.1.0
+Version: 0.0.0.9001
 Date: 2022-08-02
 Authors@R: c(
     person("Michael", "McDermott",
