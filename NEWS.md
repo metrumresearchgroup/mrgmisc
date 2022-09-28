@@ -3,7 +3,8 @@
 ## New features and changes
 
 - `mrgmisc` was constructed with select functions from two older packages
-  `PKPDmisc` and `metrumrg`.
+  `PKPDmisc` and `metrumrg`. These packages are no longer being maintained, so 
+  this functionality will be maintained in `mrgmisc` moving forward.
 
 - Data manipulation functions brought over from `PKPDmisc` include: `chunk()`,
   `chunk_df()`, `ids_per_plot()`, `max_through()`, `min_through()`, `set_bins()`,
@@ -29,6 +30,3 @@
 - Pharmacometrics-specific functions brought over from `metrumrg` include:
   `as_nmctl()`
 
-## Bug fixes
-
-- 

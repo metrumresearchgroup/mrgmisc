@@ -8,6 +8,7 @@ Authors@R: c(
     email = "michaelm@metrumrg.com", role = c("aut", "cre")),
     person("Devin", "Pastoor", email = "devin.pastoor@gmail.com", role = "aut"),
     person("Kyle", "Baron", email = "kyleb@metrumrg.com", role = "aut"),
+    person("Grace", "O'Brien", email = "graceo@metrumrg.com", role = "aut"),
     person("Tim", "B", email = "TODO", role = "aut"))
 Description: MRG Helpers.
 URL: https://github.com/metrumresearchgroup/mrgmisc

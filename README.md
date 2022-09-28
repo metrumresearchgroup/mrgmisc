@@ -1,6 +1,9 @@
 # mrgmisc
 Miscellaneous helpers for getting work done on MetrumRG projects. Inheriting much code from PKPDmisc and metrumrg packages.
 
+## Documentation
+Public documentation of all functions is hosted at [https://metrumresearchgroup.github.io/mrgmisc/](https://metrumresearchgroup.github.io/mrgmisc/)
+
 ## Development
 
 `mrgmisc` uses [pkgr](https://github.com/metrumresearchgroup/pkgr) to manage
@@ -22,3 +25,4 @@ provide isolation. To replicate this environment,
 
 Then, launch R with the repo as the working directory (open the project
 in RStudio). renv will activate and find the project library.
+
