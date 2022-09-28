@@ -6,7 +6,7 @@
 \usage{
 set_bins(
   x,
-  breaks = stats::quantile(x, na.rm = T),
+  breaks = stats::quantile(x, na.rm = TRUE),
   lower_bound = -Inf,
   upper_bound = Inf,
   quiet = TRUE,
@@ -60,7 +60,9 @@ table(res)
 res
 
 #assign all obs < lower bound to NA
-res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.1, 0.5, 1)), lower_bound = 1)
+res <- set_bins(x,
+    breaks = stats::quantile(x, na.rm = TRUE, probs = c(0.1, 0.5, 1)),
+    lower_bound = 1)
 
 head(res)
 
@@ -69,7 +71,7 @@ res
 
 #use inclusive argument to get desired bins
 ## include max value of largest user defined bin
-xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+xbreak <- stats::quantile(x, na.rm = TRUE, probs= c(0, 0.5, 1))
 xupper = Inf
 
 res1 <- set_bins(x, breaks = xbreak, upper_bound = xupper, inclusive = TRUE)

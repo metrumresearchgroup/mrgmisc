@@ -2,9 +2,37 @@
 % Please edit documentation in R/as_nmctl.R
 \name{as.nmctl}
 \alias{as.nmctl}
+\alias{as.character.nmctl}
+\alias{as.list.nmctl}
+\alias{as.nmctl.character}
+\alias{format.nmctl}
+\alias{print.nmctl}
+\alias{read.nmctl}
+\alias{write.nmctl}
 \title{Create, Manipulate, Read, and Write NONMEM Control Streams}
 \usage{
 as.nmctl(x, ...)
+
+\method{as.character}{nmctl}(x, ...)
+
+\method{as.list}{nmctl}(x, ...)
+
+\method{as.nmctl}{character}(
+  x,
+  pattern = "^ *\\\\$([^ ]+)( .*)?$",
+  head = "\\\\1",
+  tail = "\\\\2",
+  parse = FALSE,
+  ...
+)
+
+\method{format}{nmctl}(x, ...)
+
+\method{print}{nmctl}(x, ...)
+
+read.nmctl(con, parse = FALSE, ...)
+
+write.nmctl(x, file = "data", ncolumns = 1, append = FALSE, sep = " ", ...)
 }
 \arguments{
 \item{x}{an nmctl object (or analogous character vector)}
@@ -19,10 +47,10 @@ giving the name of the control record}
 \item{tail}{regular expression (relative to \code{pattern}) giving the
 balance of the control record}
 
-\item{con}{a connection or the name of a file to open}
-
 \item{parse}{whether to create R objects from the character 
 vectors serving as records}
+
+\item{con}{a connection or the name of a file to open}
 
 \item{file}{passed to \code{write}}
 
@@ -31,8 +59,6 @@ vectors serving as records}
 \item{append}{passed to \code{write}}
 
 \item{sep}{passed to \code{write}}
-
-\item{drop}{coerce to lowest possible dimension}
 }
 \description{
 This family of functions implements the class \code{nmctl}: an object
@@ -44,8 +70,7 @@ as it normally looks in a text editor.  \code{as.list.nmctl} simply
 unclasses its argument. \code{as.nmctl.character} does the heavy work, 
 breaking up a character vector into records and storing as a list. 
 If \code{parse} is \code{TRUE}, \code{as.nmctl} attempts to convert 
-certain records to higher-level objects: currently the \code{theta} 
-record will be converted to \code{\link{initList}} .
+certain records to higher-level objects.
 }
 \details{
 Serendipitously, the record indicator in NONMEM control stream syntax is the 

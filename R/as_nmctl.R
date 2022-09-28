@@ -1,11 +1,14 @@
+#' @keywords internal
 `contains` <-
   function(pattern,text,...){
     hits <- regexpr(pattern,text,...)
     hits >=0
   }
 
+#' @keywords internal
 `%contains%` <- function(x,y)contains(y,x)
 
+#' @keywords internal
 `prev` <-
   #function(x)c(NA,x[-length(x)])#last observation
   function(x){
@@ -16,6 +19,7 @@
     x
   }
 
+#' @keywords internal
 `runhead` <-
   function(x){#not like last observation
     n <- x != prev(x)
@@ -35,8 +39,7 @@
 #' unclasses its argument. \code{as.nmctl.character} does the heavy work, 
 #' breaking up a character vector into records and storing as a list. 
 #' If \code{parse} is \code{TRUE}, \code{as.nmctl} attempts to convert 
-#' certain records to higher-level objects: currently the \code{theta} 
-#' record will be converted to \code{\link{initList}} .
+#' certain records to higher-level objects.
 #' 
 #' @param x an nmctl object (or analogous character vector)
 #' @param \dots extra arguments passed to other functions
@@ -52,7 +55,6 @@
 #' @param ncolumns passed to \code{write}
 #' @param append passed to \code{write}
 #' @param sep passed to \code{write}
-#' @param drop coerce to lowest possible dimension
 #' 
 #' @details
 #' Serendipitously, the record indicator in NONMEM control stream syntax is the 
@@ -69,6 +71,8 @@
 as.nmctl <-
   function(x,...)UseMethod('as.nmctl')
 
+#' @rdname as.nmctl
+#' @export
 as.character.nmctl <-
   function(x,...){
     if(length(x)==0) return(character(0))
@@ -84,9 +88,13 @@ as.character.nmctl <-
     content
   }
 
+#' @rdname as.nmctl
+#' @export
 as.list.nmctl <-
   function(x,...)unclass(x)
 
+#' @rdname as.nmctl
+#' @export
 as.nmctl.character <-
   function(
     x,
@@ -111,15 +119,23 @@ as.nmctl.character <-
     content
   }
 
+#' @rdname as.nmctl
+#' @export
 format.nmctl <-
   function(x,...)as.character(x,...)
 
+#' @rdname as.nmctl
+#' @export
 print.nmctl <-
   function(x,...)print(format(x,...))
 
+#' @rdname as.nmctl
+#' @export
 read.nmctl <-
   function(con,parse=FALSE,...)as.nmctl(readLines(con,...),parse=parse,...)
 
+#' @rdname as.nmctl
+#' @export
 write.nmctl <-
   function(x, file='data',ncolumns=1,append=FALSE, sep=" ", ...){
     out <- format(x)

@@ -1,5 +1,6 @@
 #' @useDynLib mrgmisc
 #' @importFrom Rcpp sourceCpp
+#' @importFrom glue glue
 #' @importFrom stats lm predict quantile setNames
 #' @importFrom utils head read.table tail write.table
 #' @importFrom magrittr %>%

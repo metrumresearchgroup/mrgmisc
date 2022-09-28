@@ -26,7 +26,11 @@
 #' table(res$conc_bins_label)
 #' 
 #' #assign all obs < lower bound to NA
-#' res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0.1, 0.5, 1)), lower_bound = 1)
+#' res <- set_bins_df(
+#'   .df = Theoph,
+#'   .x = "conc",
+#'   breaks = stats::quantile(x, na.rm = TRUE, probs = c(0.1, 0.5, 1)),
+#'   lower_bound = 1)
 #' 
 #' head(res[,5:7],3)
 #' 
@@ -34,15 +38,25 @@
 #' 
 #' #use inclusive argument to get desired bins
 #' ## include max value of largest user defined bin
-#' xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
+#' xbreak <- stats::quantile(x, na.rm = TRUE, probs= c(0, 0.5, 1))
 #' xupper = Inf
 #' 
-#' res1 <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak, upper_bound = xupper, inclusive = TRUE)
+#' res1 <- set_bins_df(
+#'   .df = Theoph,
+#'   .x = "conc",
+#'   breaks = xbreak,
+#'   upper_bound = xupper,
+#'   inclusive = TRUE)
 #' 
 #' table(res1$conc_bins_label)
 #' 
 #' ## do not include max value of largest user-defined bin- create new bin for it
-#' res2 <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak, upper_bound = xupper, inclusive = FALSE)
+#' res2 <- set_bins_df(
+#'   .df = Theoph,
+#'   .x = "conc",
+#'   breaks = xbreak,
+#'   upper_bound = xupper,
+#'   inclusive = FALSE)
 #' 
 #' table(res2$conc_bins_label)
 #' 
@@ -59,7 +73,7 @@
 set_bins_df <- function(
   .df, 
   .x, 
-  breaks = stats::quantile(.df[[.x]], na.rm = T), 
+  breaks = stats::quantile(.df[[.x]], na.rm = TRUE), 
   .name = NULL, 
   .label = NULL,
   lower_bound = -Inf, 

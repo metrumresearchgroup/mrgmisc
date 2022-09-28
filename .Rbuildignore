@@ -14,3 +14,5 @@ docs
 ^LICENSE\.md$
 ^\.drone\.yml$
 ^pkgr.yml$
+^renv$
+^renv\.lock$
