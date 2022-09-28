@@ -2,7 +2,7 @@ pandoc: 2.17.1.1
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-09-28T12:03Z
+last_built: 2022-09-28T18:11Z
 urls:
   reference: https://metrumresearchgroup.github.io/mrgmisc/reference
   article: https://metrumresearchgroup.github.io/mrgmisc/articles
