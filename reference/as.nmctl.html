@@ -8,8 +8,7 @@ as it normally looks in a text editor.  as.list.nmctl simply
 unclasses its argument. as.nmctl.character does the heavy work, 
 breaking up a character vector into records and storing as a list. 
 If parse is TRUE, as.nmctl attempts to convert 
-certain records to higher-level objects: currently the theta 
-record will be converted to initList ."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+certain records to higher-level objects."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -73,12 +72,37 @@ as it normally looks in a text editor.  <code>as.list.nmctl</code> simply
 unclasses its argument. <code>as.nmctl.character</code> does the heavy work, 
 breaking up a character vector into records and storing as a list. 
 If <code>parse</code> is <code>TRUE</code>, <code>as.nmctl</code> attempts to convert 
-certain records to higher-level objects: currently the <code>theta</code> 
-record will be converted to <code>initList</code> .</p>
+certain records to higher-level objects.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as.nmctl</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">as.nmctl</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for nmctl</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for nmctl</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">as.list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for character</span></span>
+<span><span class="fu">as.nmctl</span><span class="op">(</span></span>
+<span>  <span class="va">x</span>,</span>
+<span>  pattern <span class="op">=</span> <span class="st">"^ *\\$([^ ]+)( .*)?$"</span>,</span>
+<span>  head <span class="op">=</span> <span class="st">"\\1"</span>,</span>
+<span>  tail <span class="op">=</span> <span class="st">"\\2"</span>,</span>
+<span>  parse <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for nmctl</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/format.html" class="external-link">format</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># S3 method for nmctl</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">read.nmctl</span><span class="op">(</span><span class="va">con</span>, parse <span class="op">=</span> <span class="cn">FALSE</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">write.nmctl</span><span class="op">(</span><span class="va">x</span>, file <span class="op">=</span> <span class="st">"data"</span>, ncolumns <span class="op">=</span> <span class="fl">1</span>, append <span class="op">=</span> <span class="cn">FALSE</span>, sep <span class="op">=</span> <span class="st">" "</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -105,13 +129,13 @@ giving the name of the control record</p></dd>
 balance of the control record</p></dd>
 
 
-<dt>con</dt>
-<dd><p>a connection or the name of a file to open</p></dd>
-
-
 <dt>parse</dt>
 <dd><p>whether to create R objects from the character 
 vectors serving as records</p></dd>
+
+
+<dt>con</dt>
+<dd><p>a connection or the name of a file to open</p></dd>
 
 
 <dt>file</dt>
@@ -128,10 +152,6 @@ vectors serving as records</p></dd>
 
 <dt>sep</dt>
 <dd><p>passed to <code>write</code></p></dd>
-
-
-<dt>drop</dt>
-<dd><p>coerce to lowest possible dimension</p></dd>
 
 </dl></div>
     <div id="details">
