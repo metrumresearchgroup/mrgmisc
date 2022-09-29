@@ -1,7 +1,7 @@
 
 # Break argument ----------------------------------------------------------
 
-test_that("works with breaks out of order [MRG-SBDF-001]", {
+test_that("set_bins_df expected output: Breaks out of order [MRG-SBDF-001]", {
   x <- Theoph$conc
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(1, 0, 0.5)))
   res2 <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
@@ -12,7 +12,7 @@ test_that("works with breaks out of order [MRG-SBDF-001]", {
 })
 
 # if one break provided, assumes breaks <- c(-Inf, breaks, Inf)
-test_that("works with 1 break provided [MRG-SBDF-001]", {
+test_that("set_bins_df expected output: 1 break provided [MRG-SBDF-001]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0.2))
   xbin <- length(xbreak) + 1
@@ -41,7 +41,7 @@ test_that("works with 1 break provided [MRG-SBDF-001]", {
 
 ## Lower bound ------------------------------------------------------------
 # lower_bound default -Inf
-test_that("lower_bound test: -Inf [MRG-SBDF-002]", {
+test_that("set_bins_df bounds argument: lower_bound test: -Inf [MRG-SBDF-002]", {
   x <- Theoph$conc
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 1)), lower_bound = -Inf)
   expect_true(all(!is.na(res)))
@@ -52,7 +52,7 @@ test_that("lower_bound test: -Inf [MRG-SBDF-002]", {
 })
 
 # if 1st break > lower_bound and lower_bound is not NA, then lower_bound overrides 1st break
-test_that("lower_bound test: discrete min number, break[1] > lower_bound [MRG-SBDF-002]", {
+test_that("set_bins_df bounds argument: Discrete min number, break[1] > lower_bound [MRG-SBDF-002]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(min(x) + 0.4, 0.5, 1))
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak, lower_bound = min(x))
@@ -66,7 +66,7 @@ test_that("lower_bound test: discrete min number, break[1] > lower_bound [MRG-SB
 })
 
 # if lower_bound > actual min, then all obs less than lower_bound put into NA bin
-test_that("lower_bound test: discrete number > actual min [MRG-SBDF-002]", {
+test_that("set_bins_df bounds argument: Discrete number > actual min [MRG-SBDF-002]", {
   x <- Theoph$conc
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(min(x) + 0.1, 0.5, 1)), lower_bound = min(x)+ 0.1)
   expect_false(all(!is.na(res)))
@@ -79,7 +79,7 @@ test_that("lower_bound test: discrete number > actual min [MRG-SBDF-002]", {
  
 ## Upper bound ------------------------------------------------------------
 #upper_bound default: Inf
-test_that("upper_bound test: -Inf [MRG-SBDF-002]", {
+test_that("set_bins_df bounds argument: upper_bound test -Inf [MRG-SBDF-002]", {
   x <- Theoph$conc
   res <- set_bins_df(.df = Theoph, .x= "conc",, upper_bound = Inf)
   expect_true(all(!is.na(res)))
@@ -90,7 +90,7 @@ test_that("upper_bound test: -Inf [MRG-SBDF-002]", {
 })
 
 # if last break < upper_bound and upper_bound is not NA, then upper_bound overrides last break
-test_that("upper_bound test: discrete max number, break[n] > upper_bound [MRG-SBDF-002]", {
+test_that("set_bins_df bounds argument: Discrete max number, break[n] > upper_bound [MRG-SBDF-002]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 0.8))
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak, upper_bound = max(x)) 
@@ -104,7 +104,7 @@ test_that("upper_bound test: discrete max number, break[n] > upper_bound [MRG-SB
 })
 
 # if upper_bound < actual max, then all obs greater than upper_bound put into NA bin
-test_that("upper_bound test: discrete number < actual max [MRG-SBDF-002]", {
+test_that("set_bins_df bounds argument: Discrete number < actual max [MRG-SBDF-002]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 0.8))
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks = xbreak, upper_bound = max(x)-0.2) 
@@ -119,7 +119,7 @@ test_that("upper_bound test: discrete number < actual max [MRG-SBDF-002]", {
 
 # Inclusive argument ------------------------------------------------------
 #include max value of largest user defined bin even though lower bins are non-inclusive
-test_that("inclusive test: inclusive = TRUE and upper bound = Inf, n bins = n breaks -1 [MRG-SBDF-003]", {
+test_that("set_bins_df inclusive tests: inclusive = TRUE and upper bound = Inf, n bins = n breaks -1 [MRG-SBDF-003]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = Inf
@@ -130,7 +130,7 @@ test_that("inclusive test: inclusive = TRUE and upper bound = Inf, n bins = n br
   )
 })
 
-test_that("inclusive test: inclusive = FALSE and upper bound = Inf, n bins = n breaks [MRG-SBDF-003]", {
+test_that("set_bins_df inclusive tests: inclusive = FALSE and upper bound = Inf, n bins = n breaks [MRG-SBDF-003]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = Inf
@@ -141,7 +141,7 @@ test_that("inclusive test: inclusive = FALSE and upper bound = Inf, n bins = n b
   )
 })
 
-test_that("inclusive test: inclusive = TRUE and discrete upper bound, n bins = n breaks -1 [MRG-SBDF-003]", {
+test_that("set_bins_df inclusive tests: inclusive = TRUE and discrete upper bound, n bins = n breaks -1 [MRG-SBDF-003]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = max(x)-2
@@ -152,7 +152,7 @@ test_that("inclusive test: inclusive = TRUE and discrete upper bound, n bins = n
   )
 })
 
-test_that("inclusive test: inclusive = FALSE and discrete upper bound, n bins = n breaks -1 [MRG-SBDF-003]", {
+test_that("set_bins_df inclusive tests: inclusive = FALSE and discrete upper bound, n bins = n breaks -1 [MRG-SBDF-003]", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = max(x)-2
@@ -166,7 +166,7 @@ test_that("inclusive test: inclusive = FALSE and discrete upper bound, n bins = 
 # Between argument --------------------------------------------------------
 
 # if val between c(min_between, max_between), then bin 1. Less than min_between, then bin 0. Greater than max_between, then bin 2
-  test_that("between test: discrete number with between argument [MRG-SBDF-004]", {
+  test_that("set_bins_df between tests: Discrete number with between argument [MRG-SBDF-004]", {
     x <- Theoph$conc
     min_between <- min(x) + 1
     max_between <- max(x) - 5
@@ -180,7 +180,7 @@ test_that("inclusive test: inclusive = FALSE and discrete upper bound, n bins = 
     expect_true(all(!is.na(res)))
   })
 
-test_that("between test: discrete number with between argument all > max val [MRG-SBDF-004]", {
+test_that("set_bins_df between tests: Discrete number with between argument all > max val [MRG-SBDF-004]", {
   x <- Theoph$conc
   min_between <- max(x) + 1
   max_between <- max(x) + 5
@@ -194,7 +194,7 @@ test_that("between test: discrete number with between argument all > max val [MR
   expect_true(all(!is.na(res)))
 })
 
-test_that("between test: discrete number with between argument all < min val [MRG-SBDF-004]", {
+test_that("set_bins_df between tests: Discrete number with between argument all < min val [MRG-SBDF-004]", {
   x <- Theoph$conc
   min_between <- min(x) + 1
   max_between <- min(x) - 5
@@ -209,14 +209,14 @@ test_that("between test: discrete number with between argument all < min val [MR
 })
 
 # error message if between length(between) != 2
-  test_that("between test: error length(between) !=2 [MRG-SBDF-004]", {
+  test_that("set_bins_df between tests: Error length(between) !=2 [MRG-SBDF-004]", {
     expect_error(set_bins_df(.df = Theoph, .x= "conc",  between = c(1)),
                  "can only have 2 breaks to use the between functionality") 
   })
 
 # Quiet argument ----------------------------------------------------------
 
-test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
+test_that("set_bins_df quiet tests: quiet= false print message [MRG-SBDF-005]", {
   x <- Theoph$conc
   xbreak = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   res <- set_bins_df(.df = Theoph, .x= "conc", breaks= xbreak, quiet = FALSE)
@@ -232,7 +232,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
   )))
 })
 
-  test_that("quiet test: quiet= between argument and false print message[MRG-SBDF-005]", {
+  test_that("set_bins_df quiet tests: quiet= between argument and false print message[MRG-SBDF-005]", {
     x <- Theoph$conc
     xbreak = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
     res <- set_bins_df(.df = Theoph, .x= "conc", breaks= xbreak, quiet = FALSE, between = c(5, 8))
@@ -250,7 +250,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
 
 # Name and label arguments ------------------------------------------------
 
-  test_that("name and label test: default [MRG-SBDF-006]", {
+  test_that("set_bins_df name and label tests: default [MRG-SBDF-006]", {
     x <- Theoph$conc
     .x= "conc"
     res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
@@ -268,7 +268,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
     )
   })
   
-  test_that("name test: specified name [MRG-SBDF-006]", {
+  test_that("set_bins_df name and label tests: Specified name [MRG-SBDF-006]", {
     x <- Theoph$conc
     .name = "conc_category"
     res <- set_bins_df(.df = Theoph, .x= "conc", .name = "conc_category", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
@@ -282,7 +282,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
     )
   })
   
-  test_that("name test: specified name and label [MRG-SBDF-006]", {
+  test_that("set_bins_df name and label tests: Specified name and label [MRG-SBDF-006]", {
     x <- Theoph$conc
     .name = "conc_category"
     .label = "conc_ranges"
@@ -297,7 +297,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
     )
   })
   
-  test_that("name test: specified label [MRG-SBDF-006]", {
+  test_that("set_bins_df name and label tests: Specified label [MRG-SBDF-006]", {
     x <- Theoph$conc
     .x= "conc"
     .label = "conc_ranges"
@@ -315,7 +315,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
 # Label column output -----------------------------------------------------
 
   
-  test_that("label test: default [MRG-SBDF-006]", {
+  test_that("set_bins_df name and label tests: default label [MRG-SBDF-006]", {
     x <- Theoph$conc
     .x= "conc"
     res <- set_bins_df(.df = Theoph, .x= "conc", breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
@@ -325,7 +325,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
     )
   })
   
-  test_that("label test: contents of label column with default lower and upper bounds [MRG-SBDF-006]", {
+  test_that("set_bins_df name and label tests: Contents of label column with default lower and upper bounds [MRG-SBDF-006]", {
     x <- Theoph$conc
     xbreak = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
     res <- set_bins_df(.df = Theoph, .x= "conc", breaks= xbreak)
@@ -348,7 +348,7 @@ test_that("quiet test: quiet= false print message [MRG-SBDF-005]", {
     )
   })
   
-  test_that("label test: contents of label column with specified lower and upper bounds [MRG-SBDF-006]", {
+  test_that("set_bins_df name and label tests: Contents of label column with specified lower and upper bounds [MRG-SBDF-006]", {
     x <- Theoph$conc
     xbreak <- stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 0.8))
     lbound = 2
