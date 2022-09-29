@@ -59,11 +59,16 @@ spec <- mrgvalprep::read_spec_yaml(
 )
 
 # make docs
-mrgvalidate::create_validation_docs(
-  PKGNAME,
-  PKGVERSION,
-  spec,
+mrgvalidate::create_package_docs(
+  product_name = PKGNAME,
+  version = PKGVERSION,
+  language = "R",
+  repo_url = "https://github.com/metrumresearchgroup/mrgmisc",
+  specs = spec,
+  release_notes_file = file.path("NEWS.md"),
   auto_test_dir = test_dir,
   output_dir = docs_dir,
-  style_dir = style_ref_path
+  style_dir = style_ref_path,
+  write = TRUE,
+  cleanup_rmd = TRUE
 )

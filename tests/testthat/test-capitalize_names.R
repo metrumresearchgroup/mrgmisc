@@ -6,7 +6,7 @@ test_that("capitalize_names outputs expectation: Character string returns approp
   expect_error(capitalize_names(lower_list), "Input must be dataframe")
 })
 
-test_that("capitalize_names outputs expectation: Capitalizes tibble names [MRG-CPNM-001]", {
+test_that("capitalize_names outputs expectation: Function capitalizes tibble names [MRG-CPNM-001]", {
   cTheoph <- capitalize_names(Theoph)
   cTheoph_n <- names(cTheoph)
   expect_equal(cTheoph_n[1], "SUBJECT")

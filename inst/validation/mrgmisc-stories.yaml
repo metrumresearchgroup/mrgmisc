@@ -132,7 +132,7 @@ SNAP-S001:
   description: As a user, I want to coerce values to nearest of given candidates.
   ProductRisk: Low
   requirements:
-  - SQUN-R001
+  - SNAP-R001
 STBN-S001:
   name: set_bins
   description: As a user, I want to create bins from a column of data with optionally customizable bin ranges.

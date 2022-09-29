@@ -10,7 +10,7 @@
 "9","chunk with groups: Chunks",4,0,"MRG-CHNK-003"
 "10","chunk_df expected output",3,0,"MRG-CKDF-001"
 "11","chunk_df unexpected input",5,0,"MRG-CKDF-002"
-"12","capitalize_names outputs expectation: C",3,0,"MRG-CPNM-001"
+"12","capitalize_names outputs expectation",3,0,"MRG-CPNM-001"
 "13","ids_per_plot expected output",2,0,"MRG-IDPL-001"
 "14","min_through properly calculates values",2,0,"MRG-MMAX-001"
 "15","max_through properly calculates values",2,0,"MRG-MMAX-002"
