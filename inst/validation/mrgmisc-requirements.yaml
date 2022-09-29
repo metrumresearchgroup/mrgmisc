@@ -174,4 +174,11 @@ SBDF-R006:
   description: set_bins_df appropriately applies name and label arguments
   tests:
   - MRG-SBDF-006
-  
+ASNM-R001:
+  description: read.nmctl appropriately reads in NONMEM ctl files
+  tests:
+  - MRG-ASNM-001
+ASNM-R002:
+  description: write.nmctl appropriately writes out NONMEM ctl files
+  tests:
+  - MRG-ASNM-002

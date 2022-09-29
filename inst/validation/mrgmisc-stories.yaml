@@ -154,3 +154,10 @@ SBDF-S001:
   - SBDF-R004
   - SBDF-R005
   - SBDF-R006
+ASNM-S001:
+  name: as.nmctl
+  description: As a user, I want to be able to read and write control files for NONMEM.
+  ProductRisk: Low
+  requirements:
+  - ASNM-R001
+  - ASNM-R002
