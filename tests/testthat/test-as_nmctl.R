@@ -20,7 +20,7 @@ test_that("read.nmctl expected performance: expected output for NULL input to nm
   expect_equal(as.character.nmctl(NULL), character(0))
 })
 
-test_that("nmctl print works", {
+test_that("read.nmctl expected performance: nmctl print works [MRG-ASNM-001]", {
   ctl_z <- read.nmctl(system.file("extdata/exam_ctl.ctl", package = "mrgmisc"))
   temp_str <- suppressMessages(print.nmctl(ctl_z$prob))
   expect_equal(temp_str, "RUN# 100 - fit of Phase I data base model")
