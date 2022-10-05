@@ -20,3 +20,6 @@ Based on the RIGHT() function from Microsoft Excel
 right("string-123", 3)
 
 }
+\author{
+Samuel P Callisto, PhD
+}

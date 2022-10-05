@@ -2,7 +2,7 @@
 % Please edit documentation in R/read_sas_folder.R
 \name{read_sas_folder}
 \alias{read_sas_folder}
-\title{Function to read in all SAS files in a given directory (developed by Eric Anderson)}
+\title{Function to read in all SAS files in a given directory}
 \usage{
 read_sas_folder(.dir)
 }
@@ -10,5 +10,8 @@ read_sas_folder(.dir)
 \item{.dir}{directory containing SAS files}
 }
 \description{
-Function to read in all SAS files in a given directory (developed by Eric Anderson)
+Function to read in all SAS files in a given directory
+}
+\author{
+Eric Anderson
 }

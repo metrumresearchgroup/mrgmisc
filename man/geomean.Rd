@@ -2,13 +2,24 @@
 % Please edit documentation in R/geomean.R
 \name{geomean}
 \alias{geomean}
-\title{Calculate geometric mean of variable}
+\title{Calculate geometric mean of a vector}
 \usage{
 geomean(x)
 }
 \arguments{
-\item{x}{variable to summarize}
+\item{x}{vector to summarize}
 }
 \description{
-Calculate geometric mean of variable
+Calculate geometric mean of a vector
+}
+\examples{
+
+# Find the geometric mean for a variable in Theoph
+geomean(Theoph$Wt)
+
+geomean(c(1, 2, 3, 4, 5))
+
+}
+\author{
+Samuel P Callisto, PhD
 }
