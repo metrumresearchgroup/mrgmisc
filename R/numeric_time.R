@@ -1,6 +1,6 @@
 #' Convert clock time to decimal equivalent
 #' 
-#' @param col column of type character or POSIXct to extract clocktimes from 
+#' @param .col column of type character or POSIXct to extract clocktimes from 
 #' to convert to decimal values
 #' 
 #' @export

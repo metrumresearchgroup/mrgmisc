@@ -7,7 +7,7 @@
 numeric_time(.col)
 }
 \arguments{
-\item{col}{column of type character or POSIXct to extract clocktimes from 
+\item{.col}{column of type character or POSIXct to extract clocktimes from 
 to convert to decimal values}
 }
 \description{
