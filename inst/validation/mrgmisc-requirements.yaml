@@ -182,3 +182,11 @@ ASNM-R002:
   description: write.nmctl appropriately writes out NONMEM ctl files
   tests:
   - MRG-ASNM-002
+RGHT-R001:
+  description: right grabs the specified number of characters at the end of the string
+  tests:
+  - MRG-RGHT-001
+GEOM-R001:
+  description: geomean accurately calculates geometric mean of a given vector
+  tests:
+  - MRG-GEOM-001

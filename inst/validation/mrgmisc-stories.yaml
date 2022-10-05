@@ -161,3 +161,15 @@ ASNM-S001:
   requirements:
   - ASNM-R001
   - ASNM-R002
+RGHT-S001:
+  name: right
+  description: As a user, I want to extract the any number of end characters from a vector of strings.
+  ProductRisk: Low
+  requirements:
+  - RGHT-R001
+GEOM-S001:
+  name: geomean
+  description: As a user, I want to easily calculate the geometric mean from a vector of values or variable in a dataframe.
+  ProductRisk: Low
+  requirements:
+  - GEOM-R001
