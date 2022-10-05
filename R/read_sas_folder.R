@@ -1,6 +1,8 @@
-#' Function to read in all SAS files in a given directory (developed by Eric Anderson)
+#' Function to read in all SAS files in a given directory
 #' 
 #' @param .dir directory containing SAS files
+#' 
+#' @author Eric Anderson
 #' 
 #' @export
 read_sas_folder <- function(.dir){
