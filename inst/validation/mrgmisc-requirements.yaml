@@ -190,3 +190,8 @@ GEOM-R001:
   description: geomean accurately calculates geometric mean of a given vector
   tests:
   - MRG-GEOM-001
+PDOS-R001:
+  description: pretty_dose creates a dose column with units and factor levels
+  tests:
+  - MRG-PDOS-001
+  - MRG-PDOS-002

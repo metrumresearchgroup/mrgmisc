@@ -173,3 +173,9 @@ GEOM-S001:
   ProductRisk: Low
   requirements:
   - GEOM-R001
+PDOS-S001:
+  name: pretty_dose
+  description: As a user, I want to convert a dataframe column with numerical doses to a column with dosing units and sorted factor levels.
+  ProductRisk: Low
+  requirements:
+  - PDOS-R001

@@ -2,7 +2,7 @@
 % Please edit documentation in R/pretty_dose.R
 \name{pretty_dose}
 \alias{pretty_dose}
-\title{function to overwrite DOSE column into factor and ordered by value}
+\title{Overwrite DOSE column into factor and ordered by value}
 \usage{
 pretty_dose(.dat, .dosecol = "DOSE", .units = "mg")
 }
@@ -14,5 +14,11 @@ pretty_dose(.dat, .dosecol = "DOSE", .units = "mg")
 \item{.units}{unit to be appended to output dose column}
 }
 \description{
-function to overwrite DOSE column into factor and ordered by value
+Overwrite DOSE column into factor and ordered by value
+}
+\examples{
+
+dose_fix <- pretty_dose(Theoph, .dosecol = "Dose", .units = "mg")
+dose_fix$Dose
+
 }
