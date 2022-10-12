@@ -195,3 +195,7 @@ PDOS-R001:
   tests:
   - MRG-PDOS-001
   - MRG-PDOS-002
+NSUB-R001:
+  description: nsub outputs the number of unique subjects in a data set
+  tests: 
+  - MRG-NSUB-001

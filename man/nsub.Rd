@@ -2,9 +2,9 @@
 % Please edit documentation in R/nsub.R
 \name{nsub}
 \alias{nsub}
-\title{Count IDs}
+\title{Count number of IDs in a NONMEM data set}
 \usage{
-nsub(.df, .id = USUBJID)
+nsub(.df, .id = "USUBJID")
 }
 \arguments{
 \item{.df}{data.frame containing column .id}
@@ -12,5 +12,10 @@ nsub(.df, .id = USUBJID)
 \item{.id}{column name that will be used to uniquely identify IDs}
 }
 \description{
-Count IDs
+Count number of IDs in a NONMEM data set
+}
+\examples{
+
+nsub(.df = Theoph, .id = Subject)
+
 }

@@ -179,3 +179,9 @@ PDOS-S001:
   ProductRisk: Low
   requirements:
   - PDOS-R001
+NSUB-S001:
+  name: nsub
+  description: As a user, I want to quickly count the number of subjects in a data set.
+  ProductRisk: Low
+  requirements:
+  - NSUB-R001
