@@ -191,4 +191,9 @@ HTHT-S001:
   ProductRisk: Low
   requirements:
   - HTHT-R001
-
+NTIM-S001:
+  name: numeric_time
+  description: As a user, I want to convert clock time to a numeric decimal value.
+  ProductRisk: Low
+  requirements:
+  - NTIM-R001

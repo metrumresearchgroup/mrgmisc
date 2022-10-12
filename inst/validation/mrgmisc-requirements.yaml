@@ -203,3 +203,8 @@ HTHT-R001:
   description: ht returns the top and bottom four rows of a data set
   tests:
   - MRG-HTHT-001
+NTIM-R001:
+  description: numeric_time accurately calculates the clocktime from a POSIXct vector.
+  tests:
+  - MRG-NTIM-001
+
