@@ -199,3 +199,7 @@ NSUB-R001:
   description: nsub outputs the number of unique subjects in a data set
   tests: 
   - MRG-NSUB-001
+HTHT-R001:
+  description: ht returns the top and bottom four rows of a data set
+  tests:
+  - MRG-HTHT-001

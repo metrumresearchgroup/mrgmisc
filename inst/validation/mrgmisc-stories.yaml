@@ -185,3 +185,10 @@ NSUB-S001:
   ProductRisk: Low
   requirements:
   - NSUB-R001
+HTHT-S001:
+  name: ht
+  description: As a user, I want to quickly view the head and tail of a data set.
+  ProductRisk: Low
+  requirements:
+  - HTHT-R001
+
