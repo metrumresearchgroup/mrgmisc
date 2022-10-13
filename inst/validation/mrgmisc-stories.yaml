@@ -197,3 +197,9 @@ NTIM-S001:
   ProductRisk: Low
   requirements:
   - NTIM-R001
+HALF-S001:
+  name: half_life
+  description: As a user, I want to quickly estimate elimination half-life.
+  ProductRisk: Low
+  requirements:
+  - HALF-R001
