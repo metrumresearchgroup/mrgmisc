@@ -1,9 +1,14 @@
-#' Estimate elimination half-life from 2-compartment model in hours
+#' Estimate elimination half-life from 2-compartment model 
+#' 
+#' Result provided in hours.
 #' 
 #' @param cl clearance estimate (L/hr)
 #' @param vc central volume estimate (L)
 #' @param vp peripheral volume estimate (L)
 #' @param q intercompartmental clearance estimate (L/hr)
+#' 
+#' @examples 
+#' half_life(cl = 1, vc = 51, vp = 13, q = 1)
 #' 
 #' @author Samuel P Callisto, PhD
 #' 

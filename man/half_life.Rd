@@ -2,7 +2,7 @@
 % Please edit documentation in R/half_life.R
 \name{half_life}
 \alias{half_life}
-\title{Estimate elimination half-life from 2-compartment model in hours}
+\title{Estimate elimination half-life from 2-compartment model}
 \usage{
 half_life(cl, vc, vp, q)
 }
@@ -16,7 +16,11 @@ half_life(cl, vc, vp, q)
 \item{q}{intercompartmental clearance estimate (L/hr)}
 }
 \description{
-Estimate elimination half-life from 2-compartment model in hours
+Result provided in hours.
+}
+\examples{
+half_life(cl = 1, vc = 51, vp = 13, q = 1)
+
 }
 \author{
 Samuel P Callisto, PhD
