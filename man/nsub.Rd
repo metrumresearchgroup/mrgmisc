@@ -19,3 +19,6 @@ Count number of IDs in a NONMEM data set
 nsub(.df = Theoph, .id = Subject)
 
 }
+\author{
+Samuel P Callisto, PhD
+}

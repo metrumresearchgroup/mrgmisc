@@ -20,3 +20,6 @@ Display top and bottom of data frame
 ht(Theoph, 4)
 
 }
+\author{
+Samuel P Callisto, PhD
+}

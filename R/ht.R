@@ -8,5 +8,7 @@
 #' # View the top 4 and bottom 4 rows of a dataframe
 #' ht(Theoph, 4)
 #' 
+#' @author Samuel P Callisto, PhD
+#' 
 #' @export
 ht <- function(.df,.n=4) rbind(head(.df,.n),tail(.df,.n))

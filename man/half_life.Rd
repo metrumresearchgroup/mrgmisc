@@ -18,3 +18,6 @@ half_life(cl, vc, vp, q)
 \description{
 Estimate elimination half-life from 2-compartment model in hours
 }
+\author{
+Samuel P Callisto, PhD
+}

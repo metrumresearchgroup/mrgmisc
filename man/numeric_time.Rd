@@ -22,3 +22,6 @@ times <- lubridate::ymd_hms(timedf$DATETIME)
 numeric_time(times)
 
 }
+\author{
+Samuel P Callisto, PhD
+}

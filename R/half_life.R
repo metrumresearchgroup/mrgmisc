@@ -5,6 +5,8 @@
 #' @param vp peripheral volume estimate (L)
 #' @param q intercompartmental clearance estimate (L/hr)
 #' 
+#' @author Samuel P Callisto, PhD
+#' 
 #' @export
 half_life <- function(cl,vc,vp,q){
   K10 <- cl/vc

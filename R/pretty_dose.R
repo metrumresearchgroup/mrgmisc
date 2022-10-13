@@ -9,6 +9,8 @@
 #' dose_fix <- pretty_dose(Theoph, .dosecol = "Dose", .units = "mg")
 #' dose_fix$Dose
 #' 
+#' @author Samuel P Callisto, PhD
+#' 
 #' @export
 pretty_dose <- function(.dat, .dosecol="DOSE", .units="mg"){
   .dat$TMP <- .dat[[.dosecol]]

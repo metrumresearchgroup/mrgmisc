@@ -7,5 +7,7 @@
 #' 
 #' nsub(.df = Theoph, .id = Subject)
 #' 
+#' @author Samuel P Callisto, PhD
+#' 
 #' @export
 nsub <- function(.df, .id="USUBJID") {.df %>% dplyr::distinct({{ .id }}) %>% nrow()}
