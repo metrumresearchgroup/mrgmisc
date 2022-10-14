@@ -203,3 +203,10 @@ HALF-S001:
   ProductRisk: Low
   requirements:
   - HALF-R001
+PODF-S001:
+  name: pool_df
+  description: As a user, I want to easily compare the column names across two data frames.
+  ProductRisk: Low
+  requirements:
+  - PODF-R001
+  - PODF-R002

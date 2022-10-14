@@ -211,5 +211,11 @@ HALF-R001:
   description: half_life estimates elimination half-life from 2-compartment model 
   tests:
   - MRG-HALF-001
-
-
+PODF-R001:
+  description: pool_df returns the shared names across two data frames
+  tests:
+  - MRG-PODF-001
+PODF-R002:
+  description: pool_df returns the unshared names across two data frames
+  tests:
+  - MRG-PODF-002
