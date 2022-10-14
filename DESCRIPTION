@@ -21,16 +21,18 @@ Imports:
     dplyr (>= 0.5.0),
     data.table,
     glue,
-    ggplot2,
     lazyeval,
     magrittr,
-    parallel,
-    purrr,
     Rcpp (>= 0.12.10),
-    readr (>= 1.0.0),
     rlang,
     stringr,
-    tibble
+    tibble,
+    haven,
+    here,
+    hms,
+    lubridate,
+    purrr,
+    readr
 Suggests:
     sessioninfo,
     knitr,

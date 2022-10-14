@@ -161,3 +161,52 @@ ASNM-S001:
   requirements:
   - ASNM-R001
   - ASNM-R002
+RGHT-S001:
+  name: right
+  description: As a user, I want to extract the any number of end characters from a vector of strings.
+  ProductRisk: Low
+  requirements:
+  - RGHT-R001
+GEOM-S001:
+  name: geomean
+  description: As a user, I want to easily calculate the geometric mean from a vector of values or variable in a dataframe.
+  ProductRisk: Low
+  requirements:
+  - GEOM-R001
+PDOS-S001:
+  name: pretty_dose
+  description: As a user, I want to convert a dataframe column with numerical doses to a column with dosing units and sorted factor levels.
+  ProductRisk: Low
+  requirements:
+  - PDOS-R001
+NSUB-S001:
+  name: nsub
+  description: As a user, I want to quickly count the number of subjects in a data set.
+  ProductRisk: Low
+  requirements:
+  - NSUB-R001
+HTHT-S001:
+  name: ht
+  description: As a user, I want to quickly view the head and tail of a data set.
+  ProductRisk: Low
+  requirements:
+  - HTHT-R001
+NTIM-S001:
+  name: numeric_time
+  description: As a user, I want to convert clock time to a numeric decimal value.
+  ProductRisk: Low
+  requirements:
+  - NTIM-R001
+HALF-S001:
+  name: half_life
+  description: As a user, I want to quickly estimate elimination half-life.
+  ProductRisk: Low
+  requirements:
+  - HALF-R001
+PODF-S001:
+  name: pool_df
+  description: As a user, I want to easily compare the column names across two data frames.
+  ProductRisk: Low
+  requirements:
+  - PODF-R001
+  - PODF-R002

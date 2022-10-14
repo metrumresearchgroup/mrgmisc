@@ -22,12 +22,16 @@ reference:
     - set_bins_df
     - posmat
     - snap
+    - numeric_time
   - title: Summaries
     contents:
     - s_pauc
     - s_quantiles
     - pool
+    - pool_df
     - nasum
+    - nsub
+    - geomean
   - title: Formatting
     contents:
     - capitalize_names
@@ -35,9 +39,13 @@ reference:
     - replace_dots
     - pad_left
     - parens
+    - ht
+    - right
   - title: Pharmacometrics-specific
     contents:
     - auc_inf
     - auc_partial
     - resample_df
     - as.nmctl
+    - half_life
+    - pretty_dose

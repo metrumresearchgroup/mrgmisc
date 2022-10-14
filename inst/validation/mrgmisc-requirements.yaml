@@ -182,3 +182,40 @@ ASNM-R002:
   description: write.nmctl appropriately writes out NONMEM ctl files
   tests:
   - MRG-ASNM-002
+RGHT-R001:
+  description: right grabs the specified number of characters at the end of the string
+  tests:
+  - MRG-RGHT-001
+GEOM-R001:
+  description: geomean accurately calculates geometric mean of a given vector
+  tests:
+  - MRG-GEOM-001
+PDOS-R001:
+  description: pretty_dose creates a dose column with units and factor levels
+  tests:
+  - MRG-PDOS-001
+  - MRG-PDOS-002
+NSUB-R001:
+  description: nsub outputs the number of unique subjects in a data set
+  tests: 
+  - MRG-NSUB-001
+HTHT-R001:
+  description: ht returns the top and bottom four rows of a data set
+  tests:
+  - MRG-HTHT-001
+NTIM-R001:
+  description: numeric_time accurately calculates the clocktime from a POSIXct vector.
+  tests:
+  - MRG-NTIM-001
+HALF-R001:
+  description: half_life estimates elimination half-life from 2-compartment model 
+  tests:
+  - MRG-HALF-001
+PODF-R001:
+  description: pool_df returns the shared names across two data frames
+  tests:
+  - MRG-PODF-001
+PODF-R002:
+  description: pool_df returns the unshared names across two data frames
+  tests:
+  - MRG-PODF-002
