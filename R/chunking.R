@@ -48,10 +48,11 @@ ids_per_plot <- function(id, id_per_plot = 9) {
   if(!is.vector(id)) {
     stop("chunking requires a vector")
   }
-  if(length(id) < id_per_plot) {
-    id_per_plot <- length(id)
-  }
   uid <- unique(id)
+  if(length(uid) < id_per_plot) {
+    id_per_plot <- length(uid)
+  }
+  
   mod <- length(uid)%/%id_per_plot
   remainder <- length(uid)%%id_per_plot
   bin_number <- c(rep(1:mod, each= id_per_plot),
