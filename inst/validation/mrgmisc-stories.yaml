@@ -25,6 +25,7 @@ IDPL-S001:
   ProductRisk: Low
   requirements:
   - IDPL-R001
+  - IDPL-R002
 CPNM-S001:
   name: Capitalize names
   description: As a user, I want to easily capitalize the column names of my tibble.

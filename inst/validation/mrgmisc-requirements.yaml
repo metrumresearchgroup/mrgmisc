@@ -26,6 +26,10 @@ IDPL-R001:
   description: ids_per_plot splits IDs into groups to use for subsequent plotting
   tests:
   - MRG-IDPL-001
+IDPL-R002:
+  description: ids_per_plot works if number of plots is greater than values given
+  tests:
+  - MRG-IDPL-002
 CPNM-R001:
   description: capitalize_names sets the first letter of the column names to uppercase
   tests:
