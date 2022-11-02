@@ -2,14 +2,13 @@
 % Please edit documentation in R/nasum.R
 \name{nasum}
 \alias{nasum}
-\title{Count Number of \code{NA} Values in List Items}
+\title{Display a count of NAs by column in a data.frame}
 \usage{
 nasum(x,simplify=TRUE)
 }
 \arguments{
-\item{x}{list of vector-like objects; e.g. a data frame}
-
-\item{simplify}{logical: coerce to vector result if possible}
+\item{.df}{the count of NAs will be calculated for each column in this data 
+set, with any grouping variables retained}
 }
 \description{
 \code{nasum} Count the number of \code{NA} values in each element of a list-like object.
@@ -23,5 +22,5 @@ nasum(Theoph)
 
 }
 \author{
-Natalie Hsiang
+Tim Waterhouse
 }
