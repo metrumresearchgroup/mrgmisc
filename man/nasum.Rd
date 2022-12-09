@@ -4,7 +4,7 @@
 \alias{nasum}
 \title{Display a count of NAs by column in a data.frame}
 \usage{
-nasum(x,simplify=TRUE)
+nasum(.df)
 }
 \arguments{
 \item{.df}{the count of NAs will be calculated for each column in this data 

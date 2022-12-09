@@ -32,7 +32,8 @@ Imports:
     hms,
     lubridate,
     purrr,
-    readr
+    readr,
+    tidyr
 Suggests:
     sessioninfo,
     knitr,

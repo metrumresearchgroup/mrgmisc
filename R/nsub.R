@@ -10,4 +10,8 @@
 #' @author Samuel P Callisto, PhD
 #' 
 #' @export
-nsub <- function(.df, .id) {.df %>% dplyr::distinct({{ .id }}) %>% nrow()}
+nsub <- function(.df, .id) {
+  
+  .df %>% dplyr::distinct({{ .id }}) %>% nrow()
+  
+  }
