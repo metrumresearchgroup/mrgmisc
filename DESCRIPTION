@@ -31,13 +31,13 @@ Imports:
     here,
     hms,
     lubridate,
-    purrr,
-    readr,
     tidyr
 Suggests:
     sessioninfo,
     knitr,
     rmarkdown,
+    purrr,
+    readr,
     testthat
 LazyData: TRUE
 License: GPL (>=2)
