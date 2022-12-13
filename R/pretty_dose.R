@@ -16,6 +16,7 @@ pretty_dose <- function(.dat, .dosecol="DOSE", .units="mg"){
   .dat$TMP <- .dat[[.dosecol]]
   .dat %>%
     dplyr::mutate(Dose = factor(
-      ifelse(TMP == 0, "Placebo", paste(TMP, .units))) %>% reorder(TMP)
-    ) %>% dplyr::select(-TMP)
+      ifelse(.data$TMP == 0, "Placebo", paste(.data$TMP, .units))) %>% stats::reorder(.data$TMP)
+    ) %>% 
+    dplyr::select(-"TMP")
 }
