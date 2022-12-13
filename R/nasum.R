@@ -21,5 +21,5 @@ nasum <- function(.df) {
     dplyr::summarize(dplyr::across(dplyr::everything(), ~ sum(is.na(.))), .groups = "keep") %>% 
     tidyr::pivot_longer(-dplyr::group_cols(), values_to = "n_NA") %>% 
     dplyr::ungroup() %>% 
-    dplyr::filter(n_NA > 0)
+    dplyr::filter(.data$n_NA > 0)
 }

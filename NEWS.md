@@ -1,3 +1,17 @@
+# mrgmisc 0.1.1
+
+## New features and changes
+
+- Moved `readr` and `purrr` from imports to suggests. (#8)
+
+## Bug fixes
+
+- Replaced `nasum` function from `metrumRG` version to allow it to work with
+  grouped data.frames and only output columns with more than 0 `NA` values. (#7)
+
+- `nsub` was returning 1 regardless of the number of ID in the data set. Fixed to
+  now return the appropriate number of subject IDs. (#7)
+
 # mrgmisc 0.1.0
 
 ## New features and changes
