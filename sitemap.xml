@@ -4,6 +4,9 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/404.html</loc>
   </url>
   <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/NEWS_release.html</loc>
+  </url>
+  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/authors.html</loc>
   </url>
   <url>
@@ -37,7 +40,16 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/dapa_IV_oral.html</loc>
   </url>
   <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/geomean.html</loc>
+  </url>
+  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/get_key.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/half_life.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/ht.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/index.html</loc>
@@ -52,6 +64,12 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/nasum.html</loc>
   </url>
   <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/nsub.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/numeric_time.html</loc>
+  </url>
+  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/ordinal_to_binary.html</loc>
   </url>
   <url>
@@ -64,13 +82,22 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/pool.html</loc>
   </url>
   <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/pool_df.html</loc>
+  </url>
+  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/posmat.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/pretty_dose.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/replace_dots.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/resample_df.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/right.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/s_pauc.html</loc>
