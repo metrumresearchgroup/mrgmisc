@@ -4,6 +4,7 @@
 #' @param .dosecol quoted name of column containing dosing information
 #' @param .units unit to be appended to output dose column
 #' 
+#' 
 #' @examples 
 #' 
 #' dose_fix <- pretty_dose(Theoph, .dosecol = "Dose", .units = "mg")
