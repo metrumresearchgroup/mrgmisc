@@ -83,7 +83,7 @@ as.character.nmctl <-
     flag <- runhead(record)
     content <- as.character(unlist(x))
     nms <- toupper(names(x))
-    content[flag] <- paste(glue::glue('$',nms),content[flag])
+    content[flag] <- paste(metrumrg_glue('$',nms),content[flag])
     content[flag] <- sub(' $','',content[flag])
     content
   }
