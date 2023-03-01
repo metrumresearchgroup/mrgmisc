@@ -13,7 +13,7 @@ test_that("write.nmctl expected performance: Able to write out control files [MR
 
 test_that("read.nmctl expected performance: as character nmctl reader works [MRG-ASNM-001]", {
   ctl_z <- read.nmctl(system.file("extdata/exam_ctl.ctl", package = "mrgmisc"))
-  expect_equal(as.character.nmctl(ctl_z$omega)[1], " BLOCK(3)")
+  expect_equal(as.character.nmctl(ctl_z$omega)[1], "$ BLOCK(3)")
 })  
 
 test_that("read.nmctl expected performance: expected output for NULL input to nmctl character [MRG-ASNM-001]", {

@@ -1,7 +1,7 @@
 Package: mrgmisc
 Type: Package
 Title: MRG Helpers
-Version: 0.1.1
+Version: 0.1.2
 Date: 2022-08-02
 Authors@R: c(
     person("Michael", "McDermott",
@@ -27,8 +27,6 @@ Imports:
     rlang,
     stringr,
     tibble,
-    haven,
-    here,
     hms,
     lubridate,
     tidyr
