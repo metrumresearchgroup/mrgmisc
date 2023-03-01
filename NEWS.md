@@ -1,3 +1,9 @@
+# mrgmisc 0.1.2
+
+## Bug fixes
+
+- Fixed incorrect `glue` function used in `read.nmctl()`. (#13)
+
 # mrgmisc 0.1.1
 
 ## New features and changes
