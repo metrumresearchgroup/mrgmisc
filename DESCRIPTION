@@ -29,7 +29,8 @@ Imports:
     tibble,
     hms,
     lubridate,
-    tidyr
+    tidyr,
+    ggplot2
 Suggests:
     sessioninfo,
     knitr,

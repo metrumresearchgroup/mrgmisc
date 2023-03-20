@@ -45,6 +45,7 @@ reference:
     - parens
     - ht
     - right
+    - print_plots
   - title: Pharmacometrics-specific
     contents:
     - auc_inf
