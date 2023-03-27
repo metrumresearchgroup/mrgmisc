@@ -62,7 +62,7 @@ print_plots <- function(.ggplot_list,
         cat("\\newpage")
       }
     }
-    #invisible()
+    invisible()
   })
-  #return(invisible())
+  return(invisible())
 }
