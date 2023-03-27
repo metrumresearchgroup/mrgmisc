@@ -61,24 +61,6 @@ To apply the above function we use `map` from `purrr`
 split_dat %>% map(p_conc_time) 
 ```
 
-
-As you can notice from the vignette, there is still a code-based output separating each subplot, which is
-not ideal for reporting. As such, there is a special function `print_plots` in PKPDmisc
-that will clean up the output slightly. It also automatically restarts the page numbering if knitting to PDF
-to page 1, making it each to extract only the pages related to plots to embed cleanly in other reports.
-
-To use `print_plots` we want to save the ggplot output (rather than let it be printed directly) and 
-give that to print plots.
-
-```{r}
-plot_list <- split_dat %>% map(p_conc_time) 
-```
-
-```{r}
-print_plots(plot_list)
-```
-
-
 ```{r}
 sessioninfo::session_info()
 ```
