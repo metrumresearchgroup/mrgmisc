@@ -1,0 +1,66 @@
+---
+title: "Multiplots"
+author: "Devin Pastoor"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Multiplot}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+
+```{r}
+library(mrgmisc) # for binning and other functions
+library(ggplot2) #plotting
+library(purrr) # dataset to handle lists
+suppressMessages(suppressWarnings(library(dplyr)))
+```
+
+
+```{r}
+dat <- sd_oral_richpk %>% filter(ID <= 20)
+```
+
+Messy plot can't see individuals well
+
+```{r}
+ggplot(dat, aes(x = Time, y = Conc, group= ID)) + 
+  geom_line() +
+  facet_wrap(~ID, scales= "free")
+```
+
+What we'd like to be able to do is split up into 'bins' of specified numbers of individuals to then plot out multiple plots
+
+```{r}
+# this will automatically create a column of bins such that the
+# specified number of individuals is in each bin, in this case
+# 9 ids per bin
+# split the original dataset into subdatasets corresponding to each bin (list of dataframes)
+split_dat <- dat %>% 
+  mutate(PLOTS = ids_per_plot(ID, 4)) %>% # default is 9 per subplot
+  split(.[["PLOTS"]])
+```
+
+To handle plotting each subdataframe, you need to wrap your normal ggplot into a function.
+You will then apply this function with `map` to each subdataframe. 
+So in this case it is just like a normal plot, but wrapped up in a function, which takes 1 argument (the dataframe) and outputs the plot
+
+```{r}
+p_conc_time <- function(df) {
+ggplot(df, aes(x = Time, y = Conc, group= ID)) + 
+  geom_line() +
+  facet_wrap(~ID, scales= "free")
+}
+```
+
+
+To apply the above function we use `map` from `purrr`
+
+```{r}
+split_dat %>% map(p_conc_time) 
+```
+
+```{r}
+sessioninfo::session_info()
+```
