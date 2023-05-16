@@ -15,9 +15,11 @@
 #' 
 #' @export
 pool_df <- function(x,y){
-  list(
-    `in x not y` = dplyr::setdiff(names(x), names(y)),
-    `in y not x` = dplyr::setdiff(names(y), names(x)),
-    shared = dplyr::intersect(names(x), names(y))
-  )
+  set_names(
+    list(
+      x = dplyr::setdiff(names(x), names(y)),
+      y = dplyr::setdiff(names(y), names(x)),
+      both = dplyr::intersect(names(x), names(y))
+    ), 
+    c(substitute(x), substitute(y), "both"))
 }
