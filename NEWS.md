@@ -1,3 +1,9 @@
+# mrgmisc development
+
+## New features and changes
+
+- `pool` and `pool_df` now include data.frame names in comparison.
+
 # mrgmisc 0.1.2
 
 ## Bug fixes
