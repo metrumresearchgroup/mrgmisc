@@ -20,4 +20,13 @@
 #' pool(letters[1:5], letters[4:8])
 #' 
 #' @export
-pool <- function(x,y)list(x=setdiff(x,y),y=setdiff(y,x),both=intersect(x,y))
+pool <- function(x,y){
+  purrr::set_names(
+    list(
+      x=setdiff(x,y),
+      y=setdiff(y,x),
+      both=intersect(x,y)
+    ), 
+    c(substitute(x), substitute(y), "both")
+  )
+}

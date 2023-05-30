@@ -1,7 +1,7 @@
 Package: mrgmisc
 Type: Package
 Title: MRG Helpers
-Version: 0.1.2
+Version: 0.1.2.8000
 Date: 2023-03-01
 Authors@R: c(
     person("Michael", "McDermott",
@@ -30,12 +30,12 @@ Imports:
     hms,
     lubridate,
     tidyr,
-    ggplot2
+    ggplot2,
+    purrr
 Suggests:
     sessioninfo,
     knitr,
     rmarkdown,
-    purrr,
     readr,
     testthat
 LazyData: TRUE
