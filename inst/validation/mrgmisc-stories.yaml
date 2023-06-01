@@ -211,3 +211,10 @@ PODF-S001:
   requirements:
   - PODF-R001
   - PODF-R002
+SDF-S001:
+  name: pool_df
+  description: As a user, I want to find all occurrences of an input in a data frame.
+  ProductRisk: Low
+  requirements:
+  - SDF-R001
+  - SDF-R002

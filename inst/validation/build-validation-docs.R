@@ -12,7 +12,7 @@
 #######################################################
 
 PKGNAME <- "mrgmisc"
-PKGVERSION <- "0.1.2"
+PKGVERSION <- "0.1.3"
 STYLE_REF_DIR <- "docx-ref-header-image" # set to NULL if not using style ref
 
 # set up directories and clear existing output dirs, if they exist

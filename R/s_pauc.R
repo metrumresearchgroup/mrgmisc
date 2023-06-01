@@ -7,14 +7,10 @@
 # @details 
 # for internal use in the s_pauc function
 s_pauc_i <- function(df, idv, dv, range, digits = Inf) {
-  idv <- lazyeval::as.lazy(idv)
-  dv <- lazyeval::as.lazy(dv)
-  dots = list(lazyeval::interp(~ round(auc_partial(idv, 
-                                          dv, 
-                                          range=range), 
-                                          digits), 
-                               idv = idv$expr,
-                               dv = dv$expr))
+  
+  df$mrgmisc_idv <- df[[idv]]
+  df$mrgmisc_dv <- df[[dv]]
+
   # after discussion with hadley, the last group is dropped by design with dplyr
   # given that it is unique at that point
   # for now, I do not want to do that as I want to keep track of all grouped
@@ -26,8 +22,21 @@ s_pauc_i <- function(df, idv, dv, range, digits = Inf) {
   } else {
     NULL
   }
-  out <- df %>% dplyr::summarize_(.dots = setNames(dots, 
-                                            paste0("pAUC", range[1], "_", range[2])))
+
+  out <- 
+    df %>%
+    dplyr::summarize(
+      mrgmisc_ANS = 
+        round(
+          auc_partial(mrgmisc_idv, mrgmisc_dv, range = range),
+          digits
+        )
+    )
+  
+  out[[paste0("pAUC", range[1], "_", range[2])]] <- out$mrgmisc_ANS
+  
+  out <- out %>% dplyr::select(-starts_with("mrgmisc_"))
+
   if(!is.null(grps)) out <- dplyr::group_by(out, !!!rlang::syms(grps))
   return(out)
 }
