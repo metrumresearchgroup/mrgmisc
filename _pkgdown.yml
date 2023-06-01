@@ -36,6 +36,7 @@ reference:
     - nasum
     - nsub
     - geomean
+    - search_df
   - title: Formatting
     contents:
     - capitalize_names

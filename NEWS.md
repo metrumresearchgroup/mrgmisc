@@ -2,7 +2,9 @@
 
 ## New features and changes
 
-- `pool` and `pool_df` now include data.frame names in comparison.
+- `pool` and `pool_df` now include data.frame names in comparison. (#19)
+
+- `saerch_df` added to the package to search for all occurences of a value in a data.frame. (#20)
 
 # mrgmisc 0.1.2
 
