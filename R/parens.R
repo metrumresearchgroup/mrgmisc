@@ -15,4 +15,4 @@
 #' parens('x')
 #' 
 #' @export
-parens <- function(x,...)metrumrg_glue('(',x,')')
+parens <- function(x,...)paste0('(',x,')')
