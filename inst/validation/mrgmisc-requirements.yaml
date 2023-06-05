@@ -223,3 +223,11 @@ PODF-R002:
   description: pool_df returns the unshared names across two data frames
   tests:
   - MRG-PODF-002
+SDF-R001:
+  description: search_df returns the counts for each column containing a specified numerical value
+  tests:
+  - MRG-SDF-001
+SDF-R002:
+  description: search_df returns the counts for each column containing a specified character string
+  tests:
+  - MRG-SDF-002
