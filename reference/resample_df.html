@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrgmisc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -25,6 +25,16 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/multiplot.html">Multiplots</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -110,16 +120,16 @@ check the original ID column against the number of key's associated with that ID
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 120 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      KEY    ID  Time   Amt  Conc   Age Weight Gender Race   Dose</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1     9  0     <span style="text-decoration: underline;">5</span>000  0     47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1     9  0.25     0  8.85  47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1     9  0.5      0 21.0   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1     9  1        0 26.5   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1     9  2        0 32.9   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1     9  3        0 39.2   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1     9  4        0 48.5   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1     9  6        0 35.8   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1     9  8        0 39.6   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1     9 12        0 35.0   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1    23  0     <span style="text-decoration: underline;">5</span>000   0    38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1    23  0.25     0  12.9  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1    23  0.5      0  17.4  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1    23  1        0  24.1  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1    23  2        0  46.7  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1    23  3        0  44.6  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1    23  4        0  27.6  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1    23  6        0  29.9  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1    23  8        0  19.2  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1    23 12        0  17.8  38.3   66.4 Female Black  <span style="text-decoration: underline;">5</span>000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 110 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># for a more complex example lets resample "simulated" data with multiple replicates</span></span></span>
@@ -139,16 +149,16 @@ check the original ID column against the number of key's associated with that ID
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,140 × 11</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      KEY    ID  Time   Amt  Conc   Age Weight Gender Race   Dose   REP</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1     7  0     <span style="text-decoration: underline;">5</span>000   0    56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1     7  0.25     0  12.6  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1     7  0.5      0  28.9  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1     7  1        0  48.0  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1     7  2        0  52.7  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1     7  3        0  62.9  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1     7  4        0  71.8  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1     7  6        0  39.6  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1     7  8        0  40.7  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1     7 12        0  23.7  56.0   71.3 Male   Other  <span style="text-decoration: underline;">5</span>000     4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1     9  0     <span style="text-decoration: underline;">5</span>000  0     47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1     9  0.25     0  8.85  47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1     9  0.5      0 21.0   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1     9  1        0 26.5   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1     9  2        0 32.9   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1     9  3        0 39.2   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1     9  4        0 48.5   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1     9  6        0 35.8   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1     9  8        0 39.6   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1     9 12        0 35.0   47.1   64.5 Female Other  <span style="text-decoration: underline;">5</span>000     2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 1,130 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># check to see that stratification is maintained</span></span></span>

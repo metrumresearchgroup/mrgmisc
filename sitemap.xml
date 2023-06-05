@@ -4,6 +4,15 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/404.html</loc>
   </url>
   <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/NEWS_release.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/articles/multiplot.html</loc>
+  </url>
+  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/authors.html</loc>
   </url>
   <url>
@@ -104,6 +113,9 @@
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/sd_oral_richpk.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/search_df.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/set_bins.html</loc>

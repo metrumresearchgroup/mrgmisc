@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrgmisc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.1.3</span>
       </span>
     </div>
 
@@ -25,6 +25,16 @@
       <ul class="nav navbar-nav"><li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu"><li>
+      <a href="../articles/multiplot.html">Multiplots</a>
+    </li>
+  </ul></li>
 <li>
   <a href="../news/index.html">Changelog</a>
 </li>
@@ -77,13 +87,13 @@
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">Theoph_mod</span> <span class="op">&lt;-</span> <span class="va">Theoph</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>NEWCOL <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Dose</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">pool_df</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Theoph</span>, y <span class="op">=</span> <span class="va">Theoph_mod</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`in x not y`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Theoph</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Dose"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $`in y not x`</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Theoph_mod</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "NEWCOL"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $shared</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $both</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Subject" "Wt"      "Time"    "conc"   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
