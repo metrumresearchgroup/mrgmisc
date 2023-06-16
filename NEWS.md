@@ -6,6 +6,8 @@
 
 - `df_subject_check` added to the package to perform common data set checks. (#25)
 
+- `is_distinct` added to the package. (#25)
+
 # mrgmisc 0.1.3
 
 ## New features and changes
