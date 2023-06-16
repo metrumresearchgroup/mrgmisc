@@ -37,6 +37,7 @@ reference:
     - nsub
     - geomean
     - search_df
+    - df_subject_check
   - title: Formatting
     contents:
     - capitalize_names
