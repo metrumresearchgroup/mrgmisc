@@ -1,23 +1,21 @@
 #' Subject data checks
 #' 
 #' @description 
-#' Use this function to perform quick checks on a data.frame such as:
-#' - One row per subject
-#' - One dose level per subject
-#' - Multiple EVID's per subject
+#' Use this function to perform quick checks on a data.frame to determine if only one row or
+#' values exists for each subject within a column. If `.col_check` is `NULL` (which is the default) 
+#' then the function will check if the data.frame only has 1 row per subject.
+#' 
+#' If a variable is provided to `.col_check` then the function will check if each subject only has 
+#' 1 distinct value within that column.
 #' 
 #' @param .df Data.frame to perform checks on
 #' @param .subject_col Character column name of subject identifier. (default to ID or USUBJID)
-#' @param .dose_col Character column name of dose level. (default to DOSE)
-#' @param .evid_col Character column name of event indicator variable. (default to EVID)
-#' @param .blq_col Character column name of below limit of quantification indicator (optional)
+#' @param .col_check Character column name of variable to check if subject only has 1 distinct value of
 #' 
 #' @export
 df_subject_check <- function(.df,
                              .subject_col = NULL,
-                             .dose_col = "DOSE",
-                             .evid_col = "EVID",
-                             .blq_col = "BLQ") {
+                             .col_check = NULL) {
   
   if (is.null(.subject_col)) {
     
@@ -30,56 +28,34 @@ df_subject_check <- function(.df,
     }
   }
   
-  if (is.null(.df[[.dose_col]])) {
-    stop(".dose_col not in provided data, please define .dose_col")
+  if (is.null(.col_check)) {
+    
+    # One row per subject
+    if(nrow(.df) == length(unique(.df[[.subject_col]]))){
+      return("Data has 1 row per subject")
+    } else{
+      return("Data has at least 1 subject with multiple rows")
+    }
+    
+  } else {
+    
+    if (.col_check %in% names(.df)) {
+      # One dose per subject
+      one_col_subject <-
+        .df %>% 
+        dplyr::select(dplyr::all_of(c(.subject_col, .col_check))) %>% 
+        dplyr::distinct() %>% 
+        dplyr::count(!!dplyr::sym(.subject_col)) %>% 
+        dplyr::filter(n>1)
+      
+      if(nrow(one_col_subject) == 0){
+        return(paste0("Each subject only has 1 distinct value of ", .col_check))
+      } else{
+        return(paste0("At least 1 subject has multiple values of ", .col_check))
+      }
+    } else {
+      return(paste0(.col_check, " not found in data. Please check .col_check."))
+    }
   }
-  
-  if (is.null(.df[[.evid_col]])) {
-    stop(".evid_col not in provided data, please define .evid_col")
-  }
-  
-  # Perform operations
-  return_list <- list()
-  
-  # One row per subject
-  if(nrow(.df) == length(unique(.df[[.subject_col]]))){
-    return_list$OneRowPerSubject <- TRUE
-  } else{
-    return_list$OneRowPerSubject <- FALSE
-  }
-  
-  # One dose per subject
-  dose_per_subject <-
-    .df %>% 
-    dplyr::select(c(.subject_col, .dose_col)) %>% 
-    dplyr::distinct() %>% 
-    dplyr::count(!!dplyr::sym(.subject_col)) %>% 
-    dplyr::filter(n>1)
-  
-  if(nrow(dose_per_subject) == 0){
-    return_list$OneDosePerSubject <- TRUE
-  } else{
-    return_list$OneDosePerSubject <- FALSE
-  }
-  
-  if(!is.null(.df[[.blq_col]])) {
-    .df <- .df %>% dplyr::filter(!!dplyr::sym(.blq_col) == 0)
-  }
-  
-  # Subject has multiple EVID
-  evid_per_subject <-
-    .df %>% 
-    dplyr::select(dplyr::all_of(c(.subject_col, .evid_col))) %>% 
-    dplyr::distinct() %>% 
-    dplyr::count(!!dplyr::sym(.subject_col)) %>% 
-    dplyr::filter(n==1)
-  
-  if(nrow(evid_per_subject) == 0){
-    return_list$MultipleEvidPerSubject <- TRUE
-  } else{
-    return_list$MultipleEvidPerSubject <- FALSE
-  }
-  
-  return(return_list)
-  
 }
+  

@@ -4,28 +4,20 @@
 \alias{df_subject_check}
 \title{Subject data checks}
 \usage{
-df_subject_check(
-  .df,
-  .subject_col = NULL,
-  .dose_col = "DOSE",
-  .evid_col = "EVID",
-  .blq_col = "BLQ"
-)
+df_subject_check(.df, .subject_col = NULL, .col_check = NULL)
 }
 \arguments{
 \item{.df}{Data.frame to perform checks on}
 
 \item{.subject_col}{Character column name of subject identifier. (default to ID or USUBJID)}
 
-\item{.dose_col}{Character column name of dose level. (default to DOSE)}
-
-\item{.evid_col}{Character column name of event indicator variable. (default to EVID)}
-
-\item{.blq_col}{Character column name of below limit of quantification indicator (optional)}
+\item{.col_check}{Character column name of variable to check if subject only has 1 distinct value of}
 }
 \description{
-Use this function to perform quick checks on a data.frame such as:
-- One row per subject
-- One dose level per subject
-- Multiple EVID's per subject
+Use this function to perform quick checks on a data.frame to determine if only one row or
+values exists for each subject within a column. If `.col_check` is `NULL` (which is the default) 
+then the function will check if the data.frame only has 1 row per subject.
+
+If a variable is provided to `.col_check` then the function will check if each subject only has 
+1 distinct value within that column.
 }
