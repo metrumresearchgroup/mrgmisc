@@ -21,3 +21,14 @@ then the function will check if the data.frame only has 1 row per subject.
 If a variable is provided to `.col_check` then the function will check if each subject only has 
 1 distinct value within that column.
 }
+\examples{
+library(dplyr)
+Theoph2 <- Theoph \%>\% dplyr::group_by(Subject) \%>\% dplyr::slice(1) \%>\% dplyr::ungroup()
+
+# Check if each subject has only one row
+df_subject_check(Theoph2, .subject_col = "Subject")
+
+# Check if each subject has only one distinct Dose value
+df_subject_check(Theoph2, .subject_col = "Subject", .col_check = "Dose")
+
+}

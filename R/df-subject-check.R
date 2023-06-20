@@ -12,6 +12,16 @@
 #' @param .subject_col Character column name of subject identifier. (default to ID or USUBJID)
 #' @param .col_check Character column name of variable to check if subject only has 1 distinct value of
 #' 
+#' @examples 
+#' library(dplyr)
+#' Theoph2 <- Theoph %>% dplyr::group_by(Subject) %>% dplyr::slice(1) %>% dplyr::ungroup()
+#' 
+#' # Check if each subject has only one row
+#' df_subject_check(Theoph2, .subject_col = "Subject")
+#' 
+#' # Check if each subject has only one distinct Dose value
+#' df_subject_check(Theoph2, .subject_col = "Subject", .col_check = "Dose")
+#' 
 #' @export
 df_subject_check <- function(.df,
                              .subject_col = NULL,
