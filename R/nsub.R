@@ -10,29 +10,15 @@
 #' @author Samuel P Callisto, PhD
 #' 
 #' @export
-nsub <- function(.df, .subject_col = NULL) {
+nsub <- function(.df, .subject_col = "USUBJID") {
   
-  if (!is.null(.subject_col) & !inherits(.subject_col, "character")) {
+  if (!inherits(.subject_col, "character")) {
     stop(".subject_col must be character format")
   }
   
-  if (is.null(.subject_col)) {
-    
-    if (!is.null(.df[["ID"]])) {
-      .subject_col = "ID"
-    }
-    
-    if (!is.null(.df[["USUBJID"]])) {
-      .subject_col = "USUBJID"
-    }
-    
-    if (is.null(.subject_col)) {
-      stop("Please define .subject_col")
-    }
-    
+  if (!(.subject_col %in% names(.df))) {
+    stop(paste0(.subject_col, " not in .df"))
   }
   
-  .df %>% 
-    dplyr::distinct(!!dplyr::sym(.subject_col)) %>% 
-    nrow()
+  length(unique(.df[[.subject_col]]))
   }
