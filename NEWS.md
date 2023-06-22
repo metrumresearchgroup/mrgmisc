@@ -4,8 +4,6 @@
 
 - `nsub` now only takes quoted arguments and will default to ID and USUBJID as subject columns. (#25)
 
-- `df_subject_check` added to the package to perform common data set checks. (#25)
-
 - `is_distinct` added to the package. (#25)
 
 # mrgmisc 0.1.3
