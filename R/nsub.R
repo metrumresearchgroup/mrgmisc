@@ -10,15 +10,6 @@
 #' @author Samuel P Callisto, PhD
 #' 
 #' @export
-nsub <- function(.df, .subject_col = "USUBJID") {
-  
-  if (!inherits(.subject_col, "character")) {
-    stop(".subject_col must be character format")
-  }
-  
-  if (!(.subject_col %in% names(.df))) {
-    stop(paste0(.subject_col, " not in .df"))
-  }
-  
-  length(unique(.df[[.subject_col]]))
-  }
+nsub <- function(.df, .subject_col) {
+  nrow(dplyr::distinct(.df, !!rlang::ensym(.subject_col)))
+}

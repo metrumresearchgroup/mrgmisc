@@ -4,7 +4,7 @@
 \alias{nsub}
 \title{Count number of IDs in a NONMEM data set}
 \usage{
-nsub(.df, .subject_col = "USUBJID")
+nsub(.df, .subject_col)
 }
 \arguments{
 \item{.df}{data.frame containing subject column}
