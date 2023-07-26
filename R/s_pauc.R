@@ -35,7 +35,7 @@ s_pauc_i <- function(df, idv, dv, range, digits = Inf) {
   
   out[[paste0("pAUC", range[1], "_", range[2])]] <- out$mrgmisc_ANS
   
-  out <- out %>% dplyr::select(-starts_with("mrgmisc_"))
+  out <- out %>% dplyr::select(-dplyr::starts_with("mrgmisc_"))
 
   if(!is.null(grps)) out <- dplyr::group_by(out, !!!rlang::syms(grps))
   return(out)

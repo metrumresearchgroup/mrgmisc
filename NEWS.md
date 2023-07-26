@@ -1,10 +1,18 @@
+# mrgmisc developent
+
+## New features and changes
+
+- `nsub` now only takes quoted arguments and will default to ID and USUBJID as subject columns. (#25)
+
+- `is_distinct` added to the package. (#25)
+
 # mrgmisc 0.1.3
 
 ## New features and changes
 
 - `pool` and `pool_df` now include data.frame names in comparison. (#19)
 
-- `saerch_df` added to the package to search for all occurences of a value in a data.frame. (#20)
+- `saerch_df` added to the package to search for all occurrences of a value in a data.frame. (#20)
 
 ## Bug fixes
 
