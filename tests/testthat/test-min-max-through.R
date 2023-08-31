@@ -14,24 +14,24 @@ vec2_maxes <- c(1, 2, 4, 4, 7, 7)
 vec3_mins <- c(NA, 1, 1, 1)
 vec3_maxes <- c(NA, 1, 3, 3)
 
-test_that("min_through properly calculates values [MRG-MMAX-001]", {
+test_that("min_through properly calculates values", {
   expect_equal(min_through(vec1), vec1_mins)
   expect_equal(min_through(vec2), vec2_mins)
 })
 
-test_that("max_through properly calculates values [MRG-MMAX-002]", {
+test_that("max_through properly calculates values", {
   expect_equal(max_through(vec1), vec1_maxes)
   expect_equal(max_through(vec2), vec2_maxes)
 })
 
-test_that("min_through and max_through: NA's properly maintained [MRG-MMAX-003]", {
+test_that("min_through and max_through: NA's properly maintained", {
   expect_equal(min_through(vec3), vec3_mins)
   expect_equal(min_through(vec3), vec3_mins)
   expect_equal(max_through(vec3), vec3_maxes)
   expect_equal(max_through(vec3), vec3_maxes)
 })
 
-test_that("min_through and max_through: Works with tidy pipe [MRG-MMAX-003]", {
+test_that("min_through and max_through: Works with tidy pipe", {
   chk1 <- Theoph %>% dplyr::mutate(minthrough = min_through(Subject))
   expect_equal(chk1$minthrough[50], 5)
 })

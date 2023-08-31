@@ -1,4 +1,4 @@
-test_that("nsub accurately determines the number of patients in a data set [MRG-NSUB-001]", {
+test_that("nsub accurately determines the number of patients in a data set", {
   expect_equal(nsub(.df = Theoph, .subject_col = "Subject"), 12)
   expect_equal(nsub(.df = Theoph, .subject_col = Subject), 12)
   

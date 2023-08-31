@@ -6,7 +6,7 @@ test_df <-
     Value = c(12, 1, -99, 13, 5, 2)
   )
 
-test_that("search_df provides accurate count of all columns with a specified numeric value [MRG-SDF-001]", {
+test_that("search_df provides accurate count of all columns with a specified numeric value", {
   
   search1 <- search_df(Theoph, 0)
   expect_equal(search1$name, c("Time", "conc"))
@@ -25,7 +25,7 @@ test_that("search_df provides accurate count of all columns with a specified num
   
 })
 
-test_that("search_df provides accurate count of all columns with a specified character value [MRG-SDF-002]", {
+test_that("search_df provides accurate count of all columns with a specified character value", {
   
   search1 <- search_df(test_df, "D")
   expect_equal(search1$name, c("Name"))
