@@ -69,4 +69,3 @@
 
 - Pharmacometrics-specific functions brought over from `metrumrg` include:
   `as_nmctl()`
-

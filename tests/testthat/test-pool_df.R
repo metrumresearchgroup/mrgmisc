@@ -1,4 +1,4 @@
-test_that("pool_df returns the shared names across two data.frames [MRG-PODF-001]", {
+test_that("pool_df returns the shared names across two data.frames", {
   Theoph_mod <- Theoph %>% dplyr::mutate(NEWCOL = 1) %>% dplyr::select(-Dose)
   comp <- pool_df(x = Theoph, y = Theoph_mod)
   expect_equal(comp$both, c("Subject", "Wt", "Time", "conc"))
@@ -14,7 +14,7 @@ test_that("pool_df returns the shared names across two data.frames [MRG-PODF-001
   expect_true(comp2$mtcars_mod == "engine")
 })
 
-test_that("pool_df returns the unshared names across data.frames [MRG-PODF-002]", {
+test_that("pool_df returns the unshared names across data.frames", {
   Theoph_mod <- Theoph %>% dplyr::mutate(NEWCOL = 1) %>% dplyr::select(-Dose)
   comp <- pool_df(x = Theoph, y = Theoph_mod)
   expect_equal(comp$Theoph, c("Dose"))

@@ -1,7 +1,7 @@
 
 # Break argument ----------------------------------------------------------
 
-test_that("set_bins expected output: Breaks out of order [MRG-STBN-001]", {
+test_that("set_bins expected output: Breaks out of order", {
   x <- Theoph$conc
   res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(1, 0, 0.5)))
   res2 <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1)))
@@ -16,7 +16,7 @@ test_that("set_bins expected output: Breaks out of order [MRG-STBN-001]", {
 })
 
 # if one break provided, assumes breaks <- c(-Inf, breaks, Inf)
-test_that("set_bins expected output: 1 break provided [MRG-STBN-001]", {
+test_that("set_bins expected output: 1 break provided", {
   x <- Theoph$conc
   res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.2)))
   res2 <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.2)),lower_bound = -Inf, upper_bound = Inf)
@@ -31,7 +31,7 @@ test_that("set_bins expected output: 1 break provided [MRG-STBN-001]", {
 })
 
 # if no break specified, do quartiles
-test_that("set_bins expected output: Default 4 bins quartiles if break not specified [MRG-STBN-001]", {
+test_that("set_bins expected output: Default 4 bins quartiles if break not specified", {
   x <- Theoph$conc
   res <- set_bins(x) 
   res2 <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0, 0.25, 0.5, 0.75, 1)))
@@ -49,7 +49,7 @@ test_that("set_bins expected output: Default 4 bins quartiles if break not speci
 
 ## Lower bound ------------------------------------------------------------
 # lower_bound default -Inf
-test_that("set_bins bound tests: lower_bound -Inf [MRG-STBN-002]", {
+test_that("set_bins bound tests: lower_bound -Inf", {
   x <- Theoph$conc
   res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 1)), lower_bound = -Inf)
   expect_true(all(!is.na(res)))
@@ -60,7 +60,7 @@ test_that("set_bins bound tests: lower_bound -Inf [MRG-STBN-002]", {
 })
 
 # if 1st break > lower_bound and lower_bound is not NA, then lower_bound overrides 1st break
-test_that("set_bins bound tests: Discrete min number, break[1] > lower_bound [MRG-STBN-002]", {
+test_that("set_bins bound tests: Discrete min number, break[1] > lower_bound", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(min(x) + 0.4, 0.5, 1))
   res <- set_bins(x, breaks = xbreak, lower_bound = min(x))
@@ -74,7 +74,7 @@ test_that("set_bins bound tests: Discrete min number, break[1] > lower_bound [MR
 })
 
 # if lower_bound > actual min, then all obs less than lower_bound put into NA bin
-test_that("set_bins bound tests: Discrete number > actual min [MRG-STBN-002]", {
+test_that("set_bins bound tests: Discrete number > actual min", {
   x <- Theoph$conc
   res <- set_bins(x, breaks = stats::quantile(x, na.rm = T, probs= c(min(x) + 0.1, 0.5, 1)), lower_bound = min(x)+ 0.1)
   expect_false(all(!is.na(res)))
@@ -87,7 +87,7 @@ test_that("set_bins bound tests: Discrete number > actual min [MRG-STBN-002]", {
  
 ## Upper bound ------------------------------------------------------------
 #upper_bound default: Inf
-test_that("set_bins bound tests: upper_bound -Inf [MRG-STBN-002]", {
+test_that("set_bins bound tests: upper_bound -Inf", {
   x <- Theoph$conc
   res <- set_bins(x, upper_bound = Inf)
   expect_true(all(!is.na(res)))
@@ -98,7 +98,7 @@ test_that("set_bins bound tests: upper_bound -Inf [MRG-STBN-002]", {
 })
 
 # if last break < upper_bound and upper_bound is not NA, then upper_bound overrides last break
-test_that("set_bins bound tests: Discrete max number, break[n] > upper_bound [MRG-STBN-002]", {
+test_that("set_bins bound tests: Discrete max number, break[n] > upper_bound", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 0.8))
   res <- set_bins(x, breaks = xbreak, upper_bound = max(x)) 
@@ -112,7 +112,7 @@ test_that("set_bins bound tests: Discrete max number, break[n] > upper_bound [MR
 })
 
 # if upper_bound < actual max, then all obs greater than upper_bound put into NA bin
-test_that("set_bins bound tests: Discrete number < actual max [MRG-STBN-002]", {
+test_that("set_bins bound tests: Discrete number < actual max", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0.4, 0.5, 0.8))
   res <- set_bins(x, breaks = xbreak, upper_bound = max(x)-0.2) 
@@ -127,7 +127,7 @@ test_that("set_bins bound tests: Discrete number < actual max [MRG-STBN-002]", {
 
 # Inclusive argument ------------------------------------------------------
 #include max value of largest user defined bin even though lower bins are non-inclusive
-test_that("set_bins inclusive tests: inclusive = TRUE and upper bound = Inf, n bins = n breaks -1 [MRG-STBN-003]", {
+test_that("set_bins inclusive tests: inclusive = TRUE and upper bound = Inf, n bins = n breaks -1", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = Inf
@@ -138,7 +138,7 @@ test_that("set_bins inclusive tests: inclusive = TRUE and upper bound = Inf, n b
   )
 })
 
-test_that("set_bins inclusive tests: inclusive = FALSE and upper bound = Inf, n bins = n breaks [MRG-STBN-003]", {
+test_that("set_bins inclusive tests: inclusive = FALSE and upper bound = Inf, n bins = n breaks", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = Inf
@@ -149,7 +149,7 @@ test_that("set_bins inclusive tests: inclusive = FALSE and upper bound = Inf, n 
   )
 })
 
-test_that("set_bins inclusive tests: inclusive = TRUE and discrete upper bound, n bins = n breaks -1 [MRG-STBN-003]", {
+test_that("set_bins inclusive tests: inclusive = TRUE and discrete upper bound, n bins = n breaks -1", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = max(x)-2
@@ -160,7 +160,7 @@ test_that("set_bins inclusive tests: inclusive = TRUE and discrete upper bound, 
   )
 })
 
-test_that("set_bins inclusive tests: inclusive = FALSE and discrete upper bound, n bins = n breaks -1 [MRG-STBN-003]", {
+test_that("set_bins inclusive tests: inclusive = FALSE and discrete upper bound, n bins = n breaks -1", {
   x <- Theoph$conc
   xbreak <- stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   xupper = max(x)-2
@@ -174,7 +174,7 @@ test_that("set_bins inclusive tests: inclusive = FALSE and discrete upper bound,
 # Between argument --------------------------------------------------------
 
 # if val between c(min_between, max_between), then bin 1. Less than min_between, then bin 0. Greater than max_between, then bin 2
-  test_that("set_bins between tests: Discrete number with between argument [MRG-STBN-004]", {
+  test_that("set_bins between tests: Discrete number with between argument", {
     x <- Theoph$conc
     min_between <- min(x) + 1
     max_between <- max(x) - 5
@@ -188,7 +188,7 @@ test_that("set_bins inclusive tests: inclusive = FALSE and discrete upper bound,
     expect_true(all(!is.na(res)))
   })
 
-test_that("set_bins between tests: Discrete number with between argument all > max val [MRG-STBN-004]", {
+test_that("set_bins between tests: Discrete number with between argument all > max val", {
   x <- Theoph$conc
   min_between <- max(x) + 1
   max_between <- max(x) + 5
@@ -202,7 +202,7 @@ test_that("set_bins between tests: Discrete number with between argument all > m
   expect_true(all(!is.na(res)))
 })
 
-test_that("set_bins between tests: Discrete number with between argument all < min val [MRG-STBN-004]", {
+test_that("set_bins between tests: Discrete number with between argument all < min val", {
   x <- Theoph$conc
   min_between <- min(x) + 1
   max_between <- min(x) - 5
@@ -217,7 +217,7 @@ test_that("set_bins between tests: Discrete number with between argument all < m
 })
 
 # error message if between length(between) != 2
-  test_that("set_bins between tests: Error length(between) !=2 [MRG-STBN-004]", {
+  test_that("set_bins between tests: Error length(between) !=2", {
     x <- Theoph$conc
     expect_error(set_bins(x,  between = c(1)),
                  "can only have 2 breaks to use the between functionality") 
@@ -225,7 +225,7 @@ test_that("set_bins between tests: Discrete number with between argument all < m
 
 # Quiet argument ----------------------------------------------------------
 
-test_that("set_bins quiet tests: quiet= false print message [MRG-STBN-005]", {
+test_that("set_bins quiet tests: quiet= false print message", {
   x <- Theoph$conc
   xbreaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
   res <- set_bins(x, breaks= xbreaks, quiet = FALSE)
@@ -241,7 +241,7 @@ test_that("set_bins quiet tests: quiet= false print message [MRG-STBN-005]", {
   )))
 })
 
-  test_that("set_bins quiet tests: quiet= between argument and false print message[MRG-STBN-005]", {
+  test_that("set_bins quiet tests: quiet= between argument and false print message", {
     x <- Theoph$conc
     xbreaks = stats::quantile(x, na.rm = T, probs= c(0, 0.5, 1))
     res <- set_bins(x, breaks= xbreaks, quiet = FALSE, between = c(5, 8))

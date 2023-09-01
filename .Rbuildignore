@@ -2,7 +2,6 @@
 ^\.Rproj\.user$
 ^\.travis\.yml$
 .Rprofile
-NEWS\.md
 demo/pandas
 ^\.httr-oauth$
 ^wercker\.yml$
