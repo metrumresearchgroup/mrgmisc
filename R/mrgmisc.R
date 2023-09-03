@@ -56,3 +56,13 @@ NULL
 #' @keywords internal
 #' @format A data frame with 1536 rows and 11 variables
 NULL
+
+#' @keywords internal
+"_PACKAGE"
+
+globalVariables(
+  c(
+    "mrgmisc_idv",
+    "mrgmisc_dv"
+  )
+)
