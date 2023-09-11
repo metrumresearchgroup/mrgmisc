@@ -1,3 +1,9 @@
+# mrgmisc 0.1.5
+
+## New features and changes
+
+- Updates to improve mpn.scorecard score. (#30)
+
 # mrgmisc 0.1.4
 
 ## New features and changes
