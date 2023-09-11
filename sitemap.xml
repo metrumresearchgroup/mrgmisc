@@ -4,9 +4,6 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/404.html</loc>
   </url>
   <url>
-    <loc>https://metrumresearchgroup.github.io/mrgmisc/NEWS_release.html</loc>
-  </url>
-  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/articles/index.html</loc>
   </url>
   <url>
@@ -59,6 +56,9 @@
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/is_distinct.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/max_through.html</loc>
