@@ -1,4 +1,4 @@
-#' Count number of IDs in a NONMEM data set
+#' Count number of IDs in a NONMEM data sets
 #' 
 #' @param .df data.frame containing subject column
 #' @param .subject_col column name that will be used to uniquely identify IDs
