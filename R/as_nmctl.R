@@ -1,14 +1,14 @@
-#' @keywords internal
+#' @noRd
 `contains` <-
   function(pattern,text,...){
     hits <- regexpr(pattern,text,...)
     hits >=0
   }
 
-#' @keywords internal
+#' @noRd
 `%contains%` <- function(x,y)contains(y,x)
 
-#' @keywords internal
+#' @noRd
 `prev` <-
   #function(x)c(NA,x[-length(x)])#last observation
   function(x){
@@ -19,7 +19,7 @@
     x
   }
 
-#' @keywords internal
+#' @noRd
 `runhead` <-
   function(x){#not like last observation
     n <- x != prev(x)
