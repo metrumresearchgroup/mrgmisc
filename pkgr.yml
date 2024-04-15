@@ -11,7 +11,7 @@ Packages:
 
 Repos:
   - CRAN: https://cran.rstudio.com
-  - MPN: https://mpn.metworx.com/snapshots/stable/2022-06-15 # used for mrgval
+  - MPN: https://mpn.metworx.com/snapshots/stable/2024-03-01
   - scorecard: https://s3.amazonaws.com/mpn.metworx.dev/releases/mpn.scorecard/0.1.0
 Lockfile:
   Type: renv

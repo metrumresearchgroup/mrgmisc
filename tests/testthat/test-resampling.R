@@ -2,7 +2,7 @@ context("resampledf")
 
 
 dapa<- sd_oral_richpk %>% capitalize_names() %>%
-  dplyr::filter(TIME %in% c(0, 0.5), ID %in% 5:7)%>%
+  dplyr::filter(TIME %in% c(0, 0.5))%>%
   dplyr::select(ID, AGE, TIME)
 
 no_extras <- resample_df(dapa, key_cols = "ID", strat_cols = "AGE", key_col_name = "Key", n=5) 
