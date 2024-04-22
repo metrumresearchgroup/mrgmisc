@@ -47,6 +47,7 @@ reference:
     - parens
     - ht
     - right
+    - hash
   - title: Pharmacometrics-specific
     contents:
     - auc_inf
