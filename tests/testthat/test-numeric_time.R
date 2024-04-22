@@ -6,3 +6,12 @@ test_that("numeric_time accurately calculates the decimal time from type POSIXct
   expect_equal(numeric_time(times)[1], 12.57)
   expect_equal(numeric_time(times)[2], 4.53)
 })
+
+test_that("numeric_time handles negative times correctly", {
+  
+  times2 <- c("3:05", "-3:05", "-11:40")
+  numeric_time(times2)
+  
+  expect_equal(numeric_time(times2)[1], numeric_time(times2)[2]*-1)
+  
+})

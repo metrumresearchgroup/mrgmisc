@@ -4,6 +4,10 @@
 
 - Updated `pool` to keep output list names consistent. (#45)
 
+## Bug fixes
+
+- `numeric_time` was udpated to work with negative times. (#43)
+
 # mrgmisc 0.1.5
 
 ## New features and changes

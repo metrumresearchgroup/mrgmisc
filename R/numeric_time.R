@@ -22,8 +22,13 @@ numeric_time <- function(.col) {
   
   sapply(strsplit(.col,":"),
          function(x) {
-           x <- as.numeric(x)
-           round(x[1]+x[2]/60,2)
+           x_num <- as.numeric(x)
+           x_num <- abs(x_num)
+           res <- round(x_num[1]+x_num[2]/60,2)
+           if (grepl("-", x[1])) {
+             res <- res * -1
+           }
+           res
          }
   )
 }
