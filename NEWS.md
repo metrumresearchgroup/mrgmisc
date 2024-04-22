@@ -1,4 +1,4 @@
-# mrgmisc development
+# mrgmisc 0.2.0
 
 ## New features and changes
 
