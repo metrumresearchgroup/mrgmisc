@@ -1,3 +1,9 @@
+# mrgmisc development
+
+## New features and changes
+
+- Updated `pool` to keep output list names consistent. (#45)
+
 # mrgmisc 0.1.5
 
 ## New features and changes
