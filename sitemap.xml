@@ -28,9 +28,6 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/auc_partial.html</loc>
   </url>
   <url>
-    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/auc_partial_cpp.html</loc>
-  </url>
-  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/capitalize_names.html</loc>
   </url>
   <url>
@@ -46,10 +43,10 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/geomean.html</loc>
   </url>
   <url>
-    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/get_key.html</loc>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/half_life.html</loc>
   </url>
   <url>
-    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/half_life.html</loc>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/hash.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/ht.html</loc>
@@ -65,6 +62,9 @@
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/min_through.html</loc>
+  </url>
+  <url>
+    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/mrgmisc-package.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/nasum.html</loc>
@@ -121,16 +121,10 @@
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/set_bins.html</loc>
   </url>
   <url>
-    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/set_bins_cpp.html</loc>
-  </url>
-  <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/set_bins_df.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/snap.html</loc>
-  </url>
-  <url>
-    <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/stratify_df.html</loc>
   </url>
   <url>
     <loc>https://metrumresearchgroup.github.io/mrgmisc/reference/write_nonmem.html</loc>
