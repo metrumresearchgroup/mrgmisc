@@ -9,6 +9,8 @@
 #' @export
 row_compare <- function(.df) {
   
+  # Switch to this -> .df[1,] == .df[2,]
+  
   keep_cols <- list()
   
   for (name.i in names(.df)) {
