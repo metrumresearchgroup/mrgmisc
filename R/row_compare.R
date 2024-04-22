@@ -6,10 +6,11 @@
 #' 
 #' @param .df data.frame containing rows to compare
 #' 
+#' @examples 
+#' row_compare(mtcars[1:3,])
+#' 
 #' @export
 row_compare <- function(.df) {
-  
-  # Switch to this -> .df[1,] == .df[2,]
   
   keep_cols <- list()
   
