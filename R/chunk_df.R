@@ -35,7 +35,7 @@ chunk_df <- function(.gdf, ..., .nchunks = parallel::detectCores(), .as_list = T
   .dots <- rlang::eval_bare(substitute(alist(...)))
   if (length(.dots) > 0) {
     # handle NSE
-    if (class(.dots[[1]]) == "name") {
+    if (inherits(.dots[[1]], "name")) {
       .gdf <- dplyr::group_by(.gdf, ...)
     } else {
       # expect a named vector

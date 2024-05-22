@@ -24,7 +24,7 @@ Authors:
   \item Devin Pastoor \email{devin.pastoor@gmail.com}
   \item Kyle Baron \email{kyleb@metrumrg.com}
   \item Grace O'Brien \email{graceo@metrumrg.com}
-  \item Tim B \email{TODO}
+  \item Tim Bergsma \email{timb@metrumrg.com}
 }
 
 }
