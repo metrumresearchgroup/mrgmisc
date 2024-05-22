@@ -38,6 +38,7 @@ reference:
     - geomean
     - search_df
     - is_distinct
+    - row_compare
   - title: Formatting
     contents:
     - capitalize_names
