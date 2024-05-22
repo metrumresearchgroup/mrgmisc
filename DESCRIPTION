@@ -7,7 +7,7 @@ Authors@R: c(
     person("Devin", "Pastoor", email = "devin.pastoor@gmail.com", role = "aut"),
     person("Kyle", "Baron", email = "kyleb@metrumrg.com", role = "aut"),
     person("Grace", "O'Brien", email = "graceo@metrumrg.com", role = "aut"),
-    person("Tim", "B", email = "TODO", role = "aut"))
+    person("Tim", "Bergsma", email = "timb@metrumrg.com", role = "aut"))
 Description: MRG Helpers.
 URL: https://github.com/metrumresearchgroup/mrgmisc
 BugReports: https://github.com/metrumresearchgroup/mrgmisc/issues
@@ -28,14 +28,14 @@ Imports:
     hms,
     lubridate,
     tidyr,
-    ggplot2,
     purrr
 Suggests:
     sessioninfo,
     knitr,
     rmarkdown,
     readr,
-    testthat
+    testthat,
+    ggplot2
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr

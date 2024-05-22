@@ -6,7 +6,7 @@ demo/pandas
 ^\.httr-oauth$
 ^wercker\.yml$
 ^pauc\.cpp$
-^README-.*\.png$
+^README\.Rmd$
 ^appveyor\.yml$
 docs
 ^_pkgdown\.yml$
