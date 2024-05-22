@@ -11,7 +11,7 @@ demo/pandas
 docs
 ^_pkgdown\.yml$
 ^LICENSE\.md$
-^\.drone\.yml$
+^\.github$
 ^pkgr.yml$
 ^renv$
 ^renv\.lock$
