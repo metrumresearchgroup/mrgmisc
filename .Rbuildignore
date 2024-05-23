@@ -6,12 +6,12 @@ demo/pandas
 ^\.httr-oauth$
 ^wercker\.yml$
 ^pauc\.cpp$
-^README-.*\.png$
+^README\.Rmd$
 ^appveyor\.yml$
 docs
 ^_pkgdown\.yml$
 ^LICENSE\.md$
-^\.drone\.yml$
+^\.github$
 ^pkgr.yml$
 ^renv$
 ^renv\.lock$

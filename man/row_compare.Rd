@@ -13,3 +13,7 @@ row_compare(.df)
 Return a data.frame containing only the columns where the rows
 are not identical.
 }
+\examples{
+row_compare(mtcars[1:3,])
+
+}

@@ -74,7 +74,7 @@ chunk_grp <- function(.x, .nchunk = parallel::detectCores()) {
 #' @describeIn chunk used when desirable to have output be a list
 #' @export
 chunk_list <- function(.x, .nchunk = parallel::detectCores()) {
-  if (class(.x) == "list") warning("It's recommended to input a vector as this function converts input to list")
+  if (inherits(.x, "list")) warning("It's recommended to input a vector as this function converts input to list")
   .c <- chunk(.x, .nchunk)
   unname(split(.x, .c))
 }

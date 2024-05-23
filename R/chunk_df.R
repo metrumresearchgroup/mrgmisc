@@ -30,12 +30,12 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c(".", "indices__", "chunk
 #' 
 #' @export
 chunk_df <- function(.gdf, ..., .nchunks = parallel::detectCores(), .as_list = TRUE) {
-  if (!any(class(.gdf) %in% c("nfnGroupedData", "nfGroupedData", "groupedData", "data.frame"))) stop("Input needs to be class data.frame")
+  if (!inherits(.gdf, "data.frame")) stop("Input needs to be class data.frame")
   # this is equivalent to dplyrs internal dots()
   .dots <- rlang::eval_bare(substitute(alist(...)))
   if (length(.dots) > 0) {
     # handle NSE
-    if (class(.dots[[1]]) == "name") {
+    if (inherits(.dots[[1]], "name")) {
       .gdf <- dplyr::group_by(.gdf, ...)
     } else {
       # expect a named vector
