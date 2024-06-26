@@ -135,45 +135,22 @@ check that all keys only have one stratification variable associated
     sample <- sample[, key_cols, drop=F] 
     sample[[key_col_name]] <- 1:nrow(sample)
   }
-  resampled_df <- dplyr::left_join(sample, df, by = key_cols)
+  
+  resampled_df <- dplyr::tibble()
+  
+  for (i in 1:nrow(sample)) {
+    
+    resampled_df <-
+      dplyr::bind_rows(
+        resampled_df,
+        sample %>% 
+          dplyr::slice(i) %>% 
+          dplyr::inner_join(df)
+      )
+    
+  }
   
   
   #reorder columns to match original df with key column appended
   return(resampled_df[,names, drop=F])
 }
-#
-#
-#library(PKPDdatasets)
-#dat <- sd_oral_richpk
-#sid_dat <- filter(dat, !duplicated(ID))
-#sid_dat %>% group_by(Gender) %>% summarize(n = n())
-#stratify_df(sid_dat, strat_cols=c("ID", "Gender"), n= 50)%>% ungroup() %>%
-#  group_by(Gender) %>% summarize(n = n())
-#stratify_df(sid_dat, strat_cols=c("ID", "Gender"), n= 100)%>% ungroup() %>%
-#  group_by(Gender) %>% summarize(n = n())
-#sid_dat %>% group_by(Gender, Race) %>% summarize(n = n())
-#stratify_df(sid_dat, strat_cols=c("ID", "Gender", "Race"), 50)%>% 
-#  group_by(Gender, Race) %>% summarize(n = n())
-#
-#
-#rep_dat <- rbind_all(lapply(1:5, function(x) dat %>%
-#                              filter(ID < 20) %>% 
-#                              mutate(REP = x)))
-#resample_df(rep_dat, key_cols = c("ID", "REP"))
-#rep_dat %>% group_by(Gender) %>% summarize(n = n())
-#rep_dat %>% group_by(Gender, Race) %>% summarize(n = n())
-#resample_df(rep_dat, key_cols=c("ID", "REP"), strat_cols=c("Gender", "Race")) %>%
-#  group_by(Gender, Race) %>% summarize(n = n())
-#unique(resample_df(rep_dat, key_cols=c("ID", "REP"))[["KEY"]])
-#stratify_df(rep_dat, strat_cols=c("ID", "REP", "Gender", "Race"), 50, return_all=F)%>% 
-#  group_by(Gender, Race) %>% summarize(n = n())
-#
-#resample_df(rep_dat, 
-#            key_cols=c("ID", "REP"), 
-#            strat_cols=c("Gender", "Race"),
-#            n =50) %>% group_by(Gender, Race) %>% filter(!duplicated(KEY)) %>%
-#  summarize(n = n())
-#
-#rep_dat %>% mutate(totn = n()) %>% 
-#  group_by(Gender, Race) %>% summarize(n =n()/mean(totn))
-#
