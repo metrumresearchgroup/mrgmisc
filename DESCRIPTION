@@ -19,7 +19,6 @@ Imports:
     dplyr (>= 0.5.0),
     data.table,
     glue,
-    lazyeval,
     magrittr,
     Rcpp (>= 0.12.10),
     rlang,

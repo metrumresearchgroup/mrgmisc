@@ -80,7 +80,6 @@ s_pauc_ <- function(df, idv, dv, paucs, digits = Inf) {
 #' sd_oral_richpk  %>% group_by(ID) %>% s_pauc_("Time", "Conc", list(c(0,8), c(8, 24)))
 #' @export
 s_pauc <- function(df, idv, dv, paucs, digits = Inf) {
-  # currently using lazyeval isn't a good solution as fails
   # ifa column name matches a function name (eg time)
   s_pauc_(df, deparse(substitute(idv)), deparse(substitute(dv)), paucs, digits = digits)
 }
