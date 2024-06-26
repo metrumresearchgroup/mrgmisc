@@ -1,31 +1,22 @@
-s_quantiles_i <- function(.data, x, prob, na_rm = TRUE) {
-  dots = list(lazyeval::interp(~ quantile(x, prob, na.rm = na_rm), 
-                               x = as.name(x)))
-  # after discussion with hadley, the last group is dropped by design with dplyr
-  # given that it is unique at that point
-  # for now, I do not want to do that as I want to keep track of all grouped
-  # variables to determine how to handle the summaries after (eg will want additional)
-  # summaries on all non-group columns (in this case all pauc cols) so don't want
-  # the group to be dropped
-  grps <- if (inherits(.data, "grouped_df")) {
-    dplyr::groups(.data)
-  } else {
-    NULL
-  }
-  out <- .data %>% dplyr::summarize_(.dots = setNames(dots, 
-                                                      paste0(x, 
-                                                             "_q", 
-                                                             prob*100)))
-  if(!is.null(grps)) out <- dplyr::group_by(out, !!!rlang::syms(grps))
-  return(out)
-}
-
 #' @rdname s_quantiles
 #' @export
 s_quantiles_<- function(.data, x, probs, na_rm = TRUE) {
-  quantiles_df <- lapply(probs, function(p) {
-    s_quantiles_i(.data, x, p, na_rm)
-  })
+  
+  quantiles_df <- list()
+  
+  for (i in 1:length(probs)) {
+    
+    .df_tmp <-
+      .data %>% 
+      dplyr::summarise(valMRGMISC = quantile(!!rlang::sym(x), probs[i], na.rm = na_rm), .groups = "keep")
+    
+    .df_tmp[[paste0(x,"_q",probs[i]*100)]] <- .df_tmp$valMRGMISC
+    .df_tmp$valMRGMISC <- NULL
+    
+    quantiles_df[[i]] <- .df_tmp
+    
+  }
+  
   #check if grouped df and if so adjust behavior to bind together the list
   # of quantiles given back from lapply
   if(any(grepl("grouped", attributes(.data)$class))) {
