@@ -22,6 +22,11 @@ test_that("resample_df unexpected input: Appropriate error occurs", {
 })
 
 test_that("resample_df expected output: Works with no stratification", {
+  expect_equal(
+    nrow(resample_df(Theoph, key_cols = "Subject", key_col_name = "Key")),
+    nrow(Theoph)
+  )
+  
   df1 <- resample_df(Theoph, key_cols = "Subject", key_col_name = "Key", n=20)
   expect_equal(nrow(df1), 220)
   expect_equal(dplyr::n_distinct(df1$Key), 20)
@@ -37,3 +42,4 @@ test_that("resample_df unexpected input: Works with n as Null", {
   df2 <- resample_df(Theoph, key_cols = "Subject")
   expect_equal(nrow(df2), 132)
 })
+
