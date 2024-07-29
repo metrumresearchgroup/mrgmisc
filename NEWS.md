@@ -1,3 +1,13 @@
+# mrgmisc 0.2.1
+
+- Added `row_compare()` function to find columns where rows are not identical. (#47)
+
+## Bug fixes
+
+- Updated resampling functions to remove `dplyr::left_join()` warning. (#51)
+
+- Updated `s_quantiles()` to remove `dplyr::summarize_()` warning. (#50)
+
 # mrgmisc 0.2.0
 
 ## New features and changes
