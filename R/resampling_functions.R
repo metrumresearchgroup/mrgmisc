@@ -135,20 +135,7 @@ check that all keys only have one stratification variable associated
     sample <- sample[, key_cols, drop=F] 
     sample[[key_col_name]] <- 1:nrow(sample)
   }
-  
-  resampled_df <- dplyr::tibble()
-  
-  for (i in 1:nrow(sample)) {
-    
-    resampled_df <-
-      dplyr::bind_rows(
-        resampled_df,
-        sample %>% 
-          dplyr::slice(i) %>% 
-          dplyr::inner_join(df)
-      )
-    
-  }
+  resampled_df <- dplyr::left_join(sample, df, by = key_cols)
   
   
   #reorder columns to match original df with key column appended
