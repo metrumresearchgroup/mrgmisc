@@ -135,7 +135,11 @@ check that all keys only have one stratification variable associated
     sample <- sample[, key_cols, drop=F] 
     sample[[key_col_name]] <- 1:nrow(sample)
   }
-  resampled_df <- dplyr::left_join(sample, df, by = key_cols)
+  
+  # Specify join relationship based on replacement to silence warning:
+  #  "Detected an unexpected many-to-many relationship between `x` and `y`"
+  relat <- if(isTRUE(replace)) "many-to-many" else NULL
+  resampled_df <- dplyr::left_join(sample, df, by = key_cols, relationship = relat)
   
   
   #reorder columns to match original df with key column appended
