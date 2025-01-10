@@ -137,7 +137,7 @@ check that all keys only have one stratification variable associated
   }
   
   # relationship arg added in dplyr 1.1.0
-  if (utils::packageVersion("dplyr") >= "1.1.0") {
+  if (utils::packageVersion("dplyr") >= "1.1.1") {
     # Specify join relationship based on replacement to silence warning:
     #  "Detected an unexpected many-to-many relationship between `x` and `y`"
     # - occurs when there are repeated key_cols in both data frames
