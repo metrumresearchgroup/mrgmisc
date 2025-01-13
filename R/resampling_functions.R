@@ -136,20 +136,16 @@ check that all keys only have one stratification variable associated
     sample[[key_col_name]] <- 1:nrow(sample)
   }
   
-  resampled_df <- dplyr::tibble()
-  
-  for (i in 1:nrow(sample)) {
-    
-    resampled_df <-
-      dplyr::bind_rows(
-        resampled_df,
-        sample %>% 
-          dplyr::slice(i) %>% 
-          dplyr::inner_join(df)
-      )
-    
+  # relationship arg added in dplyr 1.1.1
+  if (utils::packageVersion("dplyr") >= "1.1.1") {
+    # Specify join relationship based on replacement to silence warning:
+    #  "Detected an unexpected many-to-many relationship between `x` and `y`"
+    # - occurs when there are repeated key_cols in both data frames
+    relat <- if(isTRUE(replace)) "many-to-many" else NULL
+    resampled_df <- dplyr::left_join(sample, df, by = key_cols, relationship = relat)
+  } else {
+    resampled_df <- dplyr::left_join(sample, df, by = key_cols)
   }
-  
   
   #reorder columns to match original df with key column appended
   return(resampled_df[,names, drop=F])
