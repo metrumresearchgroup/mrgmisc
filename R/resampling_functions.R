@@ -136,7 +136,7 @@ check that all keys only have one stratification variable associated
     sample[[key_col_name]] <- 1:nrow(sample)
   }
   
-  # relationship arg added in dplyr 1.1.0
+  # relationship arg added in dplyr 1.1.1
   if (utils::packageVersion("dplyr") >= "1.1.1") {
     # Specify join relationship based on replacement to silence warning:
     #  "Detected an unexpected many-to-many relationship between `x` and `y`"
