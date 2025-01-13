@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrgmisc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
       </span>
     </div>
 
@@ -57,6 +57,13 @@
       <small>Source: <a href="https://github.com/metrumresearchgroup/mrgmisc/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="0.2.2" id="mrgmisc-022">mrgmisc 0.2.2<a class="anchor" aria-label="anchor" href="#mrgmisc-022"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-0-2-2">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-2"></a></h3>
+<ul><li>The latest <code>resample_df</code> refactor done in <a href="https://github.com/metrumresearchgroup/mrgmisc/issues/51" class="external-link">#51</a> caused unnecessary join messages and hurt performance to a notable degree. These changes were reverted, and the messages referred to in <a href="https://github.com/metrumresearchgroup/mrgmisc/issues/51" class="external-link">#51</a> were addressed by specifying the <code>relationship</code> for <code>dplyr &gt;= 1.1.1</code> (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/56" class="external-link">#56</a>).</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.1" id="mrgmisc-021">mrgmisc 0.2.1<a class="anchor" aria-label="anchor" href="#mrgmisc-021"></a></h2>
 <ul><li>Added <code><a href="../reference/row_compare.html">row_compare()</a></code> function to find columns where rows are not identical. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/47" class="external-link">#47</a>)</li>
@@ -149,11 +156,11 @@
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by Michael McDermott, Devin Pastoor, Kyle Baron, Grace O’Brien, Tim Bergsma.</p>
+  <p></p><p>Developed by Michael McDermott, Devin Pastoor, Kyle Baron, Grace O’Brien, Kyle Barrett, Tim Bergsma.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
       </footer></div>
