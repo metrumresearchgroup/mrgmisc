@@ -1,3 +1,12 @@
+# mrgmisc 0.2.2
+
+## Bug fixes
+
+ - The latest `resample_df` refactor done in #51 caused unnecessary join messages
+ and hurt performance to a notable degree. These changes were reverted, and the
+ messages referred to in #51 were addressed by specifying the `relationship` for
+ `dplyr >= 1.1.1` (#56).
+
 # mrgmisc 0.2.1
 
 - Added `row_compare()` function to find columns where rows are not identical. (#47)
