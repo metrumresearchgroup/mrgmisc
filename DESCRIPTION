@@ -35,7 +35,10 @@ Suggests:
     rmarkdown,
     readr,
     testthat,
-    ggplot2
+    ggplot2, 
+    this.path, 
+    here, 
+    fs
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr
