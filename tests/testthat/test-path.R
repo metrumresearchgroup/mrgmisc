@@ -1,6 +1,3 @@
-# library(mrgmisc)
-# library(testthat)
-
 test_that("return current file name", {
   skip_if_not_installed("this.path")
   x <- this_file_name()
