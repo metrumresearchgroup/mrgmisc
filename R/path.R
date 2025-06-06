@@ -21,6 +21,9 @@ this_file_name <- function() {
 #' @md
 #' @export
 this_file_path <- function() {
+  if(!requireNamespace("this.path", quietly = TRUE)) {
+    abort("The package \"this.path\" is required.")  
+  }
   stopifnot(requireNamespace("this.path", quietly = TRUE))
   envir <- caller_env()
   this.path::this.path(envir = envir, srcfile = TRUE)
@@ -37,9 +40,15 @@ this_file_path <- function() {
 #' @md
 #' @export
 this_file_here <- function() {
-  stopifnot(requireNamespace("this.path", quietly = TRUE))
-  stopifnot(requireNamespace("here", quietly = TRUE))
-  stopifnot(requireNamespace("fs", quietly = TRUE))
+  if(!requireNamespace("this.path", quietly = TRUE)) {
+    abort("The package \"this.path\" is required.")  
+  }
+  if(!requireNamespace("here", quietly = TRUE)) {
+    abort("The package \"here\" is required.")  
+  }
+  if(!requireNamespace("fs", quietly = TRUE)) {
+    abort("The package \"fs\" is required.")  
+  }
   envir <- caller_env()
   ans <- fs::path_rel(
     this.path::this.path(envir = envir, srcfile = TRUE), 
