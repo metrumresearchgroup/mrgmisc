@@ -10,6 +10,7 @@
 this_file_name <- function() {
   basename(this_file_path())
 }
+
 #' Return the absolute path to the current script
 #' 
 #' @return
@@ -38,6 +39,7 @@ this_file_path <- function() {
 this_file_here <- function() {
   stopifnot(requireNamespace("this.path", quietly = TRUE))
   stopifnot(requireNamespace("here", quietly = TRUE))
+  stopifnot(requireNamespace("fs", quietly = TRUE))
   envir <- caller_env()
   ans <- fs::path_rel(
     this.path::this.path(envir = envir, srcfile = TRUE), 
