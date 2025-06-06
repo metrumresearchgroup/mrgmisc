@@ -4,7 +4,7 @@
 #' @importFrom stats lm predict quantile setNames
 #' @importFrom utils head read.table tail write.table
 #' @importFrom magrittr %>%
-#' @importFrom rlang .data
+#' @importFrom rlang .data caller_env
 NULL
 
 #' One-compartment pharmacokinetic data given single oral dose

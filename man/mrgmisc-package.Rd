@@ -6,12 +6,13 @@
 \alias{mrgmisc-package}
 \title{mrgmisc: MRG Helpers}
 \description{
-MRG Helpers.
+Metrum Research Group Helper Functions.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/metrumresearchgroup/mrgmisc}
+  \item \url{https://metrumresearchgroup.github.io/mrgmisc}
   \item Report bugs at \url{https://github.com/metrumresearchgroup/mrgmisc/issues}
 }
 
@@ -24,6 +25,7 @@ Authors:
   \item Devin Pastoor \email{devin.pastoor@gmail.com}
   \item Kyle Baron \email{kyleb@metrumrg.com}
   \item Grace O'Brien \email{graceo@metrumrg.com}
+  \item Kyle Barrett \email{barrettk@metrumrg.com}
   \item Tim Bergsma \email{timb@metrumrg.com}
 }
 
