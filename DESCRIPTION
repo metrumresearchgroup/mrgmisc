@@ -37,8 +37,8 @@ Suggests:
     testthat,
     ggplot2, 
     this.path, 
-    here, 
-    fs
+    fs,
+    withr
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr

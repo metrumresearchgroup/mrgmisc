@@ -13,5 +13,5 @@ The absolute path to the current script.
 Return the absolute path to the current script
 }
 \seealso{
-\code{\link[=this_file_name]{this_file_name()}}, \code{\link[=this_file_here]{this_file_here()}}
+\code{\link[=this_file_name]{this_file_name()}}, \code{\link[=this_file_project]{this_file_project()}}
 }

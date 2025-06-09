@@ -18,8 +18,16 @@ test_that("return current file name with absolute path", {
 
 test_that("return current file name with relative path", {
   skip_if_not_installed("this.path")
-  skip_if_not_installed("here")
   skip_if_not_installed("fs")
-  x <- this_file_here()
-  expect_identical(x, "tests/testthat/test-path.R")
+
+  tdir <- withr::local_tempdir("mrgmisc-")
+  fs::dir_create(tdir, "subdir")
+  fname <- file.path(tdir, "subdir", "foo.R")
+  cat("x <- this_file_proj()", file = fname)
+
+  expect_error(source(fname))
+
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  source(fname)
+  expect_identical(x, "subdir/foo.R")
 })
