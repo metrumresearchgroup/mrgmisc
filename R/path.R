@@ -24,7 +24,6 @@ this_file_path <- function() {
   if(!requireNamespace("this.path", quietly = TRUE)) {
     abort("The package \"this.path\" is required.")  
   }
-  stopifnot(requireNamespace("this.path", quietly = TRUE))
   envir <- caller_env()
   this.path::this.path(envir = envir, srcfile = TRUE)
 }
