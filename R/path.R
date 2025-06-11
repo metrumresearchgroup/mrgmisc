@@ -26,6 +26,12 @@ this_file_name <- function() {
 
 #' @rdname this_file
 #' @export
+this_file_dir <- function() {
+  dirname(this_file_path())  
+}
+
+#' @rdname this_file
+#' @export
 this_file_path <- function() {
   if(!requireNamespace("this.path", quietly = TRUE)) {
     abort("The package \"this.path\" is required.")  
