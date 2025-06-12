@@ -3,18 +3,24 @@
 \name{this_file}
 \alias{this_file}
 \alias{this_file_name}
-\alias{this_file_dir}
+\alias{this_dir_name}
 \alias{this_file_path}
+\alias{this_dir_path}
 \alias{this_file_proj}
+\alias{this_dir_proj}
 \title{Return the current script's file name}
 \usage{
 this_file_name()
 
-this_file_dir()
+this_dir_name()
 
 this_file_path()
 
+this_dir_path()
+
 this_file_proj()
+
+this_dir_proj()
 }
 \value{
 path The file name of the current script.

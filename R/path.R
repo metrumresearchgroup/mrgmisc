@@ -26,8 +26,8 @@ this_file_name <- function() {
 
 #' @rdname this_file
 #' @export
-this_file_dir <- function() {
-  dirname(this_file_path())  
+this_dir_name <- function() {
+  basename(dirname(this_file_path()))  
 }
 
 #' @rdname this_file
@@ -38,6 +38,12 @@ this_file_path <- function() {
   }
   envir <- caller_env()
   this.path::this.path(envir = envir, srcfile = TRUE)
+}
+
+#' @rdname this_file
+#' @export
+this_dir_path <- function() {
+  dirname(this_file_path())  
 }
 
 #' @rdname this_file
@@ -53,4 +59,10 @@ this_file_proj <- function() {
   proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = TRUE))
   path <- fs::path_real(this_file_path())
   as.character(fs::path_rel(path, proj))
+}
+
+#' @rdname this_file
+#' @export
+this_dir_proj <- function() {
+  dirname(this_file_proj())  
 }
