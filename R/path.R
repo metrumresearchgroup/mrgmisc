@@ -1,9 +1,9 @@
-#' Return the current script's file name
+#' Return the current script's file name or directory
 #'
 #' @description
 #'
-#' These functions use \pkg{this.path} to determine the file name of the current
-#' script.
+#' The following functions use \pkg{this.path} to determine the file name of the
+#' current script:
 #'
 #'  * `this_file_name()` returns the base name of the current script.
 #'
@@ -11,6 +11,19 @@
 #'
 #'  * `this_file_proj()` returns the path of the current script relative to the
 #'    root of the project that contains it, as defined by
+#'    [this.path::this.proj()].
+#'
+#' The following functions use \pkg{this.path} to determine the parent directory
+#' of the current script:
+#'
+#'  * `this_dir_name()` returns the base name of the directory containing the
+#'     current script.
+#'
+#'  * `this_dir_path()` returns the absolute path of the directory containing
+#'    the current script.
+#'
+#'  * `this_dir_proj()` returns the path of the directory containing the current
+#'    script relative to the root of the project that contains it, as defined by
 #'    [this.path::this.proj()].
 #'
 #' @return path The file name of the current script.

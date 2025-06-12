@@ -8,7 +8,7 @@
 \alias{this_dir_path}
 \alias{this_file_proj}
 \alias{this_dir_proj}
-\title{Return the current script's file name}
+\title{Return the current script's file name or directory}
 \usage{
 this_file_name()
 
@@ -26,13 +26,25 @@ this_dir_proj()
 path The file name of the current script.
 }
 \description{
-These functions use \pkg{this.path} to determine the file name of the current
-script.
+The following functions use \pkg{this.path} to determine the file name of the
+current script:
 \itemize{
 \item \code{this_file_name()} returns the base name of the current script.
 \item \code{this_file_path()} returns the absolute path of the current script.
 \item \code{this_file_proj()} returns the path of the current script relative to the
 root of the project that contains it, as defined by
+\code{\link[this.path:here]{this.path::this.proj()}}.
+}
+
+The following functions use \pkg{this.path} to determine the parent directory
+of the current script:
+\itemize{
+\item \code{this_dir_name()} returns the base name of the directory containing the
+current script.
+\item \code{this_dir_path()} returns the absolute path of the directory containing
+the current script.
+\item \code{this_dir_proj()} returns the path of the directory containing the current
+script relative to the root of the project that contains it, as defined by
 \code{\link[this.path:here]{this.path::this.proj()}}.
 }
 }
