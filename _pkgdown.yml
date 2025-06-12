@@ -59,6 +59,4 @@ reference:
     - pretty_dose
   - title: File paths
     contents:
-    - this_file_name
-    - this_file_path
-    - this_file_proj
+    - this_file
