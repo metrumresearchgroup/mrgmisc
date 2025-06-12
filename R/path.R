@@ -10,8 +10,8 @@
 #'  * `this_file_path()` returns the absolute path of the current script.
 #'
 #'  * `this_file_proj()` returns the path of the current script relative to the
-#'     root of the project that contains it, as defined by
-#'     [this.path::this.proj()].
+#'    root of the project that contains it, as defined by
+#'    [this.path::this.proj()].
 #'
 #' @return path The file name of the current script.
 #' @md
