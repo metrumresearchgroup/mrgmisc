@@ -50,7 +50,10 @@ this_file_path <- function() {
     abort("The package \"this.path\" is required.")  
   }
   envir <- caller_env()
-  this.path::this.path(envir = envir, srcfile = TRUE)
+  # Pass NULL for srcfile to prevent this.path from extracting the file name
+  # from a source reference. The source reference lookup shouldn't be relevant
+  # for users of these wrappers, the tests depend on the lookup being disabled.
+  this.path::this.path(envir = envir, srcfile = NULL)
 }
 
 #' @rdname this_file
@@ -69,7 +72,8 @@ this_file_proj <- function() {
     abort("The package \"fs\" is required.")  
   }
   envir <- caller_env()
-  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = TRUE))
+  # See comment above about srcfile=NULL.
+  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = NULL))
   path <- fs::path_real(this_file_path())
   as.character(fs::path_rel(path, proj))
 }
