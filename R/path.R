@@ -116,10 +116,10 @@ this_dir_proj <- function() {
 #' * `tf_options()` prints the `mrg.script`, `pmtables.dir`, and `mrggsave.dir`
 #'   options to the console.
 #'   
+#' @param path the absolute path or path relative to the current working
+#' directory.   
 #' @param proj_path the script name or table or figure output path, stated 
 #' relative to the project root.
-#' @param path the absolute path or path relative to the current working
-#' directory. 
 #' @param path.type indicates how `pmtables` should format the path portion
 #' of table annotations; see `pmtables::format_table_path`. 
 #' @param set_script if `TRUE` (the default), include a call to `mrg_script()` 
@@ -205,14 +205,14 @@ mrg_script <- function(path = NULL) {
 
 #' @rdname tf_options
 #' @export
-tables_to <- function(proj_path, path = NULL, set_script = TRUE, path.type = "proj") {
+tables_to <- function(path, proj_path = NULL, set_script = TRUE, path.type = "proj") {
   if(isTRUE(set_script)) {
     mrg_script()  
   }
-  if(is.character(path)) {
-    tab_path <- file.path(this_proj(), proj_rel(path))
+  if(is.character(proj_path)) {
+    tab_path <- file.path(this_proj(), proj_path)
   } else {
-    tab_path <- file.path(this_proj(), proj_path)  
+    tab_path <- file.path(this_proj(), proj_rel(path))  
   }
   if(!dir.exists(tab_path)) {
     wrong_path(tab_path, type = "table")
@@ -226,14 +226,14 @@ tables_to <- function(proj_path, path = NULL, set_script = TRUE, path.type = "pr
 
 #' @rdname tf_options
 #' @export
-figures_to <- function(proj_path, path = NULL, set_script = TRUE) {
+figures_to <- function(path, proj_path = NULL, set_script = TRUE) {
   if(isTRUE(set_script)) {
     mrg_script()  
   }
-  if(is.character(path)) {
-    fig_path <- file.path(this_proj(), proj_rel(path))
+  if(is.character(proj_path)) {
+    fig_path <- file.path(this_proj(), proj_path)
   } else {
-    fig_path <- file.path(this_proj(), proj_path)  
+    fig_path <- file.path(this_proj(), proj_rel(path))  
   }
   if(!dir.exists(fig_path)) {
     wrong_path(fig_path, type = "figure") 
