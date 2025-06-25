@@ -107,6 +107,8 @@ this_dir_proj <- function() {
 #'   
 #' @param path the script name or table or figure output path, stated relative 
 #' to the project root.
+#' @param path.type indicates how `pmtables` should format the path portion
+#' of table annotations; see `pmtables::format_table_path`. 
 #' @param set_script if `TRUE` (the default), include a call to `mrg_script()` 
 #' to set the `mrg.script` option.  
 #' @param quietly if `TRUE`, don't echo `tf_options()` outputs after options

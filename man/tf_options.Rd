@@ -27,6 +27,9 @@ to the project root.}
 
 \item{set_script}{if \code{TRUE} (the default), include a call to \code{mrg_script()}
 to set the \code{mrg.script} option.}
+
+\item{path.type}{indicates how \code{pmtables} should format the path portion
+of table annotations; see \code{pmtables::format_table_path}.}
 }
 \value{
 \itemize{
