@@ -220,3 +220,14 @@ figures_to <- function(path, set_script = TRUE) {
   options(mrggsave.dir = fig_path)
   invisible(options()$mrggsave.dir)
 }
+
+#' Calculate the path relative to the project root
+#' 
+#' @param path the path to a file or folder.
+#' 
+#' @export
+proj_path <- function(path) {
+  envir <- caller_env()
+  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = TRUE))
+  as.character(fs::path_rel(path, proj))
+}
