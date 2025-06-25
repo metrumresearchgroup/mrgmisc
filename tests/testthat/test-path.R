@@ -89,7 +89,7 @@ test_that("set output directory options for tables and figures", {
   # Clear options
   tf_options_clear(quietly = TRUE)
   expect_null(options()$mrg.script)
-  epect_null(options()$pmtables.dir)
+  expect_null(options()$pmtables.dir)
   expect_null(options()$mrggsave.dir)
   
   # Set table output dir
@@ -110,7 +110,7 @@ test_that("set output directory options for tables and figures", {
   # Clear
   expect_message(tf_options_clear(), regexp = "option not set")
   expect_null(options()$mrg.script)
-  epect_null(options()$pmtables.dir)
+  expect_null(options()$pmtables.dir)
   expect_null(options()$mrggsave.dir)
   
   # Set table output dir, but not script
@@ -135,4 +135,6 @@ test_that("set output directory options for tables and figures", {
   )
   source(script)
   expect_null(options()$mrg.script)
+  
+  tf_options_clear(quietly = TRUE)
 })
