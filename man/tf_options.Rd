@@ -33,6 +33,8 @@ to set the \code{mrg.script} option.}
 \item \code{tables_to()}, \code{figures_to()} and \code{mrg_script()} return the value of the
 option invisibly
 \item \code{tf_options()} prints messages to the console and returns \code{NULL} invisibly
+\item \code{tf_options_clear()} prints \code{tf_options()} output unless the user request
+quiet reset.
 }
 }
 \description{

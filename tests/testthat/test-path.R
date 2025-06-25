@@ -49,3 +49,90 @@ test_that("this.path wrappers work from sourced script", {
   expect_identical(fproj, file.path("sub", "subsub", "foo.R"))
   expect_identical(dproj, file.path("sub", "subsub"))
 })
+
+test_that("set script name option", {
+  skip_if_not_installed("this.path")
+  skip_if_not_installed("fs")
+  
+  mrg_script()
+  expect_equal(basename(options()$mrg.script), "test-path.R")
+  tf_options_clear(quietly = TRUE)
+  expect_null(options()$mrg.script)
+})
+
+test_that("set output directory options for tables and figures", {
+  skip_if_not_installed("this.path")
+  skip_if_not_installed("fs")
+  
+  tdir <- fs::path_real(withr::local_tempdir("mrgmisc-two"))
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  fs::dir_create(tdir, "deliv", "figure", "eda")
+  fs::dir_create(tdir, "deliv", "table", "sims")
+  fs::dir_create(tdir, "script")
+  script <- file.path(tdir, "script", "foo.R")
+  
+  # Set figure output dir and script
+  writeLines(
+    "figures_to('deliv/figure/eda')",
+    script
+  )
+  source(script)
+  expect_identical(
+    options()$mrggsave.dir, 
+    file.path(tdir, "deliv", "figure", "eda")
+  )
+  expect_identical(
+    options()$mrg.script, 
+    "script/foo.R"
+  )
+  
+  # Clear options
+  tf_options_clear(quietly = TRUE)
+  expect_null(options()$mrg.script)
+  epect_null(options()$pmtables.dir)
+  expect_null(options()$mrggsave.dir)
+  
+  # Set table output dir
+  writeLines(
+    "tables_to('deliv/table/sims')",
+    script
+  )
+  source(script)
+  expect_identical(
+    options()$pmtables.dir, 
+    file.path(tdir, "deliv", "table", "sims")
+  )
+  expect_identical(
+    options()$mrg.script, 
+    "script/foo.R"
+  )
+  
+  # Clear
+  expect_message(tf_options_clear(), regexp = "option not set")
+  expect_null(options()$mrg.script)
+  epect_null(options()$pmtables.dir)
+  expect_null(options()$mrggsave.dir)
+  
+  # Set table output dir, but not script
+  writeLines(
+    "tables_to('deliv/table/sims', set_script = FALSE)",
+    script
+  )
+  source(script)
+  expect_identical(
+    options()$pmtables.dir, 
+    file.path(tdir, "deliv", "table", "sims")
+  )
+  expect_null(options()$mrg.script)
+  
+  # Clear
+  tf_options_clear(quietly = TRUE)
+  
+  # Set output figure dir, but not script
+  writeLines(
+    "figures_to('deliv/figure/eda', set_script = FALSE)",
+    script
+  )
+  source(script)
+  expect_null(options()$mrg.script)
+})

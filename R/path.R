@@ -116,7 +116,9 @@ this_dir_proj <- function() {
 #' - `tables_to()`, `figures_to()` and `mrg_script()` return the value of the 
 #'   option invisibly
 #' - `tf_options()` prints messages to the console and returns `NULL` invisibly
-#' 
+#' - `tf_options_clear()` prints `tf_options()` output unless the user request
+#'   quiet reset.
+#'  
 #' @md
 #' @rdname tf_options
 #' @export
@@ -170,7 +172,7 @@ tf_options_clear <- function(quietly = FALSE) {
     pmtables.path.type = NULL,
     mrggsave.dir = NULL
   )
-  if(isTRUE(quietly)) {
+  if(!isTRUE(quietly)) {
     tf_options()
   }
   return(invisible(NULL))
