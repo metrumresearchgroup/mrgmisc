@@ -212,7 +212,7 @@ tables_to <- function(path, proj_path = NULL, set_script = TRUE, path.type = "pr
   if(is.character(proj_path)) {
     tab_path <- file.path(this_proj(), proj_path)
   } else {
-    tab_path <- file.path(this_proj(), proj_rel(path))  
+    tab_path <- file.path(this_proj(), proj_rel(path))
   }
   if(!dir.exists(tab_path)) {
     wrong_path(tab_path, type = "table")
@@ -233,7 +233,7 @@ figures_to <- function(path, proj_path = NULL, set_script = TRUE) {
   if(is.character(proj_path)) {
     fig_path <- file.path(this_proj(), proj_path)
   } else {
-    fig_path <- file.path(this_proj(), proj_rel(path))  
+    fig_path <- file.path(this_proj(), proj_rel(path))
   }
   if(!dir.exists(fig_path)) {
     wrong_path(fig_path, type = "figure") 

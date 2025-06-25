@@ -19,7 +19,7 @@ test_that("return current file name with absolute path", {
 test_that("this.path wrappers work from sourced script", {
   skip_if_not_installed("this.path")
   skip_if_not_installed("fs")
-
+  
   tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
   fs::dir_create(tdir, "sub", "subsub")
   script <- file.path(tdir, "sub", "subsub", "foo.R")
@@ -34,18 +34,18 @@ test_that("this.path wrappers work from sourced script", {
     ),
     script
   )
-
+  
   expect_error(source(script))
-
+  
   cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
   source(script)
-
+  
   expect_identical(fname, "foo.R")
   expect_identical(dname, "subsub")
-
+  
   expect_identical(fpath, file.path(tdir, "sub", "subsub", "foo.R"))
   expect_identical(dpath, file.path(tdir, "sub", "subsub"))
-
+  
   expect_identical(fproj, file.path("sub", "subsub", "foo.R"))
   expect_identical(dproj, file.path("sub", "subsub"))
 })
@@ -73,10 +73,13 @@ test_that("set output directory options for tables and figures", {
   
   # Set figure output dir and script
   writeLines(
-    "figures_to('deliv/figure/eda')",
+    "figures_to('../deliv/figure/eda')",
     script
   )
-  source(script)
+  withr::with_dir(
+    dirname(script), 
+    source(script)
+  )
   expect_identical(
     options()$mrggsave.dir, 
     file.path(tdir, "deliv", "figure", "eda")
@@ -94,10 +97,13 @@ test_that("set output directory options for tables and figures", {
   
   # Set table output dir
   writeLines(
-    "tables_to('deliv/table/sims')",
+    "tables_to('../deliv/table/sims')",
     script
   )
-  source(script)
+  withr::with_dir(
+    dirname(script), 
+    source(script)
+  )
   expect_identical(
     options()$pmtables.dir, 
     file.path(tdir, "deliv", "table", "sims")
@@ -115,10 +121,13 @@ test_that("set output directory options for tables and figures", {
   
   # Set table output dir, but not script
   writeLines(
-    "tables_to('deliv/table/sims', set_script = FALSE)",
+    "tables_to('../deliv/table/sims', set_script = FALSE)",
     script
   )
-  source(script)
+  withr::with_dir(
+    dirname(script), 
+    source(script)
+  )
   expect_identical(
     options()$pmtables.dir, 
     file.path(tdir, "deliv", "table", "sims")
@@ -130,10 +139,13 @@ test_that("set output directory options for tables and figures", {
   
   # Set output figure dir, but not script
   writeLines(
-    "figures_to('deliv/figure/eda', set_script = FALSE)",
+    "figures_to('../deliv/figure/eda', set_script = FALSE)",
     script
   )
-  source(script)
+  withr::with_dir(
+    dirname(script), 
+    source(script)
+  )
   expect_null(options()$mrg.script)
   
   tf_options_clear(quietly = TRUE)
