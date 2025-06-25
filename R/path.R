@@ -106,7 +106,11 @@ this_dir_proj <- function() {
 #'   options to the console.
 #'   
 #' @param path the script name or table or figure output path, stated relative 
-#' to the project root. 
+#' to the project root.
+#' @param set_script if `TRUE` (the default), include a call to `mrg_script()` 
+#' to set the `mrg.script` option.  
+#' @param quietly if `TRUE`, don't echo `tf_options()` outputs after options
+#' are cleared with `tf_options_clear()`.
 #'  
 #' @return
 #' - `tables_to()`, `figures_to()` and `mrg_script()` return the value of the 
@@ -159,6 +163,21 @@ tf_options <- function() {
 
 #' @rdname tf_options
 #' @export
+tf_options_clear <- function(quietly = FALSE) {
+  options(
+    mrg.script = NULL, 
+    pmtables.dir = NULL, 
+    pmtables.path.type = NULL,
+    mrggsave.dir = NULL
+  )
+  if(isTRUE(quietly)) {
+    tf_options()
+  }
+  return(invisible(NULL))
+}
+
+#' @rdname tf_options
+#' @export
 mrg_script <- function(path = NULL) {
   if(is.null(path)) {
     path <- this_file_proj()  
@@ -169,7 +188,10 @@ mrg_script <- function(path = NULL) {
 
 #' @rdname tf_options
 #' @export
-tables_to <- function(path, path.type = "proj") {
+tables_to <- function(path, set_script = TRUE, path.type = "proj") {
+  if(isTRUE(set_script)) {
+    mrg_script()  
+  }
   tab_path <- file.path(this_proj(), path)
   if(!dir.exists(tab_path)) {
     warn("The table output path does not exist.") 
@@ -183,7 +205,10 @@ tables_to <- function(path, path.type = "proj") {
 
 #' @rdname tf_options
 #' @export
-figures_to <- function(path) {
+figures_to <- function(path, set_script = TRUE) {
+  if(isTRUE(set_script)) {
+    mrg_script()  
+  }
   fig_path <- file.path(this_proj(), path)
   if(!dir.exists(fig_path)) {
     warn("The mrggsave output path does not exist.") 
