@@ -42,13 +42,10 @@ wrong_path <- function(path, type = c("table", "figure")) {
   fun <- ifelse(type=="table", "tables_to", "figures_to")
   help <- paste0("See ?", fun, " for help formatting the path.")
   msg <- paste0("The ", type, " output path could not be found:")
-  names(path) <- "x"
-  names(help) <- "i"
   names(msg) <- "!"
-  warn(
-    message = msg, 
-    body = c(path, help)
-  )
+  names(path) <- "!"
+  names(help) <- "i"
+  warn(message = msg, body = c(path, help))
 }
 
 #' @rdname this_file
@@ -213,7 +210,7 @@ tables_to <- function(proj_path, path = NULL, set_script = TRUE, path.type = "pr
     mrg_script()  
   }
   if(is.character(path)) {
-    tab_path <- file.path(this_proj(), to_proj(path))
+    tab_path <- file.path(this_proj(), proj_rel(path))
   } else {
     tab_path <- file.path(this_proj(), proj_path)  
   }
@@ -234,7 +231,7 @@ figures_to <- function(proj_path, path = NULL, set_script = TRUE) {
     mrg_script()  
   }
   if(is.character(path)) {
-    fig_path <- file.path(this_proj(), to_proj(path))
+    fig_path <- file.path(this_proj(), proj_rel(path))
   } else {
     fig_path <- file.path(this_proj(), proj_path)  
   }
