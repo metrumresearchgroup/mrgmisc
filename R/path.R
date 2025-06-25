@@ -105,8 +105,10 @@ this_dir_proj <- function() {
 #' * `tf_options()` prints the `mrg.script`, `pmtables.dir`, and `mrggsave.dir`
 #'   options to the console.
 #'   
-#' @param path the script name or table or figure output path, stated relative 
-#' to the project root.
+#' @param proj_path the script name or table or figure output path, stated 
+#' relative to the project root.
+#' @param path the absolute path or path relative to the current working
+#' directory. 
 #' @param path.type indicates how `pmtables` should format the path portion
 #' of table annotations; see `pmtables::format_table_path`. 
 #' @param set_script if `TRUE` (the default), include a call to `mrg_script()` 
@@ -192,11 +194,15 @@ mrg_script <- function(path = NULL) {
 
 #' @rdname tf_options
 #' @export
-tables_to <- function(path, set_script = TRUE, path.type = "proj") {
+tables_to <- function(proj_path, path = NULL, set_script = TRUE, path.type = "proj") {
   if(isTRUE(set_script)) {
     mrg_script()  
   }
-  tab_path <- file.path(this_proj(), path)
+  if(is.character(path)) {
+    tab_path <- file.path(this_proj(), to_proj(path))
+  } else {
+    tab_path <- file.path(this_proj(), proj_path)  
+  }
   if(!dir.exists(tab_path)) {
     warn("The table output path does not exist.") 
   }
@@ -209,11 +215,15 @@ tables_to <- function(path, set_script = TRUE, path.type = "proj") {
 
 #' @rdname tf_options
 #' @export
-figures_to <- function(path, set_script = TRUE) {
+figures_to <- function(proj_path, path = NULL, set_script = TRUE) {
   if(isTRUE(set_script)) {
     mrg_script()  
   }
-  fig_path <- file.path(this_proj(), path)
+  if(is.character(path)) {
+    fig_path <- file.path(this_proj(), to_proj(path))
+  } else {
+    fig_path <- file.path(this_proj(), proj_path)  
+  }
   if(!dir.exists(fig_path)) {
     warn("The mrggsave output path does not exist.") 
   }
@@ -226,8 +236,6 @@ figures_to <- function(path, set_script = TRUE) {
 #' @param path the path to a file or folder.
 #' 
 #' @export
-proj_path <- function(path) {
-  envir <- caller_env()
-  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = TRUE))
-  as.character(fs::path_rel(path, proj))
+proj_rel <- function(path) {
+  as.character(fs::path_rel(path, this_proj()))
 }

@@ -14,16 +14,19 @@ tf_options_clear(quietly = FALSE)
 
 mrg_script(path = NULL)
 
-tables_to(path, set_script = TRUE, path.type = "proj")
+tables_to(proj_path, path = NULL, set_script = TRUE, path.type = "proj")
 
-figures_to(path, set_script = TRUE)
+figures_to(proj_path, path = NULL, set_script = TRUE)
 }
 \arguments{
 \item{quietly}{if \code{TRUE}, don't echo \code{tf_options()} outputs after options
 are cleared with \code{tf_options_clear()}.}
 
-\item{path}{the script name or table or figure output path, stated relative
-to the project root.}
+\item{path}{the absolute path or path relative to the current working
+directory.}
+
+\item{proj_path}{the script name or table or figure output path, stated
+relative to the project root.}
 
 \item{set_script}{if \code{TRUE} (the default), include a call to \code{mrg_script()}
 to set the \code{mrg.script} option.}
