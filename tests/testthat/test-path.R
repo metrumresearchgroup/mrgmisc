@@ -138,3 +138,16 @@ test_that("set output directory options for tables and figures", {
   
   tf_options_clear(quietly = TRUE)
 })
+
+test_that("warn when path doesn't exist", {
+  expect_warning(
+    tables_to("foo/bar"), 
+    regexp = "The table output path could not be found", 
+    all = FALSE
+  )
+  expect_warning(
+    figures_to("foo/bar"), 
+    regexp = "The figure output path could not be found", 
+    all = FALSE
+  )
+})

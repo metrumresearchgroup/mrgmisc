@@ -37,6 +37,20 @@ this_proj <- function() {
   proj
 }
 
+wrong_path <- function(path, type = c("table", "figure")) {
+  type <- match.arg(type)
+  fun <- ifelse(type=="table", "tables_to", "figures_to")
+  help <- paste0("See ?", fun, " for help formatting the path.")
+  msg <- paste0("The ", type, " output path could not be found:")
+  names(path) <- "x"
+  names(help) <- "i"
+  names(msg) <- "!"
+  warn(
+    message = msg, 
+    body = c(path, help)
+  )
+}
+
 #' @rdname this_file
 #' @export
 this_file_name <- function() {
@@ -204,7 +218,7 @@ tables_to <- function(proj_path, path = NULL, set_script = TRUE, path.type = "pr
     tab_path <- file.path(this_proj(), proj_path)  
   }
   if(!dir.exists(tab_path)) {
-    warn("The table output path does not exist.") 
+    wrong_path(tab_path, type = "table")
   }
   options(
     pmtables.dir = tab_path, 
@@ -225,7 +239,7 @@ figures_to <- function(proj_path, path = NULL, set_script = TRUE) {
     fig_path <- file.path(this_proj(), proj_path)  
   }
   if(!dir.exists(fig_path)) {
-    warn("The mrggsave output path does not exist.") 
+    wrong_path(fig_path, type = "figure") 
   }
   options(mrggsave.dir = fig_path)
   invisible(options()$mrggsave.dir)
@@ -239,3 +253,4 @@ figures_to <- function(proj_path, path = NULL, set_script = TRUE) {
 proj_rel <- function(path) {
   as.character(fs::path_rel(path, this_proj()))
 }
+
