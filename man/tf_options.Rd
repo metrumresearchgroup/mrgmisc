@@ -16,7 +16,7 @@ mrg_script(path = NULL)
 
 tables_to(path, set_script = TRUE, path.type = "proj")
 
-figures_to(path, proj_path = NULL, set_script = TRUE)
+figures_to(path, set_script = TRUE)
 }
 \arguments{
 \item{quietly}{if \code{TRUE}, don't echo \code{tf_options()} outputs after options
@@ -36,7 +36,7 @@ of table annotations; see \code{pmtables::format_table_path}.}
 \item \code{tables_to()}, \code{figures_to()} and \code{mrg_script()} return the value of the
 option invisibly
 \item \code{tf_options()} prints messages to the console and returns \code{NULL} invisibly
-\item \code{tf_options_clear()} prints \code{tf_options()} output unless the user request
+\item \code{tf_options_clear()} prints \code{tf_options()} output unless the user requests
 quiet reset.
 }
 }
