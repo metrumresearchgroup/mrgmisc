@@ -59,8 +59,35 @@ test_that("set path options", {
   withr::local_dir(dirname(script))
 
   # Set script
-  writeLines("mrg_script()", script)
-  source(script)
+  writeLines(
+    c(
+      "mrg_script()",
+      "tf_options()"
+    ),
+    script
+  )
+
+  source_quietly <- purrr::quietly(source)
+
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    paste0("script  ", file.path("script", "foo.R")),
+    all = FALSE,
+    fixed = TRUE
+  )
+  expect_match(
+    res[["messages"]],
+    "tables .*not set",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "figures .*not set",
+    all = FALSE
+  )
+
   expect_identical(
     options()$mrg.script,
     file.path("script", "foo.R")
@@ -71,10 +98,31 @@ test_that("set path options", {
 
   # Set figure output dir and script
   writeLines(
-    "figures_to('../deliv/figure/eda')",
+    c(
+      "figures_to('../deliv/figure/eda')",
+      "tf_options()"
+    ),
     script
   )
-  source(script)
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    paste0("script  ", file.path("script", "foo.R")),
+    all = FALSE,
+    fixed = TRUE
+  )
+  expect_match(
+    res[["messages"]],
+    "tables .*not set",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    paste0("figures ", file.path("deliv", "figure", "eda")),
+    all = FALSE,
+    fixed = TRUE
+  )
   expect_identical(
     options()$mrggsave.dir, 
     file.path(tdir, "deliv", "figure", "eda")
@@ -92,10 +140,31 @@ test_that("set path options", {
   
   # Set table output dir
   writeLines(
-    "tables_to('../deliv/table/sims')",
+    c(
+      "tables_to('../deliv/table/sims')",
+      "tf_options()"
+    ),
     script
   )
-  source(script)
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    paste0("script  ", file.path("script", "foo.R")),
+    all = FALSE,
+    fixed = TRUE
+  )
+  expect_match(
+    res[["messages"]],
+    paste0("tables  ", file.path("deliv", "table", "sims")),
+    all = FALSE,
+    fixed = TRUE
+  )
+  expect_match(
+    res[["messages"]],
+    "figures .*not set",
+    all = FALSE
+  )
   expect_identical(
     options()$pmtables.dir, 
     file.path(tdir, "deliv", "table", "sims")
@@ -106,17 +175,37 @@ test_that("set path options", {
   )
   
   # Clear
-  expect_message(tf_options_clear(), regexp = "option not set")
+  tf_options_clear(quietly = TRUE)
   expect_null(options()$mrg.script)
   expect_null(options()$pmtables.dir)
   expect_null(options()$mrggsave.dir)
   
   # Set table output dir, but not script
   writeLines(
-    "tables_to('../deliv/table/sims', set_script = FALSE)",
+    c(
+      "tables_to('../deliv/table/sims', set_script = FALSE)",
+      "tf_options()"
+    ),
     script
   )
-  source(script)
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    "script .*not set",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    paste0("tables  ", file.path("deliv", "table", "sims")),
+    all = FALSE,
+    fixed = TRUE
+  )
+  expect_match(
+    res[["messages"]],
+    "figures .*not set",
+    all = FALSE
+  )
   expect_identical(
     options()$pmtables.dir, 
     file.path(tdir, "deliv", "table", "sims")
@@ -128,20 +217,63 @@ test_that("set path options", {
   
   # Set output figure dir, but not script
   writeLines(
-    "figures_to('../deliv/figure/eda', set_script = FALSE)",
+    c(
+      "figures_to('../deliv/figure/eda', set_script = FALSE)",
+      "tf_options()"
+    ),
     script
   )
-  source(script)
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    "script .*not set",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "tables .*not set",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    paste0("figures ", file.path("deliv", "figure", "eda")),
+    all = FALSE,
+    fixed = TRUE
+  )
   expect_null(options()$mrg.script)
   
   tf_options_clear(quietly = TRUE)
 
   # tables_to warns when path does not exist
 
-  writeLines("tables_to('foo/bar')", script)
-  expect_warning(
-    source(script),
-    regexp = "The table output path could not be found"
+  writeLines(
+    c(
+      "tables_to('foo/bar')",
+      "tf_options()"
+    ),
+    script
+  )
+  res <- source_quietly(script)
+  expect_match(
+    res[["warnings"]],
+    "The table output path could not be found"
+  )
+  expect_match(
+    res[["messages"]],
+    paste0("script  ", file.path("script", "foo.R")),
+    all = FALSE,
+    fixed = TRUE
+  )
+  expect_match(
+    res[["messages"]],
+    "tables .*does not exist",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "figures .*not set",
+    all = FALSE
   )
   expect_identical(
     options()$mrg.script,
@@ -151,10 +283,33 @@ test_that("set path options", {
 
   # figures_to warns when path does not exist
 
-  writeLines("figures_to('foo/bar')", script)
-  expect_warning(
-    source(script),
-    regexp = "The figure output path could not be found"
+  writeLines(
+    c(
+      "figures_to('foo/bar')",
+      "tf_options()"
+    ),
+    script
+  )
+  res <- source_quietly(script)
+  expect_match(
+    res[["warnings"]],
+    "The figure output path could not be found"
+  )
+  expect_match(
+    res[["messages"]],
+    paste0("script  ", file.path("script", "foo.R")),
+    all = FALSE,
+    fixed = TRUE
+  )
+  expect_match(
+    res[["messages"]],
+    "tables .*not set",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "figures .*does not exist",
+    all = FALSE
   )
   expect_identical(
     options()$mrg.script,
