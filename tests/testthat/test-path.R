@@ -56,6 +56,8 @@ test_that("set path options", {
   fs::dir_create(tdir, "script")
   script <- file.path(tdir, "script", "foo.R")
   
+  withr::local_dir(dirname(script))
+
   # Set script
   writeLines("mrg_script()", script)
   source(script)
@@ -72,10 +74,7 @@ test_that("set path options", {
     "figures_to('../deliv/figure/eda')",
     script
   )
-  withr::with_dir(
-    dirname(script), 
-    source(script)
-  )
+  source(script)
   expect_identical(
     options()$mrggsave.dir, 
     file.path(tdir, "deliv", "figure", "eda")
@@ -96,10 +95,7 @@ test_that("set path options", {
     "tables_to('../deliv/table/sims')",
     script
   )
-  withr::with_dir(
-    dirname(script), 
-    source(script)
-  )
+  source(script)
   expect_identical(
     options()$pmtables.dir, 
     file.path(tdir, "deliv", "table", "sims")
@@ -120,10 +116,7 @@ test_that("set path options", {
     "tables_to('../deliv/table/sims', set_script = FALSE)",
     script
   )
-  withr::with_dir(
-    dirname(script), 
-    source(script)
-  )
+  source(script)
   expect_identical(
     options()$pmtables.dir, 
     file.path(tdir, "deliv", "table", "sims")
@@ -138,10 +131,7 @@ test_that("set path options", {
     "figures_to('../deliv/figure/eda', set_script = FALSE)",
     script
   )
-  withr::with_dir(
-    dirname(script), 
-    source(script)
-  )
+  source(script)
   expect_null(options()$mrg.script)
   
   tf_options_clear(quietly = TRUE)
