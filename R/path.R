@@ -32,11 +32,10 @@
 NULL
 
 this_proj <- function() {
-  envir <- caller_env()
   # Pass NULL for srcfile to prevent this.path from extracting the file name
   # from a source reference. The source reference lookup shouldn't be relevant
   # for users of these wrappers, the tests depend on the lookup being disabled.
-  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = NULL))
+  proj <- fs::path_real(this.path::this.proj(envir = emptyenv(), srcfile = NULL))
   proj
 }
 
@@ -70,10 +69,8 @@ this_dir_name <- function() {
 #' @export
 this_file_path <- function() {
   check_path_deps()
-
-  envir <- caller_env()
   # See comment above about srcfile=NULL.
-  this.path::this.path(envir = envir, srcfile = NULL)
+  this.path::this.path(envir = emptyenv(), srcfile = NULL)
 }
 
 #' @rdname this_file
@@ -88,9 +85,8 @@ this_dir_path <- function() {
 this_file_proj <- function() {
   check_path_deps()
 
-  envir <- caller_env()
   # See comment above about srcfile=NULL.
-  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = NULL))
+  proj <- fs::path_real(this.path::this.proj(envir = emptyenv(), srcfile = NULL))
   path <- fs::path_real(this_file_path())
   as.character(fs::path_rel(path, proj))
 }
