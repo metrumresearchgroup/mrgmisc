@@ -33,7 +33,10 @@ NULL
 
 this_proj <- function() {
   envir <- caller_env()
-  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = TRUE))
+  # Pass NULL for srcfile to prevent this.path from extracting the file name
+  # from a source reference. The source reference lookup shouldn't be relevant
+  # for users of these wrappers, the tests depend on the lookup being disabled.
+  proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = NULL))
   proj
 }
 
@@ -69,9 +72,7 @@ this_file_path <- function() {
   check_path_deps()
 
   envir <- caller_env()
-  # Pass NULL for srcfile to prevent this.path from extracting the file name
-  # from a source reference. The source reference lookup shouldn't be relevant
-  # for users of these wrappers, the tests depend on the lookup being disabled.
+  # See comment above about srcfile=NULL.
   this.path::this.path(envir = envir, srcfile = NULL)
 }
 
