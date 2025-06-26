@@ -132,7 +132,7 @@ this_dir_proj <- function() {
 #' - `tables_to()`, `figures_to()` and `mrg_script()` return the value of the 
 #'   option invisibly
 #' - `tf_options()` prints messages to the console and returns `NULL` invisibly
-#' - `tf_options_clear()` prints `tf_options()` output unless the user request
+#' - `tf_options_clear()` prints `tf_options()` output unless the user requests
 #'   quiet reset.
 #'  
 #' @md
@@ -220,7 +220,7 @@ tables_to <- function(path, set_script = TRUE, path.type = "proj") {
 
 #' @rdname tf_options
 #' @export
-figures_to <- function(path, proj_path = NULL, set_script = TRUE) {
+figures_to <- function(path, set_script = TRUE) {
   if(isTRUE(set_script)) {
     mrg_script()  
   }
@@ -241,4 +241,3 @@ figures_to <- function(path, proj_path = NULL, set_script = TRUE) {
 proj_rel <- function(path) {
   as.character(fs::path_rel(path, this_proj()))
 }
-
