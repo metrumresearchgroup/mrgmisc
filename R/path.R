@@ -138,11 +138,16 @@ tf_options <- function() {
   check_path_deps()
 
   not_set <- "<option not set>"
+  missing <- "<does not exist>"
   
+  proj <- this_proj()
+
   # mrg.script
   script <- options()$mrg.script
   if(!is.character(script)) {
     script <- not_set 
+  } else if (!file.exists(file.path(proj, script))) {
+    script <- paste(script, missing)
   }
   script <- paste0("script  ", script)
   names(script) <- "*"
@@ -150,10 +155,12 @@ tf_options <- function() {
   
   # pmtables.dir
   tables <- options()$pmtables.dir
-  if(is.character(tables)) {
+  if (!is.character(tables)) {
+    tables <- not_set
+  } else if (dir.exists(tables)) {
     tables <- proj_rel(tables)
   } else {
-    tables <- not_set  
+    tables <- paste(tables, missing)
   }
   tables <- paste0("tables  ", tables)
   names(tables) <- "*"
@@ -161,10 +168,12 @@ tf_options <- function() {
   
   # mrggsave.dir
   figures <- options()$mrggsave.dir
-  if(is.character(figures)) {
+  if (!is.character(figures)) {
+    figures <- not_set
+  } else if (dir.exists(figures)) {
     figures <- proj_rel(figures)
   } else {
-    figures <- not_set 
+    figures <- paste(figures, missing)
   }
   figures <- paste0("figures ", figures)
   names(figures) <- "*"
