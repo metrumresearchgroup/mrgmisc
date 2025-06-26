@@ -37,9 +37,10 @@ this_proj <- function() {
   proj
 }
 
-bad_path <- function(path, type = c("table", "figure")) {
+bad_path <- function(path, type = c("table", "figure", "script")) {
   type <- match.arg(type)
-  fun <- ifelse(type=="table", "tables_to", "figures_to")
+  look <- c(table = "tables_to", figure = "figures_to", script = "mrg_script")
+  fun <- look[type]
   help <- paste0("See ?", fun, " for help formatting the path.")
   msg <- paste0("The ", type, " output path could not be found:")
   names(msg) <- "!"
@@ -195,6 +196,11 @@ tf_options_clear <- function(quietly = FALSE) {
 mrg_script <- function(path = NULL) {
   if(is.null(path)) {
     path <- this_file_proj()  
+  } else {
+    if(!file.exists(path)) {
+      bad_path(path, type = "script")  
+    }
+    path <- proj_rel(path)
   }
   options(mrg.script = path) 
   return(invisible(options()$mrg.script))
