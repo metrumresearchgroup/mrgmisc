@@ -52,21 +52,22 @@ bad_path <- function(path, type = c("table", "figure", "script")) {
 #' @rdname this_file
 #' @export
 this_file_name <- function() {
+  check_path_deps()
   basename(this_file_path())
 }
 
 #' @rdname this_file
 #' @export
 this_dir_name <- function() {
+  check_path_deps()
   basename(dirname(this_file_path()))  
 }
 
 #' @rdname this_file
 #' @export
 this_file_path <- function() {
-  if(!requireNamespace("this.path", quietly = TRUE)) {
-    abort("The package \"this.path\" is required.")  
-  }
+  check_path_deps()
+
   envir <- caller_env()
   # Pass NULL for srcfile to prevent this.path from extracting the file name
   # from a source reference. The source reference lookup shouldn't be relevant
@@ -77,18 +78,15 @@ this_file_path <- function() {
 #' @rdname this_file
 #' @export
 this_dir_path <- function() {
+  check_path_deps()
   dirname(this_file_path())  
 }
 
 #' @rdname this_file
 #' @export
 this_file_proj <- function() {
-  if(!requireNamespace("this.path", quietly = TRUE)) {
-    abort("The package \"this.path\" is required.")  
-  }
-  if(!requireNamespace("fs", quietly = TRUE)) {
-    abort("The package \"fs\" is required.")  
-  }
+  check_path_deps()
+
   envir <- caller_env()
   # See comment above about srcfile=NULL.
   proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = NULL))
@@ -99,6 +97,7 @@ this_file_proj <- function() {
 #' @rdname this_file
 #' @export
 this_dir_proj <- function() {
+  check_path_deps()
   dirname(this_file_proj())  
 }
 
@@ -140,6 +139,8 @@ this_dir_proj <- function() {
 #' @rdname tf_options
 #' @export
 tf_options <- function() {
+  check_path_deps()
+
   not_set <- "<option not set>"
   
   # mrg.script
@@ -179,6 +180,8 @@ tf_options <- function() {
 #' @rdname tf_options
 #' @export
 tf_options_clear <- function(quietly = FALSE) {
+  check_path_deps()
+
   options(
     mrg.script = NULL, 
     pmtables.dir = NULL, 
@@ -194,6 +197,8 @@ tf_options_clear <- function(quietly = FALSE) {
 #' @rdname tf_options
 #' @export
 mrg_script <- function(path = NULL) {
+  check_path_deps()
+
   if(is.null(path)) {
     path <- this_file_proj()  
   } else {
@@ -209,6 +214,8 @@ mrg_script <- function(path = NULL) {
 #' @rdname tf_options
 #' @export
 tables_to <- function(path, set_script = TRUE, path.type = "proj") {
+  check_path_deps()
+
   if(isTRUE(set_script)) {
     mrg_script()  
   }
@@ -227,6 +234,8 @@ tables_to <- function(path, set_script = TRUE, path.type = "proj") {
 #' @rdname tf_options
 #' @export
 figures_to <- function(path, set_script = TRUE) {
+  check_path_deps()
+
   if(isTRUE(set_script)) {
     mrg_script()  
   }
@@ -245,5 +254,15 @@ figures_to <- function(path, set_script = TRUE) {
 #' 
 #' @export
 proj_rel <- function(path) {
+  check_path_deps()
   as.character(fs::path_rel(path, this_proj()))
+}
+
+check_path_deps <- function() {
+  if (!requireNamespace("this.path", quietly = TRUE)) {
+    abort("The package \"this.path\" is required.", call = caller_env())
+  }
+  if (!requireNamespace("fs", quietly = TRUE)) {
+    abort("The package \"fs\" is required.", call = caller_env())
+  }
 }

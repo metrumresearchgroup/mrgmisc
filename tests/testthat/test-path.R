@@ -1,11 +1,12 @@
+skip_if_not_installed("this.path")
+skip_if_not_installed("fs")
+
 test_that("return current file name", {
-  skip_if_not_installed("this.path")
   x <- this_file_name()
   expect_identical(x, "test-path.R")
 })
 
 test_that("return current file name with absolute path", {
-  skip_if_not_installed("this.path")
   x <- this_file_path()
   cwd <- getwd()
   file <- basename(x)
@@ -17,9 +18,6 @@ test_that("return current file name with absolute path", {
 })
 
 test_that("this.path wrappers work from sourced script", {
-  skip_if_not_installed("this.path")
-  skip_if_not_installed("fs")
-  
   tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
   fs::dir_create(tdir, "sub", "subsub")
   script <- file.path(tdir, "sub", "subsub", "foo.R")
@@ -51,9 +49,6 @@ test_that("this.path wrappers work from sourced script", {
 })
 
 test_that("set path options", {
-  skip_if_not_installed("this.path")
-  skip_if_not_installed("fs")
-  
   tdir <- fs::path_real(withr::local_tempdir("mrgmisc-two"))
   cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
   fs::dir_create(tdir, "deliv", "figure", "eda")
