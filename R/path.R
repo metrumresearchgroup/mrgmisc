@@ -37,7 +37,7 @@ this_proj <- function() {
   proj
 }
 
-wrong_path <- function(path, type = c("table", "figure")) {
+bad_path <- function(path, type = c("table", "figure")) {
   type <- match.arg(type)
   fun <- ifelse(type=="table", "tables_to", "figures_to")
   help <- paste0("See ?", fun, " for help formatting the path.")
@@ -116,10 +116,11 @@ this_dir_proj <- function() {
 #' * `tf_options()` prints the `mrg.script`, `pmtables.dir`, and `mrggsave.dir`
 #'   options to the console.
 #'   
+#' * `tf_options_clear()` clears options set by `mrg_script()`, `tables_to()`, 
+#'   and `figures_to()`, setting the option value to `NULL`.
+#'   
 #' @param path the absolute path or path relative to the current working
-#' directory.   
-#' @param proj_path the script name or table or figure output path, stated 
-#' relative to the project root.
+#' directory.
 #' @param path.type indicates how `pmtables` should format the path portion
 #' of table annotations; see `pmtables::format_table_path`. 
 #' @param set_script if `TRUE` (the default), include a call to `mrg_script()` 
@@ -152,9 +153,7 @@ tf_options <- function() {
   # pmtables.dir
   tables <- options()$pmtables.dir
   if(is.character(tables)) {
-    envir <- caller_env()
-    proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = TRUE))
-    tables <- fs::path_rel(tables, proj)
+    tables <- proj_rel(tables)
   } else {
     tables <- not_set  
   }
@@ -165,9 +164,7 @@ tf_options <- function() {
   # mrggsave.dir
   figures <- options()$mrggsave.dir
   if(is.character(figures)) {
-    envir <- caller_env()
-    proj <- fs::path_real(this.path::this.proj(envir = envir, srcfile = TRUE))
-    figures <- fs::path_rel(figures, proj)
+    figures <- proj_rel(figures)
   } else {
     figures <- not_set 
   }
@@ -205,20 +202,17 @@ mrg_script <- function(path = NULL) {
 
 #' @rdname tf_options
 #' @export
-tables_to <- function(path, proj_path = NULL, set_script = TRUE, path.type = "proj") {
+tables_to <- function(path, set_script = TRUE, path.type = "proj") {
   if(isTRUE(set_script)) {
     mrg_script()  
   }
-  if(is.character(proj_path)) {
-    tab_path <- file.path(this_proj(), proj_path)
+  if(!dir.exists(path)) {
+    bad_path(path, type = "table")
   } else {
-    tab_path <- file.path(this_proj(), proj_rel(path))
-  }
-  if(!dir.exists(tab_path)) {
-    wrong_path(tab_path, type = "table")
+    path <- as.character(fs::path_real(path))
   }
   options(
-    pmtables.dir = tab_path, 
+    pmtables.dir = path, 
     pmtables.path.type = "proj"
   )
   invisible(options()$pmtables.dir)
@@ -230,15 +224,12 @@ figures_to <- function(path, proj_path = NULL, set_script = TRUE) {
   if(isTRUE(set_script)) {
     mrg_script()  
   }
-  if(is.character(proj_path)) {
-    fig_path <- file.path(this_proj(), proj_path)
+  if(!dir.exists(path)) {
+    bad_path(path, type = "figure") 
   } else {
-    fig_path <- file.path(this_proj(), proj_rel(path))
+    path <- as.character(fs::path_real(path))
   }
-  if(!dir.exists(fig_path)) {
-    wrong_path(fig_path, type = "figure") 
-  }
-  options(mrggsave.dir = fig_path)
+  options(mrggsave.dir = path)
   invisible(options()$mrggsave.dir)
 }
 
