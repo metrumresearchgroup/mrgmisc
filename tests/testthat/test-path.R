@@ -50,17 +50,7 @@ test_that("this.path wrappers work from sourced script", {
   expect_identical(dproj, file.path("sub", "subsub"))
 })
 
-test_that("set script name option", {
-  skip_if_not_installed("this.path")
-  skip_if_not_installed("fs")
-  
-  mrg_script()
-  expect_equal(basename(options()$mrg.script), "test-path.R")
-  tf_options_clear(quietly = TRUE)
-  expect_null(options()$mrg.script)
-})
-
-test_that("set output directory options for tables and figures", {
+test_that("set path options", {
   skip_if_not_installed("this.path")
   skip_if_not_installed("fs")
   
@@ -71,6 +61,17 @@ test_that("set output directory options for tables and figures", {
   fs::dir_create(tdir, "script")
   script <- file.path(tdir, "script", "foo.R")
   
+  # Set script
+  writeLines("mrg_script()", script)
+  source(script)
+  expect_identical(
+    options()$mrg.script,
+    file.path("script", "foo.R")
+  )
+
+  tf_options_clear(quietly = TRUE)
+  expect_null(options()$mrg.script)
+
   # Set figure output dir and script
   writeLines(
     "figures_to('../deliv/figure/eda')",
@@ -149,17 +150,30 @@ test_that("set output directory options for tables and figures", {
   expect_null(options()$mrg.script)
   
   tf_options_clear(quietly = TRUE)
-})
 
-test_that("warn when path doesn't exist", {
+  # tables_to warns when path does not exist
+
+  writeLines("tables_to('foo/bar')", script)
   expect_warning(
-    tables_to("foo/bar"), 
-    regexp = "The table output path could not be found", 
-    all = FALSE
+    source(script),
+    regexp = "The table output path could not be found"
   )
+  expect_identical(
+    options()$mrg.script,
+    file.path("script", "foo.R")
+  )
+  tf_options_clear(quietly = TRUE)
+
+  # figures_to warns when path does not exist
+
+  writeLines("figures_to('foo/bar')", script)
   expect_warning(
-    figures_to("foo/bar"), 
-    regexp = "The figure output path could not be found", 
-    all = FALSE
+    source(script),
+    regexp = "The figure output path could not be found"
   )
+  expect_identical(
+    options()$mrg.script,
+    file.path("script", "foo.R")
+  )
+  tf_options_clear(quietly = TRUE)
 })
