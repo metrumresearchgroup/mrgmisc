@@ -85,8 +85,7 @@ this_dir_path <- function() {
 this_file_proj <- function() {
   check_path_deps()
 
-  # See comment above about srcfile=NULL.
-  proj <- fs::path_real(this.path::this.proj(envir = emptyenv(), srcfile = NULL))
+  proj <- this_proj()
   path <- fs::path_real(this_file_path())
   as.character(fs::path_rel(path, proj))
 }
