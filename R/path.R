@@ -231,7 +231,7 @@ tables_to <- function(path, set_script = TRUE, path.type = "proj") {
   }
   options(
     pmtables.dir = path, 
-    pmtables.path.type = "proj"
+    pmtables.path.type = path.type
   )
   invisible(options()$pmtables.dir)
 }
