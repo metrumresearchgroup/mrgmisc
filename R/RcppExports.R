@@ -5,7 +5,6 @@
 #' @param time vector of time values
 #' @param dv concentration measurements
 #' @param range vector of min and max value of the partial auc range
-#' @noRd
 auc_partial_cpp <- function(time, dv, range) {
     .Call('_mrgmisc_auc_partial_cpp', PACKAGE = 'mrgmisc', time, dv, range)
 }
@@ -50,7 +49,7 @@ padLeft <- function(strings, numChars, paddingChar) {
 #' used to take the breakpoints to establish bins quickly and easily
 #' @param x A numeric vector of values
 #' @param left,right Boundary values
-#' @noRd
+#' @export
 set_bins_cpp <- function(x, left, right) {
     .Call('_mrgmisc_set_bins_cpp', PACKAGE = 'mrgmisc', x, left, right)
 }

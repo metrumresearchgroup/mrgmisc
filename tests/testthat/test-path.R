@@ -282,7 +282,7 @@ test_that("set path options", {
   expect_length(res[["warnings"]], 0)
   expect_match(
     res[["messages"]],
-    "Creating directory:\nfoo/bar",
+    "Creating directory: \\nfoo/bar",
     all = FALSE
   )
   expect_match(
@@ -315,7 +315,7 @@ test_that("set path options", {
   expect_length(res[["warnings"]], 0)
   expect_match(
     res[["messages"]],
-    "Creating directory:\nfoo/barr",
+    "Creating directory: \\nfoo/barr",
     all = FALSE
   )
   expect_match(
