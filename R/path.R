@@ -39,16 +39,23 @@ this_proj <- function() {
   proj
 }
 
-bad_path <- function(path, type = c("table", "figure", "script")) {
+bad_path <- function(path, type = c("table", "figure", "script"), create = FALSE) {
   type <- match.arg(type)
+  if(isTRUE(create) && type != "script") {
+    inform(message = "Creating directory: ", body = path)
+    new_path <- fs::dir_create(path)
+    if(!dir.exists(new_path)) {
+      abort("Failed to create directory.")  
+    }
+    return(invisible(NULL))
+  }
   look <- c(table = "tables_to", figure = "figures_to", script = "mrg_script")
   fun <- look[type]
   help <- paste0("See ?", fun, " for help formatting the path.")
   msg <- paste0("The ", type, " output path could not be found:")
-  names(msg) <- "!"
-  names(path) <- "!"
+  names(path) <- "x"
   names(help) <- "i"
-  warn(message = msg, body = c(path, help))
+  abort(message = msg, body = c(path, help))
 }
 
 #' @rdname this_file
@@ -84,7 +91,7 @@ this_dir_path <- function() {
 #' @export
 this_file_proj <- function() {
   check_path_deps()
-
+  
   proj <- this_proj()
   path <- fs::path_real(this_file_path())
   as.character(fs::path_rel(path, proj))
@@ -117,6 +124,8 @@ this_dir_proj <- function() {
 #'   
 #' @param path the absolute path or path relative to the current working
 #' directory.
+#' @param create if `TRUE`, the directory will be created with 
+#' [fs::dir_create()] in case it does not already exist. 
 #' @param path.type indicates how `pmtables` should format the path portion
 #' of table annotations; see `pmtables::format_table_path`. 
 #' @param set_script if `TRUE` (the default), include a call to `mrg_script()` 
@@ -136,12 +145,12 @@ this_dir_proj <- function() {
 #' @export
 tf_options <- function() {
   check_path_deps()
-
+  
   not_set <- "<option not set>"
   missing <- "<does not exist>"
   
   proj <- this_proj()
-
+  
   # mrg.script
   script <- options()$mrg.script
   if(!is.character(script)) {
@@ -186,7 +195,6 @@ tf_options <- function() {
 #' @export
 tf_options_clear <- function(quietly = FALSE) {
   check_path_deps()
-
   options(
     mrg.script = NULL, 
     pmtables.dir = NULL, 
@@ -203,7 +211,6 @@ tf_options_clear <- function(quietly = FALSE) {
 #' @export
 mrg_script <- function(path = NULL) {
   check_path_deps()
-
   if(is.null(path)) {
     path <- this_file_proj()  
   } else {
@@ -218,14 +225,13 @@ mrg_script <- function(path = NULL) {
 
 #' @rdname tf_options
 #' @export
-tables_to <- function(path, set_script = TRUE, path.type = "proj") {
+tables_to <- function(path, create = FALSE, set_script = TRUE, path.type = "proj") {
   check_path_deps()
-
   if(isTRUE(set_script)) {
     mrg_script()  
   }
   if(!dir.exists(path)) {
-    bad_path(path, type = "table")
+    bad_path(path, type = "table", create = create)
   } else {
     path <- as.character(fs::path_real(path))
   }
@@ -238,14 +244,13 @@ tables_to <- function(path, set_script = TRUE, path.type = "proj") {
 
 #' @rdname tf_options
 #' @export
-figures_to <- function(path, set_script = TRUE) {
+figures_to <- function(path, create = FALSE, set_script = TRUE) {
   check_path_deps()
-
   if(isTRUE(set_script)) {
     mrg_script()  
   }
   if(!dir.exists(path)) {
-    bad_path(path, type = "figure") 
+    bad_path(path, type = "figure", create = create) 
   } else {
     path <- as.character(fs::path_real(path))
   }

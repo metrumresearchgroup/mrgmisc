@@ -245,29 +245,49 @@ test_that("set path options", {
   
   tf_options_clear(quietly = TRUE)
 
-  # tables_to warns when path does not exist
-
+  # tables_to errors when path does not exist
   writeLines(
     c(
-      "tables_to('foo/bar')",
+      "tables_to('foo/bar')"
+    ),
+    script
+  )
+  expect_error(
+    source(script), 
+    regexp = "The table output path could not be found"
+  )
+
+  # figures_to errors when path does not exist
+  writeLines(
+    c(
+      "figures_to('foo/bar')"
+    ),
+    script
+  )
+  expect_error(
+    source(script), 
+    regexp = "The figure output path could not be found"
+  )
+  tf_options_clear(quietly = TRUE)
+
+  # tables_to can create the directory when it doesn't exist
+  writeLines(
+    c(
+      "tables_to('foo/bar', create = TRUE)",
       "tf_options()"
     ),
     script
   )
   res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
   expect_match(
-    res[["warnings"]],
-    "The table output path could not be found"
+    res[["messages"]],
+    "Creating directory:\nfoo/bar",
+    all = FALSE
   )
   expect_match(
     res[["messages"]],
     paste0("script  ", file.path("script", "foo.R")),
-    all = FALSE,
-    fixed = TRUE
-  )
-  expect_match(
-    res[["messages"]],
-    "tables .*does not exist",
     all = FALSE
   )
   expect_match(
@@ -275,28 +295,33 @@ test_that("set path options", {
     "figures .*not set",
     all = FALSE
   )
-
+  expect_match(
+    res[["messages"]],
+    paste0("tables  ", file.path("script", "foo", "bar")),
+    all = FALSE,
+    fixed = TRUE
+  )
   tf_options_clear(quietly = TRUE)
-
-  # figures_to warns when path does not exist
-
+  
+  # figures_to can create the directory when it doesn't exist
   writeLines(
     c(
-      "figures_to('foo/bar')",
+      "figures_to('foo/barr', create = TRUE)",
       "tf_options()"
     ),
     script
   )
   res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
   expect_match(
-    res[["warnings"]],
-    "The figure output path could not be found"
+    res[["messages"]],
+    "Creating directory:\nfoo/barr",
+    all = FALSE
   )
   expect_match(
     res[["messages"]],
     paste0("script  ", file.path("script", "foo.R")),
-    all = FALSE,
-    fixed = TRUE
+    all = FALSE
   )
   expect_match(
     res[["messages"]],
@@ -305,9 +330,9 @@ test_that("set path options", {
   )
   expect_match(
     res[["messages"]],
-    "figures .*does not exist",
-    all = FALSE
+    paste0("figures ", file.path("script", "foo", "barr")),
+    all = FALSE,
+    fixed = TRUE
   )
-
   tf_options_clear(quietly = TRUE)
 })
