@@ -1,7 +1,7 @@
 Package: mrgmisc
 Type: Package
 Title: MRG Helpers
-Version: 0.2.2
+Version: 0.2.2.9000
 Authors@R: c(
     person("Michael", "McDermott", email = "michaelm@metrumrg.com", role = c("aut", "cre")),
     person("Devin", "Pastoor", email = "devin.pastoor@gmail.com", role = "aut"),
@@ -35,7 +35,10 @@ Suggests:
     rmarkdown,
     readr,
     testthat,
-    ggplot2
+    ggplot2, 
+    this.path, 
+    fs,
+    withr
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr

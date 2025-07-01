@@ -57,3 +57,9 @@ reference:
     - as.nmctl
     - half_life
     - pretty_dose
+  - title: File paths
+    contents:
+    - this_file
+    - tf_options
+    - proj_rel
+
