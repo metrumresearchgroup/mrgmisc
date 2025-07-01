@@ -1,3 +1,25 @@
+# mrgmisc 0.3.0
+
+- Added functions to render paths for various project needs
+  - Returns a directory path
+    - `this_dir_name()`
+    - `this_dir_path()`
+    - `this_dir_proj()`
+  - Returns a file path
+    - `this_file_name()`
+    - `this_file_path()`
+    - `this_file_proj()`
+  - Format a file or directory path relative to the project root
+    - `proj_rel()`
+    
+- Added functions to set options for table and figure outputs
+  - `figures_to()`
+  - `tables_to()`
+  - `mrg_script()`
+  - `tf_options()`
+  - `tf_options_clear()`
+
+
 # mrgmisc 0.2.2
 
 ## Bug fixes

@@ -57,4 +57,4 @@ in RStudio). renv will activate and find the project library.
 ## Getting help
 
 If you encounter a clear bug, please file an issue with a minimal
-reproducible example on [mrgmisc](https://github.com/mrgmisc/issues).
+reproducible example on [mrgmisc](https://github.com/metrumresearchgroup/mrgmisc/issues).
