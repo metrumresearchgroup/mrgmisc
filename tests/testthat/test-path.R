@@ -288,7 +288,8 @@ test_that("set path options", {
   expect_match(
     res[["messages"]],
     paste0("script  ", file.path("script", "foo.R")),
-    all = FALSE
+    all = FALSE,
+    fixed = TRUE
   )
   expect_match(
     res[["messages"]],
@@ -321,7 +322,8 @@ test_that("set path options", {
   expect_match(
     res[["messages"]],
     paste0("script  ", file.path("script", "foo.R")),
-    all = FALSE
+    all = FALSE,
+    fixed = TRUE
   )
   expect_match(
     res[["messages"]],
