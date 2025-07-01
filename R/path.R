@@ -232,9 +232,8 @@ tables_to <- function(path, create = FALSE, set_script = TRUE, path.type = "proj
   }
   if(!dir.exists(path)) {
     bad_path(path, type = "table", create = create)
-  } else {
-    path <- as.character(fs::path_real(path))
   }
+  path <- as.character(fs::path_real(path))
   options(
     pmtables.dir = path, 
     pmtables.path.type = path.type
@@ -251,9 +250,8 @@ figures_to <- function(path, create = FALSE, set_script = TRUE) {
   }
   if(!dir.exists(path)) {
     bad_path(path, type = "figure", create = create) 
-  } else {
-    path <- as.character(fs::path_real(path))
   }
+  path <- as.character(fs::path_real(path))
   options(mrggsave.dir = path)
   invisible(options()$mrggsave.dir)
 }
