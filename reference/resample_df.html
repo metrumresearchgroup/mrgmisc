@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrgmisc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
       </span>
     </div>
 
@@ -120,18 +120,18 @@ check the original ID column against the number of key's associated with that ID
 <span class="r-in"><span><span class="co"># simple example resampling by ID maintaining Gender distribution, with 10 individuals</span></span></span>
 <span class="r-in"><span><span class="fu">resample_df</span><span class="op">(</span><span class="va">sd_oral_richpk</span>, key_cols <span class="op">=</span> <span class="st">"ID"</span>, strat_cols <span class="op">=</span> <span class="st">"Gender"</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 120 × 10</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      KEY    ID  Time   Amt  Conc   Age Weight Gender Race   Dose</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1    39  0     <span style="text-decoration: underline;">5</span>000  0     49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1    39  0.25     0  6.91  49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1    39  0.5      0 14.3   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1    39  1        0 28.3   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1    39  2        0 48.5   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1    39  3        0 47.1   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1    39  4        0 46.4   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1    39  6        0 41.0   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1    39  8        0 37.2   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1    39 12        0 28.6   49.8   64.8 Female Asian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      KEY    ID  Time   Amt  Conc   Age Weight Gender Race       Dose</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1    22  0     <span style="text-decoration: underline;">5</span>000  0     47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1    22  0.25     0 20.4   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1    22  0.5      0 40.8   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1    22  1        0 47.5   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1    22  2        0 46.8   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1    22  3        0 37.3   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1    22  4        0 35.6   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1    22  6        0 14.8   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1    22  8        0 10.6   47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1    22 12        0  3.54  47.6   70.8 Female Caucasian  <span style="text-decoration: underline;">5</span>000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 110 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># for a more complex example lets resample "simulated" data with multiple replicates</span></span></span>
@@ -149,18 +149,18 @@ check the original ID column against the number of key's associated with that ID
 <span class="r-in"><span><span class="co"># a single "unit" of ID/REP</span></span></span>
 <span class="r-in"><span><span class="fu">resample_df</span><span class="op">(</span><span class="va">rep_dat</span>, key_cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ID"</span>, <span class="st">"REP"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1,140 × 11</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      KEY    ID  Time   Amt  Conc   Age Weight Gender Race      Dose   REP</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1     1  0     <span style="text-decoration: underline;">5</span>000  0     56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1     1  0.25     0  8.61  56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1     1  0.5      0 19.4   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1     1  1        0 34.0   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1     1  2        0 30.2   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1     1  3        0 31.3   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1     1  4        0 25.0   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1     1  6        0 23.4   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1     1  8        0 23.5   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1     1 12        0 14.7   56.1   94.2 Male   Hispanic  <span style="text-decoration: underline;">5</span>000     5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      KEY    ID  Time   Amt  Conc   Age Weight Gender Race   Dose   REP</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1    15  0     <span style="text-decoration: underline;">5</span>000   0    55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1    15  0.25     0  22.9  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1    15  0.5      0  34.6  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1    15  1        0  49.7  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1    15  2        0  55.8  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1    15  3        0  95.3  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1    15  4        0  75.7  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1    15  6        0  73.7  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1    15  8        0  49.6  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1    15 12        0  43.1  55.2   72.7 Male   Other  <span style="text-decoration: underline;">5</span>000     2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1,130 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># check to see that stratification is maintained</span></span></span>
@@ -220,7 +220,7 @@ check the original ID column against the number of key's associated with that ID
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer></div>
