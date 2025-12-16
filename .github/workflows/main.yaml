@@ -17,8 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - os: ubuntu-22.04
-            r: 4.0.5
             # scales v1.4.0 requires R >= 4.1.0.
             scales_pkg: 'url::https://mpn.metworx.com/snapshots/stable/2025-04-23/src/contrib/scales_1.3.0.tar.gz'
           - os: ubuntu-22.04
