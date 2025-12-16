@@ -36,6 +36,7 @@ reference:
     - nasum
     - nsub
     - geomean
+    - gm-mean
     - search_df
     - is_distinct
     - row_compare
