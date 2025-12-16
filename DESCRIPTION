@@ -8,6 +8,8 @@ Authors@R: c(
     person("Kyle", "Baron", email = "kyleb@metrumrg.com", role = "aut"),
     person("Grace", "O'Brien", email = "graceo@metrumrg.com", role = "aut"),
     person("Kyle", "Barrett", email = "barrettk@metrumrg.com", role = "aut"),
+    person("Sam", "Callisto", email = "samc@metrumrg.com", role = "aut"),
+    person("Benjamin", "Schneider", email = "benjamin.schneider@metrumrg.com", role = "aut"),
     person("Tim", "Bergsma", email = "timb@metrumrg.com", role = "aut"))
 Description: Metrum Research Group Helper Functions.
 URL: https://github.com/metrumresearchgroup/mrgmisc, https://metrumresearchgroup.github.io/mrgmisc
