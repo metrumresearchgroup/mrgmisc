@@ -40,7 +40,8 @@ Suggests:
     ggplot2, 
     this.path, 
     fs,
-    withr
+    withr,
+    tidyselect
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr
