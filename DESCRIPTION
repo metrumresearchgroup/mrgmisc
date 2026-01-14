@@ -1,7 +1,7 @@
 Package: mrgmisc
 Type: Package
 Title: MRG Helpers
-Version: 0.3.0.9001
+Version: 0.3.0.9002
 Authors@R: c(
     person("Michael", "McDermott", email = "michaelm@metrumrg.com", role = c("aut", "cre")),
     person("Devin", "Pastoor", email = "devin.pastoor@gmail.com", role = "aut"),
@@ -10,7 +10,8 @@ Authors@R: c(
     person("Kyle", "Barrett", email = "barrettk@metrumrg.com", role = "aut"),
     person("Sam", "Callisto", email = "samc@metrumrg.com", role = "aut"),
     person("Benjamin", "Schneider", email = "benjamin.schneider@metrumrg.com", role = "aut"),
-    person("Tim", "Bergsma", email = "timb@metrumrg.com", role = "aut"))
+    person("Tim", "Bergsma", email = "timb@metrumrg.com", role = "aut"),
+    person("Todd", "Yoder", email = "toddy@metrumrg.com", role = "aut"))
 Description: Metrum Research Group Helper Functions.
 URL: https://github.com/metrumresearchgroup/mrgmisc, https://metrumresearchgroup.github.io/mrgmisc
 BugReports: https://github.com/metrumresearchgroup/mrgmisc/issues
