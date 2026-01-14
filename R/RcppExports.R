@@ -49,7 +49,7 @@ padLeft <- function(strings, numChars, paddingChar) {
 #' used to take the breakpoints to establish bins quickly and easily
 #' @param x A numeric vector of values
 #' @param left,right Boundary values
-#' @export
+#' @noRd
 set_bins_cpp <- function(x, left, right) {
     .Call('_mrgmisc_set_bins_cpp', PACKAGE = 'mrgmisc', x, left, right)
 }
