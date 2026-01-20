@@ -8,7 +8,7 @@ using namespace Rcpp;
 //' used to take the breakpoints to establish bins quickly and easily
 //' @param x A numeric vector of values
 //' @param left,right Boundary values
-//' @export
+//' @keywords internal
 // [[Rcpp::export]]
 IntegerVector set_bins_cpp(NumericVector x, NumericVector left, NumericVector right) {
   int n = x.size();
