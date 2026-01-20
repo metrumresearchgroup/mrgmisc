@@ -16,3 +16,4 @@ auc_partial_cpp(time, dv, range)
 \description{
 calculate partial AUC
 }
+\keyword{internal}
