@@ -65,6 +65,6 @@ show_labels <- function(df, ...) {
   # return
   tibble::tibble(
     name = names(df_meta),
-    label = stats::setNames(labels, NULL)
+    label = labels
   )
 }
