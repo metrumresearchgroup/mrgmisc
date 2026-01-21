@@ -23,7 +23,12 @@ test_that("show_labels works on unlabelled data.frame", {
     show_labels(df_no_labels),
     tibble::tibble(
       name = c("ID", "AGE", "BWT", "SEX"), 
-      label = c(NA_character_, NA_character_, NA_character_, NA_character_)
+      label = c(
+        ID = NA_character_, 
+        AGE = NA_character_, 
+        BWT = NA_character_, 
+        SEX = NA_character_
+      )
     )
   )
 })
@@ -33,7 +38,12 @@ test_that("show_labels works on partially labelled data.frame", {
     show_labels(df_missing_label),
     tibble::tibble(
       name = c("ID", "AGE", "BWT", "SEX"), 
-      label = c("Subject ID", "Age (years)", "3", NA_character_)
+      label = c(
+        ID = "Subject ID", 
+        AGE = "Age (years)", 
+        BWT = "3", 
+        SEX = NA_character_
+      )
     )
   )
 })
@@ -43,7 +53,11 @@ test_that("show_labels works on labelled data.frame", {
     show_labels(df), 
     tibble::tibble(
       name = c("ID", "AGE", "BWT"), 
-      label = c("Subject ID", "Age (years)", "3")
+      label = c(
+        ID = "Subject ID", 
+        AGE = "Age (years)", 
+        BWT = "3"
+      )
     )
   )
 })
@@ -53,7 +67,10 @@ test_that("show_labels works on labelled data.frame with character dots", {
     show_labels(df, "ID", "BWT"), 
     tibble::tibble(
       name = c("ID", "BWT"), 
-      label = c("Subject ID", "3")
+      label = c(
+        ID = "Subject ID", 
+        BWT = "3"
+      )
     )
   )
 })
@@ -63,7 +80,10 @@ test_that("show_labels works on labelled data.frame with unquoted dots", {
     show_labels(df, ID, BWT), 
     tibble::tibble(
       name = c("ID", "BWT"), 
-      label = c("Subject ID", "3")
+      label = c(
+        ID = "Subject ID", 
+        BWT = "3"
+      )
     )
   )
 })
@@ -73,7 +93,10 @@ test_that("show_labels works on labelled data.frame with indexed dots", {
     show_labels(df, 1, 3), 
     tibble::tibble(
       name = c("ID", "BWT"), 
-      label = c("Subject ID", "3")
+      label = c(
+        ID = "Subject ID", 
+        BWT = "3"
+      )
     )
   )
 })
@@ -83,7 +106,10 @@ test_that("show_labels works on labelled data.frame with char vector dots", {
     show_labels(df, c("ID", "BWT")), 
     tibble::tibble(
       name = c("ID", "BWT"), 
-      label = c("Subject ID", "3")
+      label = c(
+        ID = "Subject ID", 
+        BWT = "3"
+      )
     )
   )
 })
@@ -93,7 +119,10 @@ test_that("show_labels works on labelled data.frame w/ unquoted vector dots", {
     show_labels(df, c(ID, BWT)), 
     tibble::tibble(
       name = c("ID", "BWT"), 
-      label = c("Subject ID", "3")
+      label = c(
+        ID = "Subject ID", 
+        BWT = "3"
+      )
     )
   )
 })
@@ -103,7 +132,10 @@ test_that("show_labels works on labelled data.frame with index vector dots", {
     show_labels(df, c(1, 3)), 
     tibble::tibble(
       name = c("ID", "BWT"), 
-      label = c("Subject ID", "3")
+      label = c(
+        ID = "Subject ID", 
+        BWT = "3"
+      )
     )
   )
 })
