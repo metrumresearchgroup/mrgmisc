@@ -89,5 +89,6 @@ test_that("ids_per_plot expected output: IDs are sorted properly", {
 
 test_that("ids_per_plot special case: no error if more bins provided than values", {
   expect_equal(ids_per_plot(letters[1:3], 4), c(1, 1, 1))
+  expect_equal(ids_per_plot(rep(letters[1:3], 2), 4), c(1, 1, 1, 1, 1, 1))
   expect_equal(ids_per_plot(c(1, 1, 2, 3), 2), c(1, 1, 1, 2))
 })
