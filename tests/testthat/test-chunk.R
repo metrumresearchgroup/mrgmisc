@@ -92,3 +92,14 @@ test_that("ids_per_plot special case: no error if more bins provided than values
   expect_equal(ids_per_plot(rep(letters[1:3], 2), 4), c(1, 1, 1, 1, 1, 1))
   expect_equal(ids_per_plot(c(1, 1, 2, 3), 2), c(1, 1, 1, 2))
 })
+
+test_that("ids_per_plot: aborts if id_per_plot is below 1", {
+  expect_error(
+    ids_per_plot(1:12, id_per_plot = 0),
+    "at least 1"
+  )
+  expect_error(
+    ids_per_plot(1:12, id_per_plot = -1),
+    "at least 1"
+  )
+})

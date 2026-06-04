@@ -45,6 +45,10 @@ chunk <- function(.x, .nchunk = parallel::detectCores()) {
 #' @param id_per_plot number of ids per plot. Default to 9
 #'@export
 ids_per_plot <- function(id, id_per_plot = 9) {
+  if (id_per_plot < 1) {
+    stop("id_per_plot must be at least 1")
+  }
+
   if(!is.vector(id)) {
     stop("chunking requires a vector")
   }
