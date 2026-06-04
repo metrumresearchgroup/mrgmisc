@@ -57,7 +57,6 @@ ids_per_plot <- function(id, id_per_plot = 9) {
   remainder <- length(uid)%%id_per_plot
   bin_number <- c(rep(1:mod, each= id_per_plot),
                   rep(mod + 1, times = remainder ))
-  bin_number <- sort(bin_number)
   if(length(bin_number) != length(uid)) stop("something went wrong in bin_number calculation")
   bin_number[match(id, uid)]
 }
