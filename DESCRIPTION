@@ -44,5 +44,5 @@ Suggests:
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr
-RoxygenNote: 7.3.3
 Encoding: UTF-8
+Config/roxygen2/version: 8.0.0

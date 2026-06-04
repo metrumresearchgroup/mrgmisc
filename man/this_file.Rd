@@ -33,7 +33,7 @@ current script:
 \item \code{this_file_path()} returns the absolute path of the current script.
 \item \code{this_file_proj()} returns the path of the current script relative to the
 root of the project that contains it, as defined by
-\code{\link[this.path:here]{this.path::this.proj()}}.
+\code{\link[this.path:this.proj]{this.path::this.proj()}}.
 }
 
 The following functions use \pkg{this.path} to determine the parent directory
@@ -45,6 +45,6 @@ current script.
 the current script.
 \item \code{this_dir_proj()} returns the path of the directory containing the current
 script relative to the root of the project that contains it, as defined by
-\code{\link[this.path:here]{this.path::this.proj()}}.
+\code{\link[this.path:this.proj]{this.path::this.proj()}}.
 }
 }
