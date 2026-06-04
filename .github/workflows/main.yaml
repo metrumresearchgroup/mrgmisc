@@ -38,8 +38,7 @@ jobs:
           extra-packages: |
             any::pkgdown
             any::rcmdcheck
-            ${{ matrix.config.scales_pkg }}
-          upgrade: ${{ matrix.config.r == '4.0.5' && 'FALSE' || 'TRUE' }}
+          upgrade: 'TRUE'
       - uses: r-lib/actions/check-r-package@v2
         with:
           error-on: '"note"'
