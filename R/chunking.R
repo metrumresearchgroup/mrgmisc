@@ -59,7 +59,7 @@ ids_per_plot <- function(id, id_per_plot = 9) {
   
   mod <- length(uid) %/% id_per_plot
   rem <- length(uid) %% id_per_plot
-  bins <- c(rep(1:mod, each= id_per_plot), rep(mod + 1, times = rem))
+  bins <- c(rep(seq_len(mod), each= id_per_plot), rep(mod + 1, times = rem))
   if(length(bins) != length(uid)) stop("something went wrong in bins calculation")
   bins[match(id, uid)]
 }
