@@ -61,7 +61,9 @@ ids_per_plot <- function(id, id_per_plot = 9) {
   mod <- nuniq %/% id_per_plot
   rem <- nuniq %% id_per_plot
   bins <- c(rep(seq_len(mod), each = id_per_plot), rep(mod + 1, times = rem))
-  if(length(bins) != nuniq) stop("something went wrong in bins calculation")
+  if (length(bins) != nuniq) {
+    stop("bug: bins should always be same length as nuniq")
+  }
   bins[match(id, uid)]
 }
 
