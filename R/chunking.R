@@ -49,11 +49,16 @@ ids_per_plot <- function(id, id_per_plot = 9) {
     stop("id_per_plot must be at least 1")
   }
 
-  if(!is.vector(id)) {
-    stop("chunking requires a vector")
+  if (is.factor(id)) {
+    xs <- factor(id) # Drop any missing levels.
+  } else {
+    xs <- factor(id, levels = unique(id))
   }
-  uid <- unique(id)
-  nuniq <- length(uid)
+  nuniq <- nlevels(xs)
+
+  if (nuniq == 0) {
+    return(integer())
+  }
   if (nuniq <= id_per_plot) {
     return(rep.int(1L, length(id)))
   }
@@ -64,7 +69,9 @@ ids_per_plot <- function(id, id_per_plot = 9) {
   if (length(bins) != nuniq) {
     stop("bug: bins should always be same length as nuniq")
   }
-  bins[match(id, uid)]
+  levels(xs) <- bins
+
+  return(as.integer(xs))
 }
 
 
