@@ -53,14 +53,15 @@ ids_per_plot <- function(id, id_per_plot = 9) {
     stop("chunking requires a vector")
   }
   uid <- unique(id)
-  if (length(uid) <= id_per_plot) {
+  nuniq <- length(uid)
+  if (nuniq <= id_per_plot) {
     return(rep.int(1L, length(id)))
   }
-  
-  mod <- length(uid) %/% id_per_plot
-  rem <- length(uid) %% id_per_plot
-  bins <- c(rep(seq_len(mod), each= id_per_plot), rep(mod + 1, times = rem))
-  if(length(bins) != length(uid)) stop("something went wrong in bins calculation")
+
+  mod <- nuniq %/% id_per_plot
+  rem <- nuniq %% id_per_plot
+  bins <- c(rep(seq_len(mod), each = id_per_plot), rep(mod + 1, times = rem))
+  if(length(bins) != nuniq) stop("something went wrong in bins calculation")
   bins[match(id, uid)]
 }
 
