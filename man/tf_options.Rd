@@ -26,7 +26,7 @@ are cleared with \code{tf_options_clear()}.}
 directory.}
 
 \item{create}{if \code{TRUE}, the directory will be created with
-\code{\link[fs:create]{fs::dir_create()}} in case it does not already exist.}
+\code{\link[fs:dir_create]{fs::dir_create()}} in case it does not already exist.}
 
 \item{set_script}{if \code{TRUE} (the default), include a call to \code{mrg_script()}
 to set the \code{mrg.script} option.}
