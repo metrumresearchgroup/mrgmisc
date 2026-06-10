@@ -78,8 +78,61 @@ test_that("chunk with groups: Chunks grouped elements into ragged arrays", {
 
 # ID per plot -------------------------------------------------------------
 
-test_that("ids_per_plot expected output: Error occurs if input ID's are not vector", {
-  expect_error(ids_per_plot(Theoph$Subject[1], id_per_plot = 9), "chunking requires a vector")
+test_that("ids_per_plot: supports factors", {
+  expect_identical(
+    ids_per_plot(Theoph$Subject[1], id_per_plot = 9),
+    1L
+  )
+  expect_identical(
+    ids_per_plot(factor(letters), id_per_plot = 10),
+    c(
+      rep(1L, 10),
+      rep(2L, 10),
+      rep(3L, 6)
+    )
+  )
+  expect_identical(
+    ids_per_plot(factor(rep(letters, each = 2)), id_per_plot = 10),
+    c(
+      rep(1L, 20),
+      rep(2L, 20),
+      rep(3L, 12)
+    )
+  )
+  expect_identical(
+    ids_per_plot(factor(rev(letters)), id_per_plot = 10),
+    c(
+      rep(3L, 6),
+      rep(2L, 10),
+      rep(1L, 10)
+    )
+  )
+  expect_identical(
+    ids_per_plot(
+      factor(c(10L, 60L, 15L, 15L, 30L, 40L, 50L, 20L)),
+      id_per_plot = 3
+    ),
+    c(1L, 3L, 1L, 1L, 2L, 2L, 2L, 1L)
+  )
+  expect_identical(
+    ids_per_plot(
+      factor(c(1.1, 2.2, 2.1, 2.1, 3.3, 4.4, 5.5, 6.6)),
+      id_per_plot = 3
+    ),
+    c(1L, 1L, 1L, 1L, 2L, 2L, 2L, 3L)
+  )
+  expect_identical(
+    ids_per_plot(factor(letters))[0],
+    integer()
+  )
+  # Keeps existing levels.
+  expect_identical(
+    ids_per_plot(
+      factor(c("a", "b", "c", "d", "a", "b"), levels = c("d", "c", "a", "b")),
+      id_per_plot = 2
+    ),
+    c(2L, 2L, 1L, 1L, 2L, 2L)
+  )
 })
 
 test_that("ids_per_plot expected output: IDs are sorted properly", {
@@ -89,5 +142,30 @@ test_that("ids_per_plot expected output: IDs are sorted properly", {
 
 test_that("ids_per_plot special case: no error if more bins provided than values", {
   expect_equal(ids_per_plot(letters[1:3], 4), c(1, 1, 1))
+  expect_equal(ids_per_plot(rep(letters[1:3], 2), 4), c(1, 1, 1, 1, 1, 1))
   expect_equal(ids_per_plot(c(1, 1, 2, 3), 2), c(1, 1, 1, 2))
+})
+
+test_that("ids_per_plot: returns empty vector for empty ID set", {
+  expect_identical(ids_per_plot(c()), integer())
+})
+
+test_that("ids_per_plot: aborts if id_per_plot is below 1", {
+  expect_error(
+    ids_per_plot(1:12, id_per_plot = 0),
+    "at least 1"
+  )
+  expect_error(
+    ids_per_plot(1:12, id_per_plot = -1),
+    "at least 1"
+  )
+})
+
+test_that("ids_per_plot: supports IDs with attributes", {
+  ids <- 1:12
+  attr(ids, "foo") <- "bar"
+  expect_identical(
+    ids_per_plot(id = ids, id_per_plot = 5),
+    c(1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 3L, 3L)
+  )
 })

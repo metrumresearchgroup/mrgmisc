@@ -45,21 +45,33 @@ chunk <- function(.x, .nchunk = parallel::detectCores()) {
 #' @param id_per_plot number of ids per plot. Default to 9
 #'@export
 ids_per_plot <- function(id, id_per_plot = 9) {
-  if(!is.vector(id)) {
-    stop("chunking requires a vector")
+  if (id_per_plot < 1) {
+    stop("id_per_plot must be at least 1")
   }
-  uid <- unique(id)
-  if(length(uid) < id_per_plot) {
-    id_per_plot <- length(uid)
+
+  if (is.factor(id)) {
+    xs <- factor(id) # Drop any missing levels.
+  } else {
+    xs <- factor(id, levels = unique(id))
   }
-  
-  mod <- length(uid)%/%id_per_plot
-  remainder <- length(uid)%%id_per_plot
-  bin_number <- c(rep(1:mod, each= id_per_plot),
-                  rep(mod + 1, times = remainder ))
-  bin_number <- sort(bin_number)
-  if(length(bin_number) != length(uid)) stop("something went wrong in bin_number calculation")
-  bin_number[match(id, uid)]
+  nuniq <- nlevels(xs)
+
+  if (nuniq == 0) {
+    return(integer())
+  }
+  if (nuniq <= id_per_plot) {
+    return(rep.int(1L, length(id)))
+  }
+
+  mod <- nuniq %/% id_per_plot
+  rem <- nuniq %% id_per_plot
+  bins <- c(rep(seq_len(mod), each = id_per_plot), rep(mod + 1, times = rem))
+  if (length(bins) != nuniq) {
+    stop("bug: bins should always be same length as nuniq")
+  }
+  levels(xs) <- bins
+
+  return(as.integer(xs))
 }
 
 
