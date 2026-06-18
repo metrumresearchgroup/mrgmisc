@@ -30,6 +30,7 @@ Authors:
   \item Sam Callisto \email{samc@metrumrg.com}
   \item Benjamin Schneider \email{benjamin.schneider@metrumrg.com}
   \item Tim Bergsma \email{timb@metrumrg.com}
+  \item Todd Yoder \email{toddy@metrumrg.com}
 }
 
 }
