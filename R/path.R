@@ -274,3 +274,24 @@ check_path_deps <- function() {
     abort("The package \"fs\" is required.", call = caller_env())
   }
 }
+
+#' Glue variables into here::here() path
+#' 
+#' @param ... Passed to [here::here()].
+#' @param .envir Passed to [glue::glue()].
+#' 
+#' @return The path with class character after string interpolation.
+#' 
+#' @examples
+#' \dontrun{
+#'  run <- 12345
+#'  ghere("deliv", "figure", "{run}")
+#' }
+#' 
+#' @export 
+ghere <- function(..., .envir = rlang::caller_env()) {
+  if(!requireNamespace("here")) {
+    rlang::abort("The package \"here\" is required.", call = rlang::caller_env())
+  }
+  as.character(glue::glue(here::here(...), .envir = .envir))
+}
