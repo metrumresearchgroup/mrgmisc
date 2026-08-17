@@ -42,7 +42,8 @@ Suggests:
     this.path, 
     fs,
     withr,
-    tidyselect
+    tidyselect,
+    here
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr
