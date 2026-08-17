@@ -290,7 +290,7 @@ check_path_deps <- function() {
 #' 
 #' @export 
 ghere <- function(..., .envir = rlang::caller_env()) {
-  if(!requireNamespace("here")) {
+  if(!requireNamespace("here", quietly = TRUE)) {
     rlang::abort("The package \"here\" is required.", call = rlang::caller_env())
   }
   as.character(glue::glue(here::here(...), .envir = .envir))
