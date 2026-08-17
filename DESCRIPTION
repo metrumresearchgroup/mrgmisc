@@ -38,7 +38,8 @@ Suggests:
     ggplot2, 
     this.path, 
     fs,
-    withr
+    withr,
+    here
 LazyData: TRUE
 License: GPL (>=2)
 VignetteBuilder: knitr
