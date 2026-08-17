@@ -22,11 +22,15 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Michael McDermott \email{michaelm@metrumrg.com}
   \item Devin Pastoor \email{devin.pastoor@gmail.com}
   \item Kyle Baron \email{kyleb@metrumrg.com}
   \item Grace O'Brien \email{graceo@metrumrg.com}
   \item Kyle Barrett \email{barrettk@metrumrg.com}
+  \item Sam Callisto \email{samc@metrumrg.com}
+  \item Benjamin Schneider \email{benjamin.schneider@metrumrg.com}
   \item Tim Bergsma \email{timb@metrumrg.com}
+  \item Todd Yoder \email{toddy@metrumrg.com}
 }
 
 }

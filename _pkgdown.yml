@@ -35,10 +35,11 @@ reference:
     - pool_df
     - nasum
     - nsub
-    - geomean
+    - gm_mean
     - search_df
     - is_distinct
     - row_compare
+    - show_labels
   - title: Formatting
     contents:
     - capitalize_names
