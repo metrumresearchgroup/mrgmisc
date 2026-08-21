@@ -1,3 +1,24 @@
+# mrgmisc 0.4.0
+
+## New features and changes
+
+- Replaced `geomean()` with `gm_mean()`, which supports configurable handling
+  of missing values and zeros. (#62)
+
+- Added `show_labels()` to display data-frame column names and labels. (#63)
+
+- Updated `ids_per_plot()` to support IDs with attributes and improved its
+  input validation and handling of edge cases. (#69)
+
+- Added `ghere()` to interpolate values into paths constructed with
+  `here::here()`. (#70)
+
+## Maintenance
+
+- Updated generated documentation and CI configuration, and raised the minimum
+  supported R version to 4.1.0. (#68)
+
+
 # mrgmisc 0.3.0
 
 - Added functions to render paths for various project needs
