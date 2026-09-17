@@ -340,3 +340,40 @@ test_that("set path options", {
   )
   tf_options_clear(quietly = TRUE)
 })
+
+test_that("tf_options: missing things", {
+  tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  script <- file.path(tdir, "foo.R")
+
+  writeLines(
+    c(
+      "options(mrg.script = 'noscript', pmtables.dir = 'notab', mrggsave.dir = 'nofig')",
+      "tf_options()"
+    ),
+    script
+  )
+
+  withr::local_dir(tdir)
+  source_quietly <- purrr::quietly(source)
+
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    "noscript .*not exist",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "notab .*not exist",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "nofig .*not exist",
+    all = FALSE
+  )
+
+  tf_options_clear(quietly = TRUE)
+})
