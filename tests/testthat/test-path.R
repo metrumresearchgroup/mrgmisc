@@ -28,6 +28,7 @@ test_that("this.path wrappers work from sourced script", {
       "fpath <- this_file_path()",
       "dpath <- this_dir_path()",
       "fproj <- this_file_proj()",
+      "fproj2 <- proj_rel(fpath)",
       "dproj <- this_dir_proj()"
     ),
     script
@@ -45,6 +46,7 @@ test_that("this.path wrappers work from sourced script", {
   expect_identical(dpath, file.path(tdir, "sub", "subsub"))
   
   expect_identical(fproj, file.path("sub", "subsub", "foo.R"))
+  expect_identical(fproj, fproj2)
   expect_identical(dproj, file.path("sub", "subsub"))
 })
 
