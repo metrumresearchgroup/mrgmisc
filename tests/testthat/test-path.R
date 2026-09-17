@@ -391,3 +391,32 @@ test_that("mrg_script: bad path", {
   withr::local_dir(tdir)
   expect_error(source(script), "?mrg_script", fixed = TRUE)
 })
+
+test_that("mrg_script: path override", {
+  tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  fs::dir_create(file.path(tdir, "script"))
+  cat("", file = file.path(tdir, "script", "bar.R"))
+  script <- file.path(tdir, "foo.R")
+  writeLines(
+    c(
+      "mrg_script('script/bar.R')",
+      "tf_options()"
+    ),
+    script
+  )
+
+  withr::local_dir(tdir)
+  source_quietly <- purrr::quietly(source)
+
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    "script/bar.R",
+    all = FALSE,
+    fixed = TRUE
+  )
+
+  tf_options_clear(quietly = TRUE)
+})
