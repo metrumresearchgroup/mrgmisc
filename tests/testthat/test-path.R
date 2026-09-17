@@ -377,3 +377,17 @@ test_that("tf_options: missing things", {
 
   tf_options_clear(quietly = TRUE)
 })
+
+test_that("mrg_script: bad path", {
+  tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  script <- file.path(tdir, "foo.R")
+
+  writeLines(
+    "mrg_script('script/idnotexist.R')",
+    script
+  )
+
+  withr::local_dir(tdir)
+  expect_error(source(script), "?mrg_script", fixed = TRUE)
+})
