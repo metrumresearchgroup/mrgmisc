@@ -28,6 +28,7 @@ test_that("this.path wrappers work from sourced script", {
       "fpath <- this_file_path()",
       "dpath <- this_dir_path()",
       "fproj <- this_file_proj()",
+      "fproj2 <- proj_rel(fpath)",
       "dproj <- this_dir_proj()"
     ),
     script
@@ -45,6 +46,7 @@ test_that("this.path wrappers work from sourced script", {
   expect_identical(dpath, file.path(tdir, "sub", "subsub"))
   
   expect_identical(fproj, file.path("sub", "subsub", "foo.R"))
+  expect_identical(fproj, fproj2)
   expect_identical(dproj, file.path("sub", "subsub"))
 })
 
@@ -336,5 +338,85 @@ test_that("set path options", {
     all = FALSE,
     fixed = TRUE
   )
+  tf_options_clear(quietly = TRUE)
+})
+
+test_that("tf_options: missing things", {
+  tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  script <- file.path(tdir, "foo.R")
+
+  writeLines(
+    c(
+      "options(mrg.script = 'noscript', pmtables.dir = 'notab', mrggsave.dir = 'nofig')",
+      "tf_options()"
+    ),
+    script
+  )
+
+  withr::local_dir(tdir)
+  source_quietly <- purrr::quietly(source)
+
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    "noscript .*not exist",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "notab .*not exist",
+    all = FALSE
+  )
+  expect_match(
+    res[["messages"]],
+    "nofig .*not exist",
+    all = FALSE
+  )
+
+  tf_options_clear(quietly = TRUE)
+})
+
+test_that("mrg_script: bad path", {
+  tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  script <- file.path(tdir, "foo.R")
+
+  writeLines(
+    "mrg_script('script/idnotexist.R')",
+    script
+  )
+
+  withr::local_dir(tdir)
+  expect_error(source(script), "?mrg_script", fixed = TRUE)
+})
+
+test_that("mrg_script: path override", {
+  tdir <- fs::path_real(withr::local_tempdir("mrgmisc-"))
+  cat("Version: 1.0\n", file = file.path(tdir, "foo.Rproj"))
+  fs::dir_create(file.path(tdir, "script"))
+  cat("", file = file.path(tdir, "script", "bar.R"))
+  script <- file.path(tdir, "foo.R")
+  writeLines(
+    c(
+      "mrg_script('script/bar.R')",
+      "tf_options()"
+    ),
+    script
+  )
+
+  withr::local_dir(tdir)
+  source_quietly <- purrr::quietly(source)
+
+  res <- source_quietly(script)
+  expect_length(res[["warnings"]], 0)
+  expect_match(
+    res[["messages"]],
+    "script/bar.R",
+    all = FALSE,
+    fixed = TRUE
+  )
+
   tf_options_clear(quietly = TRUE)
 })

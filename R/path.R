@@ -31,12 +31,52 @@
 #' @name this_file
 NULL
 
-this_proj <- function() {
-  # Pass NULL for srcfile to prevent this.path from extracting the file name
-  # from a source reference. The source reference lookup shouldn't be relevant
-  # for users of these wrappers, the tests depend on the lookup being disabled.
-  proj <- fs::path_real(this.path::this.proj(envir = emptyenv(), srcfile = NULL))
-  proj
+# One of the methods this.path uses for identifying the file is srcfile
+# inspection. Its n argument controls where on the stack this inspection
+# happens. (See this.path::this.path's documentation for more details.)
+#
+# In the context of mrgmisc path functions, the goal is to specify n in order to
+# land one level above the user-facing mrgmisc function.
+#
+# Approach:
+#
+#  * Each *_internal function requires an n argument that it relays when calling
+#    any this.path function.
+#
+#  * When an *_internal function calls another *_internal function rather than
+#    directly calling a this.path function, the caller increments n by 1.
+#
+#  * User-facing functions pass 2 for n when calling *_internal functions.
+#
+#  * User-facing path functions do not call other user-facing path functions
+#    (because they do not expose an n parameter that allows targeting the right
+#    level).
+
+this_proj_internal <- function(n) {
+  path <- this.path::this.proj(envir = emptyenv(), n = n)
+  return(as.character(fs::path_real(path)))
+}
+
+this_file_internal <- function(n) {
+  path <- this.path::this.path(envir = emptyenv(), n = n)
+  return(as.character(fs::path_real(path)))
+}
+
+proj_rel_internal <- function(n, path) {
+  as.character(fs::path_rel(path, this_proj_internal(n + 1)))
+}
+
+mrg_script_internal <- function(n, path = NULL) {
+  if (is.null(path)) {
+    path <- proj_rel_internal(n + 1, this_file_internal(n + 1))
+  } else {
+    if (!file.exists(path)) {
+      bad_path(path, type = "script")
+    }
+    path <- proj_rel_internal(n + 1, path)
+  }
+  options(mrg.script = path)
+  return(invisible(options()$mrg.script))
 }
 
 bad_path <- function(path, type = c("table", "figure", "script"), create = FALSE) {
@@ -62,46 +102,42 @@ bad_path <- function(path, type = c("table", "figure", "script"), create = FALSE
 #' @export
 this_file_name <- function() {
   check_path_deps()
-  basename(this_file_path())
+  basename(this_file_internal(2))
 }
 
 #' @rdname this_file
 #' @export
 this_dir_name <- function() {
   check_path_deps()
-  basename(dirname(this_file_path()))  
+  basename(dirname(this_file_internal(2)))
 }
 
 #' @rdname this_file
 #' @export
 this_file_path <- function() {
   check_path_deps()
-  # See comment above about srcfile=NULL.
-  this.path::this.path(envir = emptyenv(), srcfile = NULL)
+  this_file_internal(2)
 }
 
 #' @rdname this_file
 #' @export
 this_dir_path <- function() {
   check_path_deps()
-  dirname(this_file_path())  
+  dirname(this_file_internal(2))
 }
 
 #' @rdname this_file
 #' @export
 this_file_proj <- function() {
   check_path_deps()
-  
-  proj <- this_proj()
-  path <- fs::path_real(this_file_path())
-  as.character(fs::path_rel(path, proj))
+  proj_rel_internal(2, this_file_internal(2))
 }
 
 #' @rdname this_file
 #' @export
 this_dir_proj <- function() {
   check_path_deps()
-  dirname(this_file_proj())  
+  dirname(proj_rel_internal(2, this_file_internal(2)))
 }
 
 #' Set options for annotating and saving tables and figures
@@ -145,11 +181,14 @@ this_dir_proj <- function() {
 #' @export
 tf_options <- function() {
   check_path_deps()
+  tf_options_internal(2)
+}
   
+tf_options_internal <- function(n) {
   not_set <- "<option not set>"
   missing <- "<does not exist>"
   
-  proj <- this_proj()
+  proj <- this_proj_internal(n + 1)
   
   # mrg.script
   script <- options()$mrg.script
@@ -167,7 +206,7 @@ tf_options <- function() {
   if (!is.character(tables)) {
     tables <- not_set
   } else if (dir.exists(tables)) {
-    tables <- proj_rel(tables)
+    tables <- proj_rel_internal(n + 1, tables)
   } else {
     tables <- paste(tables, missing)
   }
@@ -180,7 +219,7 @@ tf_options <- function() {
   if (!is.character(figures)) {
     figures <- not_set
   } else if (dir.exists(figures)) {
-    figures <- proj_rel(figures)
+    figures <- proj_rel_internal(n + 1, figures)
   } else {
     figures <- paste(figures, missing)
   }
@@ -202,7 +241,7 @@ tf_options_clear <- function(quietly = FALSE) {
     mrggsave.dir = NULL
   )
   if(!isTRUE(quietly)) {
-    tf_options()
+    tf_options_internal(2)
   }
   return(invisible(NULL))
 }
@@ -211,16 +250,7 @@ tf_options_clear <- function(quietly = FALSE) {
 #' @export
 mrg_script <- function(path = NULL) {
   check_path_deps()
-  if(is.null(path)) {
-    path <- this_file_proj()  
-  } else {
-    if(!file.exists(path)) {
-      bad_path(path, type = "script")  
-    }
-    path <- proj_rel(path)
-  }
-  options(mrg.script = path) 
-  return(invisible(options()$mrg.script))
+  mrg_script_internal(2, path)
 }
 
 #' @rdname tf_options
@@ -228,7 +258,7 @@ mrg_script <- function(path = NULL) {
 tables_to <- function(path, create = FALSE, set_script = TRUE, path.type = "proj") {
   check_path_deps()
   if(isTRUE(set_script)) {
-    mrg_script()  
+    mrg_script_internal(2)
   }
   if(!dir.exists(path)) {
     bad_path(path, type = "table", create = create)
@@ -246,7 +276,7 @@ tables_to <- function(path, create = FALSE, set_script = TRUE, path.type = "proj
 figures_to <- function(path, create = FALSE, set_script = TRUE) {
   check_path_deps()
   if(isTRUE(set_script)) {
-    mrg_script()  
+    mrg_script_internal(2)
   }
   if(!dir.exists(path)) {
     bad_path(path, type = "figure", create = create) 
@@ -263,7 +293,7 @@ figures_to <- function(path, create = FALSE, set_script = TRUE) {
 #' @export
 proj_rel <- function(path) {
   check_path_deps()
-  as.character(fs::path_rel(path, this_proj()))
+  proj_rel_internal(2, path)
 }
 
 check_path_deps <- function() {
