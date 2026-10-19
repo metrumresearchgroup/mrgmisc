@@ -1,3 +1,11 @@
+# mrgmisc 0.4.1
+
+## Bug fixes
+
+- `this_file_proj()`, `mrg_script()`, and related path helpers reported an
+  incorrect path in some scenarios due to disabling the srcfile method when
+  calling `this.path` functions. (#74)
+
 # mrgmisc 0.4.0
 
 ## New features and changes
