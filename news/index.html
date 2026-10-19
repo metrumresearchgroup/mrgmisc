@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">mrgmisc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.1</span>
       </span>
     </div>
 
@@ -58,10 +58,18 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="0.4.1" id="mrgmisc-041">mrgmisc 0.4.1<a class="anchor" aria-label="anchor" href="#mrgmisc-041"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-0-4-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-4-1"></a></h3>
+<ul><li>
+<code><a href="../reference/this_file.html">this_file_proj()</a></code>, <code><a href="../reference/tf_options.html">mrg_script()</a></code>, and related path helpers reported an incorrect path in some scenarios due to disabling the srcfile method when calling <code>this.path</code> functions. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/74" class="external-link">#74</a>)</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="0.4.0" id="mrgmisc-040">mrgmisc 0.4.0<a class="anchor" aria-label="anchor" href="#mrgmisc-040"></a></h2>
 <div class="section level3">
 <h3 id="new-features-and-changes-0-4-0">New features and changes<a class="anchor" aria-label="anchor" href="#new-features-and-changes-0-4-0"></a></h3>
-<ul><li><p>Replaced <code><a href="https://metrumresearchgroup.github.io/mrgmisc/reference/geomean.html">geomean()</a></code> with <code><a href="../reference/gm_mean.html">gm_mean()</a></code>, which supports configurable handling of missing values and zeros. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/62" class="external-link">#62</a>)</p></li>
+<ul><li><p>Replaced <code>geomean()</code> with <code><a href="../reference/gm_mean.html">gm_mean()</a></code>, which supports configurable handling of missing values and zeros. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/62" class="external-link">#62</a>)</p></li>
 <li><p>Added <code><a href="../reference/show_labels.html">show_labels()</a></code> to display data-frame column names and labels. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/63" class="external-link">#63</a>)</p></li>
 <li><p>Updated <code><a href="../reference/chunk.html">ids_per_plot()</a></code> to support IDs with attributes and improved its input validation and handling of edge cases. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/69" class="external-link">#69</a>)</p></li>
 <li><p>Added <code><a href="../reference/ghere.html">ghere()</a></code> to interpolate values into paths constructed with <code><a href="https://here.r-lib.org/reference/here.html" class="external-link">here::here()</a></code>. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/70" class="external-link">#70</a>)</p></li>
@@ -109,7 +117,7 @@
 </ul><div class="section level3">
 <h3 id="bug-fixes-0-2-1">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-1"></a></h3>
 <ul><li><p>Updated resampling functions to remove <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">dplyr::left_join()</a></code> warning. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/51" class="external-link">#51</a>)</p></li>
-<li><p>Updated <code><a href="../reference/s_quantiles.html">s_quantiles()</a></code> to remove <code><a href="https://dplyr.tidyverse.org/reference/se-deprecated.html" class="external-link">dplyr::summarize_()</a></code> warning. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/50" class="external-link">#50</a>)</p></li>
+<li><p>Updated <code><a href="../reference/s_quantiles.html">s_quantiles()</a></code> to remove <code><a href="https://dplyr.tidyverse.org/reference/defunct-lazyeval.html" class="external-link">dplyr::summarize_()</a></code> warning. (<a href="https://github.com/metrumresearchgroup/mrgmisc/issues/50" class="external-link">#50</a>)</p></li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -199,7 +207,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
       </footer></div>
